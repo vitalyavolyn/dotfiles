@@ -4,13 +4,17 @@
     ~/.gitconfig: gitconfig
     ~/.ssh/config:
         path: ssh/config
-        create: true
     ~/.zshrc: zshrc
     ~/bin:
         path: bin/
-        create: true
     ~/.config/i3:
         path: config/i3/
-        create: true
+    ~/.config/Code/User/settings.json:
+        path: config/vscode-settings.json
 
+- create:
+    - ~/dev
 
+- defaults:
+    link:
+      create: true
