@@ -1,0 +1,9 @@
+[user]
+  name = Vitaliy Volynskiy
+  email = i@vitalya.me
+
+[credential]
+  helper = store
+
+[commit]
+  gpgsign = false

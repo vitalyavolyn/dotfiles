@@ -1,0 +1,6 @@
+Host joltik
+  HostName joltik.local
+  CheckHostIP no
+
+Host groudon
+  HostName vitalya.me
