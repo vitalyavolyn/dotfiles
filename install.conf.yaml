@@ -11,6 +11,8 @@
         path: i3/
     ~/.config/Code/User/settings.json:
         path: vscode/settings.json
+    ~/.config/dunst/dunstrc:
+        path: dunst/dunstrc
 
 - create:
     - ~/dev
