@@ -8,9 +8,9 @@
     ~/bin:
         path: bin/
     ~/.config/i3:
-        path: config/i3/
+        path: i3/
     ~/.config/Code/User/settings.json:
-        path: config/vscode-settings.json
+        path: vscode/settings.json
 
 - create:
     - ~/dev
