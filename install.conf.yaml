@@ -2,17 +2,13 @@
 
 - link:
     ~/.gitconfig: gitconfig
-    ~/.ssh/config:
-        path: ssh/config
+    ~/.ssh/config: ssh/config
     ~/.zshrc: zshrc
-    ~/bin:
-        path: bin/
-    ~/.config/i3:
-        path: i3/
-    ~/.config/Code/User/settings.json:
-        path: vscode/settings.json
-    ~/.config/dunst/dunstrc:
-        path: dunst/dunstrc
+    ~/bin: bin/
+    ~/.config/i3: i3/
+    ~/.config/Code/User/settings.json: vscode/settings.json
+    ~/.config/dunst/dunstrc: dunst/dunstrc
+    ~/.picom.conf: picom/picom.conf
 
 - create:
     - ~/dev
