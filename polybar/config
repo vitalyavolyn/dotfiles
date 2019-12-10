@@ -52,7 +52,7 @@ font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
 
 modules-left = i3
 modules-center = xwindow
-modules-right = xbacklight pulseaudio xkeyboard wlan eth battery date powermenu
+modules-right = backlight pulseaudio xkeyboard wlan eth battery date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -129,8 +129,9 @@ label-urgent-padding = 2
 ; Separator in between workspaces
 ; label-separator = |
 
-[module/xbacklight]
-type = internal/xbacklight
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
 
 format = <ramp> <label>
 label = %percentage%%
