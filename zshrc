@@ -43,9 +43,13 @@ alias vi='vim'
 alias sudo='sudo '
 # alias nano='micro'
 alias serve='(port=$(( 8000+( $(od -An -N2 -i /dev/random) )%(1023+1) )); (xdg-open http://localhost:${port}; python -m http.server ${port}))'
-alias icat="kitty +kitten icat"
 alias да='yes'
 alias ъеъ='yay'
+
+if [ $TERM = 'xterm-kitty' ]
+then
+  alias icat="kitty +kitten icat"
+fi
 
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
