@@ -34,6 +34,7 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$ANDROID_HOME/tools 
 export PATH=$PATH:$ANDROID_HOME/platform-tools 
 export PATH=$PATH:$HOME/flutter/bin
+export PATH=$PATH:$HOME/.pub-cache/bin
 
 alias l='ls'
 alias la='ls -A'
