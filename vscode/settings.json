@@ -5,5 +5,10 @@
     "git.confirmSync": false,
     "git.autofetch": true,
     "explorer.confirmDragAndDrop": false,
-    "files.autoSave": "off"
+    "files.autoSave": "off",
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true
+    }
 }
