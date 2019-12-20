@@ -4,5 +4,6 @@
     "showGitMetrics": false,
     "git.confirmSync": false,
     "git.autofetch": true,
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "files.autoSave": "off"
 }
