@@ -1,9 +1,10 @@
 [user]
   name = Vitaliy Volynskiy
   email = i@vitalya.me
+  signingkey = C5FD1B39EB6F5BFE
 
 [credential]
   helper = store
 
 [commit]
-  gpgsign = false
+  gpgsign = true
