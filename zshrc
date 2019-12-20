@@ -17,12 +17,13 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 setopt HIST_IGNORE_DUPS
 
-micro_path=`which micro`
-if [ -x "$micro_path" ] ; then
-  EDITOR="$micro_path"
-else
-  EDITOR=`which vim`
-fi
+#micro_path=`which micro`
+#if [ -x "$micro_path" ] ; then
+#  EDITOR="$micro_path"
+#else
+#  EDITOR=`which vim`
+#fi
+EDITOR=`which vim`
 
 export EDITOR
 export WINEDEBUG=-all
