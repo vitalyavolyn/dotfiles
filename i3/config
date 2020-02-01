@@ -32,6 +32,7 @@ $exec feh --bg-fill ~/wall.png
 $exec picom -b --config ~/.picom.conf
 $exec setxkbmap -layout us,ru -option 'grp:alt_shift_toggle'
 $exec polybar -r top
+$exec xfce4-power-manager
 
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
