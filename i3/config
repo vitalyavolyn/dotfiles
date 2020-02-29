@@ -50,7 +50,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec "rofi -combi-modi drun -show combi -modi combi -display-combi search -sort"
 bindsym $mod+Ctrl+x --release $exec xkill
 
-set $screenshotDone exec dunstify 'A screenshot was made' -r 186
+set $screenshotDone exec "sleep 0.5; dunstify 'A screenshot was made' -r 186"
 
 # i3 кажется не нравятся запятые
 bindsym Print exec maim ~/Pictures/$(date +%s).png; $screenshotDone
