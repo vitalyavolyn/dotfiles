@@ -20,5 +20,6 @@
         "**/node_modules/**": true
     },
     "explorer.confirmDelete": false,
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "todo-tree.tree.showScanModeButton": false
 }
