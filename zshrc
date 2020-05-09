@@ -1,4 +1,4 @@
-ZSH=/usr/share/oh-my-zsh/
+ZSH=/usr/share/oh-my-zsh
 ZSH_THEME="fishy"
 HYPHEN_INSENSITIVE="true"
 ENABLE_CORRECTION="true"
