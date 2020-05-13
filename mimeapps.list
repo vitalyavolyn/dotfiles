@@ -1,0 +1,19 @@
+[Default Applications]
+x-scheme-handler/mailto=google-chrome.desktop
+text/html=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+text/plain=visual-studio-code.desktop
+x-scheme-handler/vk=vk.desktop
+application/pdf=google-chrome.desktop
+inode/directory=thunar.desktop
+
+[Added Associations]
+x-scheme-handler/http=exo-web-browser.desktop;
+x-scheme-handler/https=exo-web-browser.desktop;
+image/bmp=feh.desktop;
+image/png=feh.desktop;
+video/x-matroska=vlc.desktop;
+image/jpeg=feh.desktop;
+image/svg+xml=org.inkscape.Inkscape.desktop;
