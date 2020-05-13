@@ -21,5 +21,6 @@
     },
     "explorer.confirmDelete": false,
     "editor.tabSize": 2,
-    "todo-tree.tree.showScanModeButton": false
+    "todo-tree.tree.showScanModeButton": false,
+    "breadcrumbs.enabled": false
 }
