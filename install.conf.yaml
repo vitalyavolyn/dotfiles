@@ -11,6 +11,7 @@
     ~/.config/dunst/dunstrc: dunst/dunstrc
     ~/.picom.conf: picom/picom.conf
     ~/.config/mimeapps.list: mimeapps.list
+    ~/.config/rofi/config.rasi: rofi/config.rasi
 
 - create:
     - ~/dev

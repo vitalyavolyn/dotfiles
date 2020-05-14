@@ -1,0 +1,7 @@
+configuration {
+	modi: "combi,calc";
+	sort: true;
+	combi-modi: "drun,ssh";
+	display-combi: "search";
+	theme: "/usr/share/rofi/themes/Paper.rasi";
+}
