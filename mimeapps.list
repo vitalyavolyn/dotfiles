@@ -1,13 +1,15 @@
 [Default Applications]
-x-scheme-handler/mailto=google-chrome.desktop
-text/html=google-chrome.desktop
-x-scheme-handler/http=google-chrome.desktop
-x-scheme-handler/https=google-chrome.desktop
-x-scheme-handler/about=google-chrome.desktop
-text/plain=visual-studio-code.desktop
-x-scheme-handler/vk=vk.desktop
-application/pdf=google-chrome.desktop
-inode/directory=thunar.desktop
+x-scheme-handler/mailto=google-chrome.desktop;
+text/html=google-chrome.desktop;
+x-scheme-handler/http=google-chrome.desktop;
+x-scheme-handler/https=google-chrome.desktop;
+x-scheme-handler/about=google-chrome.desktop;
+text/plain=visual-studio-code.desktop;
+x-scheme-handler/vk=vk.desktop;
+x-scheme-handler/figma=figma-linux.desktop;
+application/figma=figma-linux.desktop;
+application/pdf=google-chrome.desktop;
+inode/directory=thunar.desktop;
 
 [Added Associations]
 x-scheme-handler/http=exo-web-browser.desktop;

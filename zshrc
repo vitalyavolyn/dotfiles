@@ -66,8 +66,4 @@ function swap()
   mv "$1" $TMPFILE && mv "$2" "$1" && mv $TMPFILE $2
 }
 
-function localhost.run()
-{
-  local PORT="${1:-8080}"
-  ssh -R 80:localhost:$PORT ssh.localhost.run
-}
+bindkey '^H' backward-kill-word
