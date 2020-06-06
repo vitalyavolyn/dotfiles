@@ -93,7 +93,9 @@ bindsym $mod+Shift+space floating toggle
 
 bindsym $mod+space focus mode_toggle
 
-bindsym $mod+a focus parent
+bindsym $mod+a sticky toggle
+
+#bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # move the currently focused window to the scratchpad
