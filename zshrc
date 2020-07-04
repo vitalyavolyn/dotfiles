@@ -17,13 +17,12 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 setopt HIST_IGNORE_DUPS
 
-#micro_path=`which micro`
-#if [ -x "$micro_path" ] ; then
-#  EDITOR="$micro_path"
-#else
-#  EDITOR=`which vim`
-#fi
-EDITOR=`which vim`
+micro_path=`which micro`
+if [ -x "$micro_path" ] ; then
+  EDITOR="$micro_path"
+else
+  EDITOR=`which vim`
+fi
 
 export EDITOR
 export WINEDEBUG=-all
@@ -41,10 +40,11 @@ alias ls='ls --color=auto'
 alias x='xclip -sel clip'
 alias vi='vim'
 alias sudo='sudo '
-# alias nano='micro'
+alias nano='micro'
 alias serve='(port=$(( 8000+( $(od -An -N2 -i /dev/random) )%(1023+1) )); (xdg-open http://localhost:${port}; python -m http.server ${port}))'
 alias да='yes'
 alias ъеъ='yay'
+alias mnt="sudo mount -o uid=1000,gid=1000"
 
 if [ $TERM = 'xterm-kitty' ]
 then
