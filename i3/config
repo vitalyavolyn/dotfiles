@@ -23,22 +23,18 @@ font pango:monospace 8
 
 set $exec exec --no-startup-id
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-$exec xss-lock --transfer-sleep-lock -- i3lock --nofork -i ~/wall.png
+$exec xss-lock --transfer-sleep-lock -- i3lock --nofork -i ~/.wallpaper.png
 $exec numlockx on
-#$exec nm-applet
-$exec feh --bg-fill ~/wall.png
+$exec feh --bg-fill ~/.wallpaper.png
 $exec picom -b --config ~/.picom.conf
 $exec setxkbmap -layout us,ru -option 'grp:alt_shift_toggle' -option numpad:mac
 $exec polybar -r top
 $exec xfce4-power-manager
 
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 bindsym XF86MonBrightnessUp $exec brightnessctl s +10%
 bindsym XF86MonBrightnessDown $exec brightnessctl s 10%-
