@@ -25,5 +25,8 @@
     "breadcrumbs.enabled": false,
     "editor.suggestSelection": "recentlyUsedByPrefix",
     "typescript.updateImportsOnFileMove.enabled": "always",
-    "editor.renameOnType": true
+    "editor.renameOnType": true,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.statusBar.enabled": false,
+    "gitlens.views.search.enabled": false
 }
