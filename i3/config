@@ -23,7 +23,7 @@ font pango:monospace 8
 
 set $exec exec --no-startup-id
 
-$exec xss-lock --transfer-sleep-lock -- i3lock --nofork -i ~/.wallpaper.png
+$exec xss-lock --transfer-sleep-lock -- i3lock --nofork -i ~/.wallpaper.png -e -f --pass-volume-keys --pass-screen-keys --radius 100
 $exec numlockx on
 $exec feh --bg-fill ~/.wallpaper.png
 $exec picom -b --config ~/.picom.conf
