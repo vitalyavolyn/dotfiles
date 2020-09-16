@@ -28,5 +28,8 @@
     "editor.renameOnType": true,
     "gitlens.codeLens.enabled": false,
     "gitlens.statusBar.enabled": false,
-    "gitlens.views.search.enabled": false
+    "gitlens.views.search.enabled": false,
+    "workbench.colorTheme": "Atom One Dark",
+    "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontLigatures": true
 }
