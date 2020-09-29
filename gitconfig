@@ -8,3 +8,5 @@
 
 [commit]
   gpgsign = true
+[push]
+  followTags = true

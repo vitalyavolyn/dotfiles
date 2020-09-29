@@ -31,5 +31,6 @@
     "gitlens.views.search.enabled": false,
     "workbench.colorTheme": "Atom One Dark",
     "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontLigatures": true
+    "editor.fontLigatures": true,
+    "window.zoomLevel": 0
 }
