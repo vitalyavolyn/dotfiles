@@ -12,6 +12,7 @@
     ~/.picom.conf: picom/picom.conf
     ~/.config/mimeapps.list: mimeapps.list
     ~/.config/rofi/config.rasi: rofi/config.rasi
+    ~/.config/fusuma/config.yml: fusuma/config.yml
 
 - create:
     - ~/dev

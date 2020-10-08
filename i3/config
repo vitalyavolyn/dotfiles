@@ -30,6 +30,7 @@ $exec picom -b --config ~/.picom.conf
 $exec setxkbmap -layout us,ru -option 'grp:alt_shift_toggle' -option numpad:mac
 $exec polybar -r top
 $exec xfce4-power-manager
+$exec fusuma
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
@@ -94,19 +95,12 @@ bindsym $mod+a sticky toggle
 #bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
-# move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
-#navigate workspaces next / previous
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
