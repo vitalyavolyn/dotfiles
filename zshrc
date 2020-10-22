@@ -4,7 +4,7 @@ HYPHEN_INSENSITIVE="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-REPORTTIME=10
+REPORTTIME=10 # shows command execution time after N seconds
 
 plugins=(
   git
@@ -15,6 +15,7 @@ plugins=(
   dotenv
   yarn
 )
+
 source $ZSH/oh-my-zsh.sh
 setopt HIST_IGNORE_DUPS
 
