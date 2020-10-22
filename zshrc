@@ -33,10 +33,8 @@ export PATH=$PATH:$HOME/.yarn/bin
 
 alias l='ls'
 alias la='ls -A'
-alias ls='ls --color=auto'
 alias x='xclip -sel clip'
 alias vi='vim'
-alias sudo='sudo '
 alias mnt="sudo mount -o uid=1000,gid=1000"
 
 if [ $TERM = 'xterm-kitty' ]; then
