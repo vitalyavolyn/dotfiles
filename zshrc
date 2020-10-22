@@ -13,6 +13,7 @@ plugins=(
   dirhistory
   sudo
   dotenv
+  yarn
 )
 source $ZSH/oh-my-zsh.sh
 setopt HIST_IGNORE_DUPS
@@ -21,11 +22,13 @@ export EDITOR=`which vim`
 export WINEDEBUG=-all
 export GOPATH=$HOME/go
 export GPG_TTY=`tty`
-export CHROME_EXECUTABLE=`which google-chrome-stable`
+export CHROME_EXECUTABLE=`which google-chrome-stable` # for flutter
+
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/flutter/bin
 export PATH=$PATH:$HOME/.pub-cache/bin
+export PATH=$PATH:$HOME/.yarn/bin
 
 alias l='ls'
 alias la='ls -A'
@@ -33,13 +36,9 @@ alias ls='ls --color=auto'
 alias x='xclip -sel clip'
 alias vi='vim'
 alias sudo='sudo '
-alias serve='(port=$(( 8000+( $(od -An -N2 -i /dev/random) )%(1023+1) )); (xdg-open http://localhost:${port}; python -m http.server ${port}))'
-alias да='yes'
-alias ъеъ='yay'
 alias mnt="sudo mount -o uid=1000,gid=1000"
 
-if [ $TERM = 'xterm-kitty' ]
-then
+if [ $TERM = 'xterm-kitty' ]; then
   alias icat="kitty +kitten icat"
 fi
 
