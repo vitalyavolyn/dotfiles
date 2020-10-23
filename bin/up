@@ -4,6 +4,14 @@ if hash pacman 2>/dev/null; then
   yes | yay -c
 fi
 
+if hash yarn 2>/dev/null; then
+  yarn global upgrade --silent
+fi
+
+if hash pubglobalupdate 2>/dev/null; then
+  pubglobalupdate
+fi
+
 if hash apt 2>/dev/null; then
   sudo apt update;
   sudo apt upgrade -y;
