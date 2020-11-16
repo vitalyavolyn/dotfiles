@@ -1,4 +1,10 @@
 ZSH=/usr/share/oh-my-zsh
+
+if [ ! -d "$ZSH" ]; then
+  # oh-my-zsh is installed locally on Ubuntu
+  ZSH=$HOME/.oh-my-zsh
+fi
+
 ZSH_THEME="fishy"
 HYPHEN_INSENSITIVE="true"
 ENABLE_CORRECTION="true"
@@ -13,6 +19,7 @@ plugins=(
   dirhistory
   sudo
   dotenv
+  httpie
   yarn
 )
 
@@ -46,9 +53,22 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/doc/pkgfile/command-not-found.zsh
+if ! type "pacman" > /dev/null; then
+  # Ubuntu
+  source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+  # zsh-autosuggestions are not available for armv7l. cool.
+  if [ -d /usr/share/zsh-autosuggestions ]; then
+    source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  else
+    source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+  fi
+else
+  # Arch
+  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /usr/share/doc/pkgfile/command-not-found.zsh
+fi
 
 function swap()
 {
