@@ -13,3 +13,5 @@ image/bmp=sxiv.desktop;
 image/jpeg=sxiv.desktop;
 video/x-matroska=vlc.desktop;
 image/svg+xml=org.inkscape.Inkscape.desktop;
+x-scheme-handler/devhub=devhub.desktop
+x-scheme-handler/etcher=balena-etcher-electron.desktop
