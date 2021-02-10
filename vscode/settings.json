@@ -39,5 +39,6 @@
             "viewType": "jupyter.notebook.ipynb",
             "filenamePattern": "*.ipynb"
         }
-    ]
+    ],
+    "php.validate.executablePath": "/sbin/php"
 }
