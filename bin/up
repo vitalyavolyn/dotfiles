@@ -12,6 +12,10 @@ if hash pubglobalupdate 2>/dev/null; then
   pubglobalupdate
 fi
 
+if hash flutter 2>/dev/null; then
+  flutter upgrade
+fi
+
 if hash apt 2>/dev/null; then
   sudo apt update;
   sudo apt upgrade -y;
