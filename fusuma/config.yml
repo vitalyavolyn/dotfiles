@@ -1,9 +1,0 @@
-swipe:
-  3:
-    left:
-     command: exec i3 workspace prev
-    right:
-      command: exec i3 workspace next
-interval:
-  swipe: 0.5
-
