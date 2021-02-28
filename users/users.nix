@@ -18,6 +18,7 @@
       vk-messenger
       tdesktop
       p7zip
+      xsel
     ];
 
     home.file = {

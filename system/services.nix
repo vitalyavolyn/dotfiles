@@ -1,15 +1,33 @@
 { pkgs, ... }:
 
 {
-  services.xserver.enable = true;
-  services.xserver.desktopManager.pantheon = {
+  services.xserver = {
     enable = true;
-    extraWingpanelIndicators = [ pkgs.pantheon.wingpanel-indicator-keyboard ];
+
+    layout = "us,ru";
+    xkbOptions = "grp:alt_shift_toggle";
+
+    displayManager = {
+      defaultSession = "none+i3";
+      lightdm.enable = true;
+    };
+
+    windowManager.i3 = {
+      enable = true;
+      package = pkgs.i3-gaps;
+    };
+
+    libinput = {
+      enable = true;
+      touchpad.naturalScrolling = true;
+    };
   };
-  environment.pantheon.excludePackages = with pkgs; [ gnome3.geary pantheon.elementary-code ];
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
   services.openssh.enable = true;
+
+  services.gnome3.gnome-keyring.enable = true;
+  security.pam.services.lightdm.enableGnomeKeyring = true;
 }

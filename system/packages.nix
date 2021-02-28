@@ -7,7 +7,9 @@
     git
     wget
     vim
+    kitty
   ];
+  environment.variables.TERMINAL = "kitty";
 
   programs.zsh.enable = true;
   programs.gnupg.agent = {
