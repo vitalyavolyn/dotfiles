@@ -19,9 +19,15 @@
       tdesktop
       p7zip
       xsel
+      pavucontrol
+      ranger
+      xfce.thunar
     ];
 
     home.file = {
+      # TODO: add to PATH
+      "bin".source = ./bin;
+
       ".ssh/config".source = ./configs/ssh-config;
       ".gitconfig".source = ./configs/gitconfig;
     };
@@ -34,8 +40,73 @@
     programs = {
       zsh = {
         enable = true;
-        enableCompletion = true;
+
+        autocd = true;
         enableAutosuggestions = true;
+
+        # TODO: how to make REPORTTIME work?
+
+        history = {
+          ignoreDups = true;
+        };
+
+        shellAliases = {
+          l = "ls";
+          la = "ls -a";
+          x = "xclip -sel clip";
+        };
+
+        localVariables = {
+          REPORTTIME = 10;
+          # TODO: $GOPATH/bin?
+          PATH = "$PATH:$HOME/bin:$HOME/.pub-cache/bin:$HOME/.yarn/bin";
+          EDITOR = "vim";
+        };
+
+        plugins = with pkgs; [
+          {
+            name = "zsh-nix-shell";
+            file = "nix-shell.plugin.zsh";
+            src = fetchFromGitHub {
+              owner = "chisui";
+              repo = "zsh-nix-shell";
+              rev = "v0.1.0";
+              sha256 = "0snhch9hfy83d4amkyxx33izvkhbwmindy0zjjk28hih1a9l2jmx";
+            };
+          }
+          {
+            name = "zsh-syntax-highlighting";
+            file = "zsh-syntax-highlighting.zsh";
+            src = fetchFromGitHub {
+              owner = "zsh-users";
+              repo = "zsh-syntax-highlighting";
+              rev = "0.7.1";
+              sha256 = "03r6hpb5fy4yaakqm3lbf4xcvd408r44jgpv4lnzl9asp4sb9qc0";
+            };
+          }
+        ];
+
+        oh-my-zsh = {
+          enable = true;
+
+          plugins = [ "git" "sudo" "dotenv" "yarn" ];
+          theme = "fishy";
+        };
+      };
+
+      go = {
+        enable = true;
+        goPath = "go";
+      };
+
+      fzf = {
+        enable = true;
+        enableZshIntegration = true;
+      };
+
+      kitty = {
+        enable = true;
+        font.name = "Fira Code";
       };
 
       vscode = with pkgs; {
