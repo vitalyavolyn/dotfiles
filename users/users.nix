@@ -22,6 +22,7 @@
       pavucontrol
       ranger
       xfce.thunar
+      acpi
     ];
 
     home.file = {
@@ -38,13 +39,12 @@
     };
 
     programs = {
+      # TODO: split this into separate files?
       zsh = {
         enable = true;
 
         autocd = true;
         enableAutosuggestions = true;
-
-        # TODO: how to make REPORTTIME work?
 
         history = {
           ignoreDups = true;
@@ -56,11 +56,11 @@
           x = "xclip -sel clip";
         };
 
+        # TODO: how to make REPORTTIME work?
         localVariables = {
           REPORTTIME = 10;
           # TODO: $GOPATH/bin?
           PATH = "$PATH:$HOME/bin:$HOME/.pub-cache/bin:$HOME/.yarn/bin";
-          EDITOR = "vim";
         };
 
         plugins = with pkgs; [
@@ -130,6 +130,26 @@
       theme = {
         package = pkgs.arc-theme;
         name = "Arc-Dark";
+      };
+    };
+
+    qt = {
+      enable = true;
+      platformTheme = "gtk";
+    };
+
+    home.sessionVariables = {
+      EDITOR = "vim";
+    };
+
+    xsession = {
+      numlock.enable = true;
+
+      pointerCursor = {
+        package = pkgs.vanilla-dmz;
+        name = "Vanilla-DMZ";
+        # defaultCursor = "left_ptr";
+        size = 24;
       };
     };
   };
