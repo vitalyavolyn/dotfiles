@@ -5,7 +5,7 @@
 
   users.users.vitalya = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
     shell = pkgs.zsh;
   };
 
@@ -61,6 +61,7 @@
           REPORTTIME = 10;
           # TODO: $GOPATH/bin?
           PATH = "$PATH:$HOME/bin:$HOME/.pub-cache/bin:$HOME/.yarn/bin";
+          EDITOR = "vim";
         };
 
         plugins = with pkgs; [
@@ -136,10 +137,6 @@
     qt = {
       enable = true;
       platformTheme = "gtk";
-    };
-
-    home.sessionVariables = {
-      EDITOR = "vim";
     };
 
     xsession = {

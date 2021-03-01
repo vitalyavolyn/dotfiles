@@ -37,5 +37,10 @@
   services.blueman.enable = true;
 
   services.gnome3.gnome-keyring.enable = true;
-  security.pam.services.lightdm.enableGnomeKeyring = true;
+  security.pam.services.lightdm.enableGnomeKeyring = true; # TODO: doesn't unlock
+
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  };
 }
