@@ -42,6 +42,7 @@
     xdg.configFile = {
       "nixpkgs/config.nix".source = ../nixpkgs-config.nix;
       "Code/User/settings.json".source = ./configs/vscode.json;
+      "i3/config".source = ./configs/i3-config;
     };
 
     programs = {
