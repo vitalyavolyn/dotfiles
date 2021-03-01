@@ -7,6 +7,7 @@
       noto-fonts
       noto-fonts-emoji
       fira-code
+      siji
     ];
   };
 }

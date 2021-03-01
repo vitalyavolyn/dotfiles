@@ -11,18 +11,24 @@
 
   home-manager.users.vitalya = {
     home.packages = with pkgs; [
-      neofetch
+      # system utilities
+      pfetch
       nixpkgs-fmt
+      xsel
+      p7zip
+      pavucontrol
+      ranger
+      xfce.thunar
+
+      # internet stuff
       google-chrome
       discord
       vk-messenger
       tdesktop
-      p7zip
-      xsel
-      pavucontrol
-      ranger
-      xfce.thunar
+
+      # laptop stuff
       acpi
+      acpilight
     ];
 
     home.file = {
@@ -129,6 +135,16 @@
     services = {
       picom.enable = true;
       network-manager-applet.enable = true;
+      polybar = {
+        enable = true;
+        package = pkgs.polybar.override {
+          i3GapsSupport = true;
+          pulseSupport = true;
+          githubSupport = true; # what is this
+        };
+        script = "polybar example &";
+        extraConfig = builtins.readFile ./configs/polybar-config;
+      };
     };
 
     gtk = {
