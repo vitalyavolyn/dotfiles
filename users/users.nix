@@ -126,6 +126,11 @@
       };
     };
 
+    services = {
+      picom.enable = true;
+      network-manager-applet.enable = true;
+    };
+
     gtk = {
       enable = true;
       theme = {
