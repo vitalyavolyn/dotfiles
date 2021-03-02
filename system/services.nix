@@ -32,7 +32,7 @@
     extraModules = [ pkgs.pulseaudio-modules-bt ];
   };
 
-  services.openssh.enable = true;
+  services.sshd.enable = true;
 
   services.blueman.enable = true;
 
