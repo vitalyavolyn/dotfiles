@@ -38,6 +38,16 @@
 
   services.gnome3.gnome-keyring.enable = true;
 
+  systemd.services.xboxdrv = {
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+    serviceConfig = {
+      Type = "forking";
+      User = "root";
+      ExecStart = ''${pkgs.xboxdrv}/bin/xboxdrv --daemon --detach --pid-file /var/run/xboxdrv.pid --dbus disabled --silent --mimic-xpad'';
+    };
+  };
+
   virtualisation.docker = {
     enable = true;
     enableOnBoot = false;
