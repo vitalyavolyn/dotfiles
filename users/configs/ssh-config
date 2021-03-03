@@ -1,6 +1,6 @@
 Host joltik
-  HostName joltik.local
-  CheckHostIP no
+  # TODO: figure out avahi
+  HostName 192.168.0.4
 
 Host groudon
   HostName vitalya.me

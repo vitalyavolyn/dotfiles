@@ -19,6 +19,7 @@
       pavucontrol
       ranger
       xfce.thunar
+      maim
 
       # internet stuff
       google-chrome
