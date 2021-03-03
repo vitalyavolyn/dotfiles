@@ -12,4 +12,10 @@
   time.timeZone = "Asia/Almaty";
 
   i18n.inputMethod.enabled = "ibus";
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
 }

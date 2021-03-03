@@ -61,11 +61,12 @@
           l = "ls";
           la = "ls -a";
           x = "xclip -sel clip";
+          nbs = "time sudo nixos-rebuild switch";
+          nbsu = "time sudo nixos-rebuild switch --upgrade";
         };
 
         # TODO: how to make REPORTTIME work?
         localVariables = {
-          REPORTTIME = 10;
           # TODO: $GOPATH/bin?
           PATH = "$PATH:$HOME/bin:$HOME/.pub-cache/bin:$HOME/.yarn/bin";
           EDITOR = "vim";
