@@ -18,18 +18,18 @@
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/4fe659ab-5568-4a0d-ab34-c121c4054971";
+      device = "/dev/disk/by-label/nixos";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/1B3A-DD8D";
+      device = "/dev/disk/by-label/boot";
       fsType = "vfat";
     };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/b6a2ab5f-b741-4785-bf46-2847964c9a02"; }];
+    [{ device = "/dev/disk/by-label/swap"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
