@@ -7,8 +7,14 @@
     layout = "us,ru";
     xkbOptions = "grp:alt_shift_toggle";
 
+    desktopManager.xfce = {
+      enable = true;
+      noDesktop = true;
+      enableXfwm = false;
+    };
+
     displayManager = {
-      defaultSession = "none+i3";
+      defaultSession = "xfce+i3";
       lightdm.enable = true;
     };
 

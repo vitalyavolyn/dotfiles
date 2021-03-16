@@ -20,6 +20,7 @@
       ranger
       xfce.thunar
       maim
+      paper-icon-theme
 
       # internet stuff
       google-chrome
@@ -138,16 +139,16 @@
     services = {
       picom.enable = true;
       network-manager-applet.enable = true;
-      polybar = {
-        enable = true;
-        package = pkgs.polybar.override {
-          i3GapsSupport = true;
-          pulseSupport = true;
-          githubSupport = true; # what is this
-        };
-        script = "polybar example &";
-        extraConfig = builtins.readFile ./configs/polybar-config;
-      };
+      # polybar = {
+      #   enable = true;
+      #   package = pkgs.polybar.override {
+      #     i3GapsSupport = true;
+      #     pulseSupport = true;
+      #     githubSupport = true; # what is this
+      #   };
+      #   script = "polybar example &";
+      #   extraConfig = builtins.readFile ./configs/polybar-config;
+      # };
     };
 
     gtk = {

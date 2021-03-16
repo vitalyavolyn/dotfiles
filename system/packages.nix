@@ -8,6 +8,10 @@
     wget
     vim
     kitty
+
+    xfce.xfce4-panel
+    xfce.xfce4-i3-workspaces-plugin
+    xfce.xfce4-xkb-plugin
   ];
   environment.variables.TERMINAL = "kitty";
 
@@ -17,6 +21,6 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-    pinentryFlavor = "gnome3";
+    # pinentryFlavor = "gnome3";
   };
 }
