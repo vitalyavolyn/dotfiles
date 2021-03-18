@@ -31,6 +31,10 @@
       # laptop stuff
       acpi
       acpilight
+
+      # dev stuff
+      nodejs_latest
+      yarn
     ];
 
     home.file = {
