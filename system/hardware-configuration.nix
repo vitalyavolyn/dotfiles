@@ -13,6 +13,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.supportedFilesystems = [ "ntfs" ];
   # last two fix the touchpad
   boot.kernelParams = [ "quiet splash" "i8042.nopnp=1" "pci=nocrs" ];
 
@@ -33,9 +34,13 @@
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
-  hardware.opengl.extraPackages = with pkgs; [
-    intel-compute-runtime
-  ];
+  hardware.opengl = {
+    extraPackages = with pkgs; [
+      intel-compute-runtime
+      intel-media-driver
+    ];
+    driSupport32Bit = true;
+  };
 
   hardware.bluetooth.enable = true;
 }

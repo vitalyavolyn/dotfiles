@@ -22,11 +22,15 @@
       maim
       paper-icon-theme
 
+      wineWowPackages.stable
+      winetricks
+
       # internet stuff
       google-chrome
       discord
       vk-messenger
       tdesktop
+      qbittorrent
 
       # laptop stuff
       acpi
@@ -172,10 +176,9 @@
       numlock.enable = true;
 
       pointerCursor = {
-        package = pkgs.vanilla-dmz;
-        name = "Vanilla-DMZ";
-        # defaultCursor = "left_ptr";
-        size = 24;
+        package = pkgs.paper-icon-theme;
+        name = "Paper";
+        size = 16;
       };
     };
   };
