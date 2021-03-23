@@ -10,7 +10,6 @@
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = [ "ntfs" ];
@@ -35,10 +34,6 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   hardware.opengl = {
-    extraPackages = with pkgs; [
-      intel-compute-runtime
-      intel-media-driver
-    ];
     driSupport32Bit = true;
   };
 
