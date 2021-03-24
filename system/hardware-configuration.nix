@@ -33,9 +33,5 @@
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
-  hardware.opengl = {
-    driSupport32Bit = true;
-  };
-
   hardware.bluetooth.enable = true;
 }
