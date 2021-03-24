@@ -21,7 +21,6 @@
       xfce.thunar
       maim
       paper-icon-theme
-
       wineWowPackages.stable
       winetricks
 
@@ -39,6 +38,9 @@
       # dev stuff
       nodejs_latest
       yarn
+
+      # games?
+      osu-lazer
     ];
 
     home.file = {
