@@ -14,5 +14,4 @@
     ];
 
   system.stateVersion = "20.09";
-  # TODO: garbage collection
 }

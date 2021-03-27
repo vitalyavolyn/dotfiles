@@ -30,6 +30,7 @@
       vk-messenger
       tdesktop
       qbittorrent
+      youtube-dl
 
       # laptop stuff
       acpi
@@ -38,6 +39,7 @@
       # dev stuff
       nodejs_latest
       yarn
+      postman
 
       # games?
       osu-lazer
