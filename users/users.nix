@@ -23,6 +23,7 @@
       paper-icon-theme
       wineWowPackages.stable
       winetricks
+      neofetch
 
       # internet stuff
       google-chrome
@@ -31,6 +32,7 @@
       tdesktop
       qbittorrent
       youtube-dl
+      spotify
 
       # laptop stuff
       acpi
@@ -40,6 +42,7 @@
       nodejs_latest
       yarn
       postman
+      jetbrains.webstorm
 
       # games?
       osu-lazer
@@ -168,6 +171,10 @@
       theme = {
         package = pkgs.arc-theme;
         name = "Arc-Dark";
+      };
+      iconTheme = {
+        package = pkgs.paper-icon-theme;
+        name = "Paper";
       };
     };
 

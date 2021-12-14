@@ -2,7 +2,7 @@ Host joltik
   # TODO: figure out avahi
   HostName 192.168.0.4
 
-Host groudon
+Host xerneas
   HostName vitalya.me
 
 Host aur.archlinux.org

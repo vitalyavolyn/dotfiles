@@ -14,7 +14,7 @@
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = [ "ntfs" ];
   # last two fix the touchpad
-  boot.kernelParams = [ "quiet splash" "i8042.nopnp=1" "pci=nocrs" ];
+  boot.kernelParams = [ "quiet" "splash" "i8042.nopnp=1" "pci=nocrs" ];
 
   fileSystems."/" =
     {

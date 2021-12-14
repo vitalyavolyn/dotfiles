@@ -49,24 +49,14 @@
 
   services.blueman.enable = true;
 
-  services.gnome3.gnome-keyring.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
-  systemd.services.xboxdrv = {
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
-    serviceConfig = {
-      Type = "forking";
-      User = "root";
-      ExecStart = ''${pkgs.xboxdrv}/bin/xboxdrv --daemon --detach --pid-file /var/run/xboxdrv.pid --dbus disabled --silent --mimic-xpad'';
-    };
-  };
+  services.fstrim.enable = true;
+
+  services.tlp.enable = true;
 
   virtualisation.docker = {
     enable = true;
     enableOnBoot = false;
   };
-
-  services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/backlight/%k/brightness"
-  '';
 }
