@@ -24,6 +24,7 @@
       wineWowPackages.stable
       winetricks
       neofetch
+      gparted
 
       # internet stuff
       google-chrome
