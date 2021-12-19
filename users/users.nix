@@ -46,7 +46,7 @@
       jetbrains.webstorm
 
       # games?
-      osu-lazer
+      # osu-lazer
     ];
 
     home.file = {
