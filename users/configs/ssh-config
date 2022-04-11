@@ -1,16 +1,8 @@
-Host joltik
-  # TODO: figure out avahi
-  HostName 192.168.0.4
-
-Host xerneas
+Host turtwig
   HostName vitalya.me
 
 Host aur.archlinux.org
   User aur
-
-Host desktop
-  HostName 192.168.1.3
-  User Vitalya
 
 Host github
   HostName github.com
