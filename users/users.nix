@@ -47,6 +47,10 @@
 
       # games?
       # osu-lazer
+
+      # work
+      notion-app-enhanced
+      slack
     ];
 
     home.file = {
