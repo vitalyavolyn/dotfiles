@@ -44,6 +44,7 @@
       yarn
       postman
       jetbrains.webstorm
+      gnumake
 
       # games?
       # osu-lazer
