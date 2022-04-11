@@ -1,7 +1,6 @@
 {
     "editor.renderWhitespace": "all",
     "window.menuBarVisibility": "toggle",
-    "showGitMetrics": false,
     "git.confirmSync": false,
     "git.autofetch": true,
     "explorer.confirmDragAndDrop": false,
@@ -25,20 +24,12 @@
     "breadcrumbs.enabled": false,
     "editor.suggestSelection": "recentlyUsedByPrefix",
     "typescript.updateImportsOnFileMove.enabled": "always",
-    "editor.renameOnType": true,
+    "editor.linkedEditing": true,
     "gitlens.codeLens.enabled": false,
     "gitlens.statusBar.enabled": false,
-    "gitlens.views.search.enabled": false,
     "workbench.colorTheme": "Atom One Dark",
     "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontLigatures": true,
     "window.zoomLevel": 0,
-    "go.formatTool": "goimports",
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
     "php.validate.executablePath": "/sbin/php"
 }
