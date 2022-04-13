@@ -42,11 +42,11 @@
       # dev stuff
       nodejs_latest
       yarn
-      postman
       jetbrains.webstorm
       gnumake
 
       # games?
+      minecraft
       # osu-lazer
 
       # work
