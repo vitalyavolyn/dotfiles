@@ -8,6 +8,7 @@
     wget
     vim
     kitty
+    xclip
 
     xfce.xfce4-power-manager
     xfce.xfce4-panel

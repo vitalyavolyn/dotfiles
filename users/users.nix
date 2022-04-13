@@ -52,6 +52,7 @@
       # work
       notion-app-enhanced
       slack
+      zoom-us
     ];
 
     home.file = {
