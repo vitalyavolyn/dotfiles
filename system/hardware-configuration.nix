@@ -34,4 +34,24 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   hardware.bluetooth.enable = true;
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  };
+
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+    VDPAU_DRIVER = "va_gl";
+  };
+
+  hardware.opengl = {
+    extraPackages = with pkgs; [
+      intel-compute-runtime
+      ocl-icd
+    ];
+    driSupport32Bit = true;
+  };
+
+  services.xserver.videoDrivers = [ "modesetting" ];
+  services.xserver.useGlamor = true;
 }

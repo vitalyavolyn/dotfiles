@@ -7,12 +7,12 @@
     layout = "us,ru";
     xkbOptions = "grp:alt_shift_toggle";
 
-    videoDrivers = ["intel"];
-    deviceSection = ''
-      Option "TearFree" "true"
-      Option "TripleBuffer" "true"
-      Option "DRI" "false"
-    '';
+    # videoDrivers = [ "intel" ];
+    # deviceSection = ''
+      # Option "TearFree" "true"
+      # Option "TripleBuffer" "true"
+      # Option "DRI" "false"
+    # '';
 
     desktopManager.xfce = {
       enable = true;
