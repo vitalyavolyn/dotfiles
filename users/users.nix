@@ -159,7 +159,10 @@
     };
 
     services = {
-      picom.enable = true;
+      picom = {
+        enable = true;
+        vSync = true;
+      };
       network-manager-applet.enable = true;
       # polybar = {
       #   enable = true;
