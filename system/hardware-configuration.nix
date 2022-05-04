@@ -46,7 +46,7 @@
 
   hardware.opengl = {
     extraPackages = with pkgs; [
-      intel-compute-runtime
+      # intel-compute-runtime
       ocl-icd
     ];
     driSupport32Bit = true;

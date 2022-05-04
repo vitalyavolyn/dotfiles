@@ -39,10 +39,7 @@
   sound.enable = true;
   hardware.pulseaudio = {
     enable = true;
-
-    # bluetooth support
     package = pkgs.pulseaudioFull;
-    extraModules = [ pkgs.pulseaudio-modules-bt ];
   };
 
   services.sshd.enable = true;

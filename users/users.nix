@@ -21,10 +21,10 @@
       xfce.thunar
       maim
       paper-icon-theme
-      wineWowPackages.stable
-      winetricks
       neofetch
       gparted
+      steam-run
+      vlc
 
       # internet stuff
       google-chrome
@@ -44,10 +44,12 @@
       yarn
       jetbrains.webstorm
       gnumake
+      robo3t
 
       # games?
       minecraft
       # osu-lazer
+      mgba
 
       # work
       notion-app-enhanced
