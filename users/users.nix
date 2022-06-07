@@ -25,6 +25,7 @@
       gparted
       steam-run
       vlc
+      obs-studio
 
       # internet stuff
       google-chrome
@@ -45,6 +46,8 @@
       jetbrains.webstorm
       gnumake
       robo3t
+      gh
+      docker-compose
 
       # games?
       minecraft
@@ -142,6 +145,10 @@
       kitty = {
         enable = true;
         font.name = "Fira Code";
+        theme = "Afterglow";
+        settings = {
+          confirm_os_window_close = 0;
+        };
       };
 
       vscode = with pkgs; {
