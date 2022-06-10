@@ -31,5 +31,6 @@
     "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontLigatures": true,
     "window.zoomLevel": 0,
-    "php.validate.executablePath": "/sbin/php"
+    "php.validate.executablePath": "/sbin/php",
+    "editor.unicodeHighlight.nonBasicASCII": false
 }
