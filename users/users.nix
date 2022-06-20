@@ -48,6 +48,7 @@
       robo3t
       gh
       docker-compose
+      postman
 
       # games?
       minecraft
