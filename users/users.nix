@@ -5,7 +5,7 @@
 
   users.users.vitalya = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" "video" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" "video" "user-with-access-to-virtualbox" ];
     shell = pkgs.zsh;
   };
 
