@@ -69,6 +69,13 @@
       ".gitconfig".source = ./configs/gitconfig;
     };
 
+    home.pointerCursor = {
+      x11.enable = true;
+      package = pkgs.paper-icon-theme;
+      name = "Paper";
+      size = 16;
+    };
+
     xdg.configFile = {
       "nixpkgs/config.nix".source = ../nixpkgs-config.nix;
       "Code/User/settings.json".source = ./configs/vscode.json;
@@ -205,12 +212,6 @@
 
     xsession = {
       numlock.enable = true;
-
-      pointerCursor = {
-        package = pkgs.paper-icon-theme;
-        name = "Paper";
-        size = 16;
-      };
     };
   };
 
