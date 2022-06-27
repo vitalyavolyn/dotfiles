@@ -53,12 +53,14 @@
       # games?
       minecraft
       # osu-lazer
-      mgba
+      # mgba
 
       # work
       notion-app-enhanced
       slack
       zoom-us
+
+      obsidian
     ];
 
     home.file = {
@@ -80,6 +82,7 @@
       "nixpkgs/config.nix".source = ../nixpkgs-config.nix;
       "Code/User/settings.json".source = ./configs/vscode.json;
       "i3/config".source = ./configs/i3-config;
+      "ranger/rc.conf".source = ./configs/ranger.conf;
     };
 
     programs = {
