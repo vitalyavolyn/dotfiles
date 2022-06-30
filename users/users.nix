@@ -17,7 +17,6 @@
       xsel
       p7zip
       pavucontrol
-      ranger
       xfce.thunar
       maim
       paper-icon-theme
@@ -26,6 +25,12 @@
       steam-run
       vlc
       obs-studio
+      file
+      
+      ranger
+      atool
+      unzip
+      poppler_utils
 
       # internet stuff
       google-chrome
