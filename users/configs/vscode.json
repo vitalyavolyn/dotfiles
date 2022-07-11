@@ -32,5 +32,6 @@
     "editor.fontLigatures": true,
     "window.zoomLevel": 0,
     "php.validate.executablePath": "/sbin/php",
-    "editor.unicodeHighlight.nonBasicASCII": false
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "zigLanguageClient.path": "zls"
 }

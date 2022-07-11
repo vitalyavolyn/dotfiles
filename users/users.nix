@@ -51,9 +51,10 @@
       jetbrains.webstorm
       gnumake
       robo3t
-      gh
       docker-compose
       postman
+      zig
+      zls
 
       # games?
       minecraft
@@ -174,12 +175,26 @@
           jnoortheen.nix-ide
           eamodio.gitlens
           ms-vscode-remote.remote-ssh
-        ] ++ vscode-utils.extensionsFromVscodeMarketplace [{
-          name = "vscode-theme-onedark";
-          publisher = "akamud";
-          version = "2.2.3";
-          sha256 = "1m6f6p7x8vshhb03ml7sra3v01a7i2p3064mvza800af7cyj3w5m";
-        }];
+        ] ++ vscode-utils.extensionsFromVscodeMarketplace [
+          {
+            name = "vscode-theme-onedark";
+            publisher = "akamud";
+            version = "2.2.3";
+            sha256 = "1m6f6p7x8vshhb03ml7sra3v01a7i2p3064mvza800af7cyj3w5m";
+          }
+          {
+            name = "zls-vscode";
+            publisher = "AugusteRame";
+            version = "1.0.4";
+            sha256 = "Mb2RFRjD6+iw+ZaoMc/O3FU128bl9pGg07jPDDxrZtk=";
+          }
+          {
+            name = "zig";
+            publisher = "tiehuis";
+            version = "0.2.5";
+            sha256 = "P8Sep0OtdchTfnudxFNvIK+SW++TyibGVI9zd+B5tu4=";
+          }
+        ];
       };
     };
 
