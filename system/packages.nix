@@ -26,4 +26,6 @@
     enable = true;
     enableSSHSupport = true;
   };
+
+  programs.kdeconnect.enable = true;
 }

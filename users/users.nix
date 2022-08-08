@@ -55,6 +55,7 @@
       postman
       zig
       zls
+      wakatime
 
       # games?
       minecraft
@@ -109,6 +110,9 @@
           x = "xclip -sel clip";
           nbs = "time sudo nixos-rebuild switch";
           nbsu = "time sudo nixos-rebuild switch --upgrade";
+
+          # for dumb zsh plugin
+          wakatime = "wakatime-cli";
         };
 
         # TODO: how to make REPORTTIME work?
@@ -116,6 +120,8 @@
           # TODO: $GOPATH/bin?
           PATH = "$PATH:$HOME/bin:$HOME/.pub-cache/bin:$HOME/.yarn/bin";
           EDITOR = "vim";
+
+          ZSH_WAKATIME_PROJECT_DETECTION = "true";
         };
 
         plugins = with pkgs; [
@@ -137,6 +143,16 @@
               repo = "zsh-syntax-highlighting";
               rev = "0.7.1";
               sha256 = "03r6hpb5fy4yaakqm3lbf4xcvd408r44jgpv4lnzl9asp4sb9qc0";
+            };
+          }
+          {
+            name = "zsh-wakatime";
+            file = "zsh-wakatime.plugin.zsh";
+            src = fetchFromGitHub {
+              owner = "wbingli";
+              repo = "zsh-wakatime";
+              rev = "master";
+              sha256 = "fJ4tdEkInlwv7F88QKg3pzYinxI3Ko7TbrJ32Kefud0=";
             };
           }
         ];
@@ -175,6 +191,7 @@
           jnoortheen.nix-ide
           eamodio.gitlens
           ms-vscode-remote.remote-ssh
+          WakaTime.vscode-wakatime
         ] ++ vscode-utils.extensionsFromVscodeMarketplace [
           {
             name = "vscode-theme-onedark";
