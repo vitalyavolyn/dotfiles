@@ -57,17 +57,19 @@
       zls
       wakatime
 
-      # games?
-      minecraft
-      # osu-lazer
-      # mgba
-
       # work
       notion-app-enhanced
       slack
       zoom-us
 
+      # lifestyle & fun
       obsidian
+      krita
+
+      # games?
+      minecraft
+      # osu-lazer
+      # mgba
     ];
 
     home.file = {
