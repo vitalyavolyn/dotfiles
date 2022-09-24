@@ -69,7 +69,7 @@
       # games?
       minecraft
       # osu-lazer
-      # mgba
+      mgba
     ];
 
     home.file = {
