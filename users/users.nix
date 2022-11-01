@@ -26,7 +26,8 @@
       vlc
       obs-studio
       file
-      
+      etcher
+
       ranger
       atool
       unzip
@@ -79,6 +80,8 @@
       ".ssh/config".source = ./configs/ssh-config;
       ".gitconfig".source = ./configs/gitconfig;
     };
+
+    manual.manpages.enable = false;
 
     home.pointerCursor = {
       x11.enable = true;

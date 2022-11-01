@@ -11,9 +11,9 @@
 
     # videoDrivers = [ "intel" ];
     # deviceSection = ''
-      # Option "TearFree" "true"
-      # Option "TripleBuffer" "true"
-      # Option "DRI" "false"
+    # Option "TearFree" "true"
+    # Option "TripleBuffer" "true"
+    # Option "DRI" "false"
     # '';
 
     desktopManager.xfce = {
