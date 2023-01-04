@@ -67,4 +67,13 @@
     #Flipper Zero DFU
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", ATTRS{manufacturer}=="STMicroelectronics", GROUP="users", TAG+="uaccess"
   '';
+
+  networking.networkmanager.enableStrongSwan = true;
+  services.xl2tpd.enable = true;
+  services.strongswan = {
+    enable = true;
+    secrets = [
+      "ipsec.d/ipsec.nm-l2tp.secrets"
+    ];
+  };
 }

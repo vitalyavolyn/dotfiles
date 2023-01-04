@@ -50,6 +50,7 @@
       nodejs_latest
       yarn
       jetbrains.webstorm
+      jetbrains.datagrip
       gnumake
       robo3t
       docker-compose
