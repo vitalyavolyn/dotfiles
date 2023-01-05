@@ -24,7 +24,6 @@
       gparted
       steam-run
       vlc
-      obs-studio
       file
       etcher
 
@@ -60,18 +59,20 @@
       wakatime
 
       # work
-      notion-app-enhanced
-      slack
       zoom-us
+
+      # launching ncalayer
+      xorg.xmessage nssTools libnotify jdk11
 
       # lifestyle & fun
       obsidian
       krita
+      obs-studio
 
       # games?
       minecraft
       # osu-lazer
-      mgba
+      # mgba
     ];
 
     home.file = {
