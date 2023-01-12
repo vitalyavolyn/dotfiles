@@ -9,8 +9,6 @@
       ./system/general.nix
       ./system/services.nix
       ./system/packages.nix
-
-      ./users/users.nix
     ];
 
   system.stateVersion = "20.09";

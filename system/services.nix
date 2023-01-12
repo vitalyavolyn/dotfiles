@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  # TODO: group `services.*` together
   services.xserver = {
     enable = true;
 
