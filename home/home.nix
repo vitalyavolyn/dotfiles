@@ -3,6 +3,7 @@
 let
   # TODO: figure out importing without "inputs"
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
+  jbToolboxPkgs = inputs.jetbrains-toolbox-nixpkgs.legacyPackages.${pkgs.system};
 in
 {
   home = {
@@ -68,6 +69,8 @@ in
       minecraft
       # osu-lazer
       # mgba
+    ] ++ [
+      jbToolboxPkgs.jetbrains-toolbox
     ];
 
     file = {
