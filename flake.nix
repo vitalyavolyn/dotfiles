@@ -5,14 +5,13 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # TODO: configure
     spicetify-nix = {
       url = github:the-argus/spicetify-nix;
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, ... } @ inputs: {
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, spicetify-nix, ... } @ inputs: {
     nixosConfigurations.celebi = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -27,7 +26,12 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { inherit inputs; };
-            users.vitalya = import ./home/home.nix;
+            users.vitalya = {
+              imports = [
+                spicetify-nix.homeManagerModule
+                ./home/home.nix
+              ];
+            };
           };
         }
       ];

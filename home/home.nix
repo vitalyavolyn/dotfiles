@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, lib, inputs, ... }:
 
+let
+  # TODO: figure out importing without "inputs"
+  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
+in
 {
   home = {
     packages = with pkgs; [
@@ -31,7 +35,6 @@
       tdesktop
       qbittorrent
       youtube-dl
-      spotify
 
       # laptop stuff
       acpi
@@ -212,6 +215,14 @@
           sha256 = "P8Sep0OtdchTfnudxFNvIK+SW++TyibGVI9zd+B5tu4=";
         }
       ];
+    };
+
+    spicetify = {
+      enable = true;
+      theme = spicePkgs.themes.Default;
+      colorScheme = "flamingo";
+
+      enabledExtensions = with spicePkgs.extensions; [ popupLyrics ];
     };
   };
 
