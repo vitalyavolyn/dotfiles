@@ -60,6 +60,7 @@
   virtualisation.docker = {
     enable = true;
     enableOnBoot = false;
+    autoPrune.enable = true;
   };
 
   services.udev.extraRules = ''
