@@ -29,7 +29,7 @@
 
   users.users.vitalya = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" "video" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" "video" "input" ];
     shell = pkgs.zsh;
   };
   security.sudo.wheelNeedsPassword = false;

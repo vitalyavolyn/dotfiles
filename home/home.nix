@@ -23,6 +23,8 @@ in
       vlc
       file
       etcher
+      wofi
+      inputs.hyprland.packages.${pkgs.system}.waybar-hyprland
 
       ranger
       atool
@@ -31,7 +33,9 @@ in
 
       # internet stuff
       google-chrome
-      discord
+      (discord.override {
+        withOpenASAR = true;
+      })
       vk-messenger
       tdesktop
       qbittorrent
@@ -96,6 +100,8 @@ in
     "Code/User/settings.json".source = ./configs/vscode.json;
     "i3/config".source = ./configs/i3-config;
     "ranger/rc.conf".source = ./configs/ranger.conf;
+    "hypr/hyprland.conf".source = ./configs/hyprland.conf;
+    "waybar".source = ./configs/waybar;
   };
 
   programs = {
@@ -252,10 +258,6 @@ in
   qt = {
     enable = true;
     platformTheme = "gtk";
-  };
-
-  xsession = {
-    numlock.enable = true;
   };
 
   manual.manpages.enable = false;

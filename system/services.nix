@@ -5,17 +5,14 @@
     xserver = {
       enable = true;
 
-      layout = "us,ru";
-      xkbOptions = "grp:alt_shift_toggle";
+    #   wacom.enable = true;
 
-      wacom.enable = true;
-
-      # videoDrivers = [ "intel" ];
-      # deviceSection = ''
-      # Option "TearFree" "true"
-      # Option "TripleBuffer" "true"
-      # Option "DRI" "false"
-      # '';
+    #   # videoDrivers = [ "intel" ];
+    #   # deviceSection = ''
+    #   #   Option "TearFree" "true"
+    #   #   Option "TripleBuffer" "true"
+    #   #   Option "DRI" "false"
+    #   # '';
 
       desktopManager.xfce = {
         enable = true;
@@ -24,8 +21,10 @@
       };
 
       displayManager = {
-        defaultSession = "xfce+i3";
-        lightdm.enable = true;
+        defaultSession = "hyprland";
+        lightdm = {
+          enable = true;
+        };
       };
 
       windowManager.i3 = {
@@ -55,13 +54,13 @@
     '';
   };
   
-  sound.enable = true;
-  hardware.pulseaudio = {
+  security.rtkit.enable = true;
+  services.pipewire = {
     enable = true;
-    package = pkgs.pulseaudioFull;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
   };
-
-  # virtualisation.virtualbox.host.enable = true;
 
   virtualisation.docker = {
     enable = true;
