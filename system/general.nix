@@ -8,6 +8,7 @@
     };
     kernelPackages = pkgs.linuxPackages_latest;
     cleanTmpDir = true;
+    plymouth.enable = true;
   };
 
   networking = {

@@ -1,59 +1,65 @@
 { pkgs, ... }:
 
 {
-  # TODO: group `services.*` together
-  services.xserver = {
-    enable = true;
-
-    layout = "us,ru";
-    xkbOptions = "grp:alt_shift_toggle";
-
-    wacom.enable = true;
-
-    # videoDrivers = [ "intel" ];
-    # deviceSection = ''
-    # Option "TearFree" "true"
-    # Option "TripleBuffer" "true"
-    # Option "DRI" "false"
-    # '';
-
-    desktopManager.xfce = {
+  services = {
+    xserver = {
       enable = true;
-      noDesktop = true;
-      enableXfwm = false;
+
+      layout = "us,ru";
+      xkbOptions = "grp:alt_shift_toggle";
+
+      wacom.enable = true;
+
+      # videoDrivers = [ "intel" ];
+      # deviceSection = ''
+      # Option "TearFree" "true"
+      # Option "TripleBuffer" "true"
+      # Option "DRI" "false"
+      # '';
+
+      desktopManager.xfce = {
+        enable = true;
+        noDesktop = true;
+        enableXfwm = false;
+      };
+
+      displayManager = {
+        defaultSession = "xfce+i3";
+        lightdm.enable = true;
+      };
+
+      windowManager.i3 = {
+        enable = true;
+        package = pkgs.i3-gaps;
+      };
+
+      libinput = {
+        enable = true;
+        touchpad.naturalScrolling = true;
+      };
     };
 
-    displayManager = {
-      defaultSession = "xfce+i3";
-      lightdm.enable = true;
-    };
+    sshd.enable = true;
+    blueman.enable = true;
 
-    windowManager.i3 = {
-      enable = true;
-      package = pkgs.i3-gaps;
-    };
+    gnome.gnome-keyring.enable = true;
 
-    libinput = {
-      enable = true;
-      touchpad.naturalScrolling = true;
-    };
+    fstrim.enable = true;
+    tlp.enable = true;
+
+    udev.extraRules = ''
+      #Flipper Zero serial port
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", ATTRS{manufacturer}=="Flipper Devices Inc.", GROUP="users", TAG+="uaccess"
+      #Flipper Zero DFU
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", ATTRS{manufacturer}=="STMicroelectronics", GROUP="users", TAG+="uaccess"
+    '';
   };
-
+  
   sound.enable = true;
   hardware.pulseaudio = {
     enable = true;
     package = pkgs.pulseaudioFull;
   };
-
-  services.sshd.enable = true;
-
-  services.blueman.enable = true;
-
-  services.gnome.gnome-keyring.enable = true;
-
-  services.fstrim.enable = true;
-
-  services.tlp.enable = true;
 
   # virtualisation.virtualbox.host.enable = true;
 
@@ -63,13 +69,7 @@
     autoPrune.enable = true;
   };
 
-  services.udev.extraRules = ''
-    #Flipper Zero serial port
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", ATTRS{manufacturer}=="Flipper Devices Inc.", GROUP="users", TAG+="uaccess"
-    #Flipper Zero DFU
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", ATTRS{manufacturer}=="STMicroelectronics", GROUP="users", TAG+="uaccess"
-  '';
-
+  # for work VPN
   networking.networkmanager.enableStrongSwan = true;
   services.xl2tpd.enable = true;
   services.strongswan = {
