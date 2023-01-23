@@ -16,6 +16,9 @@
     xfce.xfce4-xkb-plugin
     xfce.xfce4-pulseaudio-plugin
 
+    pamixer
+    pulseaudio
+
     intel-gpu-tools
   ];
   environment.variables.TERMINAL = "kitty";
