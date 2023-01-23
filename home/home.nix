@@ -235,13 +235,13 @@ in
     };
   };
 
-  services = {
-    picom = {
-      enable = true;
-      vSync = true;
-    };
-    network-manager-applet.enable = true;
-  };
+  #services = {
+    #picom = {
+    #  enable = true;
+    #  vSync = true;
+    #};
+    # network-manager-applet.enable = true;
+  #};
 
   gtk = {
     enable = true;
