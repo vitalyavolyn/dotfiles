@@ -15,6 +15,10 @@
     jetbrains-toolbox-nixpkgs.url = "github:nixos/nixpkgs/5a40364d61db86d7ecbe40f9d120b16fdb1fda4e";
 
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixos-hardware, home-manager, spicetify-nix, hyprland, ... } @ inputs: {

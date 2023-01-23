@@ -42,6 +42,26 @@
         "type": "github"
       }
     },
+    "hyprland-contrib": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1672071700,
+        "narHash": "sha256-Z0pbBVtijv4xbL42rPzMoYFSOqALFRYDMN9iOumSEso=",
+        "owner": "hyprwm",
+        "repo": "contrib",
+        "rev": "37c8121f98d76f57caa00dd7106877876e0d7483",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "contrib",
+        "type": "github"
+      }
+    },
     "hyprland-protocols": {
       "inputs": {
         "nixpkgs": [
@@ -131,6 +151,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "hyprland-contrib": "hyprland-contrib",
         "jetbrains-toolbox-nixpkgs": "jetbrains-toolbox-nixpkgs",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",

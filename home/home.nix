@@ -25,6 +25,7 @@ in
       etcher
       wofi
       inputs.hyprland.packages.${pkgs.system}.waybar-hyprland
+      inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
 
       ranger
       atool
@@ -57,6 +58,7 @@ in
       zig
       zls
       wakatime
+      jbToolboxPkgs.jetbrains-toolbox
 
       # work
       zoom-us
@@ -73,8 +75,6 @@ in
       minecraft
       # osu-lazer
       # mgba
-    ] ++ [
-      jbToolboxPkgs.jetbrains-toolbox
     ];
 
     file = {
