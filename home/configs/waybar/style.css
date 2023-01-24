@@ -64,7 +64,7 @@ button:hover {
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: #E54B4B;
 }
 
 #mode {
@@ -129,7 +129,7 @@ button:hover {
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
+    background-color: #E54B4B;
     color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
@@ -143,12 +143,11 @@ label:focus {
 }
 
 #cpu {
-    background-color: #2ecc71;
-    color: #000000;
+    background-color: #2B303B;
 }
 
 #memory {
-    background-color: #9b59b6;
+    background-color: #2B303B;
 }
 
 #disk {
@@ -156,20 +155,19 @@ label:focus {
 }
 
 #backlight {
-    background-color: #90b1b1;
+    background-color: #2B303B;
 }
 
 #network {
-    background-color: #2980b9;
+    background-color: #2B303B;
 }
 
 #network.disconnected {
-    background-color: #f53c3c;
+    background-color: #E54B4B;
 }
 
 #pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
+    background-color: #2B303B;
 }
 
 #pulseaudio.muted {
@@ -183,7 +181,7 @@ label:focus {
 }
 
 #wireplumber.muted {
-    background-color: #f53c3c;
+    background-color: #E54B4B;
 }
 
 #custom-media {
@@ -218,7 +216,7 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background-color: #E54B4B;
 }
 
 #idle_inhibitor {
@@ -248,16 +246,14 @@ label:focus {
 }
 
 #language {
-    background: #00b093;
-    color: #740864;
+    background: #034F4C;
     padding: 0 5px;
     margin: 0 5px;
     min-width: 16px;
 }
 
 #keyboard-state {
-    background: #97e1ad;
-    color: #000000;
+    background: #2B303B;
     padding: 0 0px;
     margin: 0 5px;
     min-width: 16px;

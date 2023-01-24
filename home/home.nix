@@ -4,6 +4,8 @@ let
   # TODO: figure out importing without "inputs"
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
   jbToolboxPkgs = inputs.jetbrains-toolbox-nixpkgs.legacyPackages.${pkgs.system};
+  hyprlandPkgs = inputs.hyprland.packages.${pkgs.system};
+  hyprlandContribPkgs = inputs.hyprland-contrib.packages.${pkgs.system};
 in
 {
   home = {
@@ -24,8 +26,9 @@ in
       file
       etcher
       wofi
-      inputs.hyprland.packages.${pkgs.system}.waybar-hyprland
-      inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+      hyprlandPkgs.waybar-hyprland
+      hyprlandContribPkgs.grimblast
+      playerctl
 
       ranger
       atool
