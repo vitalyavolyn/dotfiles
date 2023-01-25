@@ -1,15 +1,15 @@
-{ config, pkgs, ... }:
+{ config, pkgs, stateVersion, ... }:
 
 {
   imports =
     [
-      ./system/hardware-configuration.nix # hardware-specific config
+      # hardware-specific config,
+      # see also flake.nix -> nixos-hardware modules
+      ./system/hardware-configuration.nix
 
       ./system/fonts.nix
       ./system/general.nix
       ./system/services.nix
       ./system/packages.nix
     ];
-
-  system.stateVersion = "20.09";
 }

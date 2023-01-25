@@ -8,13 +8,8 @@
     wget
     vim
     kitty
-    # xclip
 
-    xfce.xfce4-power-manager
     xfce.xfce4-panel
-    # xfce.xfce4-i3-workspaces-plugin
-    # xfce.xfce4-xkb-plugin
-    # xfce.xfce4-pulseaudio-plugin
 
     pamixer
     pulseaudio

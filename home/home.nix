@@ -1,14 +1,14 @@
-{ pkgs, lib, inputs, ... }:
+{ pkgs, lib, inputs, stateVersion, ... }:
 
 let
-  # TODO: figure out importing without "inputs"
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
-  jbToolboxPkgs = inputs.jetbrains-toolbox-nixpkgs.legacyPackages.${pkgs.system};
   hyprlandPkgs = inputs.hyprland.packages.${pkgs.system};
   hyprlandContribPkgs = inputs.hyprland-contrib.packages.${pkgs.system};
 in
 {
   home = {
+    inherit stateVersion;
+
     packages = with pkgs; [
       # system utilities
       pfetch
@@ -30,6 +30,7 @@ in
       hyprlandContribPkgs.grimblast
       playerctl
 
+      # file manager and its preview utilities
       ranger
       atool
       unzip
@@ -61,7 +62,6 @@ in
       zig
       zls
       wakatime
-      jbToolboxPkgs.jetbrains-toolbox
 
       # work
       zoom-us
@@ -81,7 +81,6 @@ in
     ];
 
     file = {
-      # TODO: add to PATH
       "bin".source = ./bin;
 
       ".ssh/config".source = ./configs/ssh-config;
@@ -94,8 +93,6 @@ in
       name = "Paper";
       size = 16;
     };
-
-    stateVersion = "20.09";
   };
 
   xdg.configFile = {
@@ -114,6 +111,7 @@ in
 
       autocd = true;
       enableAutosuggestions = true;
+      enableSyntaxHighlighting = true;
 
       history = {
         ignoreDups = true;
@@ -132,7 +130,6 @@ in
 
       # TODO: how to make REPORTTIME work?
       localVariables = {
-        # TODO: $GOPATH/bin?
         PATH = "$PATH:$HOME/bin:$HOME/.pub-cache/bin:$HOME/.yarn/bin";
         EDITOR = "vim";
 
@@ -148,16 +145,6 @@ in
             repo = "zsh-nix-shell";
             rev = "v0.5.0";
             sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
-          };
-        }
-        {
-          name = "zsh-syntax-highlighting";
-          file = "zsh-syntax-highlighting.zsh";
-          src = fetchFromGitHub {
-            owner = "zsh-users";
-            repo = "zsh-syntax-highlighting";
-            rev = "0.7.1";
-            sha256 = "03r6hpb5fy4yaakqm3lbf4xcvd408r44jgpv4lnzl9asp4sb9qc0";
           };
         }
         {
@@ -239,10 +226,6 @@ in
   };
 
   #services = {
-    #picom = {
-    #  enable = true;
-    #  vSync = true;
-    #};
     # network-manager-applet.enable = true;
   #};
 

@@ -5,15 +5,6 @@
     xserver = {
       enable = true;
 
-    #   wacom.enable = true;
-
-    #   # videoDrivers = [ "intel" ];
-    #   # deviceSection = ''
-    #   #   Option "TearFree" "true"
-    #   #   Option "TripleBuffer" "true"
-    #   #   Option "DRI" "false"
-    #   # '';
-
       desktopManager.xfce = {
         enable = true;
         noDesktop = true;
@@ -25,16 +16,6 @@
         lightdm = {
           enable = true;
         };
-      };
-
-      # windowManager.i3 = {
-        # enable = true;
-        # package = pkgs.i3-gaps;
-      # };
-
-      libinput = {
-        enable = true;
-        touchpad.naturalScrolling = true;
       };
     };
 

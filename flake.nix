@@ -12,8 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    jetbrains-toolbox-nixpkgs.url = "github:nixos/nixpkgs/5a40364d61db86d7ecbe40f9d120b16fdb1fda4e";
-
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
@@ -21,11 +19,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, spicetify-nix, hyprland, ... } @ inputs: {
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, spicetify-nix, hyprland, ... } @ inputs: let
+    stateVersion = "20.09";
+  in {
     nixosConfigurations.celebi = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
+        { system = { inherit stateVersion; }; }
 
         hyprland.nixosModules.default
         { programs.hyprland.enable = true; }
@@ -38,7 +39,9 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = { inherit inputs; };
+            extraSpecialArgs = {
+              inherit inputs stateVersion;
+            };
             users.vitalya = {
               imports = [
                 spicetify-nix.homeManagerModule
