@@ -33,5 +33,6 @@
     "window.zoomLevel": 0,
     "php.validate.executablePath": "/sbin/php",
     "editor.unicodeHighlight.nonBasicASCII": false,
-    "zigLanguageClient.path": "zls"
+    "zigLanguageClient.path": "zls",
+    "diffEditor.ignoreTrimWhitespace": false
 }

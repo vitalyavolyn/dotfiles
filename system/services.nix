@@ -34,7 +34,7 @@
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", ATTRS{manufacturer}=="STMicroelectronics", GROUP="users", TAG+="uaccess"
     '';
   };
-  
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

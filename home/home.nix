@@ -67,7 +67,10 @@ in
       zoom-us
 
       # launching ncalayer
-      xorg.xmessage nssTools libnotify jdk11
+      xorg.xmessage
+      nssTools
+      libnotify
+      jdk11
 
       # lifestyle & fun
       obsidian
@@ -226,7 +229,7 @@ in
   };
 
   #services = {
-    # network-manager-applet.enable = true;
+  # network-manager-applet.enable = true;
   #};
 
   gtk = {
