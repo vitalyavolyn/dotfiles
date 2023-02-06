@@ -29,6 +29,7 @@ in
       hyprlandPkgs.waybar-hyprland
       hyprlandContribPkgs.grimblast
       playerctl
+      keybase
 
       # file manager and its preview utilities
       ranger
