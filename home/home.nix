@@ -82,6 +82,11 @@ in
       minecraft
       # osu-lazer
       # mgba
+      (retroarch.override {
+        cores = with libretro; [
+          citra
+        ];
+      })
     ];
 
     file = {
