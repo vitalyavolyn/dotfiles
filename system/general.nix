@@ -14,6 +14,7 @@
   networking = {
     hostName = "celebi";
     networkmanager.enable = true;
+    firewall.enable = false;
   };
 
   time.timeZone = "Asia/Almaty";
