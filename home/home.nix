@@ -63,6 +63,8 @@ in
       zig
       zls
       wakatime
+      android-tools
+      scrcpy # TODO: broken on wayland
 
       # work
       zoom-us
