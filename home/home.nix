@@ -25,7 +25,7 @@ in
       vlc
       file
       etcher
-      wofi
+      tofi
       hyprlandPkgs.waybar-hyprland
       hyprlandContribPkgs.grimblast
       playerctl
@@ -113,6 +113,7 @@ in
     "ranger/rc.conf".source = ./configs/ranger.conf;
     "hypr/hyprland.conf".source = ./configs/hyprland.conf;
     "waybar".source = ./configs/waybar;
+    "tofi/config".source = ./configs/tofi.ini;
   };
 
   programs = {

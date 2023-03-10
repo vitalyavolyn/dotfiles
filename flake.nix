@@ -24,38 +24,41 @@
       stateVersion = "20.09";
     in
     {
-      nixosConfigurations.celebi = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./configuration.nix
-          { system = { inherit stateVersion; }; }
-
-          hyprland.nixosModules.default
-          { programs.hyprland.enable = true; }
-
-          nixos-hardware.nixosModules.common-pc-laptop
-          nixos-hardware.nixosModules.common-pc-ssd
-          nixos-hardware.nixosModules.common-cpu-intel
-
-          home-manager.nixosModules.home-manager
+      nixosConfigurations = {
+        celebi = nixpkgs.lib.nixosSystem
           {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = {
-                inherit inputs stateVersion;
-              };
-              users.vitalya = {
-                imports = [
-                  spicetify-nix.homeManagerModule
-                  hyprland.homeManagerModules.default
-                  { wayland.windowManager.hyprland.enable = true; }
-                  ./home/home.nix
-                ];
-              };
-            };
-          }
-        ];
+            system = "x86_64-linux";
+            modules = [
+              ./configuration.nix
+              { system = { inherit stateVersion; }; }
+
+              hyprland.nixosModules.default
+              { programs.hyprland.enable = true; }
+
+              nixos-hardware.nixosModules.common-pc-laptop
+              nixos-hardware.nixosModules.common-pc-ssd
+              nixos-hardware.nixosModules.common-cpu-intel
+
+              home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  extraSpecialArgs = {
+                    inherit inputs stateVersion;
+                  };
+                  users.vitalya = {
+                    imports = [
+                      spicetify-nix.homeManagerModule
+                      hyprland.homeManagerModules.default
+                      { wayland.windowManager.hyprland.enable = true; }
+                      ./home/home.nix
+                    ];
+                  };
+                };
+              }
+            ];
+          };
       };
     };
 
