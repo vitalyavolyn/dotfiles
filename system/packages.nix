@@ -25,7 +25,5 @@
     enableSSHSupport = true;
   };
 
-  programs.kdeconnect.enable = true;
-
   programs.light.enable = true;
 }
