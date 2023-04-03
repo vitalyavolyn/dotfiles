@@ -29,6 +29,9 @@
     fstrim.enable = true;
     tlp.enable = true;
 
+    keybase.enable = true;
+    kbfs.enable = true;
+
     udev.extraRules = ''
       #Flipper Zero serial port
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", ATTRS{manufacturer}=="Flipper Devices Inc.", GROUP="users", TAG+="uaccess"

@@ -79,16 +79,17 @@ in
       obsidian
       krita
       obs-studio
+      keybase
 
       # games?
       minecraft
       # osu-lazer
       # mgba
-      (retroarch.override {
-        cores = with libretro; [
-          citra
-        ];
-      })
+      # (retroarch.override {
+      #   cores = with libretro; [
+      #     citra
+      #   ];
+      # })
     ];
 
     file = {
@@ -112,7 +113,7 @@ in
     "i3/config".source = ./configs/i3-config;
     "ranger/rc.conf".source = ./configs/ranger.conf;
     "hypr/hyprland.conf".source = ./configs/hyprland.conf;
-    "waybar".source = ./configs/waybar.jsonc;
+    "waybar".source = ./configs/waybar/config.jsonc;
     "tofi/config".source = ./configs/tofi.ini;
   };
 
