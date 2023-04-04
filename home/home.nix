@@ -113,7 +113,7 @@ in
     "i3/config".source = ./configs/i3-config;
     "ranger/rc.conf".source = ./configs/ranger.conf;
     "hypr/hyprland.conf".source = ./configs/hyprland.conf;
-    "waybar".source = ./configs/waybar/config.jsonc;
+    "waybar".source = ./configs/waybar;
     "tofi/config".source = ./configs/tofi.ini;
   };
 
