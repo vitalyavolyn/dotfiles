@@ -9,8 +9,6 @@
     vim
     kitty
 
-    xfce.xfce4-panel
-
     pamixer
     pulseaudio
 

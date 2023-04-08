@@ -238,9 +238,10 @@ in
     };
   };
 
-  #services = {
-  # network-manager-applet.enable = true;
-  #};
+  services = {
+    # network-manager-applet.enable = true;
+    dunst.enable = true;
+  };
 
   gtk = {
     enable = true;

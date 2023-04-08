@@ -5,13 +5,6 @@
     xserver = {
       enable = true;
 
-      # TODO: get rid of xfce4-* and add an actual notifications daemon
-      desktopManager.xfce = {
-        enable = true;
-        noDesktop = true;
-        enableXfwm = false;
-      };
-
       displayManager = {
         defaultSession = "hyprland";
         # lightdm = {
