@@ -28,12 +28,10 @@
         celebi = nixpkgs.lib.nixosSystem
           {
             system = "x86_64-linux";
+            specialArgs = { inherit inputs; };
             modules = [
               ./configuration.nix
               { system = { inherit stateVersion; }; }
-
-              hyprland.nixosModules.default
-              { programs.hyprland.enable = true; }
 
               nixos-hardware.nixosModules.common-pc-laptop
               nixos-hardware.nixosModules.common-pc-ssd
