@@ -46,6 +46,7 @@ in
       tdesktop
       qbittorrent
       youtube-dl
+      dnsutils
 
       # laptop stuff
       acpi
