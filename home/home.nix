@@ -118,6 +118,8 @@ in
     "tofi/config".source = ./configs/tofi.ini;
   };
 
+  nixpkgs.config.allowUnfreePredicate = (pkg: true);
+
   programs = {
     # TODO: split this into separate files?
     zsh = {
