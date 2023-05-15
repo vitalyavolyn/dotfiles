@@ -13,11 +13,9 @@ in
       # system utilities
       pfetch
       nixpkgs-fmt
-      xsel
       p7zip
       pavucontrol
       xfce.thunar
-      maim
       paper-icon-theme
       neofetch
       gparted
@@ -28,6 +26,8 @@ in
       tofi
       hyprlandPkgs.waybar-hyprland
       hyprlandContribPkgs.grimblast
+      grim
+      slurp
       playerctl
       keybase
 
@@ -42,10 +42,8 @@ in
       (discord.override {
         withOpenASAR = true;
       })
-      vk-messenger
       tdesktop
       qbittorrent
-      youtube-dl
       dnsutils
 
       # laptop stuff
@@ -64,8 +62,8 @@ in
       zig
       zls
       wakatime
-      android-tools
-      scrcpy # TODO: broken on wayland
+      # android-tools
+      # scrcpy # TODO: broken on wayland
 
       # work
       zoom-us
@@ -74,13 +72,12 @@ in
       xorg.xmessage
       nssTools
       libnotify
-      jdk11
+      # jdk11
 
       # lifestyle & fun
       obsidian
       krita
       obs-studio
-      keybase
 
       # games?
       minecraft
