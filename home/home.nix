@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, copilotPkgs, stateVersion, ... }:
+{ pkgs, lib, inputs, idea-plugins, stateVersion, ... }:
 
 let
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
@@ -53,8 +53,8 @@ in
       # dev stuff
       nodejs_latest
       yarn
-      jetbrains.webstorm
-      copilotPkgs.github-copilot-intellij-agent
+      # jetbrains.webstorm
+      (idea-plugins.jetbrains.plugins.addPlugins idea-plugins.jetbrains.webstorm [ "github-copilot" ])
       jetbrains.datagrip
       gnumake
       robo3t

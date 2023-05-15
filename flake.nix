@@ -18,14 +18,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    github-copilot-intellij-agent-nixpkgs.url = "github:hacker1024/nixpkgs/090b58d7cd7450e3a29bf7baed7f3cd6f32cd8d6";
+    # github-copilot-intellij-agent-nixpkgs.url = "github:hacker1024/nixpkgs/090b58d7cd7450e3a29bf7baed7f3cd6f32cd8d6";
+    idea-plugins-nixpkgs.url = "github:GenericNerdyUsername/nixpkgs/b263fdc5941d621308a9953d5ca1c163dce5209f";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, spicetify-nix, hyprland, github-copilot-intellij-agent-nixpkgs, ... } @ inputs:
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, spicetify-nix, hyprland, idea-plugins-nixpkgs, ... } @ inputs:
     let
       system = "x86_64-linux";
       stateVersion = "20.09";
-      copilotPkgs = import github-copilot-intellij-agent-nixpkgs {
+      idea-plugins = import idea-plugins-nixpkgs {
         inherit system;
         config.allowUnfree = true; 
       };
@@ -50,7 +51,7 @@
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   extraSpecialArgs = {
-                    inherit inputs stateVersion copilotPkgs;
+                    inherit inputs stateVersion idea-plugins;
                   };
                   users.vitalya = {
                     imports = [

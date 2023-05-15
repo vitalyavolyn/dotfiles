@@ -18,22 +18,6 @@
         "type": "github"
       }
     },
-    "github-copilot-intellij-agent-nixpkgs": {
-      "locked": {
-        "lastModified": 1682042802,
-        "narHash": "sha256-hrMb/ruGOz6/SJxorVuY2Xgqo+VxGXmzUjUfzJVEEic=",
-        "owner": "hacker1024",
-        "repo": "nixpkgs",
-        "rev": "090b58d7cd7450e3a29bf7baed7f3cd6f32cd8d6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hacker1024",
-        "repo": "nixpkgs",
-        "rev": "090b58d7cd7450e3a29bf7baed7f3cd6f32cd8d6",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -116,13 +100,29 @@
         "type": "github"
       }
     },
+    "idea-plugins-nixpkgs": {
+      "locked": {
+        "lastModified": 1682871489,
+        "narHash": "sha256-wmTTPvF5Tt8biIws6q0lUkBkXnVp6cMmki8HI3xxUII=",
+        "owner": "GenericNerdyUsername",
+        "repo": "nixpkgs",
+        "rev": "b263fdc5941d621308a9953d5ca1c163dce5209f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "GenericNerdyUsername",
+        "repo": "nixpkgs",
+        "rev": "b263fdc5941d621308a9953d5ca1c163dce5209f",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1683965003,
-        "narHash": "sha256-DrzSdOnLv/yFBvS2FqmwBA2xIbN/Lny/WlxHyoLR9zE=",
+        "lastModified": 1684169666,
+        "narHash": "sha256-N5jrykeSxLVgvm3Dd3hZ38/XwM/jU+dltqlXgrGlYxk=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "81cd886719e10d4822b2a6caa96e95d56cc915ef",
+        "rev": "71ce85372a614d418d5e303dd5702a79d1545c04",
         "type": "github"
       },
       "original": {
@@ -166,10 +166,10 @@
     },
     "root": {
       "inputs": {
-        "github-copilot-intellij-agent-nixpkgs": "github-copilot-intellij-agent-nixpkgs",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "hyprland-contrib": "hyprland-contrib",
+        "idea-plugins-nixpkgs": "idea-plugins-nixpkgs",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "spicetify-nix": "spicetify-nix"
