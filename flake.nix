@@ -17,17 +17,24 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    github-copilot-intellij-agent-nixpkgs.url = "github:hacker1024/nixpkgs/090b58d7cd7450e3a29bf7baed7f3cd6f32cd8d6";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, spicetify-nix, hyprland, ... } @ inputs:
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, spicetify-nix, hyprland, github-copilot-intellij-agent-nixpkgs, ... } @ inputs:
     let
+      system = "x86_64-linux";
       stateVersion = "20.09";
+      copilotPkgs = import github-copilot-intellij-agent-nixpkgs {
+        inherit system;
+        config.allowUnfree = true; 
+      };
     in
     {
       nixosConfigurations = {
         celebi = nixpkgs.lib.nixosSystem
           {
-            system = "x86_64-linux";
+            inherit system;
             specialArgs = { inherit inputs; };
             modules = [
               ./configuration.nix
@@ -43,7 +50,7 @@
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   extraSpecialArgs = {
-                    inherit inputs stateVersion;
+                    inherit inputs stateVersion copilotPkgs;
                   };
                   users.vitalya = {
                     imports = [

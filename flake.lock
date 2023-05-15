@@ -18,6 +18,22 @@
         "type": "github"
       }
     },
+    "github-copilot-intellij-agent-nixpkgs": {
+      "locked": {
+        "lastModified": 1682042802,
+        "narHash": "sha256-hrMb/ruGOz6/SJxorVuY2Xgqo+VxGXmzUjUfzJVEEic=",
+        "owner": "hacker1024",
+        "repo": "nixpkgs",
+        "rev": "090b58d7cd7450e3a29bf7baed7f3cd6f32cd8d6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hacker1024",
+        "repo": "nixpkgs",
+        "rev": "090b58d7cd7450e3a29bf7baed7f3cd6f32cd8d6",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -150,6 +166,7 @@
     },
     "root": {
       "inputs": {
+        "github-copilot-intellij-agent-nixpkgs": "github-copilot-intellij-agent-nixpkgs",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "hyprland-contrib": "hyprland-contrib",
