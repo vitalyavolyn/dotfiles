@@ -13,6 +13,8 @@
     pulseaudio
 
     intel-gpu-tools
+
+    mate.mate-polkit # TODO: exec on startup
   ];
   environment.variables.TERMINAL = "kitty";
 
@@ -31,6 +33,8 @@
   };
 
   programs.darling.enable = true;
+
+  programs.partition-manager.enable = true;
 
   nix.settings = {
     substituters = ["https://hyprland.cachix.org"];
