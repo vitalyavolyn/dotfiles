@@ -215,6 +215,7 @@ in
           version = "2.2.3";
           sha256 = "1m6f6p7x8vshhb03ml7sra3v01a7i2p3064mvza800af7cyj3w5m";
         }
+        # TODO: both extensions below are deprecated
         {
           name = "zls-vscode";
           publisher = "AugusteRame";
