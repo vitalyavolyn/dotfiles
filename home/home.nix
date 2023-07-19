@@ -73,7 +73,6 @@ in
       xorg.xmessage
       nssTools
       libnotify
-      # jdk11
 
       # lifestyle & fun
       obsidian
@@ -81,14 +80,7 @@ in
       obs-studio
 
       # games?
-      minecraft
-      # osu-lazer
-      # mgba
-      # (retroarch.override {
-      #   cores = with libretro; [
-      #     citra
-      #   ];
-      # })
+      # minecraft
     ];
 
     file = {
@@ -125,7 +117,7 @@ in
 
       autocd = true;
       enableAutosuggestions = true;
-      enableSyntaxHighlighting = true;
+      syntaxHighlighting.enable = true;
 
       history = {
         ignoreDups = true;
@@ -241,8 +233,7 @@ in
   };
 
   services = {
-    # network-manager-applet.enable = true;
-    dunst.enable = true;
+    dunst.enable = true; # TODO: maybe finally start showing notifications on the main screen
   };
 
   gtk = {
