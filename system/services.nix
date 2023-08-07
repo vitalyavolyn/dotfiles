@@ -33,7 +33,15 @@
     '';
   };
 
-  security.rtkit.enable = true;
+  security = {
+    rtkit.enable = true;
+    pam.services.swaylock = {
+      text = ''
+        auth include login
+      '';
+    };
+  };
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;

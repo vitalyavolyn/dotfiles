@@ -30,6 +30,8 @@ in
       slurp
       playerctl
       keybase
+      swaylock-effects
+      swayidle
 
       # file manager and its preview utilities
       ranger
@@ -106,6 +108,7 @@ in
     "hypr/hyprland.conf".source = ./configs/hyprland.conf;
     "waybar".source = ./configs/waybar;
     "tofi/config".source = ./configs/tofi.ini;
+    "swaylock/config".source = ./configs/swaylock;
   };
 
   nixpkgs.config.allowUnfreePredicate = (pkg: true);
