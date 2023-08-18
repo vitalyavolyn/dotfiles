@@ -18,7 +18,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # github-copilot-intellij-agent-nixpkgs.url = "github:hacker1024/nixpkgs/090b58d7cd7450e3a29bf7baed7f3cd6f32cd8d6";
     idea-plugins-nixpkgs.url = "github:GenericNerdyUsername/nixpkgs/b263fdc5941d621308a9953d5ca1c163dce5209f";
   };
 
@@ -57,6 +56,7 @@
                     imports = [
                       spicetify-nix.homeManagerModule
                       hyprland.homeManagerModules.default
+                      # TODO: why is this here
                       { wayland.windowManager.hyprland.enable = true; }
                       ./home/home.nix
                     ];

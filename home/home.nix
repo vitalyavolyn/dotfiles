@@ -2,7 +2,6 @@
 
 let
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
-  hyprlandPkgs = inputs.hyprland.packages.${pkgs.system};
   hyprlandContribPkgs = inputs.hyprland-contrib.packages.${pkgs.system};
 in
 {
@@ -24,7 +23,7 @@ in
       file
       etcher
       tofi
-      hyprlandPkgs.waybar-hyprland
+      waybar-hyprland
       hyprlandContribPkgs.grimblast
       grim
       slurp

@@ -5,6 +5,8 @@
     xserver = {
       enable = true;
 
+      # desktopManager.pantheon.enable = true;
+
       displayManager = {
         defaultSession = "hyprland";
         # lightdm = {
@@ -41,6 +43,12 @@
       '';
     };
   };
+
+  # may fix long shutdown idk
+  systemd.extraConfig = ''
+    DefaultTimeoutStopSec=10s
+    DefaultTimeoutStartSec=10s
+  '';
 
   services.pipewire = {
     enable = true;
