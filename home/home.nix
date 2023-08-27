@@ -23,7 +23,7 @@ in
       file
       etcher
       tofi
-      waybar-hyprland
+      waybar
       hyprlandContribPkgs.grimblast
       grim
       slurp
@@ -69,6 +69,7 @@ in
 
       # work
       zoom-us
+      freerdp
 
       # launching ncalayer
       xorg.xmessage
