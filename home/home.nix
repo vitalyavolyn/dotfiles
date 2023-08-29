@@ -83,6 +83,7 @@ in
 
       # games?
       # minecraft
+      mgba
     ];
 
     file = {
