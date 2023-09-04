@@ -58,11 +58,11 @@ in
       (idea-plugins.jetbrains.plugins.addPlugins idea-plugins.jetbrains.webstorm [ "github-copilot" ])
       jetbrains.datagrip
       gnumake
-      robo3t
+      # robo3t
       docker-compose
       postman
-      zig
-      zls
+      # zig
+      # zls
       wakatime
       # android-tools
       # scrcpy # TODO: broken on wayland
@@ -84,6 +84,7 @@ in
       # games?
       # minecraft
       mgba
+      dolphin-emu
     ];
 
     file = {
