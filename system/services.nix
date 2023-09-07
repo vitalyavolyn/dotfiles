@@ -63,6 +63,9 @@
     autoPrune.enable = true;
   };
 
+  # thunar thumbnails
+  services.tumbler.enable = true;
+
   # for work VPN
   networking.networkmanager.enableStrongSwan = true;
   services.xl2tpd.enable = true;

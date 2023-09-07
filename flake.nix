@@ -17,18 +17,12 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    idea-plugins-nixpkgs.url = "github:GenericNerdyUsername/nixpkgs/b263fdc5941d621308a9953d5ca1c163dce5209f";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, spicetify-nix, hyprland, idea-plugins-nixpkgs, ... } @ inputs:
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, spicetify-nix, hyprland, ... } @ inputs:
     let
       system = "x86_64-linux";
       stateVersion = "20.09";
-      idea-plugins = import idea-plugins-nixpkgs {
-        inherit system;
-        config.allowUnfree = true; 
-      };
     in
     {
       nixosConfigurations = {
@@ -50,7 +44,7 @@
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   extraSpecialArgs = {
-                    inherit inputs stateVersion idea-plugins;
+                    inherit inputs stateVersion;
                   };
                   users.vitalya = {
                     imports = [
