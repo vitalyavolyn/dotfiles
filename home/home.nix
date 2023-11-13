@@ -59,7 +59,8 @@ in
       gnumake
       # robo3t
       docker-compose
-      postman
+      # postman # broken on nixpkgs
+      insomnia
       # zig
       # zls
       wakatime
@@ -76,14 +77,14 @@ in
       libnotify
 
       # lifestyle & fun
-      obsidian
+      # obsidian
       krita
       obs-studio
 
       # games?
       # minecraft
-      mgba
-      dolphin-emu
+      # mgba
+      # dolphin-emu
     ];
 
     file = {
