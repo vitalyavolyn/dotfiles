@@ -40,9 +40,7 @@ in
 
       # internet stuff
       google-chrome
-      (discord.override {
-        withOpenASAR = true;
-      })
+      webcord
       tdesktop
       qbittorrent
       dnsutils
