@@ -41,6 +41,9 @@ in
       # internet stuff
       google-chrome
       webcord
+      (discord.override {
+        withOpenASAR = true;
+      })
       tdesktop
       qbittorrent
       dnsutils
@@ -80,7 +83,8 @@ in
       obs-studio
 
       # games?
-      # minecraft
+      minecraft
+      prismlauncher
       # mgba
       # dolphin-emu
     ];
