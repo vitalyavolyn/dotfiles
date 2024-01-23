@@ -57,6 +57,7 @@ in
       yarn
       jetbrains.webstorm
       jetbrains.datagrip
+      dbeaver
       gnumake
       # robo3t
       docker-compose

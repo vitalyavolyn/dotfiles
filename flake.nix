@@ -37,6 +37,7 @@
               nixos-hardware.nixosModules.common-pc-laptop
               nixos-hardware.nixosModules.common-pc-ssd
               nixos-hardware.nixosModules.common-cpu-intel
+              nixos-hardware.nixosModules.common-gpu-intel
 
               home-manager.nixosModules.home-manager
               {

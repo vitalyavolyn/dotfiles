@@ -33,6 +33,17 @@
       #Flipper Zero DFU
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", ATTRS{manufacturer}=="STMicroelectronics", GROUP="users", TAG+="uaccess"
     '';
+
+    pipewire = {
+      enable = true;
+      wireplumber.enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+
+    # thunar thumbnails
+    tumbler.enable = true;
   };
 
   security = {
@@ -50,21 +61,11 @@
     DefaultTimeoutStartSec=10s
   '';
 
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
   virtualisation.docker = {
     enable = true;
     enableOnBoot = false;
     autoPrune.enable = true;
   };
-
-  # thunar thumbnails
-  services.tumbler.enable = true;
 
   # for work VPN
   networking.networkmanager.enableStrongSwan = true;
