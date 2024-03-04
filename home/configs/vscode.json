@@ -4,7 +4,7 @@
     "git.confirmSync": false,
     "git.autofetch": true,
     "explorer.confirmDragAndDrop": false,
-    "files.autoSave": "off",
+    "files.autoSave": "onFocusChange",
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
@@ -20,7 +20,6 @@
     },
     "explorer.confirmDelete": false,
     "editor.tabSize": 2,
-    "todo-tree.tree.showScanModeButton": false,
     "breadcrumbs.enabled": false,
     "editor.suggestSelection": "recentlyUsedByPrefix",
     "typescript.updateImportsOnFileMove.enabled": "always",
@@ -31,8 +30,6 @@
     "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontLigatures": true,
     "window.zoomLevel": 0,
-    "php.validate.executablePath": "/sbin/php",
     "editor.unicodeHighlight.nonBasicASCII": false,
-    "zigLanguageClient.path": "zls",
     "diffEditor.ignoreTrimWhitespace": false
 }

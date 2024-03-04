@@ -44,6 +44,20 @@
 
     # thunar thumbnails
     tumbler.enable = true;
+
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+      publish = {
+        enable = true;
+        userServices = true;
+        hinfo = true;
+      };
+      extraServiceFiles = {
+        ssh = "${pkgs.avahi}/etc/avahi/services/ssh.service";
+      };
+    };
   };
 
   security = {

@@ -28,9 +28,10 @@ in
       grim
       slurp
       playerctl
-      keybase
+      # keybase
       swaylock-effects
       swayidle
+      htop
 
       # file manager and its preview utilities
       ranger
@@ -40,7 +41,7 @@ in
 
       # internet stuff
       google-chrome
-      webcord
+      # webcord
       (discord.override {
         withOpenASAR = true;
       })
@@ -55,8 +56,8 @@ in
       # dev stuff
       nodejs_latest
       yarn
-      jetbrains.webstorm
-      jetbrains.datagrip
+      # jetbrains.webstorm
+      # jetbrains.datagrip
       dbeaver
       gnumake
       # robo3t
@@ -67,10 +68,10 @@ in
       # zls
       wakatime
       # android-tools
-      # scrcpy # TODO: broken on wayland
+      # scrcpy # broken on wayland
 
       # work
-      zoom-us
+      # zoom-us
       freerdp
 
       # launching ncalayer
@@ -84,7 +85,7 @@ in
       obs-studio
 
       # games?
-      minecraft
+      # minecraft
       prismlauncher
       # mgba
       # dolphin-emu
