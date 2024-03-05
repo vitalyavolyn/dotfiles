@@ -32,6 +32,16 @@
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      # TODO: not working, add some kind of archive manager
+      thunar-archive-plugin
+      thunar-volman
+    ];
+  };
+  programs.xfconf.enable = true;
+
   nix.settings = {
     substituters = [ "https://hyprland.cachix.org" ];
     trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
