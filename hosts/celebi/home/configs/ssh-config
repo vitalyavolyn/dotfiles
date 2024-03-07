@@ -10,3 +10,6 @@ Host aur.archlinux.org
 Host github
   HostName github.com
   User git
+
+Host shinx
+  HostName shinx.local

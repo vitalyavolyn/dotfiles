@@ -21,7 +21,6 @@
 
     gnome.gnome-keyring.enable = true;
 
-    fstrim.enable = true;
     tlp.enable = true;
 
     keybase.enable = true;

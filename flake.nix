@@ -31,13 +31,12 @@
             inherit system;
             specialArgs = { inherit inputs; };
             modules = [
-              ./configuration.nix
+              ./hosts/celebi/configuration.nix
               { system = { inherit stateVersion; }; }
 
               nixos-hardware.nixosModules.common-pc-laptop
               nixos-hardware.nixosModules.common-pc-ssd
               nixos-hardware.nixosModules.common-cpu-intel
-              nixos-hardware.nixosModules.common-gpu-intel
 
               home-manager.nixosModules.home-manager
               {
@@ -53,11 +52,20 @@
                       hyprland.homeManagerModules.default
                       # TODO: why is this here
                       { wayland.windowManager.hyprland.enable = true; }
-                      ./home/home.nix
+                      ./hosts/celebi/home/home.nix
                     ];
                   };
                 };
               }
+            ];
+          };
+        shinx = nixpkgs.lib.nixosSystem
+          {
+            specialArgs = { inherit inputs; };
+            modules = [
+              nixos-hardware.nixosModules.common-cpu-intel
+              nixos-hardware.nixosModules.common-pc-ssd
+              ./hosts/shinx/configuration.nix
             ];
           };
       };
