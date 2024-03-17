@@ -20,7 +20,7 @@ in
       steam-run
       vlc
       file
-      etcher
+      # etcher TODO: removed (old electron)
       tofi
       waybar # TODO: can be configured with home-manager
       hyprlandContribPkgs.grimblast
@@ -81,6 +81,12 @@ in
       prismlauncher
       # mgba
       # dolphin-emu
+
+      #wtf minecraft
+      flite
+
+      # work
+      zoom-us
     ];
 
     file = {
@@ -117,7 +123,7 @@ in
       enable = true;
 
       autocd = true;
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
 
       history = {
