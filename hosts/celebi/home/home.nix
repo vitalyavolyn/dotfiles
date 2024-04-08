@@ -106,7 +106,6 @@ in
 
   xdg.configFile = {
     "nixpkgs/config.nix".source = ../nixpkgs-config.nix;
-    "Code/User/settings.json".source = ./configs/vscode.json;
     "i3/config".source = ./configs/i3-config;
     "ranger/rc.conf".source = ./configs/ranger.conf;
     "hypr/hyprland.conf".source = ./configs/hyprland.conf;
@@ -188,16 +187,32 @@ in
     vscode = with pkgs; {
       enable = true;
       package = vscode;
+      mutableExtensionsDir = false;
+
+      userSettings = lib.importJSON ./configs/vscode/settings.json;
+      keybindings = lib.importJSON ./configs/vscode/keybindings.json;
+
       extensions = with vscode-extensions; [
         jnoortheen.nix-ide
         eamodio.gitlens
         ms-vscode-remote.remote-ssh
+        dbaeumer.vscode-eslint
+        esbenp.prettier-vscode
+        wmaurer.change-case
+        redhat.vscode-yaml
+        mhutchie.git-graph
       ] ++ vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-theme-onedark";
           publisher = "akamud";
-          version = "2.2.3";
-          sha256 = "1m6f6p7x8vshhb03ml7sra3v01a7i2p3064mvza800af7cyj3w5m";
+          version = "2.3.0";
+          sha256 = "sha256-8GGv4L4poTYjdkDwZxgNYajuEmIB5XF1mhJMxO2Ho84=";
+        }
+        {
+          name = "supermaven";
+          publisher = "supermaven";
+          version = "0.1.40";
+          sha256 = "sha256-BFm9H5dOSZ/V9Y/ZVap/XDDG/FDhHbi3p3ulqdDsMHc=";
         }
       ];
     };

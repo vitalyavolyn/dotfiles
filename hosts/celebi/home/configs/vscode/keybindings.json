@@ -1,0 +1,64 @@
+[
+  {
+    "key": "ctrl+shift+d",
+    "command": "editor.action.formatDocument",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+s",
+    "command": "eslint.executeAutofix",
+    "when": "editorTextFocus && editorLangId == typescript || editorTextFocus && editorLangId == typescriptreact || editorTextFocus && editorLangId == javascript || editorTextFocus && editorLangId == javascriptreact || editorTextFocus && editorLangId == vue"
+  },
+  {
+    "key": "ctrl+shift+s",
+    "command": "stylelint.executeAutofix",
+    "when": "editorTextFocus && editorLangId == css || editorTextFocus && editorLangId == scss || editorTextFocus && editorLangId == less"
+  },
+  {
+    "key": "alt+d",
+    "command": "editor.action.addSelectionToPreviousFindMatch",
+    "when": "editorFocus"
+  },
+  {
+    "key": "cmd+y",
+    "command": "redo"
+  },
+  {
+    "key": "ctrl+shift+z",
+    "command": "-redo"
+  },
+  {
+    "key": "alt+s",
+    "command": "editor.action.sortLinesAscending",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+l",
+    "command": "editor.action.transformToLowercase",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+u",
+    "command": "editor.action.transformToUppercase",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+b",
+    "command": "extension.changeCase.kebab",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+n",
+    "command": "extension.changeCase.snake",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+m",
+    "command": "extension.changeCase.camel",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+'",
+    "command": "eslint.restart"
+  }
+]

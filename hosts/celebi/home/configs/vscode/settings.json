@@ -31,5 +31,7 @@
     "editor.fontLigatures": true,
     "window.zoomLevel": 0,
     "editor.unicodeHighlight.nonBasicASCII": false,
-    "diffEditor.ignoreTrimWhitespace": false
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
+    "editor.rulers": [100]
 }
