@@ -65,6 +65,23 @@
             modules = [
               nixos-hardware.nixosModules.common-cpu-intel
               nixos-hardware.nixosModules.common-pc-ssd
+
+              home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  extraSpecialArgs = {
+                    inherit inputs stateVersion;
+                  };
+                  users.vitalya = {
+                    imports = [
+                      ./hosts/shinx/home.nix
+                    ];
+                  };
+                };
+              }
+
               ./hosts/shinx/configuration.nix
             ];
           };

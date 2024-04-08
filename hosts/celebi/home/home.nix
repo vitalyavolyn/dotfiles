@@ -191,6 +191,7 @@ in
       extensions = with vscode-extensions; [
         jnoortheen.nix-ide
         eamodio.gitlens
+        ms-vscode-remote.remote-ssh
       ] ++ vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-theme-onedark";
