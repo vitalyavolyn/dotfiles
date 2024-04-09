@@ -55,14 +55,11 @@ in
       # dev stuff
       nodejs_latest
       yarn
-      # jetbrains.webstorm
-      # jetbrains.datagrip
       dbeaver
       gnumake
-      # robo3t
+      robo3t # TODO: mongodb-compass?
       docker-compose
       insomnia
-      wakatime
       # android-tools
       # scrcpy # broken on wayland
 
@@ -77,12 +74,10 @@ in
       obs-studio
 
       # games?
-      # minecraft
       prismlauncher
       # mgba
-      # dolphin-emu
 
-      #wtf minecraft
+      # wtf minecraft requires this
       flite
 
       # work
@@ -106,6 +101,7 @@ in
 
   xdg.configFile = {
     "nixpkgs/config.nix".source = ../nixpkgs-config.nix;
+    # TODO: remove i3 stuff
     "i3/config".source = ./configs/i3-config;
     "ranger/rc.conf".source = ./configs/ranger.conf;
     "hypr/hyprland.conf".source = ./configs/hyprland.conf;
