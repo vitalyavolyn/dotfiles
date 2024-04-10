@@ -190,13 +190,24 @@ in
 
       extensions = with vscode-extensions; [
         jnoortheen.nix-ide
+
         eamodio.gitlens
+        mhutchie.git-graph
+
         ms-vscode-remote.remote-ssh
+        ms-azuretools.vscode-docker
+
         dbaeumer.vscode-eslint
         esbenp.prettier-vscode
+
         wmaurer.change-case
         redhat.vscode-yaml
-        mhutchie.git-graph
+        oderwat.indent-rainbow
+
+        dart-code.flutter
+        dart-code.dart-code
+
+        ziglang.vscode-zig
       ] ++ vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-theme-onedark";

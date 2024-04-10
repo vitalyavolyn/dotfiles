@@ -33,5 +33,18 @@
     "editor.unicodeHighlight.nonBasicASCII": false,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
-    "editor.rulers": [100]
+    "editor.rulers": [100],
+
+    "debug.openDebug": "openOnDebugBreak",
+    "debug.internalConsoleOptions": "openOnSessionStart",
+    
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [80],
+        "editor.selectionHighlight": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": "off"
+    }
 }

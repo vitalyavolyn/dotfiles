@@ -102,8 +102,6 @@
       ];
     };
 
-    adguardhome.enable = true;
-
     jellyfin.enable = true;
     jackett.enable = true;
     radarr.enable = true;
