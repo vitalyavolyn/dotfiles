@@ -20,7 +20,6 @@ in
       steam-run
       vlc
       file
-      # etcher TODO: removed (old electron)
       tofi
       waybar # TODO: can be configured with home-manager
       hyprlandContribPkgs.grimblast
@@ -57,11 +56,10 @@ in
       yarn
       dbeaver
       gnumake
-      robo3t # TODO: mongodb-compass?
+      robo3t
+      mongodb-compass
       docker-compose
       insomnia
-      # android-tools
-      # scrcpy # broken on wayland
 
       # launching ncalayer
       xorg.xmessage
@@ -69,13 +67,11 @@ in
       libnotify
 
       # lifestyle & fun
-      # obsidian
       krita
       obs-studio
 
       # games?
       prismlauncher
-      # mgba
 
       # wtf minecraft requires this
       flite
@@ -220,6 +216,12 @@ in
           publisher = "supermaven";
           version = "0.1.40";
           sha256 = "sha256-BFm9H5dOSZ/V9Y/ZVap/XDDG/FDhHbi3p3ulqdDsMHc=";
+        }
+        {
+          name = "bongocat-buddy";
+          publisher = "JohnHarrison";
+          version = "1.6.0";
+          sha256 = "sha256-Oz7cmu3uY9De+EU3V/G59f2LeAOrwpwftxtIp/IPT3c=";
         }
       ];
     };
