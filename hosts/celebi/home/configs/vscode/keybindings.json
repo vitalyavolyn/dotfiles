@@ -15,19 +15,6 @@
     "when": "editorTextFocus && editorLangId == css || editorTextFocus && editorLangId == scss || editorTextFocus && editorLangId == less"
   },
   {
-    "key": "alt+d",
-    "command": "editor.action.addSelectionToPreviousFindMatch",
-    "when": "editorFocus"
-  },
-  {
-    "key": "cmd+y",
-    "command": "redo"
-  },
-  {
-    "key": "ctrl+shift+z",
-    "command": "-redo"
-  },
-  {
     "key": "alt+s",
     "command": "editor.action.sortLinesAscending",
     "when": "editorTextFocus"

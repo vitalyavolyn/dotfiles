@@ -60,6 +60,7 @@ in
       mongodb-compass
       docker-compose
       insomnia
+      nixd
 
       # launching ncalayer
       xorg.xmessage

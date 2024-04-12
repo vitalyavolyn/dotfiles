@@ -52,5 +52,21 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
-  "terminal.integrated.scrollback": 10000000
+  "terminal.integrated.scrollback": 10000000,
+
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nixd",
+  "nix.serverSettings": {
+    "nixd": {
+      "formatting": {
+        "command": "nixpkgs-fmt"
+      },
+      "options": {
+        "enable": true,
+        "target": {
+          "installable": "<flakeref>#nixosConfigurations.celebi.options"
+        }
+      }
+    }
+  }
 }
