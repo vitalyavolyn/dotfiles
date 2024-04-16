@@ -19,6 +19,8 @@
     sshd.enable = true;
     blueman.enable = true;
 
+    tailscale.enable = true;
+
     gnome.gnome-keyring.enable = true;
 
     tlp.enable = true;
