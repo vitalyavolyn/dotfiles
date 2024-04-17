@@ -26,11 +26,7 @@
       globalModules = [
         home-manager.nixosModules.home-manager
 
-        ./common/users.nix
-        ./common/nix.nix
-        ./common/general.nix
-        ./common/packages.nix
-        ./common/services.nix
+        ./common
       ];
     in
     {
@@ -59,7 +55,8 @@
                     imports = [
                       spicetify-nix.homeManagerModule
                       hyprland.homeManagerModules.default
-                      ./common/home/zsh.nix
+
+                      ./common/home
                       ./hosts/celebi/home/home.nix
                     ];
                   };
@@ -86,7 +83,7 @@
                   };
                   users.vitalya = {
                     imports = [
-                      ./common/home/zsh.nix
+                      ./common/home
                       ./hosts/shinx/home.nix
                     ];
                   };
