@@ -87,7 +87,6 @@ in
       "bin".source = ./bin;
 
       ".ssh/config".source = ./configs/ssh-config;
-      ".gitconfig".source = ./configs/gitconfig;
     };
 
     pointerCursor = {
@@ -100,16 +99,12 @@ in
 
   xdg.configFile = {
     "nixpkgs/config.nix".source = ../nixpkgs-config.nix;
-    # TODO: remove i3 stuff
-    "i3/config".source = ./configs/i3-config;
     "ranger/rc.conf".source = ./configs/ranger.conf;
     "hypr/hyprland.conf".source = ./configs/hyprland.conf;
     "waybar".source = ./configs/waybar;
     "tofi/config".source = ./configs/tofi.ini;
     "swaylock/config".source = ./configs/swaylock;
   };
-
-  nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
   programs = {
     go = {
@@ -159,6 +154,4 @@ in
 
   # produces a warning? is this necessary?
   wayland.windowManager.hyprland.enable = true;
-
-  manual.manpages.enable = false;
 }

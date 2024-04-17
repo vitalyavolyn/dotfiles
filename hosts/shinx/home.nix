@@ -16,14 +16,5 @@
       yarn
       docker-compose
     ];
-
-    file = {
-      # TODO: common
-      ".gitconfig".source = ../celebi/home/configs/gitconfig;
-    };
   };
-
-  nixpkgs.config.allowUnfreePredicate = (pkg: true);
-
-  manual.manpages.enable = false;
 }
