@@ -59,6 +59,7 @@
                     imports = [
                       spicetify-nix.homeManagerModule
                       hyprland.homeManagerModules.default
+                      ./common/home/zsh.nix
                       ./hosts/celebi/home/home.nix
                     ];
                   };
@@ -85,6 +86,7 @@
                   };
                   users.vitalya = {
                     imports = [
+                      ./common/home/zsh.nix
                       ./hosts/shinx/home.nix
                     ];
                   };
