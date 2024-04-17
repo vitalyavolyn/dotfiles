@@ -5,6 +5,8 @@ let
   hyprlandContribPkgs = inputs.hyprland-contrib.packages.${pkgs.system};
 in
 {
+  imports = [ ./vscode.nix ];
+
   home = {
     inherit stateVersion;
 
@@ -110,61 +112,9 @@ in
   nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
   programs = {
-    # TODO: split this into separate files?
-    zsh = {
-      enable = true;
-
-      autocd = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
-
-      history = {
-        ignoreDups = true;
-      };
-
-      shellAliases = {
-        l = "ls";
-        la = "ls -a";
-        x = "xclip -sel clip";
-        nbs = "time sudo nixos-rebuild switch";
-        nbsu = "time sudo nixos-rebuild switch --upgrade";
-      };
-
-      # TODO: how to make REPORTTIME work?
-      localVariables = {
-        PATH = "$PATH:$HOME/bin:$HOME/.pub-cache/bin:$HOME/.yarn/bin";
-        EDITOR = "vim";
-      };
-
-      plugins = with pkgs; [
-        {
-          name = "zsh-nix-shell";
-          file = "nix-shell.plugin.zsh";
-          src = fetchFromGitHub {
-            owner = "chisui";
-            repo = "zsh-nix-shell";
-            rev = "v0.5.0";
-            sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
-          };
-        }
-      ];
-
-      oh-my-zsh = {
-        enable = true;
-
-        plugins = [ "git" "sudo" "dotenv" "yarn" "docker-compose" "history" ];
-        theme = "fishy";
-      };
-    };
-
     go = {
       enable = true;
       goPath = "go";
-    };
-
-    fzf = {
-      enable = true;
-      enableZshIntegration = true;
     };
 
     kitty = {
@@ -175,56 +125,6 @@ in
         confirm_os_window_close = 0;
       };
       shellIntegration.enableZshIntegration = true;
-    };
-
-    vscode = with pkgs; {
-      enable = true;
-      package = vscode;
-      mutableExtensionsDir = false;
-
-      userSettings = lib.importJSON ./configs/vscode/settings.json;
-      keybindings = lib.importJSON ./configs/vscode/keybindings.json;
-
-      extensions = with vscode-extensions; [
-        jnoortheen.nix-ide
-
-        eamodio.gitlens
-        mhutchie.git-graph
-
-        ms-vscode-remote.remote-ssh
-        ms-azuretools.vscode-docker
-
-        dbaeumer.vscode-eslint
-        esbenp.prettier-vscode
-
-        wmaurer.change-case
-        redhat.vscode-yaml
-        oderwat.indent-rainbow
-
-        dart-code.flutter
-        dart-code.dart-code
-
-        ziglang.vscode-zig
-      ] ++ vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "vscode-theme-onedark";
-          publisher = "akamud";
-          version = "2.3.0";
-          sha256 = "sha256-8GGv4L4poTYjdkDwZxgNYajuEmIB5XF1mhJMxO2Ho84=";
-        }
-        {
-          name = "supermaven";
-          publisher = "supermaven";
-          version = "0.1.40";
-          sha256 = "sha256-BFm9H5dOSZ/V9Y/ZVap/XDDG/FDhHbi3p3ulqdDsMHc=";
-        }
-        {
-          name = "bongocat-buddy";
-          publisher = "JohnHarrison";
-          version = "1.6.0";
-          sha256 = "sha256-Oz7cmu3uY9De+EU3V/G59f2LeAOrwpwftxtIp/IPT3c=";
-        }
-      ];
     };
 
     spicetify = {
@@ -256,6 +156,9 @@ in
     enable = true;
     platformTheme = "gtk";
   };
+
+  # produces a warning? is this necessary?
+  wayland.windowManager.hyprland.enable = true;
 
   manual.manpages.enable = false;
 }

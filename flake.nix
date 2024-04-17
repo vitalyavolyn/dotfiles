@@ -23,6 +23,15 @@
     let
       system = "x86_64-linux";
       stateVersion = "20.09";
+      globalModules = [
+        home-manager.nixosModules.home-manager
+
+        ./common/users.nix
+        ./common/nix.nix
+        ./common/general.nix
+        ./common/packages.nix
+        ./common/services.nix
+      ];
     in
     {
       nixosConfigurations = {
@@ -30,15 +39,15 @@
           {
             inherit system;
             specialArgs = { inherit inputs; };
-            modules = [
+            modules = globalModules ++ [
               ./hosts/celebi/configuration.nix
+
               { system = { inherit stateVersion; }; }
 
               nixos-hardware.nixosModules.common-pc-laptop
               nixos-hardware.nixosModules.common-pc-ssd
               nixos-hardware.nixosModules.common-cpu-intel
 
-              home-manager.nixosModules.home-manager
               {
                 home-manager = {
                   useGlobalPkgs = true;
@@ -50,8 +59,6 @@
                     imports = [
                       spicetify-nix.homeManagerModule
                       hyprland.homeManagerModules.default
-                      # TODO: why is this here
-                      { wayland.windowManager.hyprland.enable = true; }
                       ./hosts/celebi/home/home.nix
                     ];
                   };
@@ -62,16 +69,18 @@
         shinx = nixpkgs.lib.nixosSystem
           {
             specialArgs = { inherit inputs; };
-            modules = [
+            modules = globalModules ++ [
+              ./hosts/shinx/configuration.nix
+
               nixos-hardware.nixosModules.common-cpu-intel
               nixos-hardware.nixosModules.common-pc-ssd
 
-              home-manager.nixosModules.home-manager
               {
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   extraSpecialArgs = {
+                    # stateversion is wrong
                     inherit inputs stateVersion;
                   };
                   users.vitalya = {
@@ -81,8 +90,6 @@
                   };
                 };
               }
-
-              ./hosts/shinx/configuration.nix
             ];
           };
       };

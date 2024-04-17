@@ -4,11 +4,6 @@
   nixpkgs.config = import ../nixpkgs-config.nix;
 
   environment.systemPackages = with pkgs; [
-    git
-    wget
-    vim
-    kitty
-
     pamixer
     pulseaudio
 
@@ -17,13 +12,6 @@
     mate.mate-polkit # TODO: exec on startup
   ];
   environment.variables.TERMINAL = "kitty";
-
-  programs.zsh.enable = true;
-
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
 
   programs.light.enable = true;
 

@@ -2,24 +2,15 @@
 
 {
   services = {
-    xserver = {
-      enable = true;
-
-      # desktopManager.pantheon.enable = true;
-
-      displayManager = {
-        defaultSession = "hyprland";
-        # lightdm = {
-        sddm = {
-          enable = true;
-        };
+    displayManager = {
+      defaultSession = "hyprland";
+      sddm = {
+        enable = true;
+        wayland.enable = true;
       };
     };
 
-    sshd.enable = true;
     blueman.enable = true;
-
-    tailscale.enable = true;
 
     gnome.gnome-keyring.enable = true;
 
@@ -47,20 +38,6 @@
 
     # thunar thumbnails
     tumbler.enable = true;
-
-    avahi = {
-      enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
-      publish = {
-        enable = true;
-        userServices = true;
-        hinfo = true;
-      };
-      extraServiceFiles = {
-        ssh = "${pkgs.avahi}/etc/avahi/services/ssh.service";
-      };
-    };
   };
 
   security = {
@@ -77,10 +54,4 @@
     DefaultTimeoutStopSec=10s
     DefaultTimeoutStartSec=10s
   '';
-
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = false;
-    autoPrune.enable = true;
-  };
 }

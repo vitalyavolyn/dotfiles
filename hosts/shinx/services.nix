@@ -2,23 +2,6 @@
 
 {
   services = {
-    openssh.enable = true;
-
-    tailscale.enable = true;
-
-    avahi = {
-      enable = true;
-      nssmdns4 = true;
-      # openFirewall = true;
-      publish = {
-        enable = true;
-        userServices = true;
-      };
-      extraServiceFiles = {
-        ssh = "${pkgs.avahi}/etc/avahi/services/ssh.service";
-      };
-    };
-
     # TODO: separate file
     # these services are local, so api keys are fine to be public
     # (if you somehow get access to them, i encourage you to watch some pokemon)
@@ -119,11 +102,5 @@
         download-dir = "/mnt/media/downloads/complete";
       };
     };
-  };
-
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = false;
-    autoPrune.enable = true;
   };
 }
