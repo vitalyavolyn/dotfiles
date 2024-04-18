@@ -1,5 +1,5 @@
 { pkgs, ... }:
 
 {
-  time.timeZone = "Asia/Almaty";
+  time.timeZone = "Asia/Oral";
 }
