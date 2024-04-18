@@ -19,7 +19,6 @@
 
       # do not use on shinx
       nbs = "time sudo nixos-rebuild switch";
-      nbsu = "time sudo nixos-rebuild switch --upgrade";
     };
 
     # TODO: how to make REPORTTIME work?
