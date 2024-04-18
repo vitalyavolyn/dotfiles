@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  nix.trustedUsers = [ "vitalya" ];
+  nix.settings.trusted-users = [ "vitalya" ];
 
   users.users.vitalya = {
     extraGroups = [ "wheel" "networkmanager" "docker" "video" "input" ];
