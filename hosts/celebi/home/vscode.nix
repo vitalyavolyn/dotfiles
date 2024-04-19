@@ -39,8 +39,8 @@
       {
         name = "supermaven";
         publisher = "supermaven";
-        version = "0.1.40";
-        sha256 = "sha256-BFm9H5dOSZ/V9Y/ZVap/XDDG/FDhHbi3p3ulqdDsMHc=";
+        version = "0.1.45";
+        sha256 = "sha256-qAi++JbivmMH1nTZh/pRkoae35OLUypElxPjWlrMxxk=";
       }
       {
         name = "bongocat-buddy";
