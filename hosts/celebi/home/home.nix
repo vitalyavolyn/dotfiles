@@ -12,16 +12,11 @@ in
 
     packages = with pkgs; [
       # system utilities
-      pfetch
-      nixpkgs-fmt
-      p7zip
       pavucontrol
       paper-icon-theme
-      neofetch
       gparted
       steam-run
       vlc
-      file
       tofi
       waybar # TODO: can be configured with home-manager
       hyprlandContribPkgs.grimblast
@@ -31,10 +26,8 @@ in
       # keybase
       swaylock-effects
       swayidle # TODO: can be configured with home-manager
-      htop
 
-      # file manager and its preview utilities
-      ranger
+      # ranger preview utilities
       atool
       unzip
       poppler_utils
@@ -53,14 +46,11 @@ in
       acpi
       acpilight
 
-      # dev stuff
-      nodejs_latest
-      yarn
+      # dev tools
       dbeaver
       gnumake
       robo3t
       mongodb-compass
-      docker-compose
       insomnia
       nixd
 

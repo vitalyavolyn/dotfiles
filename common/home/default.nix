@@ -5,6 +5,25 @@
     ./zsh.nix
   ];
 
+  home.packages = with pkgs; [
+    #dev stuff
+    httpie 
+
+    # system utilities
+    nixpkgs-fmt
+    p7zip
+    neofetch
+    file
+    htop
+    ranger
+
+    # dev tools
+    nodejs_latest
+    yarn
+    docker-compose
+    httpie
+  ];
+
   home.file = {
     ".gitconfig".source = ./configs/gitconfig;
   };
