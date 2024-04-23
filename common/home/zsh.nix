@@ -16,6 +16,7 @@
       l = "ls";
       la = "ls -a";
       x = "xclip -sel clip";
+      p = "nix-shell --run zsh -p";
 
       # do not use on shinx
       nbs = "time sudo nixos-rebuild switch";
@@ -51,5 +52,9 @@
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  programs.carapace = {
+    enable = true;
   };
 }
