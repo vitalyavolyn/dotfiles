@@ -1,8 +1,9 @@
-{ pkgs, lib, inputs, stateVersion, ... }:
+{ pkgs, inputs, stateVersion, ... }:
 
 let
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
   hyprlandContribPkgs = inputs.hyprland-contrib.packages.${pkgs.system};
+  plugins = inputs.hyprland-plugins.packages.${pkgs.system};
 in
 {
   imports = [ ./vscode.nix ];
@@ -89,7 +90,6 @@ in
 
   xdg.configFile = {
     "nixpkgs/config.nix".source = ../nixpkgs-config.nix;
-    "hypr/hyprland.conf".source = ./configs/hyprland.conf;
     "waybar".source = ./configs/waybar;
     "tofi/config".source = ./configs/tofi.ini;
     "swaylock/config".source = ./configs/swaylock;
@@ -141,6 +141,11 @@ in
     platformTheme.name = "gtk";
   };
 
-  # produces a warning? is this necessary?
-  wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland = {
+    enable = true;
+    extraConfig = builtins.readFile ./configs/hyprland.conf;
+    plugins = with plugins; [
+      hyprexpo
+    ];
+  };
 }

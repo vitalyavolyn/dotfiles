@@ -17,9 +17,7 @@
       la = "ls -a";
       x = "xclip -sel clip";
       p = "nix-shell --run zsh -p";
-
-      # do not use on shinx
-      nbs = "time sudo nixos-rebuild switch";
+      nbs = "nh os switch";
     };
 
     # TODO: how to make REPORTTIME work?
