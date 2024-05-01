@@ -69,12 +69,13 @@
               };
             }
             {
-              Transmission = {
-                icon = "transmission.png";
-                href = "http://shinx.local:9091/transmission/web/";
+              Deluge = {
+                icon = "deluge.png";
+                href = "http://shinx.local:8112";
                 widget = {
-                  type = "transmission";
-                  url = "http://localhost:9091";
+                  type = "deluge";
+                  url = "http://localhost:8112";
+                  password = "deluge";
                 };
               };
             }
@@ -83,19 +84,37 @@
       ];
     };
 
-    jellyfin.enable = true;
+    jellyfin = { enable = true; group = "multimedia"; };
+    radarr = { enable = true; group = "multimedia"; };
+    sonarr = { enable = true; group = "multimedia"; };
+    bazarr = { enable = true; group = "multimedia"; };
     jackett.enable = true;
-    radarr.enable = true;
-    sonarr.enable = true;
-    bazarr.enable = true;
+    # TODO: remove transmission
     transmission = {
       enable = true;
+      group = "multimedia";
       settings = {
         rpc-bind-address = "0.0.0.0";
         rpc-whitelist-enabled = false;
         rpc-host-whitelist-enabled = false;
         incomplete-dir = "/mnt/media/downloads/incomplete";
         download-dir = "/mnt/media/downloads/complete";
+      };
+    };
+    deluge = {
+      enable = true;
+      group = "multimedia";
+      web.enable = true;
+      declarative = true;
+      config = {
+        enabled_plugins = [ "Label" ];
+        download_location = "/mnt/media/downloads/complete";
+      };
+      authFile = pkgs.writeTextFile {
+        name = "deluge-auth";
+        text = ''
+          localclient::10
+        '';
       };
     };
   };

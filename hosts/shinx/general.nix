@@ -17,4 +17,8 @@
   };
 
   system.stateVersion = "23.11";
+
+  users.groups.multimedia = {
+    members = [ "vitalya" ];
+  };
 }

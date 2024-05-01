@@ -7,7 +7,7 @@
 
   home.packages = with pkgs; [
     #dev stuff
-    httpie 
+    httpie
 
     # system utilities
     nixpkgs-fmt
