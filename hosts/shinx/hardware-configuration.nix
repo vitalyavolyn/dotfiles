@@ -7,21 +7,24 @@
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
+  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    {
-      device = "/dev/disk/by-label/nixos";
+    { device = "/dev/disk/by-uuid/750166cb-e2c3-409d-8c13-237f33656a7c";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-label/boot";
+    { device = "/dev/disk/by-uuid/DB0E-15E2";
       fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
+
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/b88b0345-6c07-49cb-a2db-9a32ade07f47"; }
+    ];
 
   fileSystems."/mnt/media" =
     {
@@ -33,9 +36,6 @@
         "nofail"
       ];
     };
-
-  swapDevices =
-    [{ device = "/dev/disk/by-label/swap"; }];
 
   networking.useDHCP = lib.mkDefault true;
 

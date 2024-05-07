@@ -9,5 +9,6 @@
 
       ./general.nix
       ./services.nix
+      ./desktop.nix
     ];
 }

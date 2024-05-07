@@ -88,19 +88,7 @@
     radarr = { enable = true; group = "multimedia"; };
     sonarr = { enable = true; group = "multimedia"; };
     bazarr = { enable = true; group = "multimedia"; };
-    jackett.enable = true;
-    # TODO: remove transmission
-    transmission = {
-      enable = true;
-      group = "multimedia";
-      settings = {
-        rpc-bind-address = "0.0.0.0";
-        rpc-whitelist-enabled = false;
-        rpc-host-whitelist-enabled = false;
-        incomplete-dir = "/mnt/media/downloads/incomplete";
-        download-dir = "/mnt/media/downloads/complete";
-      };
-    };
+    prowlarr.enable = true;
     deluge = {
       enable = true;
       group = "multimedia";

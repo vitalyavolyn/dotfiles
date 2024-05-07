@@ -3,5 +3,9 @@
 {
   home = {
     inherit stateVersion;
+
+    packages = with pkgs; [
+      firefox
+    ];
   };
 }
