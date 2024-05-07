@@ -6,7 +6,7 @@ let
   plugins = inputs.hyprland-plugins.packages.${pkgs.system};
 in
 {
-  imports = [ ./vscode.nix ];
+  # imports = [ ./vscode.nix ];
 
   home = {
     inherit stateVersion;
