@@ -145,7 +145,7 @@ in
     enable = true;
     extraConfig = builtins.readFile ./configs/hyprland.conf;
     plugins = with plugins; [
-      hyprexpo
+      # hyprexpo
     ];
   };
 }
