@@ -24,8 +24,6 @@
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", ATTRS{manufacturer}=="Flipper Devices Inc.", GROUP="users", TAG+="uaccess"
       #Flipper Zero DFU
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", ATTRS{manufacturer}=="STMicroelectronics", GROUP="users", TAG+="uaccess"
-      # Temporarily disable internal keyboard
-      KERNELS=="input1",ATTRS{id/bustype}=="0011",ENV{LIBINPUT_IGNORE_DEVICE}="1"
     '';
 
     pipewire = {
