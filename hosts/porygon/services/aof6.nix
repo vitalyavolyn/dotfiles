@@ -8,7 +8,7 @@
     environment = {
       TZ = "America/New_York";
       EULA = "TRUE";
-      VERSION = "1.20.1";
+      VERSION = "1.19.2";
       TYPE = "FABRIC";
       FABRIC_LAUNCHER_VERSION = "1.0.1";
       FABRIC_LOADER_VERSION = "0.14.25";
