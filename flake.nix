@@ -28,6 +28,7 @@
   outputs = { self, nixpkgs, nixos-hardware, home-manager, spicetify-nix, hyprland, ... } @ inputs:
     let
       system = "x86_64-linux";
+      # TODO only use for celebi
       stateVersion = "20.09";
       globalModules = [
         home-manager.nixosModules.home-manager
@@ -97,6 +98,30 @@
               }
             ];
           };
+        porygon = nixpkgs.lib.nixosSystem
+          {
+            specialArgs = { inherit inputs; };
+            modules = globalModules ++ [
+              ./hosts/porygon/configuration.nix
+
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  extraSpecialArgs = {
+                    inherit inputs;
+                  };
+                  users.vitalya = {
+                    imports = [
+                      ./common/home
+                      ./hosts/porygon/home.nix
+                    ];
+                  };
+                };
+              }
+            ];
+          };
+
       };
     };
 
