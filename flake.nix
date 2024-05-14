@@ -100,6 +100,7 @@
           };
         porygon = nixpkgs.lib.nixosSystem
           {
+            system = "aarch64-linux";
             specialArgs = { inherit inputs; };
             modules = globalModules ++ [
               ./hosts/porygon/configuration.nix
@@ -121,7 +122,6 @@
               }
             ];
           };
-
       };
     };
 
