@@ -6,7 +6,7 @@ let
   plugins = inputs.hyprland-plugins.packages.${pkgs.system};
 in
 {
-  # imports = [ ./vscode.nix ];
+  imports = [ ./vscode.nix ];
 
   home = {
     inherit stateVersion;
@@ -139,6 +139,11 @@ in
   qt = {
     enable = true;
     platformTheme.name = "gtk";
+  };
+
+  dconf = {
+    enable = true;
+    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
   };
 
   wayland.windowManager.hyprland = {

@@ -3,7 +3,6 @@
 {
   imports = [
     ./zsh.nix
-    ./vscode.nix
   ];
 
   home.packages = with pkgs; [
