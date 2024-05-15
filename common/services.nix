@@ -1,13 +1,20 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   services = {
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        PermitRootLogin = "prohibit-password";
+      };
+    };
 
     tailscale.enable = true;
 
     avahi = {
-      enable = true;
+      enable = lib.mkDefault true;
       nssmdns4 = true;
       # openFirewall = true;
       publish = {
