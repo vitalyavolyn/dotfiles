@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, ... }:
 
 {
   services = {
@@ -11,5 +11,10 @@
         local_port = 1080;
       };
     };
+  };
+
+  networking.firewall = {
+    allowedTCPPorts = [ config.services.shadowsocks.port ];
+    allowedUDPPorts = [ config.services.shadowsocks.port ];
   };
 }
