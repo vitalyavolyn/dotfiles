@@ -1,6 +1,13 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 {
+  networking.firewall = {
+    enable = lib.mkDefault true;
+    # always allow traffic from Tailscale
+    trustedInterfaces = [ "tailscale0" ];
+    allowedUDPPorts = [ config.services.tailscale.port ];
+  };
+
   services = {
     openssh = {
       enable = true;
@@ -16,7 +23,7 @@
     avahi = {
       enable = lib.mkDefault true;
       nssmdns4 = true;
-      # openFirewall = true;
+      openFirewall = true;
       publish = {
         enable = true;
         userServices = true;

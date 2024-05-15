@@ -15,7 +15,6 @@
 
   networking = {
     hostName = "porygon";
-    firewall.enable = false;
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
