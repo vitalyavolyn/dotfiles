@@ -44,6 +44,9 @@
       ];
     in
     {
+      nixosModules = import ./modules;
+      nixosProfiles = import ./profiles;
+
       nixosConfigurations = {
         celebi = nixpkgs.lib.nixosSystem
           {

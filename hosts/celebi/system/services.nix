@@ -2,19 +2,13 @@
 
 {
   services = {
-    displayManager = {
-      defaultSession = "hyprland";
-      sddm = {
-        enable = true;
-        wayland.enable = true;
-      };
-    };
-
-    blueman.enable = true;
+    # TODO: only for hyprland
+    # blueman.enable = true;
 
     gnome.gnome-keyring.enable = true;
 
-    tlp.enable = true;
+    # TODO: research this
+    # tlp.enable = true;
 
     keybase.enable = true;
     kbfs.enable = true;
@@ -25,14 +19,6 @@
       #Flipper Zero DFU
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", ATTRS{manufacturer}=="STMicroelectronics", GROUP="users", TAG+="uaccess"
     '';
-
-    pipewire = {
-      enable = true;
-      wireplumber.enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
 
     # thunar thumbnails
     tumbler.enable = true;

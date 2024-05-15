@@ -1,15 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
-  boot = {
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-    kernelPackages = pkgs.linuxPackages_latest;
-    tmp.cleanOnBoot = true;
-    plymouth.enable = true;
-  };
+  imports = with inputs.self.nixosModules; [
+    inputs.self.nixosProfiles.desktop-gnome
+  ];
+
+  boot.plymouth.enable = true;
 
   networking = {
     hostName = "celebi";

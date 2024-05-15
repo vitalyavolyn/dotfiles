@@ -101,16 +101,6 @@ in
       goPath = "go";
     };
 
-    kitty = {
-      enable = true;
-      font.name = "Fira Code";
-      theme = "Afterglow";
-      settings = {
-        confirm_os_window_close = 0;
-      };
-      shellIntegration.enableZshIntegration = true;
-    };
-
     spicetify = {
       enable = true;
       theme = spicePkgs.themes.Default;
@@ -120,30 +110,9 @@ in
     };
   };
 
+  # TODO: only for hyprland
   services = {
     dunst.enable = true;
-  };
-
-  gtk = {
-    enable = true;
-    theme = {
-      package = pkgs.arc-theme;
-      name = "Arc-Dark";
-    };
-    iconTheme = {
-      package = pkgs.paper-icon-theme;
-      name = "Paper";
-    };
-  };
-
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk";
-  };
-
-  dconf = {
-    enable = true;
-    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
   };
 
   wayland.windowManager.hyprland = {

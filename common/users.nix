@@ -4,7 +4,7 @@
   nix.settings.trusted-users = [ "vitalya" ];
 
   users.users.vitalya = {
-    extraGroups = [ "wheel" "networkmanager" "docker" "video" "input" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" "video" "input" "audio" ];
     isNormalUser = true;
     createHome = true;
     shell = pkgs.zsh;
