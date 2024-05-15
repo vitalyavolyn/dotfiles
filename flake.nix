@@ -15,7 +15,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, spicetify-nix, ... } @ inputs:
+  outputs = { nixpkgs, nixos-hardware, home-manager, spicetify-nix, ... } @ inputs:
     let
       globalModules = [
         home-manager.nixosModules.home-manager
@@ -53,7 +53,6 @@
                 home-manager.users.vitalya.imports = [
                   spicetify-nix.homeManagerModule
 
-                  ./common/home
                   ./hosts/celebi/home/home.nix
                 ];
               }
@@ -71,7 +70,6 @@
 
               {
                 home-manager.users.vitalya.imports = [
-                  ./common/home
                   ./hosts/shinx/home.nix
                 ];
               }
@@ -86,7 +84,6 @@
 
               {
                 home-manager.users.vitalya.imports = [
-                  ./common/home
                   ./hosts/porygon/home.nix
                 ];
               }

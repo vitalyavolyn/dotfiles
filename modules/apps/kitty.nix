@@ -10,4 +10,6 @@
     };
     shellIntegration.enableZshIntegration = true;
   };
+
+  environment.variables.TERMINAL = "kitty";
 }

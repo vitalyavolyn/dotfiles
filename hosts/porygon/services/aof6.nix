@@ -1,6 +1,7 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
+  # TODO: aof7 -> aof6
   virtualisation.oci-containers.containers."minecraft-aof7" = {
     autoStart = true;
     image = "docker.io/itzg/minecraft-server:java17";

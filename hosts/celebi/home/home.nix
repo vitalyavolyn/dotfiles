@@ -61,8 +61,6 @@ in
     ];
 
     file = {
-      "bin".source = ./bin;
-
       ".ssh/config".source = ./configs/ssh-config;
     };
 

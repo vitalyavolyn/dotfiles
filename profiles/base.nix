@@ -2,10 +2,11 @@
 
 {
   imports = with inputs.self.nixosModules; [
+    base-home
+    base-packages
     boot
-    nix
     locale
-    required-packages
+    nix
     user
     zsh
   ];
