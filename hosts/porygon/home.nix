@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, stateVersion, ... }:
+{ pkgs, lib, inputs, ... }:
 
 {
   home = {

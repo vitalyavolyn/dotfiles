@@ -16,4 +16,6 @@
     networkmanager.enable = true;
     firewall.enable = false;
   };
+
+  system.stateVersion = "20.09";
 }

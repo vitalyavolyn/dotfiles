@@ -1,8 +1,8 @@
-{ pkgs, lib, inputs, stateVersion, ... }:
+{ pkgs, lib, inputs, ... }:
 
 {
   home = {
-    inherit stateVersion;
+    stateVersion = "23.11";
 
     packages = with pkgs; [
       firefox

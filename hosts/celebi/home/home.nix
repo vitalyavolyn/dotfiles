@@ -9,7 +9,7 @@ in
   imports = [ ./vscode.nix ];
 
   home = {
-    inherit stateVersion;
+    stateVersion = "20.09";
 
     packages = with pkgs; [
       # system utilities

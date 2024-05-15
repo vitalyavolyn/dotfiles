@@ -27,52 +27,50 @@
 
   outputs = { self, nixpkgs, nixos-hardware, home-manager, spicetify-nix, hyprland, ... } @ inputs:
     let
-      system = "x86_64-linux";
       # TODO only use for celebi
-      stateVersion = "20.09";
       globalModules = [
         home-manager.nixosModules.home-manager
 
         ./common
+
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = {
+              inherit inputs;
+            };
+          };
+        }
       ];
     in
     {
       nixosConfigurations = {
         celebi = nixpkgs.lib.nixosSystem
           {
-            inherit system;
+            system = "x86_64-linux";
             specialArgs = { inherit inputs; };
             modules = globalModules ++ [
               ./hosts/celebi/configuration.nix
-
-              { system = { inherit stateVersion; }; }
 
               nixos-hardware.nixosModules.common-pc-laptop
               nixos-hardware.nixosModules.common-pc-ssd
               nixos-hardware.nixosModules.common-cpu-intel
 
               {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  extraSpecialArgs = {
-                    inherit inputs stateVersion;
-                  };
-                  users.vitalya = {
-                    imports = [
-                      spicetify-nix.homeManagerModule
-                      hyprland.homeManagerModules.default
+                home-manager.users.vitalya.imports = [
+                  spicetify-nix.homeManagerModule
+                  hyprland.homeManagerModules.default
 
-                      ./common/home
-                      ./hosts/celebi/home/home.nix
-                    ];
-                  };
-                };
+                  ./common/home
+                  ./hosts/celebi/home/home.nix
+                ];
               }
             ];
           };
         shinx = nixpkgs.lib.nixosSystem
           {
+            system = "x86_64-linux";
             specialArgs = { inherit inputs; };
             modules = globalModules ++ [
               ./hosts/shinx/configuration.nix
@@ -81,20 +79,10 @@
               nixos-hardware.nixosModules.common-pc-ssd
 
               {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  extraSpecialArgs = {
-                    # stateversion is wrong
-                    inherit inputs stateVersion;
-                  };
-                  users.vitalya = {
-                    imports = [
-                      ./common/home
-                      ./hosts/shinx/home.nix
-                    ];
-                  };
-                };
+                home-manager.users.vitalya.imports = [
+                  ./common/home
+                  ./hosts/shinx/home.nix
+                ];
               }
             ];
           };
@@ -106,19 +94,10 @@
               ./hosts/porygon/configuration.nix
 
               {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  extraSpecialArgs = {
-                    inherit inputs;
-                  };
-                  users.vitalya = {
-                    imports = [
-                      ./common/home
-                      ./hosts/porygon/home.nix
-                    ];
-                  };
-                };
+                home-manager.users.vitalya.imports = [
+                  ./common/home
+                  ./hosts/porygon/home.nix
+                ];
               }
             ];
           };
