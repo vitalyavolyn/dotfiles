@@ -1,9 +1,7 @@
-{ pkgs, inputs, stateVersion, ... }:
+{ pkgs, inputs, ... }: 
 
 let
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
-  hyprlandContribPkgs = inputs.hyprland-contrib.packages.${pkgs.system};
-  plugins = inputs.hyprland-plugins.packages.${pkgs.system};
 in
 {
   imports = [ ./vscode.nix ];
@@ -14,19 +12,9 @@ in
     packages = with pkgs; [
       # system utilities
       pavucontrol
-      paper-icon-theme
       gparted
       steam-run
       vlc
-      tofi
-      waybar # TODO: can be configured with home-manager
-      hyprlandContribPkgs.grimblast
-      grim
-      slurp
-      playerctl
-      # keybase
-      swaylock-effects
-      swayidle # TODO: can be configured with home-manager
 
       # ranger preview utilities
       atool
@@ -90,9 +78,6 @@ in
 
   xdg.configFile = {
     "nixpkgs/config.nix".source = ../nixpkgs-config.nix;
-    "waybar".source = ./configs/waybar;
-    "tofi/config".source = ./configs/tofi.ini;
-    "swaylock/config".source = ./configs/swaylock;
   };
 
   programs = {
@@ -108,18 +93,5 @@ in
 
       enabledExtensions = with spicePkgs.extensions; [ popupLyrics ];
     };
-  };
-
-  # TODO: only for hyprland
-  services = {
-    dunst.enable = true;
-  };
-
-  wayland.windowManager.hyprland = {
-    enable = true;
-    extraConfig = builtins.readFile ./configs/hyprland.conf;
-    plugins = with plugins; [
-      # hyprexpo
-    ];
   };
 }

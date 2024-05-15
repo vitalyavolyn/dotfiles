@@ -2,13 +2,7 @@
 
 {
   services = {
-    # TODO: only for hyprland
-    # blueman.enable = true;
-
     gnome.gnome-keyring.enable = true;
-
-    # TODO: research this
-    # tlp.enable = true;
 
     keybase.enable = true;
     kbfs.enable = true;

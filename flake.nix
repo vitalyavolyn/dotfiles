@@ -13,19 +13,9 @@
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, spicetify-nix, hyprland, ... } @ inputs:
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, spicetify-nix, ... } @ inputs:
     let
       globalModules = [
         home-manager.nixosModules.home-manager
@@ -62,7 +52,6 @@
               {
                 home-manager.users.vitalya.imports = [
                   spicetify-nix.homeManagerModule
-                  hyprland.homeManagerModules.default
 
                   ./common/home
                   ./hosts/celebi/home/home.nix
@@ -107,10 +96,6 @@
     };
 
   nixConfig = {
-    extra-trusted-substituters = [ "https://hyprland.cachix.org" ];
-    extra-trusted-public-keys = [
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-    ];
     trusted-users = [ "root" "vitalya" ];
   };
 }

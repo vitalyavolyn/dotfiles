@@ -8,6 +8,8 @@
     settings = {
       "org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
+      "org/gnome/desktop/wm/preferences".num-workspaces = 5;
+
       "org/gnome/desktop/wm/keybindings" = {
         close = [ "<Shift><Super>q" ];
         move-to-workspace-1 = [ "<Shift><Super>1" ];
@@ -37,6 +39,11 @@
         enabled-extensions = [
           "appindicatorsupport@rgcjonas.gmail.com"
         ];
+      };
+
+      "org/gnome/mutter" = {
+        edge-tiling = true;
+        center-new-windows = true;
       };
     };
   };

@@ -14,6 +14,8 @@
 
   environment.systemPackages = with pkgs.gnome; [
     gnome-tweaks
+
+    pkgs.xwaylandvideobridge
   ] ++ (with pkgs.gnomeExtensions; [
     appindicator
   ]);

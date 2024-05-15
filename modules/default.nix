@@ -17,7 +17,5 @@ builtins.listToAttrs (builtins.map
   ./kitty.nix
   ./locale.nix
   ./nix.nix
-  ./pipewire.nix
   ./pulseaudio.nix
-  ./sddm.nix
 ])
