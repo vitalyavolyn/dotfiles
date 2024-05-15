@@ -1,13 +1,14 @@
-{ config, lib, pkgs, ... }:
+{ inputs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+  imports = with inputs.self.nixosModules; [
+    inputs.self.nixosProfiles.base
+  ] ++ [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
 
-      ./services.nix
-    ];
+    ./services.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

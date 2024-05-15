@@ -1,14 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
-  boot = {
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-    kernelPackages = pkgs.linuxPackages_latest;
-    tmp.cleanOnBoot = true;
-  };
+  imports = with inputs.self.nixosModules; [
+    inputs.self.nixosProfiles.base
+  ];
 
   networking = {
     hostName = "shinx";

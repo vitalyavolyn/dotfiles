@@ -1,10 +1,6 @@
 { pkgs, version, ... }:
 
 {
-  imports = [
-    ./zsh.nix
-  ];
-
   home.packages = with pkgs; [
     #dev stuff
     httpie

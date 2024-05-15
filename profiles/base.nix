@@ -5,5 +5,10 @@
     boot
     nix
     locale
+    required-packages
+    user
+    zsh
   ];
+
+  environment.variables.FLAKE = "/etc/nixos";
 }

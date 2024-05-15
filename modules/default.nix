@@ -11,11 +11,15 @@ builtins.listToAttrs (builtins.map
     );
     value = import path;
   }) [
+  ./apps/kitty.nix
+  ./apps/vscode
   ./boot.nix
   ./fonts.nix
   ./gnome
-  ./kitty.nix
   ./locale.nix
   ./nix.nix
   ./pulseaudio.nix
+  ./required-packages.nix
+  ./user.nix
+  ./zsh.nix
 ])

@@ -3,6 +3,8 @@
 {
   imports = with inputs.self.nixosModules; [
     inputs.self.nixosProfiles.desktop-gnome
+
+    vscode
   ];
 
   boot.plymouth.enable = true;

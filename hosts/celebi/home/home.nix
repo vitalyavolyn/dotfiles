@@ -1,11 +1,9 @@
-{ pkgs, inputs, ... }: 
+{ pkgs, inputs, ... }:
 
 let
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
 in
 {
-  imports = [ ./vscode.nix ];
-
   home = {
     stateVersion = "20.09";
 

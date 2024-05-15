@@ -1,13 +1,13 @@
 { pkgs, lib, ... }:
 
 {
-  programs.vscode = with pkgs; {
+  home-manager.users.vitalya.programs.vscode = with pkgs; {
     enable = true;
     package = vscode;
     mutableExtensionsDir = false;
 
-    userSettings = lib.importJSON ./configs/vscode/settings.json;
-    keybindings = lib.importJSON ./configs/vscode/keybindings.json;
+    userSettings = lib.importJSON ./settings.json;
+    keybindings = lib.importJSON ./keybindings.json;
 
     extensions = with vscode-extensions; [
       jnoortheen.nix-ide
