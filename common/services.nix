@@ -18,7 +18,7 @@
       };
     };
 
-    tailscale.enable = true;
+    tailscale.enable = lib.mkDefault true;
 
     avahi = {
       enable = lib.mkDefault true;

@@ -27,7 +27,6 @@
 
   outputs = { self, nixpkgs, nixos-hardware, home-manager, spicetify-nix, hyprland, ... } @ inputs:
     let
-      # TODO only use for celebi
       globalModules = [
         home-manager.nixosModules.home-manager
 
