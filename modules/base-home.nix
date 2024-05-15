@@ -43,7 +43,7 @@
           signByDefault = true;
         };
         extraConfig = {
-          credential.helper="store";
+          credential.helper = "store";
           push.followTags = true;
           init.defaultBranch = "main";
         };

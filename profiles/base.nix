@@ -5,8 +5,10 @@
     base-home
     base-packages
     boot
+    docker
     locale
     nix
+    ssh-server
     user
     zsh
   ];

@@ -3,6 +3,9 @@
 {
   imports = with inputs.self.nixosModules; [
     inputs.self.nixosProfiles.base
+
+    avahi
+    tailscale
   ];
 
   networking = {

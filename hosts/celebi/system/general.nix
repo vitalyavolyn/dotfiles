@@ -4,6 +4,8 @@
   imports = with inputs.self.nixosModules; [
     inputs.self.nixosProfiles.desktop-gnome
 
+    avahi
+    tailscale
     vscode
   ];
 

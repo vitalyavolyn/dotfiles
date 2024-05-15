@@ -13,14 +13,18 @@ builtins.listToAttrs (builtins.map
   }) [
   ./apps/kitty.nix
   ./apps/vscode
+  ./avahi.nix
   ./base-home.nix
   ./base-packages.nix
   ./boot.nix
+  ./docker.nix
   ./fonts.nix
   ./gnome
   ./locale.nix
   ./nix.nix
   ./pulseaudio.nix
+  ./ssh-server.nix
+  ./tailscale.nix
   ./user.nix
   ./zsh.nix
 ])

@@ -20,8 +20,6 @@
       globalModules = [
         home-manager.nixosModules.home-manager
 
-        ./common
-
         {
           home-manager = {
             useGlobalPkgs = true;
