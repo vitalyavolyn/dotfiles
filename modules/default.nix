@@ -20,6 +20,7 @@ builtins.listToAttrs (builtins.map
   ./apps/minecraft.nix
   ./apps/qflipper.nix
   ./apps/spotify.nix
+  ./apps/steam-run.nix
   ./apps/streaming.nix
   ./apps/torrent.nix
   ./apps/vlc.nix

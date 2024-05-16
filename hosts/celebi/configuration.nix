@@ -21,6 +21,7 @@
     krita
     streaming
     vlc
+    # steam-run
   ];
 
   networking = {

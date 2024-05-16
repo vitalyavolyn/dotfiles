@@ -5,9 +5,6 @@
     stateVersion = "20.09";
 
     packages = with pkgs; [
-      # system utilities
-      steam-run
-      pavucontrol
     ];
 
     file = {

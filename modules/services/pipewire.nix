@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   sound.enable = true;
@@ -10,4 +10,8 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  home-manager.users.vitalya.home.packages = with pkgs; [
+    pavucontrol
+  ];
 }
