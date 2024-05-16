@@ -11,20 +11,29 @@ builtins.listToAttrs (builtins.map
     );
     value = import path;
   }) [
+  ./apps/keybase.nix
   ./apps/kitty.nix
+  ./apps/messaging.nix
+  ./apps/qflipper.nix
+  ./apps/spotify.nix
   ./apps/vscode
-  ./avahi.nix
+  ./apps/zsh.nix
   ./base-home.nix
   ./base-packages.nix
   ./boot.nix
-  ./docker.nix
   ./fonts.nix
   ./gnome
   ./locale.nix
   ./nix.nix
+  ./plymouth.nix
   ./pulseaudio.nix
-  ./ssh-server.nix
-  ./tailscale.nix
+  ./services/avahi.nix
+  ./services/docker.nix
+  ./services/homepage.nix
+  ./services/media-server.nix
+  ./services/shadowsocks.nix
+  ./services/ssh-server.nix
+  ./services/minecraft-aof6.nix
+  ./services/tailscale.nix
   ./user.nix
-  ./zsh.nix
 ])

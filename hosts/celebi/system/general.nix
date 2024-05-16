@@ -3,13 +3,15 @@
 {
   imports = with inputs.self.nixosModules; [
     inputs.self.nixosProfiles.desktop-gnome
+    inputs.self.nixosProfiles.home
 
-    avahi
-    tailscale
+    plymouth
     vscode
+    spotify
+    qflipper
+    keybase
+    messaging
   ];
-
-  boot.plymouth.enable = true;
 
   networking = {
     hostName = "celebi";

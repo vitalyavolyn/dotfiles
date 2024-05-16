@@ -1,8 +1,5 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
-let
-  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
-in
 {
   home = {
     stateVersion = "20.09";
@@ -10,28 +7,12 @@ in
     packages = with pkgs; [
       # system utilities
       pavucontrol
-      gparted
       steam-run
       vlc
 
-      # ranger preview utilities
-      atool
-      unzip
-      poppler_utils
-
       # internet stuff
       google-chrome
-      # webcord
-      (discord.override {
-        withOpenASAR = true;
-      })
-      tdesktop
       qbittorrent
-      dnsutils
-
-      # laptop stuff
-      acpi
-      acpilight
 
       # dev tools
       dbeaver
@@ -40,11 +21,6 @@ in
       mongodb-compass
       insomnia
       nixd
-
-      # launching ncalayer
-      xorg.xmessage
-      nssTools
-      libnotify
 
       # lifestyle & fun
       krita
@@ -80,14 +56,6 @@ in
     go = {
       enable = true;
       goPath = "go";
-    };
-
-    spicetify = {
-      enable = true;
-      theme = spicePkgs.themes.Default;
-      colorScheme = "flamingo";
-
-      enabledExtensions = with spicePkgs.extensions; [ popupLyrics ];
     };
   };
 }

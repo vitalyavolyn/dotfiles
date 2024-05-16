@@ -9,6 +9,7 @@
     curl
     speedtest-cli
     htop
+    dnsutils
   ];
 
   environment.variables.EDITOR = "vim";

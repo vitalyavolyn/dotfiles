@@ -14,6 +14,11 @@
       htop
       ranger
 
+      # ranger preview utilities
+      atool
+      unzip
+      poppler_utils
+
       # dev tools
       nodejs_latest
       yarn
