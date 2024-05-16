@@ -29,15 +29,17 @@ builtins.listToAttrs (builtins.map
   ./boot.nix
   ./fonts.nix
   ./gnome
+  ./lightdm-budgie.nix
   ./locale.nix
   ./nix.nix
   ./plymouth.nix
-  ./pulseaudio.nix
   ./services/avahi.nix
   ./services/docker.nix
   ./services/homepage.nix
   ./services/media-server.nix
   ./services/minecraft-aof6.nix
+  ./services/pipewire.nix
+  ./services/pulseaudio.nix
   ./services/shadowsocks.nix
   ./services/ssh-server.nix
   ./services/tailscale.nix
