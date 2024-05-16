@@ -19,6 +19,8 @@
         jellyfinKey = "dd16672806394eaeae1e5e4000d136a3";
       };
     }
+
+    chrome
   ];
 
   networking = {
