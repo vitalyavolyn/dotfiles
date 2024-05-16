@@ -11,12 +11,18 @@ builtins.listToAttrs (builtins.map
     );
     value = import path;
   }) [
+  ./apps/browser.nix
+  ./apps/dev
   ./apps/keybase.nix
   ./apps/kitty.nix
+  ./apps/krita.nix
   ./apps/messaging.nix
+  ./apps/minecraft.nix
   ./apps/qflipper.nix
   ./apps/spotify.nix
-  ./apps/vscode
+  ./apps/streaming.nix
+  ./apps/torrent.nix
+  ./apps/vlc.nix
   ./apps/zsh.nix
   ./base-home.nix
   ./base-packages.nix
@@ -31,9 +37,9 @@ builtins.listToAttrs (builtins.map
   ./services/docker.nix
   ./services/homepage.nix
   ./services/media-server.nix
+  ./services/minecraft-aof6.nix
   ./services/shadowsocks.nix
   ./services/ssh-server.nix
-  ./services/minecraft-aof6.nix
   ./services/tailscale.nix
   ./user.nix
 ])

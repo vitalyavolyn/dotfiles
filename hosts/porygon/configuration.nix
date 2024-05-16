@@ -2,6 +2,9 @@
 
 {
   imports = with inputs.self.nixosModules; [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+
     inputs.self.nixosProfiles.base
 
     shadowsocks
@@ -9,9 +12,6 @@
     {
       services.minecraft-aof6.volumes = [ "/mnt/extra/minecraft-aof6/data:/data" ];
     }
-  ] ++ [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
   ];
 
   networking = {

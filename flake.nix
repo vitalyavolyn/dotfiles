@@ -51,7 +51,7 @@
                 home-manager.users.vitalya.imports = [
                   spicetify-nix.homeManagerModule
 
-                  ./hosts/celebi/home/home.nix
+                  ./hosts/celebi/home.nix
                 ];
               }
             ];

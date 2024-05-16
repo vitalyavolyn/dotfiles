@@ -2,6 +2,15 @@
 
 {
   home-manager.users.vitalya = {
+    home = {
+      pointerCursor = {
+        x11.enable = true;
+        package = pkgs.paper-icon-theme;
+        name = "Paper";
+        size = 16;
+      };
+    };
+
     gtk = {
       enable = true;
       theme = {
