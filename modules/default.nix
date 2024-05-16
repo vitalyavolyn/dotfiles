@@ -1,7 +1,8 @@
-# stolen from vyorkin/nixos-config
+# partially stolen from vyorkin/nixos-config
+{ lib, ... }:
 
 builtins.listToAttrs (builtins.map
-  (path: {
+  (path: rec {
     name = builtins.head (
       let
         b = builtins.baseNameOf path;
@@ -9,7 +10,16 @@ builtins.listToAttrs (builtins.map
       in
       if isNull m then [ b ] else m
     );
-    value = import path;
+    value = {
+      imports = [path];
+      options.modules = {
+        ${name}.enable = lib.mkOption {
+          type = lib.types.bool;
+          default = true;
+          description = "Whether to enable ${name}.";
+        };
+      };
+    };
   }) [
   ./apps/browser.nix
   ./apps/dev

@@ -1,5 +1,9 @@
-{ ... }:
+{ lib, config, ... }:
 
+let
+  hasModule = name: builtins.hasAttr name config.modules;
+  optionals = lib.optionals;
+in
 {
   programs.dconf.enable = true;
 
@@ -39,6 +43,15 @@
         enabled-extensions = [
           "appindicatorsupport@rgcjonas.gmail.com"
         ];
+
+        favorite-apps =
+          ["org.gnome.Nautilus.desktop"]
+          ++ ["kitty.desktop"]
+          ++ optionals (hasModule "browser") ["google-chrome.desktop"]
+          ++ optionals (hasModule "dev") ["code.desktop"]
+          ++ optionals (hasModule "messaging") ["org.telegram.desktop.desktop"]
+          ++ optionals (hasModule "messaging") ["discord.desktop"]
+          ++ optionals (hasModule "spotify") ["spotify.desktop"];
       };
 
       "org/gnome/mutter" = {

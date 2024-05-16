@@ -32,7 +32,7 @@
       ];
     in
     {
-      nixosModules = import ./modules;
+      nixosModules = (import ./modules { lib = nixpkgs.lib; });
       nixosProfiles = import ./profiles;
 
       nixosConfigurations = {
