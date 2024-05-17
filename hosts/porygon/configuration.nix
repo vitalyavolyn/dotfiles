@@ -20,7 +20,10 @@
       services.nginx.virtualHosts."hass.porygon.vitalya.me" = {
         addSSL = true;
         enableACME = true;
-        locations."/".proxyPass = "http://shinx-ts:8123/"; 
+        locations."/" = {
+          proxyPass = "http://shinx-ts:8123/";
+          proxyWebsockets = true;
+        };
       };
     }
   ];
