@@ -23,6 +23,7 @@
           enableACME = true;
           locations."/" = {
             return = "200 'hiiii :3'";
+            extraConfig = "add_header Content-Type text/plain;";
           };
         };
         "hass.porygon.vitalya.me" = {
