@@ -33,4 +33,9 @@
     geary
     evince
   ]);
+
+  # disable screenshot sound
+  home-manager.users.vitalya.xdg.dataFile = {
+    "sounds/__custom/screen-capture.disabled".text = "";
+  };
 }

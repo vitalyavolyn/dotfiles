@@ -16,7 +16,7 @@
 
     homepage
     {
-      services.homepage-dashboard = {
+      modules.homepage = {
         baseUrl = "http://shinx.local";
         # these services are local, so api keys are fine to be public
         # (if you somehow get access to them, i encourage you to watch some pokemon)

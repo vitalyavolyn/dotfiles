@@ -2,7 +2,7 @@
 
 let
   services = config.services;
-  configRoot = services.homepage-dashboard;
+  configRoot = config.modules.homepage;
   url = configRoot.baseUrl;
 
   # why can't ports be configured
@@ -70,19 +70,19 @@ let
 in
 {
   options = {
-    services.homepage-dashboard.baseUrl = lib.mkOption {
+    modules.homepage.baseUrl = lib.mkOption {
       type = lib.types.str;
       description = "Base url for homepage-dashboard";
     };
-    services.homepage-dashboard.sonarrKey = lib.mkOption {
+    modules.homepage.sonarrKey = lib.mkOption {
       type = lib.types.str;
       description = "Sonarr key";
     };
-    services.homepage-dashboard.radarrKey = lib.mkOption {
+    modules.homepage.radarrKey = lib.mkOption {
       type = lib.types.str;
       description = "Radarr key";
     };
-    services.homepage-dashboard.jellyfinKey = lib.mkOption {
+    modules.homepage.jellyfinKey = lib.mkOption {
       type = lib.types.str;
       description = "Jellyfin key";
     };

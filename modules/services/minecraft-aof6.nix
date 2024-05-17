@@ -1,10 +1,10 @@
 { lib, config, ... }:
 
 let
-  cfg = config.services.minecraft-aof6;
+  cfg = config.modules.minecraft-aof6;
 in
 {
-  options.services.minecraft-aof6.volumes = lib.mkOption {
+  options.modules.minecraft-aof6.volumes = lib.mkOption {
     type = lib.types.listOf lib.types.str;
     description = "Volumes to mount";
   };
