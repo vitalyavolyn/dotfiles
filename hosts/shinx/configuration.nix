@@ -26,6 +26,9 @@
       };
     }
 
+    home-assistant
+    { modules.home-assistant.volumes = [ "/mnt/media/home-assistant:/config" ]; }
+
     browser
   ];
 

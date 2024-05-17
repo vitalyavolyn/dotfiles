@@ -11,7 +11,7 @@ builtins.listToAttrs (builtins.map
       if isNull m then [ b ] else m
     );
     value = {
-      imports = [path];
+      imports = [ path ];
       options.modules = {
         ${name}.enable = lib.mkOption {
           type = lib.types.bool;
@@ -46,6 +46,7 @@ builtins.listToAttrs (builtins.map
   ./plymouth.nix
   ./services/avahi.nix
   ./services/docker.nix
+  ./services/home-assistant.nix
   ./services/homepage.nix
   ./services/media-server.nix
   ./services/minecraft-aof6.nix

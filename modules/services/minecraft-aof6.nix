@@ -6,7 +6,7 @@ in
 {
   options.modules.minecraft-aof6.volumes = lib.mkOption {
     type = lib.types.listOf lib.types.str;
-    description = "Volumes to mount";
+    description = "Volumes to mount (needs /data)";
   };
 
   config = {
@@ -41,5 +41,7 @@ in
         "20m"
       ];
     };
+
+    networking.firewall.allowedTCPPorts = [ 1337 ];
   };
 }
