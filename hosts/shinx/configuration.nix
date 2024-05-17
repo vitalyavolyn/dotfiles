@@ -9,7 +9,6 @@
     ./services.nix
 
     inputs.self.nixosProfiles.desktop-budgie
-    inputs.self.nixosProfiles.home
 
     media-server
     { services.deluge.config.download_location = "/mnt/media/downloads/complete"; }
@@ -29,6 +28,8 @@
     home-assistant
     { modules.home-assistant.volumes = [ "/mnt/media/home-assistant:/config" ]; }
 
+    tailscale
+    avahi
     browser
   ];
 

@@ -7,8 +7,9 @@
     ./hardware-configuration.nix
 
     inputs.self.nixosProfiles.desktop-gnome
-    inputs.self.nixosProfiles.home
 
+    tailscale
+    avahi
     plymouth
     dev
     spotify

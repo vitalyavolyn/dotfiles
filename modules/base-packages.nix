@@ -10,6 +10,7 @@
     speedtest-cli
     htop
     dnsutils
+    tree
   ];
 
   environment.variables.EDITOR = "vim";
