@@ -50,6 +50,7 @@ builtins.listToAttrs (builtins.map
   ./services/homepage.nix
   ./services/media-server.nix
   ./services/minecraft-aof6.nix
+  ./services/nginx.nix
   ./services/pipewire.nix
   ./services/pulseaudio.nix
   ./services/shadowsocks.nix

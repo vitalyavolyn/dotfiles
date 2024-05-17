@@ -14,6 +14,15 @@
     {
       modules.minecraft-aof6.volumes = [ "/mnt/extra/minecraft-aof6/data:/data" ];
     }
+
+    nginx
+    {
+      services.nginx.virtualHosts."hass.porygon.vitalya.me" = {
+        addSSL = true;
+        enableACME = true;
+        locations."/".proxyPass = "http://shinx-ts:8123/"; 
+      };
+    }
   ];
 
   networking = {
