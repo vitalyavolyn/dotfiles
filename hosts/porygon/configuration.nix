@@ -17,12 +17,21 @@
 
     nginx
     {
-      services.nginx.virtualHosts."hass.porygon.vitalya.me" = {
-        addSSL = true;
-        enableACME = true;
-        locations."/" = {
-          proxyPass = "http://shinx-ts:8123/";
-          proxyWebsockets = true;
+      services.nginx.virtualHosts = {
+        "porygon.vitalya.me" = {
+          addSSL = true;
+          enableACME = true;
+          locations."/" = {
+            return = "200 'hiiii :3'";
+          };
+        };
+        "hass.porygon.vitalya.me" = {
+          addSSL = true;
+          enableACME = true;
+          locations."/" = {
+            proxyPass = "http://shinx-ts:8123/";
+            proxyWebsockets = true;
+          };
         };
       };
     }
