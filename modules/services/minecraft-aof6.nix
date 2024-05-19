@@ -21,7 +21,7 @@ in
         TYPE = "FABRIC";
         FABRIC_LAUNCHER_VERSION = "1.0.1";
         FABRIC_LOADER_VERSION = "0.14.25";
-        INIT_MEMORY = "4G";
+        INIT_MEMORY = "10G";
         MAX_MEMORY = "16G";
         RCON_PASSWORD = "minecraft-aof6";
         USE_AIKAR_FLAGS = "true";
