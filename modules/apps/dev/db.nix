@@ -2,7 +2,7 @@
 
 {
   home-manager.users.vitalya.home.packages = with pkgs; [
-    dbeaver
+    dbeaver-bin
     mongodb-compass
     robo3t
   ];
