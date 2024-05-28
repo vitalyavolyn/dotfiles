@@ -4,7 +4,7 @@
   nix.settings.trusted-users = [ "vitalya" ];
 
   users = {
-    mutableUsers = false;
+    # mutableUsers = false;
 
     users.vitalya = {
       extraGroups = [ "wheel" "networkmanager" "docker" "video" "input" "audio" ];
