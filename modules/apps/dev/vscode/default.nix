@@ -34,19 +34,13 @@
         name = "vscode-theme-onedark";
         publisher = "akamud";
         version = "2.3.0";
-        sha256 = "sha256-8GGv4L4poTYjdkDwZxgNYajuEmIB5XF1mhJMxO2Ho84=";
+        sha256 = "1km3hznw8k0jk9sp3r81c89fxa311lc6gw20fqikd899pvhayqgh";
       }
       {
         name = "supermaven";
         publisher = "supermaven";
-        version = "0.1.45";
-        sha256 = "sha256-qAi++JbivmMH1nTZh/pRkoae35OLUypElxPjWlrMxxk=";
-      }
-      {
-        name = "bongocat-buddy";
-        publisher = "JohnHarrison";
-        version = "1.6.0";
-        sha256 = "sha256-Oz7cmu3uY9De+EU3V/G59f2LeAOrwpwftxtIp/IPT3c=";
+        version = "0.2.1";
+        sha256 = "03i32zkgbcnh5vpmcnab8dvl6mf3dd9kzw1izms2lhjn5kznxgiw";
       }
     ];
   };

@@ -15,7 +15,7 @@
     };
   };
 
-  outputs = { nixpkgs, nixos-hardware, home-manager, spicetify-nix, ... } @ inputs:
+  outputs = { nixpkgs, nixos-hardware, home-manager, ... } @ inputs:
     let
       globalModules = [
         home-manager.nixosModules.home-manager
@@ -49,8 +49,6 @@
 
               {
                 home-manager.users.vitalya.imports = [
-                  spicetify-nix.homeManagerModule
-
                   ./hosts/celebi/home.nix
                 ];
               }
