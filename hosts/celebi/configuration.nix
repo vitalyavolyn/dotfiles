@@ -23,6 +23,7 @@
     streaming
     vlc
     # steam-run
+    docker
   ];
 
   networking = {

@@ -19,10 +19,10 @@ in
     virtualisation.oci-containers.containers."homeassistant" = {
       volumes = cfg.volumes ++ lib.optionals cfg.addDbusVolume [ "/run/dbus:/run/dbus:ro" ];
       environment.TZ = config.time.timeZone;
-      # TODO: add systemd timer to update images
       image = "ghcr.io/home-assistant/home-assistant:stable";
       extraOptions = [
         "--network=host"
+        "--pull=newer"
       ];
     };
 

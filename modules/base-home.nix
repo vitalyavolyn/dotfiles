@@ -22,7 +22,6 @@
       # dev tools
       nodejs_latest
       yarn
-      docker-compose
       httpie
     ];
 

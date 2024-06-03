@@ -39,6 +39,7 @@ in
         "1s"
         "--health-start-period"
         "20m"
+        "--pull=newer"
       ];
     };
 

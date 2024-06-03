@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   virtualisation.docker = {
@@ -6,4 +6,8 @@
     enableOnBoot = false;
     autoPrune.enable = true;
   };
+
+  home-manager.users.vitalya.home.packages = with pkgs; [
+    docker-compose
+  ];
 }
