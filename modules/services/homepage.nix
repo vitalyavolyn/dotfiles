@@ -12,12 +12,14 @@ let
   radarrPort = "7878";
   radarrKey = configRoot.radarrKey;
 
+  bazarrPort = "6767";
+  bazarrKey = configRoot.bazarrKey;
+
   jellyfinPort = "8096";
   jellyfinKey = configRoot.jellyfinKey;
 
   delugePort = toString services.deluge.web.port;
 
-  # todo: add bazarr
   mediaServices = lib.optionals services.sonarr.enable [
     {
       Sonarr = {
@@ -39,6 +41,18 @@ let
           type = "radarr";
           url = "http://localhost:${radarrPort}";
           key = radarrKey;
+        };
+      };
+    }
+  ]++ lib.optionals services.bazarr.enable [
+    {
+      Bazarr = {
+        icon = "bazarr.png";
+        href = "http://${url}:${bazarrPort}/";
+        widget = {
+          type = "bazarr";
+          url = "http://localhost:${bazarrPort}";
+          key = bazarrKey;
         };
       };
     }
@@ -81,6 +95,10 @@ in
     modules.homepage.radarrKey = lib.mkOption {
       type = lib.types.str;
       description = "Radarr key";
+    };
+    modules.homepage.bazarrKey = lib.mkOption {
+      type = lib.types.str;
+      description = "Bazarr key";
     };
     modules.homepage.jellyfinKey = lib.mkOption {
       type = lib.types.str;

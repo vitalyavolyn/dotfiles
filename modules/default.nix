@@ -52,6 +52,7 @@ builtins.listToAttrs (builtins.map
   ./services/minecraft-aof6.nix
   ./services/nginx.nix
   ./services/pipewire.nix
+  ./services/podman-auto-prune.nix
   ./services/pulseaudio.nix
   ./services/shadowsocks.nix
   ./services/ssh-server.nix

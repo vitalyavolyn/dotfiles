@@ -10,6 +10,7 @@
     shadowsocks
     tailscale
 
+    podman-auto-prune
     minecraft-aof6
     {
       modules.minecraft-aof6.volumes = [ "/mnt/extra/minecraft-aof6/data:/data" ];
