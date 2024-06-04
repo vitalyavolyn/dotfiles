@@ -5,7 +5,6 @@
     shadowsocks = {
       enable = true;
       port = 8388;
-      localAddress = "0.0.0.0";
       passwordFile = "/etc/shadowsocks_key";
       encryptionMethod = "aes-256-cfb";
       extraConfig = {

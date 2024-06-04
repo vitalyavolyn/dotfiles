@@ -8,6 +8,7 @@
     inputs.self.nixosProfiles.base
 
     shadowsocks
+    { services.shadowsocks.localAddress = "porygon.vitalya.me"; }
     tailscale
 
     podman-auto-prune
