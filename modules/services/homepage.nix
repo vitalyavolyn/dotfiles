@@ -44,7 +44,7 @@ let
         };
       };
     }
-  ]++ lib.optionals services.bazarr.enable [
+  ] ++ lib.optionals services.bazarr.enable [
     {
       Bazarr = {
         icon = "bazarr.png";

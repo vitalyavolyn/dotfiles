@@ -35,4 +35,9 @@
   nixpkgs.config = import ./nixpkgs-config.nix;
 
   system.stateVersion = "20.09";
+
+  services.udev.extraRules = ''
+    # Temporarily disable internal keyboard
+    KERNELS=="input1",ATTRS{id/bustype}=="0011",ENV{LIBINPUT_IGNORE_DEVICE}="1"
+  '';
 }
