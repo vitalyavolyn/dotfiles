@@ -42,6 +42,18 @@
         version = "0.2.1";
         sha256 = "03i32zkgbcnh5vpmcnab8dvl6mf3dd9kzw1izms2lhjn5kznxgiw";
       }
+      {
+        name = "sync-rsync";
+        publisher = "vscode-ext";
+        version = "0.36.0";
+        sha256 = "sha256-0b/OHLZfXo0NAVAVkzZSqMGDzF0uvPRoiqsZtW1iOdA=";
+      }
+      {
+        name = "vscode-commands";
+        publisher = "fabiospampinato";
+        version = "2.0.2";
+        sha256 = "sha256-W8P73yzkZRRN2Tq8uz8tWtNFSrjblw/Gzps9ldMPaaw=";
+      }
     ];
   };
 }
