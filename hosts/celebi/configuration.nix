@@ -8,6 +8,7 @@
 
     inputs.self.nixosProfiles.desktop-gnome
 
+    gnome-xrdp
     tailscale
     avahi
     plymouth

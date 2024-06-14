@@ -46,6 +46,7 @@ builtins.listToAttrs (builtins.map
   ./plymouth.nix
   ./services/avahi.nix
   ./services/docker.nix
+  ./services/gnome-xrdp.nix
   ./services/home-assistant.nix
   ./services/homepage.nix
   ./services/media-server.nix
