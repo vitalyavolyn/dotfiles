@@ -1,7 +1,11 @@
 { pkgs, inputs, ... }: {
   imports = with inputs.self.nixosModules; [
     inputs.self.nixosProfiles.base-darwin
+
+    dev
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
@@ -27,15 +31,21 @@
   homebrew = {
     enable = true;
 
+    onActivation.cleanup = "uninstall";
+
     casks = [
-      "visual-studio-code"
+      # "visual-studio-code"
       "telegram"
       "google-chrome"
       "microsoft-teams"
       "mongodb-compass"
       "tunnelblick"
+      "steam"
+      "spotify"
     ];
   };
+
+  security.pam.enableSudoTouchIdAuth = true;
 
   users.users.vitalya.home = "/Users/vitalya";
   home-manager.users.vitalya.home.stateVersion = "24.05";

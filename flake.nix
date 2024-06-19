@@ -76,7 +76,7 @@
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
             modules = globalModules ++ [
-        home-manager.nixosModules.home-manager
+              home-manager.nixosModules.home-manager
               ./hosts/shinx/configuration.nix
 
               nixos-hardware.nixosModules.common-cpu-intel
@@ -94,7 +94,7 @@
             system = "aarch64-linux";
             specialArgs = { inherit inputs; };
             modules = globalModules ++ [
-        home-manager.nixosModules.home-manager
+              home-manager.nixosModules.home-manager
               ./hosts/porygon/configuration.nix
 
               {
@@ -110,7 +110,7 @@
         specialArgs = { inherit inputs; };
         modules = globalModules ++ [
           nix-homebrew.darwinModules.nix-homebrew
-        home-manager.darwinModules.home-manager
+          home-manager.darwinModules.home-manager
 
           ./hosts/applin/configuration.nix
         ];
