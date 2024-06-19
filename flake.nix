@@ -13,9 +13,12 @@
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, nixos-hardware, home-manager, ... } @ inputs:
+  outputs = { nixpkgs, nixos-hardware, home-manager, nix-darwin, ... } @ inputs:
     let
       globalModules = [
         home-manager.nixosModules.home-manager
@@ -85,6 +88,12 @@
               }
             ];
           };
+      };
+
+      darwinConfigurations."applin" = nix-darwin.lib.darwinSystem {
+        modules = [
+          ./hosts/applin/configuration.nix
+        ];
       };
     };
 
