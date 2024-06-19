@@ -16,13 +16,26 @@
 
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
   };
 
-  outputs = { nixpkgs, nixos-hardware, home-manager, nix-darwin, ... } @ inputs:
+  outputs = { nixpkgs, nixos-hardware, home-manager, nix-darwin, nix-homebrew, ... } @ inputs:
     let
       globalModules = [
-        home-manager.nixosModules.home-manager
-
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -44,6 +57,7 @@
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
             modules = globalModules ++ [
+              home-manager.nixosModules.home-manager
               ./hosts/celebi/configuration.nix
 
               nixos-hardware.nixosModules.common-pc-laptop
@@ -62,6 +76,7 @@
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
             modules = globalModules ++ [
+        home-manager.nixosModules.home-manager
               ./hosts/shinx/configuration.nix
 
               nixos-hardware.nixosModules.common-cpu-intel
@@ -79,6 +94,7 @@
             system = "aarch64-linux";
             specialArgs = { inherit inputs; };
             modules = globalModules ++ [
+        home-manager.nixosModules.home-manager
               ./hosts/porygon/configuration.nix
 
               {
@@ -91,7 +107,11 @@
       };
 
       darwinConfigurations."applin" = nix-darwin.lib.darwinSystem {
-        modules = [
+        specialArgs = { inherit inputs; };
+        modules = globalModules ++ [
+          nix-homebrew.darwinModules.nix-homebrew
+        home-manager.darwinModules.home-manager
+
           ./hosts/applin/configuration.nix
         ];
       };

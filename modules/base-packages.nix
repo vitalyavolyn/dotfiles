@@ -11,6 +11,7 @@
     htop
     dnsutils
     tree
+    gnupg
   ];
 
   environment.variables.EDITOR = "vim";

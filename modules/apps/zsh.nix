@@ -26,7 +26,6 @@
       # TODO: how to make REPORTTIME work?
       localVariables = {
         PATH = "$PATH:$HOME/bin:$HOME/.pub-cache/bin:$HOME/.yarn/bin";
-        EDITOR = "vim";
       };
 
       plugins = with pkgs; [
@@ -53,10 +52,6 @@
     programs.fzf = {
       enable = true;
       enableZshIntegration = true;
-    };
-
-    programs.carapace = {
-      enable = true;
     };
   };
 }
