@@ -20,6 +20,7 @@
 
       dbaeumer.vscode-eslint
       esbenp.prettier-vscode
+      bradlc.vscode-tailwindcss
 
       wmaurer.change-case
       redhat.vscode-yaml
