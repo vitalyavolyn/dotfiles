@@ -34,7 +34,6 @@
     onActivation.cleanup = "uninstall";
 
     casks = [
-      # "visual-studio-code"
       "telegram"
       "google-chrome"
       "microsoft-teams"
@@ -42,6 +41,7 @@
       "tunnelblick"
       "steam"
       "spotify"
+      "chatgpt"
     ];
   };
 

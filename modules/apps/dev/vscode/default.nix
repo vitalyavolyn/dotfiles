@@ -55,6 +55,12 @@
         version = "2.0.2";
         sha256 = "sha256-W8P73yzkZRRN2Tq8uz8tWtNFSrjblw/Gzps9ldMPaaw=";
       }
+      {
+        name = "remote-explorer";
+        publisher = "ms-vscode";
+        version = "0.5.2024061309";
+        sha256 = "sha256-L9/4lB47rCpAscZlJYDDHMWXhw+FEHHNvqN53j5/TMM=";
+      }
     ];
   };
 }

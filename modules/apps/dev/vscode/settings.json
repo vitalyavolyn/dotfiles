@@ -68,5 +68,7 @@
         }
       }
     }
-  }
+  },
+
+  "update.mode": "none"
 }
