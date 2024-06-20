@@ -3,9 +3,6 @@
 {
   home-manager.users.vitalya = {
     home.packages = with pkgs; [
-      #dev stuff
-      httpie
-
       # system utilities
       nixpkgs-fmt
       p7zip

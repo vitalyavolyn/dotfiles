@@ -12,8 +12,6 @@
 
   nix.settings.experimental-features = "nix-command flakes";
 
-  programs.zsh.enable = true;
-
   nix-homebrew = {
     enable = true;
 
@@ -42,6 +40,7 @@
       "steam"
       "spotify"
       "chatgpt"
+      "clickup"
     ];
   };
 
