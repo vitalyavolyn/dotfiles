@@ -41,8 +41,13 @@
       "spotify"
       "chatgpt"
       "clickup"
+      "prismlauncher" # prismlauncher via nix no buildy :(
     ];
   };
+
+  home-manager.users.vitalya.home.packages = with pkgs; [
+    jdk17
+  ];
 
   security.pam.enableSudoTouchIdAuth = true;
 
