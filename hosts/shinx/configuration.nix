@@ -31,6 +31,7 @@
 
     tailscale
     avahi
+    docker
     browser
   ];
 
