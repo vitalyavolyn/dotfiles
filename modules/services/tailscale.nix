@@ -1,10 +1,10 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   services.tailscale.enable = true;
 
-  networking.firewall = {
-    trustedInterfaces = [ "tailscale0" ];
-    allowedUDPPorts = [ config.services.tailscale.port ];
-  };
+  networking = if pkgs.stdenv.isLinux then {
+    firewall.trustedInterfaces = [ "tailscale0" ];
+    firewall.allowedUDPPorts = [ config.services.tailscale.port ];
+  } else {};
 }

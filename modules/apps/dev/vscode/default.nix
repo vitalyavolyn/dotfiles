@@ -10,6 +10,8 @@
     keybindings = lib.importJSON ./keybindings.json;
 
     extensions = with vscode-extensions; [
+      vscodevim.vim
+
       jnoortheen.nix-ide
 
       eamodio.gitlens

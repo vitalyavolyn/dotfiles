@@ -3,6 +3,7 @@
     inputs.self.nixosProfiles.base-darwin
 
     dev
+    tailscale
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -42,6 +43,7 @@
       "chatgpt"
       "clickup"
       "prismlauncher" # prismlauncher via nix no buildy :(
+      "discord"
     ];
   };
 
