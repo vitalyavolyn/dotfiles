@@ -44,6 +44,7 @@
       "clickup"
       "prismlauncher" # prismlauncher via nix no buildy :(
       "discord"
+      "jellyfin-media-player"
     ];
   };
 
