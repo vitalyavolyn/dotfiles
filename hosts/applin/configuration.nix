@@ -48,6 +48,10 @@
       "ticktick"
       "rocket"
       "obs"
+      "vlc"
+    ];
+
+    brews = [
     ];
   };
 
