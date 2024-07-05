@@ -25,7 +25,7 @@
 
       # TODO: how to make REPORTTIME work?
       localVariables = {
-        PATH = "$PATH:$HOME/bin:$HOME/.pub-cache/bin:$HOME/.yarn/bin:/opt/homebrew/bin";
+        PATH = "$PATH:$HOME/bin:$HOME/.pub-cache/bin:$HOME/.yarn/bin";
       };
 
       plugins = with pkgs; [
