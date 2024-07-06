@@ -1,16 +1,18 @@
 { lib, config, ... }:
 
 let
-  cfg = config.modules.minecraft-insdustrial-village;
+  cfg = config.modules.minecraft-industrial-village;
 in
 {
-  options.modules.minecraft-insdustrial-village.volumes = lib.mkOption {
+  options.modules.minecraft-industrial-village.volumes = lib.mkOption {
     type = lib.types.listOf lib.types.str;
     description = "Volumes to mount (needs /data)";
   };
 
   config = {
-    virtualisation.oci-containers.containers."minecraft-insdustrial-village" = {
+    age.secrets.curseforge-token.file = ../../secrets/curseforge-token.age;
+
+    virtualisation.oci-containers.containers."minecraft-industrial-village" = {
       autoStart = true;
       image = "docker.io/itzg/minecraft-server:java17";
       volumes = cfg.volumes;
@@ -21,7 +23,7 @@ in
         CF_SLUG = "industrial-village";
         INIT_MEMORY = "10G";
         MAX_MEMORY = "16G";
-        RCON_PASSWORD = "minecraft-insdustrial-village";
+        RCON_PASSWORD = "minecraft-industrial-village";
         USE_AIKAR_FLAGS = "true";
       };
       environmentFiles = [
@@ -29,7 +31,7 @@ in
       ];
       ports = [ "0.0.0.0:1337:25565" ];
       extraOptions = [
-        "--hostname=minecraft-insdustrial-village"
+        "--hostname=minecraft-industrial-village"
         "--health-cmd"
         "mc-health"
         "--health-interval"
