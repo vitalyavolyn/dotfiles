@@ -31,11 +31,15 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
+
+    agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = { nixpkgs, nixos-hardware, home-manager, nix-darwin, nix-homebrew, ... } @ inputs:
+  outputs = { nixpkgs, nixos-hardware, home-manager, nix-darwin, nix-homebrew, agenix, ... } @ inputs:
     let
       globalModules = [
+        agenix.nixosModules.default
+
         {
           home-manager = {
             useGlobalPkgs = true;

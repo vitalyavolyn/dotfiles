@@ -12,9 +12,11 @@
     tailscale
 
     podman-auto-prune
-    minecraft-aof6
+    # minecraft-aof6
+    minecraft-industrial-village
     {
-      modules.minecraft-aof6.volumes = [ "/mnt/extra/minecraft-aof6/data:/data" ];
+      # modules.minecraft-aof6.volumes = [ "/mnt/extra/minecraft-aof6/data:/data" ];
+      modules.minecraft-industrial-village.volumes = [ "/mnt/extra/minecraft-industrial-village/data:/data" ];
     }
 
     nginx
