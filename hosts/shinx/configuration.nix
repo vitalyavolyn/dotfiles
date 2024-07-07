@@ -31,6 +31,8 @@
 
     n8n
 
+    adguard-home
+
     tailscale
     avahi
     docker

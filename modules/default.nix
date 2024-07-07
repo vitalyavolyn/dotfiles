@@ -44,6 +44,7 @@ builtins.listToAttrs (builtins.map
   ./locale.nix
   ./nix.nix
   ./plymouth.nix
+  ./services/adguard-home.nix
   ./services/avahi.nix
   ./services/docker.nix
   ./services/gnome-xrdp.nix
