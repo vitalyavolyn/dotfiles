@@ -24,7 +24,7 @@ let
     {
       Sonarr = {
         icon = "sonarr.png";
-        href = "http://${url}:${sonarrPort}/";
+        href = "${url}:${sonarrPort}/";
         widget = {
           type = "sonarr";
           url = "http://localhost:${sonarrPort}";
@@ -36,7 +36,7 @@ let
     {
       Radarr = {
         icon = "radarr.png";
-        href = "http://${url}:${radarrPort}/";
+        href = "${url}:${radarrPort}/";
         widget = {
           type = "radarr";
           url = "http://localhost:${radarrPort}";
@@ -48,7 +48,7 @@ let
     {
       Bazarr = {
         icon = "bazarr.png";
-        href = "http://${url}:${bazarrPort}/";
+        href = "${url}:${bazarrPort}/";
         widget = {
           type = "bazarr";
           url = "http://localhost:${bazarrPort}";
@@ -60,7 +60,7 @@ let
     {
       Jellyfin = {
         icon = "jellyfin.png";
-        href = "http://${url}:${jellyfinPort}/web/index.html";
+        href = "${url}:${jellyfinPort}/web/index.html";
         widget = {
           type = "jellyfin";
           url = "http://localhost:${jellyfinPort}";
@@ -72,7 +72,7 @@ let
     {
       Deluge = {
         icon = "deluge.png";
-        href = "http://${url}:${delugePort}/";
+        href = "${url}:${delugePort}/";
         widget = {
           type = "deluge";
           url = "http://localhost:${delugePort}";
