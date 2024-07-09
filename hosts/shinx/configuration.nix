@@ -29,8 +29,6 @@
     home-assistant
     { modules.home-assistant.volumes = [ "/mnt/media/home-assistant:/config" ]; }
 
-    n8n
-
     adguard-home
 
     tailscale
