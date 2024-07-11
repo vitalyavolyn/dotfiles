@@ -32,18 +32,14 @@
       dart-code.dart-code
 
       ziglang.vscode-zig
+
+      vscode-extensions.supermaven.supermaven
     ] ++ vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "vscode-theme-onedark";
         publisher = "akamud";
         version = "2.3.0";
         sha256 = "1km3hznw8k0jk9sp3r81c89fxa311lc6gw20fqikd899pvhayqgh";
-      }
-      {
-        name = "supermaven";
-        publisher = "supermaven";
-        version = "0.2.1";
-        sha256 = "03i32zkgbcnh5vpmcnab8dvl6mf3dd9kzw1izms2lhjn5kznxgiw";
       }
       {
         name = "sync-rsync";
@@ -60,8 +56,8 @@
       {
         name = "remote-explorer";
         publisher = "ms-vscode";
-        version = "0.5.2024061309";
-        sha256 = "sha256-L9/4lB47rCpAscZlJYDDHMWXhw+FEHHNvqN53j5/TMM=";
+        version = "0.5.2024070409";
+        sha256 = "sha256-YwmsZii8TvBhloNQi6mezusEf/SmIq3i1ZNyKN5j1sU=";
       }
     ];
   };
