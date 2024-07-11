@@ -12,10 +12,8 @@
     desktopManager.gnome.enable = true;
   };
 
-  environment.systemPackages = with pkgs.gnome; [
+  environment.systemPackages = with pkgs; [
     gnome-tweaks
-
-    pkgs.xwaylandvideobridge
   ] ++ (with pkgs.gnomeExtensions; [
     appindicator
   ]);
@@ -25,13 +23,12 @@
 
   environment.gnome.excludePackages = (with pkgs; [
     gnome-tour
-    gnome-connections
-  ]) ++ (with pkgs.gnome; [
-    gnome-music
     gnome-terminal
     epiphany
     geary
-    evince
+    evince   gnome-connections
+  ]) ++ (with pkgs.gnome; [
+    gnome-music
   ]);
 
   # disable screenshot sound

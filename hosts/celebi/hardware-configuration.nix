@@ -40,13 +40,13 @@
     VDPAU_DRIVER = "va_gl";
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       intel-compute-runtime
       ocl-icd
     ];
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   services.xserver.videoDrivers = [ "modesetting" ];
