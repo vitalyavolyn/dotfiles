@@ -5,7 +5,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
-    inputs.self.nixosProfiles.base
+    inputs.self.nixosProfiles.base-linux
 
     shadowsocks
     { services.shadowsocks.localAddress = "0.0.0.0"; }

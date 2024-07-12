@@ -2,7 +2,7 @@
 
 {
   imports = with inputs.self.nixosModules; [
-    ./base.nix
+    ./base-linux.nix
 
     kitty
     fonts

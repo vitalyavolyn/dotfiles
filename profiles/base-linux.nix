@@ -10,6 +10,7 @@
     ssh-server
     user
     zsh
+    fail2ban
   ];
 
   environment.variables.FLAKE = "/etc/nixos";

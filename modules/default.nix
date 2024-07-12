@@ -47,6 +47,7 @@ builtins.listToAttrs (builtins.map
   ./services/adguard-home.nix
   ./services/avahi.nix
   ./services/docker.nix
+  ./services/fail2ban.nix
   ./services/gnome-xrdp.nix
   ./services/home-assistant.nix
   ./services/homepage.nix
