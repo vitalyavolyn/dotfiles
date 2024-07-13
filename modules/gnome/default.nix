@@ -26,7 +26,8 @@
     gnome-terminal
     epiphany
     geary
-    evince   gnome-connections
+    evince
+    gnome-connections
   ]) ++ (with pkgs.gnome; [
     gnome-music
   ]);

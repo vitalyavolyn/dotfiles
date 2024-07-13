@@ -96,6 +96,33 @@ let
       };
     }
   ];
+
+  homeServices = lib.optionals services.adguardhome.enable [
+    {
+      Adguard = {
+        icon = "adguard-home.png";
+        href = "${url}";
+        widget = {
+          type = "adguard";
+          url = "http://localhost";
+          username = "vitalya";
+          password = "{{HOMEPAGE_VAR_ADGUARD_PASS}}";
+        };
+      };
+    }
+  ] ++ lib.optionals config.modules.home-assistant.enable [
+    {
+      HomeAssistant = {
+        icon = "home-assistant.png";
+        href = "${url}:8123";
+        widget = {
+          type = "homeassistant";
+          url = "http://localhost:8123";
+          key = "{{HOMEPAGE_VAR_HOMEASSISTANT_TOKEN}}";
+        };
+      };
+    }
+  ];
 in
 {
   options = {
@@ -126,12 +153,20 @@ in
   };
 
   config = {
+    # TODO: should be in shinx/configuration.nix?
+    age.secrets.homepage-env.file = ../../secrets/homepage-env.age;
+
     services.homepage-dashboard = {
       enable = true;
+      environmentFile = config.age.secrets.homepage-env.path;
       settings = {
         title = "Shinx";
         layout = {
           Media = {
+            style = "row";
+            columns = 4;
+          };
+          Home = {
             style = "row";
             columns = 4;
           };
@@ -156,6 +191,9 @@ in
       services = [
         {
           Media = mediaServices;
+        }
+        {
+          Home = homeServices;
         }
       ];
     };
