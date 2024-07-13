@@ -70,5 +70,8 @@
     }
   },
 
-  "update.mode": "none"
+  "update.mode": "none",
+
+  "zig.path": "",
+  "zig.zls.path": ""
 }

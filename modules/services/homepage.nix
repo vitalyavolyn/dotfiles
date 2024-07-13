@@ -15,6 +15,9 @@ let
   bazarrPort = "6767";
   bazarrKey = configRoot.bazarrKey;
 
+  prowlarrPort = "9696";
+  prowlarrKey = configRoot.prowlarrKey;
+
   jellyfinPort = "8096";
   jellyfinKey = configRoot.jellyfinKey;
 
@@ -53,6 +56,18 @@ let
           type = "bazarr";
           url = "http://localhost:${bazarrPort}";
           key = bazarrKey;
+        };
+      };
+    }
+  ] ++ lib.optionals services.prowlarr.enable [
+    {
+      Prowlarr = {
+        icon = "prowlarr.png";
+        href = "${url}:${prowlarrPort}/";
+        widget = {
+          type = "prowlarr";
+          url = "http://localhost:${prowlarrPort}";
+          key = prowlarrKey;
         };
       };
     }
@@ -99,6 +114,10 @@ in
     modules.homepage.bazarrKey = lib.mkOption {
       type = lib.types.str;
       description = "Bazarr key";
+    };
+    modules.homepage.prowlarrKey = lib.mkOption {
+      type = lib.types.str;
+      description = "Prowlarr key";
     };
     modules.homepage.jellyfinKey = lib.mkOption {
       type = lib.types.str;
