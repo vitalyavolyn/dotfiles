@@ -72,6 +72,8 @@
 
   "update.mode": "none",
 
-  "zig.path": "",
-  "zig.zls.path": ""
+  "zig.path": "/etc/profiles/per-user/vitalya/bin/zig",
+  "zig.zls.enabled": true,
+  "zig.initialSetupDone": true,
+  "zig.zls.path": "/etc/profiles/per-user/vitalya/bin/zls"
 }
