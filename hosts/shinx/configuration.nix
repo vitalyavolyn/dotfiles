@@ -30,6 +30,8 @@
     home-assistant
     { modules.home-assistant.volumes = [ "/mnt/media/home-assistant:/config" ]; }
 
+    podman-auto-prune
+
     adguard-home
 
     tailscale
