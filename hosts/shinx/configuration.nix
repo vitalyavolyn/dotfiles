@@ -30,6 +30,8 @@
 
     podman-auto-prune
 
+    paperless
+
     tailscale
     avahi
     # docker
