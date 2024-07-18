@@ -10,4 +10,5 @@ in
 {
   "curseforge-token.age".publicKeys = [ vitalya ] ++ systems;
   "homepage-env.age".publicKeys = [ vitalya ] ++ systems;
+  "paperless-password.age".publicKeys = [ vitalya ] ++ systems;
 }

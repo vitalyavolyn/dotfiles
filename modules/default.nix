@@ -56,6 +56,7 @@ builtins.listToAttrs (builtins.map
   ./services/minecraft-industrial-village.nix
   ./services/n8n.nix
   ./services/nginx.nix
+  ./services/paperless.nix
   ./services/pipewire.nix
   ./services/podman-auto-prune.nix
   ./services/pulseaudio.nix
