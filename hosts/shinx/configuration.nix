@@ -34,8 +34,6 @@
 
     adguard-home
 
-    paperless
-
     tailscale
     avahi
     docker
