@@ -47,6 +47,9 @@
     firewall.enable = true;
   };
 
+  # TODO: should not be here
+  services.flaresolverr.enable = true;
+
   system.stateVersion = "24.05";
 }
 
