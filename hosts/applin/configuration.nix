@@ -45,7 +45,6 @@
       "discord"
       "jellyfin-media-player"
       "ticktick"
-      "rocket"
       "obs"
       "vlc"
     ];
