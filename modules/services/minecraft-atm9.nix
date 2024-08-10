@@ -1,10 +1,10 @@
 { lib, config, ... }:
 
 let
-  cfg = config.modules.minecraft-industrial-village;
+  cfg = config.modules.minecraft-atm9;
 in
 {
-  options.modules.minecraft-industrial-village.volumes = lib.mkOption {
+  options.modules.minecraft-atm9.volumes = lib.mkOption {
     type = lib.types.listOf lib.types.str;
     description = "Volumes to mount (needs /data)";
   };
@@ -12,7 +12,7 @@ in
   config = {
     age.secrets.curseforge-token.file = ../../secrets/curseforge-token.age;
 
-    virtualisation.oci-containers.containers."minecraft-industrial-village" = {
+    virtualisation.oci-containers.containers."minecraft-atm9" = {
       autoStart = true;
       image = "docker.io/itzg/minecraft-server:java17";
       volumes = cfg.volumes;
@@ -20,18 +20,18 @@ in
         TZ = "America/New_York";
         EULA = "TRUE";
         TYPE = "AUTO_CURSEFORGE";
-        CF_SLUG = "industrial-village";
-        INIT_MEMORY = "2G";
-        MAX_MEMORY = "8G";
-        RCON_PASSWORD = "minecraft-industrial-village";
+        CF_SLUG = "all-the-mods-9";
+        INIT_MEMORY = "10G";
+        MAX_MEMORY = "16G";
+        RCON_PASSWORD = "minecraft-atm9";
         USE_AIKAR_FLAGS = "true";
       };
       environmentFiles = [
         config.age.secrets.curseforge-token.path
       ];
-      ports = [ "0.0.0.0:1337:25565" ];
+      ports = [ "0.0.0.0:1339:25565" ];
       extraOptions = [
-        "--hostname=minecraft-industrial-village"
+        "--hostname=minecraft-atm9"
         "--health-cmd"
         "mc-health"
         "--health-interval"
@@ -46,6 +46,7 @@ in
       ];
     };
 
-    networking.firewall.allowedTCPPorts = [ 1337 ];
+    networking.firewall.allowedTCPPorts = [ 1339 ];
   };
 }
+

@@ -14,9 +14,11 @@
     podman-auto-prune
     # minecraft-aof6
     minecraft-industrial-village
+    minecraft-atm9
     {
       # modules.minecraft-aof6.volumes = [ "/mnt/extra/minecraft-aof6/data:/data" ];
       modules.minecraft-industrial-village.volumes = [ "/mnt/extra/minecraft-industrial-village/data:/data" ];
+      modules.minecraft-atm9.volumes = [ "/mnt/extra/minecraft-atm9/data:/data" ];
     }
 
     nginx

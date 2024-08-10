@@ -53,6 +53,7 @@ builtins.listToAttrs (builtins.map
   ./services/homepage.nix
   ./services/media-server.nix
   ./services/minecraft-aof6.nix
+  ./services/minecraft-atm9.nix
   ./services/minecraft-industrial-village.nix
   ./services/n8n.nix
   ./services/nginx.nix
