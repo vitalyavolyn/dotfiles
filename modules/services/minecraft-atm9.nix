@@ -21,8 +21,8 @@ in
         EULA = "TRUE";
         TYPE = "AUTO_CURSEFORGE";
         CF_SLUG = "all-the-mods-9";
-        INIT_MEMORY = "10G";
-        MAX_MEMORY = "16G";
+        INIT_MEMORY = "4G";
+        MAX_MEMORY = "12G";
         RCON_PASSWORD = "minecraft-atm9";
         USE_AIKAR_FLAGS = "true";
       };
