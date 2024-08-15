@@ -1,10 +1,12 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   services = {
     shadowsocks = {
       enable = true;
       port = 8388;
+      plugin = "${pkgs.shadowsocks-v2ray-plugin}/bin/v2ray-plugin";
+      pluginOpts = "server";
       passwordFile = "/etc/shadowsocks_key";
       encryptionMethod = "aes-256-cfb";
       extraConfig = {
