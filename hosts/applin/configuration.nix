@@ -47,6 +47,7 @@
       "ticktick"
       "obs"
       "vlc"
+      "qflipper"
     ];
 
     brews = [

@@ -14,7 +14,7 @@
     gnumake
     nixd
 
-    zig
-    zls
+    cargo
+    rustc
   ];
 }

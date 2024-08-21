@@ -32,9 +32,10 @@
       dart-code.flutter
       dart-code.dart-code
 
-      ziglang.vscode-zig
+      rust-lang.rust-analyzer
+      vadimcn.vscode-lldb
 
-      vscode-extensions.supermaven.supermaven
+      supermaven.supermaven
     ] ++ vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "vscode-theme-onedark";
