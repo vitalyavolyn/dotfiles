@@ -4,6 +4,7 @@
 
     dev
     tailscale
+    torrent
   ];
 
   nixpkgs.config.allowUnfree = true;
