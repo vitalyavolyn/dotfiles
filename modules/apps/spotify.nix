@@ -1,16 +1,16 @@
 { pkgs, inputs, ... }:
 
 let
-  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in
 {
   home-manager.users.vitalya.imports = [
-    inputs.spicetify-nix.homeManagerModule
+    inputs.spicetify-nix.homeManagerModules.default
   ];
 
   home-manager.users.vitalya.programs.spicetify = {
     enable = true;
-    theme = spicePkgs.themes.Default;
+    theme = spicePkgs.themes.default;
     colorScheme = "flamingo";
 
     enabledExtensions = with spicePkgs.extensions; [ popupLyrics ];
