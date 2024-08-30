@@ -21,16 +21,15 @@
   services.udev.packages = with pkgs;
     [ gnome.gnome-settings-daemon ];
 
-  environment.gnome.excludePackages = (with pkgs; [
+  environment.gnome.excludePackages = with pkgs; [
     gnome-tour
     gnome-terminal
     epiphany
     geary
     evince
     gnome-connections
-  ]) ++ (with pkgs.gnome; [
     gnome-music
-  ]);
+  ];
 
   # disable screenshot sound
   home-manager.users.vitalya.xdg.dataFile = {
