@@ -6,8 +6,6 @@
     # see also flake.nix -> nixos-hardware modules
     ./hardware-configuration.nix
 
-    ./services.nix
-
     inputs.self.nixosProfiles.desktop-budgie
 
     media-server
