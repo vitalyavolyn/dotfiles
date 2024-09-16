@@ -5,6 +5,8 @@
     dev
     tailscale
     torrent
+
+    hammerspoon
   ];
 
   nixpkgs.config.allowUnfree = true;

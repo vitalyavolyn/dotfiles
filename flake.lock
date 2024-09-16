@@ -319,6 +319,22 @@
         "type": "github"
       }
     },
+    "paperwm-spoon": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1725321350,
+        "narHash": "sha256-w6robrwSOEUcDyJbO98yQc44plCIfASR4L0s5TyqNjo=",
+        "owner": "mogenson",
+        "repo": "PaperWM.spoon",
+        "rev": "02a9ec65217167882b14c480cc1f7a0365f53f66",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mogenson",
+        "repo": "PaperWM.spoon",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -330,6 +346,7 @@
         "nix-homebrew": "nix-homebrew",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
+        "paperwm-spoon": "paperwm-spoon",
         "spicetify-nix": "spicetify-nix"
       }
     },

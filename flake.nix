@@ -32,6 +32,11 @@
       flake = false;
     };
 
+    paperwm-spoon = {
+      url = "github:mogenson/PaperWM.spoon";
+      flake = false;
+    };
+
     agenix.url = "github:ryantm/agenix";
   };
 

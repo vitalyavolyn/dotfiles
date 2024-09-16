@@ -49,6 +49,7 @@ builtins.listToAttrs (builtins.map
   ./services/docker.nix
   ./services/fail2ban.nix
   ./services/gnome-xrdp.nix
+  ./services/hammerspoon.nix
   ./services/home-assistant.nix
   ./services/homepage.nix
   ./services/media-server.nix
