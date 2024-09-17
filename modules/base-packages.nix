@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 {
-  # TODO: maybe split this file
   environment.systemPackages = with pkgs; [
     git
     vim
