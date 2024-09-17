@@ -33,7 +33,5 @@
     firewall.enable = false;
   };
 
-  nixpkgs.config = import ./nixpkgs-config.nix;
-
   system.stateVersion = "20.09";
 }

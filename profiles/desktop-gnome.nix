@@ -3,6 +3,6 @@
     ./desktop.nix
 
     gnome
-    pulseaudio
+    pipewire
   ];
 }
