@@ -57,6 +57,7 @@ builtins.listToAttrs (builtins.map
   ./services/minecraft-atm9.nix
   ./services/minecraft-atm9-tts.nix
   ./services/minecraft-industrial-village.nix
+  ./services/miniflux.nix
   ./services/n8n.nix
   ./services/nginx.nix
   ./services/paperless.nix

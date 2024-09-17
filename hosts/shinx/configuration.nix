@@ -32,6 +32,8 @@
 
     adguard-home
 
+    miniflux
+
     tailscale
     avahi
     docker
