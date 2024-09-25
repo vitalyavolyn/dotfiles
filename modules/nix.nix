@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   nix = {
@@ -17,14 +17,15 @@
     };
   };
 
+  # why do i need to do this differently?
   programs =
-    if pkgs.stdenv.isLinux then {
+    lib.mkIf pkgs.stdenv.isLinux {
       nh = {
         enable = true;
         clean.enable = true;
         clean.extraArgs = "--keep-since 7d --keep 3";
       };
-    } else { };
+    };
 
   # Auto upgrade nix package and the daemon service.
   services =
