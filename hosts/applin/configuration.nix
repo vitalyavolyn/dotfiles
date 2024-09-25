@@ -9,32 +9,7 @@
     hammerspoon
   ];
 
-  nixpkgs.config.allowUnfree = true;
-
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
-  nix.settings.experimental-features = "nix-command flakes";
-
-  nix-homebrew = {
-    enable = true;
-
-    user = "vitalya";
-
-    taps = {
-      "homebrew/homebrew-core" = inputs.homebrew-core;
-      "homebrew/homebrew-cask" = inputs.homebrew-cask;
-      "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
-    };
-
-    mutableTaps = false;
-  };
-
   homebrew = {
-    enable = true;
-
-    onActivation.cleanup = "uninstall";
-
     casks = [
       "telegram"
       "google-chrome"
@@ -61,9 +36,6 @@
     jdk17
   ];
 
-  security.pam.enableSudoTouchIdAuth = true;
-
-  users.users.vitalya.home = "/Users/vitalya";
   home-manager.users.vitalya.home.stateVersion = "24.05";
 
   # Used for backwards compatibility, please read the changelog before changing.

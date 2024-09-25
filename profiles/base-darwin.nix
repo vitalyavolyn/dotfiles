@@ -6,9 +6,10 @@
     base-packages
     zsh
     user
-
+    nix
+    darwin # general tweaks
+    brew
     # TODO:
-    # nix
     # ssh server?
   ];
 

@@ -38,6 +38,9 @@ builtins.listToAttrs (builtins.map
   ./base-home.nix
   ./base-packages.nix
   ./boot.nix
+  ./darwin
+  ./darwin/brew.nix
+  ./darwin/hammerspoon.nix
   ./fonts.nix
   ./gnome
   ./lightdm-budgie.nix
@@ -49,12 +52,11 @@ builtins.listToAttrs (builtins.map
   ./services/docker.nix
   ./services/fail2ban.nix
   ./services/gnome-xrdp.nix
-  ./services/hammerspoon.nix
   ./services/home-assistant.nix
   ./services/homepage.nix
   ./services/media-server.nix
-  ./services/minecraft-atm9.nix
   ./services/minecraft-atm9-tts.nix
+  ./services/minecraft-atm9.nix
   ./services/miniflux.nix
   ./services/n8n.nix
   ./services/nginx.nix
