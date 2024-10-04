@@ -49,6 +49,7 @@ builtins.listToAttrs (builtins.map
   ./plymouth.nix
   ./services/adguard-home.nix
   ./services/avahi.nix
+  ./services/caddy.nix
   ./services/docker.nix
   ./services/fail2ban.nix
   ./services/gnome-xrdp.nix
