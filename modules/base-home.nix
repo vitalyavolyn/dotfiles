@@ -19,6 +19,7 @@
       # dev tools
       nodejs_latest
       yarn
+      bun
       httpie
     ];
 

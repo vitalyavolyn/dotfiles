@@ -36,6 +36,8 @@
       vadimcn.vscode-lldb
 
       supermaven.supermaven
+
+      biomejs.biome
     ] ++ vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "vscode-theme-onedark";
@@ -60,6 +62,12 @@
         publisher = "ms-vscode";
         version = "0.5.2024070409";
         sha256 = "sha256-YwmsZii8TvBhloNQi6mezusEf/SmIq3i1ZNyKN5j1sU=";
+      }
+      {
+        name = "bun-vscode";
+        publisher = "oven";
+        version = "0.0.15";
+        sha256 = "sha256-9aoDDO7hh+YPTKh64z3rZhnTW5H8Se3+ZTncGrsKyJ0=";
       }
     ];
   };

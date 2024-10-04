@@ -17,21 +17,11 @@
     };
   };
 
-  # why do i need to do this differently?
-  programs =
-    lib.mkIf pkgs.stdenv.isLinux {
-      nh = {
-        enable = true;
-        clean.enable = true;
-        clean.extraArgs = "--keep-since 7d --keep 3";
-      };
-    };
-
-  # Auto upgrade nix package and the daemon service.
-  services =
-    if pkgs.stdenv.isDarwin then {
-      nix-daemon.enable = true;
-    } else { };
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 7d --keep 3";
+  };
 
   nixpkgs.config.allowUnfreePredicate = (pkg: true);
   nixpkgs.config.allowUnfree = true;
