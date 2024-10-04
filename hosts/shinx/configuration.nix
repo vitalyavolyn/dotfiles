@@ -30,8 +30,6 @@
 
     podman-auto-prune
 
-    adguard-home
-
     miniflux
 
     tailscale
