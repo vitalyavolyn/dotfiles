@@ -38,6 +38,8 @@
     };
 
     agenix.url = "github:ryantm/agenix";
+
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
   outputs = { nixpkgs, nixos-hardware, home-manager, nix-darwin, nix-homebrew, agenix, ... } @ inputs:
