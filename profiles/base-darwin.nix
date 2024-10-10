@@ -11,6 +11,7 @@
     brew
     # TODO:
     # ssh server?
+    fonts
   ];
 
   # FIXME: nix module is not working
