@@ -11,7 +11,6 @@
     dnsutils
     tree
     gnupg
-    comma
   ];
 
   environment.variables.EDITOR = "vim";
@@ -20,4 +19,6 @@
     enable = true;
     enableSSHSupport = true;
   };
+
+  programs.nix-index-database.comma.enable = true;
 }

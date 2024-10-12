@@ -40,9 +40,12 @@
     agenix.url = "github:ryantm/agenix";
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, nixos-hardware, home-manager, nix-darwin, nix-homebrew, agenix, ... } @ inputs:
+  outputs = { nixpkgs, nixos-hardware, home-manager, nix-darwin, nix-homebrew, agenix, nix-index-database, ... } @ inputs:
     let
       globalModules = [
         agenix.nixosModules.default
@@ -75,6 +78,8 @@
               nixos-hardware.nixosModules.common-pc-ssd
               nixos-hardware.nixosModules.common-cpu-intel
 
+              nix-index-database.nixosModules.nix-index
+
               {
                 home-manager.users.vitalya.imports = [
                   ./hosts/celebi/home.nix
@@ -93,6 +98,8 @@
               nixos-hardware.nixosModules.common-cpu-intel
               nixos-hardware.nixosModules.common-pc-ssd
 
+              nix-index-database.nixosModules.nix-index
+
               {
                 home-manager.users.vitalya.imports = [
                   ./hosts/shinx/home.nix
@@ -108,6 +115,8 @@
               home-manager.nixosModules.home-manager
               ./hosts/porygon/configuration.nix
 
+              nix-index-database.nixosModules.nix-index
+
               {
                 home-manager.users.vitalya.imports = [
                   ./hosts/porygon/home.nix
@@ -122,6 +131,8 @@
         modules = globalModules ++ [
           nix-homebrew.darwinModules.nix-homebrew
           home-manager.darwinModules.home-manager
+
+          nix-index-database.darwinModules.nix-index
 
           ./hosts/applin/configuration.nix
         ];
