@@ -66,4 +66,9 @@
   };
 
   system.stateVersion = "23.11";
+
+  services.open-webui = {
+    enable = true;
+    environment.OLLAMA_API_BASE_URL = "http://applin:11434";
+  };
 }
