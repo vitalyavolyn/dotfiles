@@ -25,6 +25,8 @@
       };
     }
 
+    open-webui
+
     home-assistant
     { modules.home-assistant.volumes = [ "/mnt/media/home-assistant:/config" ]; }
 
@@ -37,14 +39,15 @@
 
         "shinx-ts.ewe-lizard.ts.net".extraConfig = ''
           # smithereen
-          reverse_proxy :4567
-          reverse_proxy /i/* :4560
-          handle /s/* {
-            root * /var/www/smithereen
-            file_server
-          }
+          #reverse_proxy :4567
+          #reverse_proxy /i/* :4560
+          #handle /s/* {
+          #  root * /var/www/smithereen
+          #  file_server
+          #}
           # imgproxy for my server
-          reverse_proxy /m/* :4561
+          #reverse_proxy /m/* :4561
+          reverse_proxy :3100
         '';
       };
     }
@@ -66,11 +69,6 @@
   };
 
   system.stateVersion = "23.11";
-
-  services.open-webui = {
-    enable = true;
-    environment.OLLAMA_API_BASE_URL = "http://applin:11434";
-  };
 
   services.create_ap = {
     enable = true;

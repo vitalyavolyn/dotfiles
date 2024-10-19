@@ -61,6 +61,7 @@ builtins.listToAttrs (builtins.map
   ./services/miniflux.nix
   ./services/n8n.nix
   ./services/nginx.nix
+  ./services/open-webui.nix
   ./services/paperless.nix
   ./services/pipewire.nix
   ./services/podman-auto-prune.nix
