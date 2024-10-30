@@ -25,18 +25,12 @@
       };
     }
 
-    open-webui
-
     home-assistant
     { modules.home-assistant.volumes = [ "/mnt/media/home-assistant:/config" ]; }
 
     caddy
     {
       services.caddy.virtualHosts = {
-        "localhost".extraConfig = ''
-          respond "Hello, world!"
-        '';
-
         "shinx-ts.ewe-lizard.ts.net".extraConfig = ''
           # smithereen
           #reverse_proxy :4567
@@ -47,7 +41,6 @@
           #}
           # imgproxy for my server
           #reverse_proxy /m/* :4561
-          reverse_proxy :3100
         '';
       };
     }
@@ -76,6 +69,9 @@
       INTERNET_IFACE = "eno1";
       WIFI_IFACE = "wlp1s0";
       SSID = "shinx";
+      # i know it's public
+      # are you me neighbor? probably not
+      # this is a temp solution, my access point is shit
       PASSPHRASE = "bulbasaur";
     };
   };
