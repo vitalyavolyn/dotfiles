@@ -24,8 +24,8 @@
     settings = {
       trusted-users = [ "root" "vitalya" ];
       experimental-features = [ "nix-command" "flakes" ];
-      auto-optimise-store = true;
     };
+    optimise.automatic = true;
   };
   nixpkgs.config.allowUnfreePredicate = (pkg: true);
   nixpkgs.config.allowUnfree = true;
