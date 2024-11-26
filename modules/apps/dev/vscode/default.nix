@@ -17,7 +17,6 @@
       eamodio.gitlens
       mhutchie.git-graph
 
-      ms-vscode-remote.remote-ssh
       ms-vscode-remote.remote-containers
       ms-azuretools.vscode-docker
 
@@ -44,6 +43,8 @@
       fabiospampinato.vscode-commands
       ms-vscode.remote-explorer
       oven.bun-vscode
-    ];
+    ] ++ (with pkgs.vscode-extensions; [
+      ms-vscode-remote.remote-ssh
+    ]);
   };
 }
