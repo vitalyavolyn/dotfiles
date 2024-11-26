@@ -64,7 +64,7 @@
   system.stateVersion = "23.11";
 
   services.create_ap = {
-    enable = true;
+    enable = false;
     settings = {
       INTERNET_IFACE = "eno1";
       WIFI_IFACE = "wlp1s0";
