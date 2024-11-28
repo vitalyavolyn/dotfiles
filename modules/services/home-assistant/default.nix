@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, self, ... }:
 
 let
   cfg = config.modules.home-assistant;
@@ -17,13 +17,14 @@ in
 
   config = {
     virtualisation.oci-containers.containers."homeassistant" = {
-      volumes = cfg.volumes ++ lib.optionals cfg.addDbusVolume [ "/run/dbus:/run/dbus:ro" ];
+      volumes = cfg.volumes ++ lib.optionals cfg.addDbusVolume [ "/run/dbus:/run/dbus:ro" ] ++ [ (builtins.toString ./. + ":/patches") ];
       environment.TZ = config.time.timeZone;
       image = "ghcr.io/home-assistant/home-assistant:stable";
       extraOptions = [
         "--network=host"
         "--pull=newer"
       ];
+      entrypoint = "/patches/start.sh";
     };
 
     networking.firewall.allowedTCPPorts = [ 8123 ];

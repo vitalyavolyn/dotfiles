@@ -53,7 +53,7 @@ builtins.listToAttrs (builtins.map
   ./services/docker.nix
   ./services/fail2ban.nix
   ./services/gnome-xrdp.nix
-  ./services/home-assistant.nix
+  ./services/home-assistant
   ./services/homepage.nix
   ./services/media-server.nix
   ./services/minecraft-atm9-tts.nix
