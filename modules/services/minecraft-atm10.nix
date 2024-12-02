@@ -1,10 +1,10 @@
 { lib, config, ... }:
 
 let
-  cfg = config.modules.minecraft-atm9-tts;
+  cfg = config.modules.minecraft-atm10;
 in
 {
-  options.modules.minecraft-atm9-tts.volumes = lib.mkOption {
+  options.modules.minecraft-atm10.volumes = lib.mkOption {
     type = lib.types.listOf lib.types.str;
     description = "Volumes to mount (needs /data)";
   };
@@ -12,19 +12,18 @@ in
   config = {
     age.secrets.curseforge-token.file = ../../secrets/curseforge-token.age;
 
-    virtualisation.oci-containers.containers."minecraft-atm9-tts" = {
+    virtualisation.oci-containers.containers."minecraft-atm10" = {
       autoStart = true;
-      image = "docker.io/itzg/minecraft-server:java17";
+      image = "docker.io/itzg/minecraft-server";
       volumes = cfg.volumes;
       environment = {
         TZ = "America/New_York";
         EULA = "TRUE";
         TYPE = "AUTO_CURSEFORGE";
-        CF_SLUG = "all-the-mods-9-to-the-sky";
-        CF_FILE_ID = "5616698";
+        CF_SLUG = "all-the-mods-10";
         INIT_MEMORY = "4G";
-        MAX_MEMORY = "10G";
-        RCON_PASSWORD = "minecraft-atm9-tts";
+        MAX_MEMORY = "12G";
+        RCON_PASSWORD = "minecraft-atm10";
         USE_AIKAR_FLAGS = "true";
       };
       environmentFiles = [
@@ -32,7 +31,7 @@ in
       ];
       ports = [ "0.0.0.0:1340:25565" ];
       extraOptions = [
-        "--hostname=minecraft-atm9-tts"
+        "--hostname=minecraft-atm10"
         "--health-cmd"
         "mc-health"
         "--health-interval"
