@@ -36,6 +36,8 @@
     jdk17
   ];
 
+  home-manager.users.vitalya.home.file.".jdk/openjdk21".source = pkgs.jdk;
+
   home-manager.users.vitalya.home.stateVersion = "24.05";
 
   # Used for backwards compatibility, please read the changelog before changing.
