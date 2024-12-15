@@ -3,7 +3,8 @@
 {
   nix = {
     gc = {
-      automatic = true;
+      # nh covers this on linux
+      automatic = if pkgs.stdenv.isLinux then false else true;
       options = "--delete-older-than 7d";
     } // (if pkgs.stdenv.isLinux then {
       dates = "weekly";
