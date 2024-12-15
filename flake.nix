@@ -43,6 +43,8 @@
 
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixneovim.url = "github:nixneovim/nixneovim";
   };
 
   outputs = { nixpkgs, nixos-hardware, home-manager, nix-darwin, nix-homebrew, agenix, nix-index-database, ... } @ inputs:
@@ -60,6 +62,10 @@
           };
         }
       ];
+      nixosModules = [
+        home-manager.nixosModules.home-manager
+        nix-index-database.nixosModules.nix-index
+      ];
     in
     {
       nixosModules = (import ./modules { lib = nixpkgs.lib; });
@@ -70,15 +76,12 @@
           {
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
-            modules = globalModules ++ [
-              home-manager.nixosModules.home-manager
+            modules = globalModules ++ nixosModules ++ [
               ./hosts/celebi/configuration.nix
 
               nixos-hardware.nixosModules.common-pc-laptop
               nixos-hardware.nixosModules.common-pc-ssd
               nixos-hardware.nixosModules.common-cpu-intel
-
-              nix-index-database.nixosModules.nix-index
 
               {
                 home-manager.users.vitalya.imports = [
@@ -91,14 +94,11 @@
           {
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
-            modules = globalModules ++ [
-              home-manager.nixosModules.home-manager
+            modules = globalModules ++ nixosModules ++ [
               ./hosts/shinx/configuration.nix
 
               nixos-hardware.nixosModules.common-cpu-intel
               nixos-hardware.nixosModules.common-pc-ssd
-
-              nix-index-database.nixosModules.nix-index
 
               {
                 home-manager.users.vitalya.imports = [
@@ -111,11 +111,8 @@
           {
             system = "aarch64-linux";
             specialArgs = { inherit inputs; };
-            modules = globalModules ++ [
-              home-manager.nixosModules.home-manager
+            modules = globalModules ++ nixosModules ++ [
               ./hosts/porygon/configuration.nix
-
-              nix-index-database.nixosModules.nix-index
 
               {
                 home-manager.users.vitalya.imports = [

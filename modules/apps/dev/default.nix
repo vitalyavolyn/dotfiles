@@ -2,8 +2,9 @@
 
 {
   imports = [
-    ./golang.nix
+    # ./golang.nix
     ./vscode
+    ./nvim
     # TODO: fix
   ]; # ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
   #  ./db.nix
@@ -13,8 +14,5 @@
   home-manager.users.vitalya.home.packages = with pkgs; [
     gnumake
     nixd
-
-    cargo
-    rustc
   ];
 }
