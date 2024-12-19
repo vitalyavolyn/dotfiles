@@ -21,8 +21,9 @@ builtins.listToAttrs (builtins.map
       };
     };
   }) [
-  ./apps/browser.nix
+  ./apps/chrome.nix
   ./apps/dev
+  ./apps/firefox.nix
   ./apps/keybase.nix
   ./apps/kitty.nix
   ./apps/krita.nix
@@ -56,8 +57,8 @@ builtins.listToAttrs (builtins.map
   ./services/home-assistant
   ./services/homepage.nix
   ./services/media-server.nix
-  ./services/minecraft-atm9.nix
   ./services/minecraft-atm10.nix
+  ./services/minecraft-atm9.nix
   ./services/miniflux.nix
   ./services/n8n.nix
   ./services/nginx.nix

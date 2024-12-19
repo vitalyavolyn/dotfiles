@@ -52,7 +52,7 @@
     tailscale
     avahi
     docker
-    browser
+    chrome
   ];
 
   networking = {

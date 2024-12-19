@@ -18,7 +18,7 @@
     keybase
     messaging
     torrent
-    browser
+    chrome
     minecraft
     krita
     streaming

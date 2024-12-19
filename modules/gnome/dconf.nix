@@ -47,7 +47,7 @@ in
         favorite-apps =
           [ "org.gnome.Nautilus.desktop" ]
           ++ [ "kitty.desktop" ]
-          ++ optionals (hasModule "browser") [ "google-chrome.desktop" ]
+          ++ optionals (hasModule "chrome") [ "google-chrome.desktop" ]
           ++ optionals (hasModule "dev") [ "code.desktop" ]
           ++ optionals (hasModule "messaging") [ "org.telegram.desktop.desktop" ]
           ++ optionals (hasModule "messaging") [ "discord.desktop" ]

@@ -5,6 +5,8 @@
     dev
     tailscale
     torrent
+    firefox
+    chrome
 
     hammerspoon
   ];
@@ -12,7 +14,6 @@
   homebrew = {
     casks = [
       "telegram"
-      "google-chrome"
       "microsoft-teams"
       "mongodb-compass"
       "tunnelblick"
