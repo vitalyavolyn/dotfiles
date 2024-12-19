@@ -7,25 +7,24 @@
     torrent
     firefox
     chrome
+    vlc
+    streaming
+    minecraft
+    messaging
 
     hammerspoon
   ];
 
   homebrew = {
     casks = [
-      "telegram"
       "microsoft-teams"
       "mongodb-compass"
       "tunnelblick"
       "steam"
       "spotify"
       "chatgpt"
-      "prismlauncher" # prismlauncher via nix no buildy :(
-      "discord"
       "jellyfin-media-player"
       "ticktick"
-      "obs"
-      "vlc"
       "qflipper"
     ];
 
