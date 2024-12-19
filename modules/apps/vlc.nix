@@ -1,9 +1,11 @@
-{ pkgs, lib, ... }:
-
+{ pkgs, lib, options, ... }:
 with lib;
 {
-  home-manager.users.vitalya.home.packages = mkIf (!pkgs.stdenv.isDarwin)
-    (with pkgs; [ vlc ]);
-
-  homebrew.casks = mkIf pkgs.stdenv.isDarwin [ "vlc" ];
+  config = mkMerge [
+    (if (builtins.hasAttr "homebrew" options) then {
+      homebrew.casks = [ "vlc" ];
+    } else {
+      home-manager.users.vitalya.home.packages = with pkgs; [ vlc ];
+    })
+  ];
 }

@@ -1,8 +1,11 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, options, ... }:
 with lib;
 {
-  home-manager.users.vitalya.home.packages = mkIf (!pkgs.stdenv.isDarwin)
-    (with pkgs; [ obs-studio ]);
-
-  homebrew.casks = mkIf pkgs.stdenv.isDarwin [ "obs" ];
+  config = mkMerge [
+    (if (builtins.hasAttr "homebrew" options) then {
+      homebrew.casks = [ "obs" ];
+    } else {
+      home-manager.users.vitalya.home.packages = with pkgs; [ obs-studio ];
+    })
+  ];
 }

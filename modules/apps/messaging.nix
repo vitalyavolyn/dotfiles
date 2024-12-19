@@ -1,17 +1,19 @@
-{ pkgs, lib, ... }:
-
+{ pkgs, lib, options, ... }:
 with lib;
 {
-  home-manager.users.vitalya.home.packages = mkIf (!pkgs.stdenv.isDarwin)
-    (with pkgs; [
-      (discord.override {
-        withOpenASAR = true;
-      })
-      tdesktop
-    ]);
-
-  homebrew.casks = mkIf pkgs.stdenv.isDarwin [
-    "discord"
-    "telegram"
+  config = mkMerge [
+    (if (builtins.hasAttr "homebrew" options) then {
+      homebrew.casks = [
+        "discord"
+        "telegram"
+      ];
+    } else {
+      home-manager.users.vitalya.home.packages = with pkgs; [
+        (discord.override {
+          withOpenASAR = true;
+        })
+        tdesktop
+      ];
+    })
   ];
 }

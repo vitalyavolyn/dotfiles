@@ -1,10 +1,14 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, options, ... }:
 with lib;
 {
-  home-manager.users.vitalya.programs.chromium = mkIf (!pkgs.stdenv.isDarwin) {
-    enable = true;
-    package = pkgs.google-chrome;
-  };
-
-  homebrew.casks = mkIf pkgs.stdenv.isDarwin [ "google-chrome" ];
+  config = mkMerge [
+    (if (builtins.hasAttr "homebrew" options) then {
+      homebrew.casks = [ "google-chrome" ];
+    } else {
+      home-manager.users.vitalya.programs.chromium = {
+        enable = true;
+        package = pkgs.google-chrome;
+      };
+    })
+  ];
 }

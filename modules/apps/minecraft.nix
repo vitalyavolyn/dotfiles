@@ -1,8 +1,11 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, options, ... }:
 with lib;
 {
-  home-manager.users.vitalya.home.packages = mkIf (!pkgs.stdenv.isDarwin)
-    (with pkgs; [ prismlauncher ]);
-
-  homebrew.casks = mkIf pkgs.stdenv.isDarwin [ "prismlauncher" ];
+  config = mkMerge [
+    (if (builtins.hasAttr "homebrew" options) then {
+      homebrew.casks = [ "prismlauncher" ];
+    } else {
+      home-manager.users.vitalya.home.packages = with pkgs; [ prismlauncher ];
+    })
+  ];
 }

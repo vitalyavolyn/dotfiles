@@ -1,10 +1,14 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, options, ... }:
 with lib;
 {
-  home-manager.users.vitalya.programs.firefox = mkIf (!pkgs.stdenv.isDarwin) {
-    enable = true;
-    package = pkgs.firefox;
-  };
-
-  homebrew.casks = mkIf pkgs.stdenv.isDarwin [ "firefox" ];
+  config = mkMerge [
+    (if (builtins.hasAttr "homebrew" options) then {
+      homebrew.casks = [ "firefox" ];
+    } else {
+      home-manager.users.vitalya.programs.firefox = {
+        enable = true;
+        package = pkgs.firefox;
+      };
+    })
+  ];
 }
