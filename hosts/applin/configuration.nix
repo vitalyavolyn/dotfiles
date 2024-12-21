@@ -26,6 +26,7 @@
       "jellyfin-media-player"
       "ticktick"
       "qflipper"
+      "bitwarden"
     ];
 
     brews = [
