@@ -11,6 +11,8 @@
     streaming
     minecraft
     messaging
+    spotify
+    qflipper
 
     hammerspoon
   ];
@@ -18,14 +20,11 @@
   homebrew = {
     casks = [
       "microsoft-teams"
-      "mongodb-compass"
       "tunnelblick"
       "steam"
-      "spotify"
       "chatgpt"
       "jellyfin-media-player"
       "ticktick"
-      "qflipper"
       "bitwarden"
     ];
 

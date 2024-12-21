@@ -1,7 +1,11 @@
-{ pkgs, ... }:
-
+{ pkgs, lib, options, ... }:
+with lib;
 {
-  home-manager.users.vitalya.home.packages = with pkgs; [
-    insomnia
+  config = mkMerge [
+    (if (builtins.hasAttr "homebrew" options) then {
+      homebrew.casks = [ "insomnia" ];
+    } else {
+      home-manager.users.vitalya.home.packages = with pkgs; [ insomnia ];
+    })
   ];
 }
