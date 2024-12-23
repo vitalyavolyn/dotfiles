@@ -14,7 +14,7 @@
     spotify
     qflipper
 
-    hammerspoon
+    # hammerspoon
   ];
 
   homebrew = {
