@@ -50,9 +50,10 @@
     miniflux
 
     tailscale
-    avahi
+    # avahi
     docker
-    chrome
+    firefox
+    spotify
   ];
 
   networking = {
