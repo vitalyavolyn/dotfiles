@@ -6,7 +6,7 @@
     # see also flake.nix -> nixos-hardware modules
     ./hardware-configuration.nix
 
-    inputs.self.nixosProfiles.desktop-budgie
+    inputs.self.nixosProfiles.desktop-gnome
 
     media-server
     { services.deluge.config.download_location = "/mnt/media/downloads/complete"; }
@@ -50,7 +50,7 @@
     miniflux
 
     tailscale
-    # avahi
+    avahi
     docker
     firefox
     spotify
