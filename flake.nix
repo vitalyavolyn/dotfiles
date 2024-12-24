@@ -14,8 +14,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
@@ -41,32 +43,15 @@
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
-    nix-index-database.url = "github:nix-community/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixneovim.url = "github:nixneovim/nixneovim";
   };
 
-  outputs = { nixpkgs, nixos-hardware, home-manager, nix-darwin, nix-homebrew, agenix, nix-index-database, ... } @ inputs:
-    let
-      globalModules = [
-        agenix.nixosModules.default
-
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = {
-              inherit inputs;
-            };
-          };
-        }
-      ];
-      nixosModules = [
-        home-manager.nixosModules.home-manager
-        nix-index-database.nixosModules.nix-index
-      ];
-    in
+  outputs = { nixpkgs, nixos-hardware, nix-darwin, ... } @ inputs:
     {
       nixosModules = (import ./modules { lib = nixpkgs.lib; });
       nixosProfiles = import ./profiles;
@@ -76,61 +61,38 @@
           {
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
-            modules = globalModules ++ nixosModules ++ [
+            modules = [
               ./hosts/celebi/configuration.nix
 
               nixos-hardware.nixosModules.common-pc-laptop
               nixos-hardware.nixosModules.common-pc-ssd
               nixos-hardware.nixosModules.common-cpu-intel
-
-              {
-                home-manager.users.vitalya.imports = [
-                  ./hosts/celebi/home.nix
-                ];
-              }
             ];
           };
         shinx = nixpkgs.lib.nixosSystem
           {
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
-            modules = globalModules ++ nixosModules ++ [
+            modules = [
               ./hosts/shinx/configuration.nix
 
               nixos-hardware.nixosModules.common-cpu-intel
               nixos-hardware.nixosModules.common-pc-ssd
-
-              {
-                home-manager.users.vitalya.imports = [
-                  ./hosts/shinx/home.nix
-                ];
-              }
             ];
           };
         porygon = nixpkgs.lib.nixosSystem
           {
             system = "aarch64-linux";
             specialArgs = { inherit inputs; };
-            modules = globalModules ++ nixosModules ++ [
+            modules = [
               ./hosts/porygon/configuration.nix
-
-              {
-                home-manager.users.vitalya.imports = [
-                  ./hosts/porygon/home.nix
-                ];
-              }
             ];
           };
       };
 
       darwinConfigurations."applin" = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit inputs; };
-        modules = globalModules ++ [
-          nix-homebrew.darwinModules.nix-homebrew
-          home-manager.darwinModules.home-manager
-
-          nix-index-database.darwinModules.nix-index
-
+        modules = [
           ./hosts/applin/configuration.nix
         ];
       };

@@ -12,7 +12,22 @@
     # TODO:
     # ssh server?
     fonts
-  ];
+  ] ++ (with inputs; [
+    nix-homebrew.darwinModules.nix-homebrew
+    home-manager.darwinModules.home-manager
+    nix-index-database.darwinModules.nix-index
+    agenix.nixosModules.default
+
+    {
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+      };
+    }
+  ]);
 
   services.nix-daemon.enable = true;
 

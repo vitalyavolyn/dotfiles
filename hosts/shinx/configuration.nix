@@ -82,4 +82,6 @@
       PASSPHRASE = "bulbasaur";
     };
   };
+
+  home-manager.users.vitalya.home.stateVersion = "23.11";
 }

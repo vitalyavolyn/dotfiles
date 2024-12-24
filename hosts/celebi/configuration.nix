@@ -34,4 +34,5 @@
   };
 
   system.stateVersion = "20.09";
+  home-manager.users.vitalya.home.stateVersion = "20.09";
 }
