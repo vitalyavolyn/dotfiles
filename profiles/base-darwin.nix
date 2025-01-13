@@ -9,8 +9,6 @@
     nix
     darwin # general tweaks
     brew
-    # TODO:
-    # ssh server?
     fonts
   ] ++ (with inputs; [
     nix-homebrew.darwinModules.nix-homebrew

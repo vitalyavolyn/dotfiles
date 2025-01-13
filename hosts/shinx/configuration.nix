@@ -65,8 +65,8 @@
   system.stateVersion = "23.11";
 
   # https://github.com/NixOS/nixpkgs/issues/103746
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "vitalya";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "vitalya";
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
