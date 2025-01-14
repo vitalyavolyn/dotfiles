@@ -1,7 +1,11 @@
-{ pkgs, ... }:
-
+{ pkgs, lib, options, ... }:
+with lib;
 {
-  home-manager.users.vitalya.home.packages = with pkgs; [
-    krita
+  config = mkMerge [
+    (if (builtins.hasAttr "homebrew" options) then {
+      homebrew.casks = [ "krita" ];
+    } else {
+      home-manager.users.vitalya.home.packages = with pkgs; [ krita ];
+    })
   ];
 }

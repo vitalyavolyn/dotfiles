@@ -13,6 +13,7 @@
     messaging
     spotify
     qflipper
+    krita
 
     # hammerspoon
   ];
