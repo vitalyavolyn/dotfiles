@@ -43,6 +43,8 @@
       fabiospampinato.vscode-commands
       ms-vscode.remote-explorer
       oven.bun-vscode
+
+      wakatime.vscode-wakatime
     ] ++ (with pkgs.vscode-extensions; [
       ms-vscode-remote.remote-ssh
     ]);

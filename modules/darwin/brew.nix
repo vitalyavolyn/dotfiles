@@ -1,8 +1,9 @@
-{ inputs, ... }:
+{ inputs, config, ... }:
 
 {
   nix-homebrew = {
     enable = true;
+    autoMigrate = true;
 
     user = "vitalya";
 
@@ -18,6 +19,13 @@
   homebrew = {
     enable = true;
 
-    onActivation.cleanup = "uninstall";
+    taps = builtins.attrNames config.nix-homebrew.taps;
+
+    onActivation = {
+      autoUpdate = true;
+      upgrade = true;
+      cleanup = "zap";
+      extraFlags = [ "--verbose" ];
+    };
   };
 }

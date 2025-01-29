@@ -24,7 +24,6 @@
       "tunnelblick"
       "steam"
       "chatgpt"
-      "jellyfin-media-player"
       "ticktick"
       "bitwarden"
     ];
