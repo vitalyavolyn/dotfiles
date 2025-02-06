@@ -30,9 +30,6 @@ in
           jump.enable = true;
         };
       };
-
-      # todo: where???
-      # extraPlugins = [ pkgs.vimExtraPlugins.supermaven-nvim ];
     };
   };
 }

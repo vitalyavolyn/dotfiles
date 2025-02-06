@@ -34,8 +34,6 @@
       rust-lang.rust-analyzer
       vadimcn.vscode-lldb
 
-      supermaven.supermaven
-
       biomejs.biome
 
       akamud.vscode-theme-onedark
