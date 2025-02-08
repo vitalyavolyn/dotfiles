@@ -12,11 +12,11 @@
     tailscale
 
     podman-auto-prune
-    minecraft-atm9
     minecraft-atm10
+    minecraft-atm10-2
     {
-      modules.minecraft-atm9.volumes = [ "/mnt/extra/minecraft-atm9/data:/data" ];
       modules.minecraft-atm10.volumes = [ "/mnt/extra/minecraft-atm10/data:/data" ];
+      modules.minecraft-atm10-2.volumes = [ "/mnt/extra/minecraft-atm10-2/data:/data" ];
     }
 
     nginx
@@ -36,14 +36,6 @@
           locations."/" = {
             proxyPass = "http://shinx-ts:8123/";
             proxyWebsockets = true;
-          };
-        };
-        "mzhip.online" = {
-          addSSL = true;
-          enableACME = true;
-          locations."/" = {
-            return = "200 '!'";
-            extraConfig = "add_header Content-Type text/plain;";
           };
         };
       };
