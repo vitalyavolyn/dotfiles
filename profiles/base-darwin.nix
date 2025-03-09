@@ -27,7 +27,5 @@
     }
   ]);
 
-  services.nix-daemon.enable = true;
-
   environment.variables.FLAKE = "/Users/vitalya/dotfiles";
 }

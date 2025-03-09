@@ -23,7 +23,7 @@
       httpie
     ];
 
-    nixpkgs.config.allowUnfreePredicate = (pkg: true);
+    # nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
     manual.manpages.enable = false;
 
