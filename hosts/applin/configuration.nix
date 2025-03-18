@@ -26,6 +26,7 @@
       "chatgpt"
       "ticktick"
       "bitwarden"
+      "cyberduck"
     ];
 
     brews = [
