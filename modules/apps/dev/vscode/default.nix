@@ -6,45 +6,47 @@
     package = vscode;
     mutableExtensionsDir = false;
 
-    userSettings = lib.importJSON ./settings.json;
-    keybindings = lib.importJSON ./keybindings.json;
+    profiles.default = {
+      userSettings = lib.importJSON ./settings.json;
+      keybindings = lib.importJSON ./keybindings.json;
 
-    extensions = with (inputs.nix-vscode-extensions.extensions.${pkgs.system}.forVSCodeVersion inputs.nixpkgs.legacyPackages.${pkgs.system}.vscode.version).vscode-marketplace; [
-      vscodevim.vim
+      extensions = with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
+        vscodevim.vim
 
-      jnoortheen.nix-ide
+        jnoortheen.nix-ide
 
-      eamodio.gitlens
-      mhutchie.git-graph
+        eamodio.gitlens
+        mhutchie.git-graph
 
-      ms-vscode-remote.remote-containers
-      ms-azuretools.vscode-docker
+        ms-vscode-remote.remote-containers
+        ms-azuretools.vscode-docker
 
-      dbaeumer.vscode-eslint
-      esbenp.prettier-vscode
-      bradlc.vscode-tailwindcss
+        dbaeumer.vscode-eslint
+        esbenp.prettier-vscode
+        bradlc.vscode-tailwindcss
 
-      wmaurer.change-case
-      redhat.vscode-yaml
-      oderwat.indent-rainbow
+        wmaurer.change-case
+        redhat.vscode-yaml
+        oderwat.indent-rainbow
 
-      dart-code.flutter
-      dart-code.dart-code
+        dart-code.flutter
+        dart-code.dart-code
 
-      rust-lang.rust-analyzer
-      vadimcn.vscode-lldb
+        rust-lang.rust-analyzer
+        vadimcn.vscode-lldb
 
-      biomejs.biome
+        biomejs.biome
 
-      akamud.vscode-theme-onedark
-      vscode-ext.sync-rsync
-      fabiospampinato.vscode-commands
-      ms-vscode.remote-explorer
-      oven.bun-vscode
+        akamud.vscode-theme-onedark
+        vscode-ext.sync-rsync
+        fabiospampinato.vscode-commands
+        ms-vscode.remote-explorer
+        oven.bun-vscode
 
-      wakatime.vscode-wakatime
-    ] ++ (with pkgs.vscode-extensions; [
-      ms-vscode-remote.remote-ssh
-    ]);
+        wakatime.vscode-wakatime
+      ] ++ (with pkgs.vscode-extensions; [
+        ms-vscode-remote.remote-ssh
+      ]);
+    };
   };
 }
