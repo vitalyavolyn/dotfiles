@@ -10,6 +10,7 @@
     shadowsocks
     { services.shadowsocks.localAddress = "0.0.0.0"; }
     tailscale
+    tailscale-exit-node
 
     podman-auto-prune
     minecraft-atm10
@@ -51,4 +52,3 @@
 
   home-manager.users.vitalya.home.stateVersion = "24.05";
 }
-
