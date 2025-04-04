@@ -13,11 +13,13 @@
     tailscale-exit-node
 
     podman-auto-prune
-    minecraft-atm10
-    minecraft-atm10-2
+    minecraft-atm9sky
+    #minecraft-atm10
+    #minecraft-atm10-2
     {
-      modules.minecraft-atm10.volumes = [ "/mnt/extra/minecraft-atm10/data:/data" ];
-      modules.minecraft-atm10-2.volumes = [ "/mnt/extra/minecraft-atm10-2/data:/data" ];
+      modules.minecraft-atm9sky.volumes = [ "/mnt/extra/minecraft-atm9sky/data:/data" ];
+      #modules.minecraft-atm10.volumes = [ "/mnt/extra/minecraft-atm10/data:/data" ];
+      #modules.minecraft-atm10-2.volumes = [ "/mnt/extra/minecraft-atm10-2/data:/data" ];
     }
 
     nginx
