@@ -28,30 +28,11 @@
     home-assistant
     { modules.home-assistant.volumes = [ "/mnt/media/home-assistant:/config" ]; }
 
-    caddy
-    {
-      services.caddy.virtualHosts = {
-        "shinx-ts.ewe-lizard.ts.net".extraConfig = ''
-          # smithereen
-          #reverse_proxy :4567
-          #reverse_proxy /i/* :4560
-          #handle /s/* {
-          #  root * /var/www/smithereen
-          #  file_server
-          #}
-          # imgproxy for my server
-          #reverse_proxy /m/* :4561
-        '';
-      };
-    }
-
     podman-auto-prune
-
-    miniflux
 
     tailscale
     avahi
-    docker
+    # docker
     firefox
     spotify
   ];
