@@ -60,7 +60,7 @@ builtins.listToAttrs (builtins.map
   ./services/minecraft-atm10-2.nix
   ./services/minecraft-atm10.nix
   ./services/minecraft-atm9.nix
-  ./services/minecraft-atm9sky.nix
+  ./services/minecraft-mzhip.nix
   ./services/miniflux.nix
   ./services/n8n.nix
   ./services/nginx.nix

@@ -13,12 +13,11 @@
     tailscale-exit-node
 
     podman-auto-prune
-    minecraft-atm9sky
     #minecraft-atm10
+    minecraft-mzhip
     #minecraft-atm10-2
     {
-      modules.minecraft-atm9sky.volumes = [ "/mnt/extra/minecraft-atm9sky/data:/data" ];
-      #modules.minecraft-atm10.volumes = [ "/mnt/extra/minecraft-atm10/data:/data" ];
+      modules.minecraft-mzhip.volumes = [ "/mnt/extra/minecraft-mzhip/data:/data" "/mnt/extra/minecraft-mzhip/mods:/mods" ];
       #modules.minecraft-atm10-2.volumes = [ "/mnt/extra/minecraft-atm10-2/data:/data" ];
     }
 
