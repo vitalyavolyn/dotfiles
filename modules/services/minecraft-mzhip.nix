@@ -29,7 +29,7 @@ in
       environmentFiles = [
         config.age.secrets.curseforge-token.path
       ];
-      ports = [ "0.0.0.0:2424:25565" "24454:24454/udp" ];
+      ports = [ "0.0.0.0:2424:25565" "24454:24454/udp" "0.0.0.0:8100:8100" ];
       extraOptions = [
         "--hostname=minecraft-mzhip"
         "--health-cmd"
