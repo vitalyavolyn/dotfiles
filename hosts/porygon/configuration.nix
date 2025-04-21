@@ -40,6 +40,14 @@
             proxyWebsockets = true;
           };
         };
+        "map.porygon.vitalya.me" = {
+          addSSL = true;
+          enableACME = true;
+          locations."/" = {
+            proxyPass = "http://localhost:8100/";
+            proxyWebsockets = true;
+          };
+        };
       };
     }
   ];
