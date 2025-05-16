@@ -14,7 +14,7 @@ in
 
     virtualisation.oci-containers.containers."minecraft-atm10" = {
       autoStart = true;
-      image = "docker.io/itzg/minecraft-server";
+      image = "docker.io/itzg/minecraft-server:java21";
       volumes = cfg.volumes;
       environment = {
         TZ = "America/New_York";
@@ -25,6 +25,7 @@ in
         MAX_MEMORY = "12G";
         RCON_PASSWORD = "minecraft-atm10";
         USE_AIKAR_FLAGS = "true";
+        CF_EXCLUDE_MODS = "1133580";
       };
       environmentFiles = [
         config.age.secrets.curseforge-token.path

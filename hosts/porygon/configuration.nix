@@ -13,12 +13,13 @@
     tailscale-exit-node
 
     podman-auto-prune
-    #minecraft-atm10
+    minecraft-atm10
     minecraft-mzhip
     #minecraft-atm10-2
     {
       modules.minecraft-mzhip.volumes = [ "/mnt/extra/minecraft-mzhip/data:/data" "/mnt/extra/minecraft-mzhip/mods:/mods" ];
-      #modules.minecraft-atm10-2.volumes = [ "/mnt/extra/minecraft-atm10-2/data:/data" ];
+      modules.minecraft-atm10.volumes = [ "/mnt/extra/minecraft-atm10/data:/data" ];
+      # modules.minecraft-atm10-2.volumes = [ "/mnt/extra/minecraft-atm10-2/data:/data" ];
     }
 
     nginx
@@ -36,7 +37,7 @@
           addSSL = true;
           enableACME = true;
           locations."/" = {
-            proxyPass = "http://shinx-ts:8123/";
+            proxyPass = "http://shinx:8123/";
             proxyWebsockets = true;
           };
         };
