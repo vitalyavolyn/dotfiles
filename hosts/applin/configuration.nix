@@ -27,6 +27,7 @@
       "ticktick"
       "bitwarden"
       "cyberduck"
+      "obsidian"
     ];
 
     brews = [
