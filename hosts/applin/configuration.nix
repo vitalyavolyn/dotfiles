@@ -14,8 +14,6 @@
     spotify
     qflipper
     krita
-
-    # hammerspoon
   ];
 
   homebrew = {

@@ -41,7 +41,6 @@ builtins.listToAttrs (builtins.map
   ./boot.nix
   ./darwin
   ./darwin/brew.nix
-  ./darwin/hammerspoon.nix
   ./fonts.nix
   ./gnome
   ./lightdm-budgie.nix
