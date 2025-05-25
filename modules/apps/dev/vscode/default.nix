@@ -10,7 +10,7 @@
       userSettings = lib.importJSON ./settings.json;
       keybindings = lib.importJSON ./keybindings.json;
 
-      extensions = with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
+      extensions = with pkgs.nix-vscode-extensions.vscode-marketplace; [
         vscodevim.vim
 
         jnoortheen.nix-ide

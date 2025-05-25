@@ -1,4 +1,4 @@
-{ pkgs, lib, options, ... }:
+{ pkgs, lib, options, inputs, ... }:
 with lib;
 {
   config = mkMerge [
@@ -31,12 +31,10 @@ with lib;
 
       nixpkgs.config.allowUnfreePredicate = (pkg: true);
       nixpkgs.config.allowUnfree = true;
-      # todo: sonarr
-      # https://github.com/NixOS/nixpkgs/issues/360592
-      nixpkgs.config.permittedInsecurePackages = [
-        "dotnet-sdk-6.0.428"
-        "aspnetcore-runtime-6.0.36"
-      ];
+
+        nixpkgs.overlays = [
+          inputs.nix-vscode-extensions.overlays.default
+        ];
     }
   ];
 }
