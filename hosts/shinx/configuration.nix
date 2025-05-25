@@ -34,7 +34,7 @@
     avahi
     # docker
     firefox
-    spotify
+    # spotify
   ];
 
   networking = {

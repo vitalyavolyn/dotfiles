@@ -6,7 +6,7 @@
     radarr = { enable = true; group = "multimedia"; };
     sonarr = { enable = true; group = "multimedia"; };
     bazarr = { enable = true; group = "multimedia"; };
-    prowlarr.enable = true;
+    prowlarr = { enable = true; group = "multimedia"; };
     deluge = {
       enable = true;
       group = "multimedia";
