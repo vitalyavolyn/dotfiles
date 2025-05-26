@@ -49,6 +49,14 @@
             proxyWebsockets = true;
           };
         };
+        "atm10.porygon.vitalya.me" = {
+          addSSL = true;
+          enableACME = true;
+          locations."/" = {
+            proxyPass = "http://localhost:8101/";
+            proxyWebsockets = true;
+          };
+        };
       };
     }
   ];

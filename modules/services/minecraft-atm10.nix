@@ -30,7 +30,7 @@ in
       environmentFiles = [
         config.age.secrets.curseforge-token.path
       ];
-      ports = [ "0.0.0.0:1340:25565" ];
+      ports = [ "0.0.0.0:1340:25565" "0.0.0.0:8101:8100" ];
       extraOptions = [
         "--hostname=minecraft-atm10"
         "--health-cmd"
