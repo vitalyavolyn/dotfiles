@@ -32,14 +32,14 @@
         dart-code.flutter
         dart-code.dart-code
 
-        rust-lang.rust-analyzer
-        vadimcn.vscode-lldb
+        # rust-lang.rust-analyzer
+        # vadimcn.vscode-lldb
 
         biomejs.biome
 
         akamud.vscode-theme-onedark
         vscode-ext.sync-rsync
-        fabiospampinato.vscode-commands
+        # fabiospampinato.vscode-commands
         ms-vscode.remote-explorer
         oven.bun-vscode
 
