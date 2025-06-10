@@ -28,4 +28,5 @@
   ]);
 
   environment.variables.FLAKE = "/etc/nixos";
+  environment.variables.NH_FLAKE = "/etc/nixos";
 }
