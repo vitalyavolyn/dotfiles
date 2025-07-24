@@ -14,10 +14,10 @@
 
     podman-auto-prune
     minecraft-atm10
-    minecraft-mzhip
+    #minecraft-mzhip
     #minecraft-atm10-2
     {
-      modules.minecraft-mzhip.volumes = [ "/mnt/extra/minecraft-mzhip/data:/data" "/mnt/extra/minecraft-mzhip/mods:/mods" ];
+      #modules.minecraft-mzhip.volumes = [ "/mnt/extra/minecraft-mzhip/data:/data" "/mnt/extra/minecraft-mzhip/mods:/mods" ];
       modules.minecraft-atm10.volumes = [ "/mnt/extra/minecraft-atm10/data:/data" ];
       # modules.minecraft-atm10-2.volumes = [ "/mnt/extra/minecraft-atm10-2/data:/data" ];
     }
