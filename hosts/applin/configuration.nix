@@ -26,6 +26,7 @@
       "bitwarden"
       "cyberduck"
       "obsidian"
+      "logi-options+"
     ];
 
     brews = [
