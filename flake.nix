@@ -49,6 +49,8 @@
     };
 
     nixneovim.url = "github:nixneovim/nixneovim";
+
+    foundryvtt.url = "github:reckenrode/nix-foundryvtt";
   };
 
   outputs = { nixpkgs, nixos-hardware, nix-darwin, ... } @ inputs:

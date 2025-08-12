@@ -52,6 +52,7 @@ builtins.listToAttrs (builtins.map
   ./services/caddy.nix
   ./services/docker.nix
   ./services/fail2ban.nix
+  ./services/foundry.nix
   ./services/gnome-xrdp.nix
   ./services/home-assistant
   ./services/homepage.nix
