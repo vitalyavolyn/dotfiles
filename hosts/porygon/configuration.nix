@@ -22,6 +22,7 @@
 
     nginx
     {
+      services.nginx.clientMaxBodySize = "100m";
       services.nginx.virtualHosts = {
         "porygon.vitalya.me" = {
           addSSL = true;
