@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = with inputs.self.nixosModules; [
@@ -51,6 +51,17 @@
       };
     }
   ];
+
+  # alexander manages foundry
+  users.users.sanyasuper2002 = {
+    isNormalUser = true;
+    extraGroups = [ "foundryvtt" "wheel" ];
+    shell = pkgs.zsh;
+    createHome = true;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFdbYRTexJEZuXoOUt6XazFoL1MNgGoV2muVujWvrRGk raido@starlight"
+    ];
+  };
 
   networking = {
     hostName = "porygon";
