@@ -31,6 +31,12 @@
             return = "200 'hiiii :3'";
             extraConfig = "add_header Content-Type text/plain;";
           };
+          locations."/cal/radarr" = {
+            proxyPass = "http://shinx:7878/feed/v3/calendar/Radarr.ics";
+          };
+          locations."/cal/sonarr" = {
+            proxyPass = "http://shinx:8989/feed/v3/calendar/Sonarr.ics";
+          };
         };
         "hass.porygon.vitalya.me" = {
           addSSL = true;
