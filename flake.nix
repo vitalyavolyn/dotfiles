@@ -50,7 +50,7 @@
 
     nixneovim.url = "github:nixneovim/nixneovim";
 
-    foundryvtt.url = "github:vitalyavolyn/nix-foundryvtt/update/13.0.0+347";
+    foundryvtt.url = "github:reckenrode/nix-foundryvtt";
   };
 
   outputs = { nixpkgs, nixos-hardware, nix-darwin, ... } @ inputs:
