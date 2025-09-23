@@ -13,7 +13,7 @@ let
       owner = "mitchins";
       repo = "paperless-concierge";
       rev = "main";
-      sha256 = lib.fakeSha256; # Replace with actual hash after first build
+      sha256 = "sha256-c7RGyxq1T2ot4CY6NnhMPPi5iz4TFS3Ne/eRDUOcht4=";
     };
 
     # Specify build system for modern Python packaging
@@ -48,6 +48,7 @@ let
 
 in
 {
+  # TODO: other modules use modules.*
   options.services.paperless-concierge = {
     user = lib.mkOption {
       type = lib.types.str;
