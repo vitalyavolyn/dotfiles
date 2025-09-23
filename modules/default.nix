@@ -64,8 +64,9 @@ builtins.listToAttrs (builtins.map
   ./services/miniflux.nix
   ./services/n8n.nix
   ./services/nginx.nix
-  ./services/paperless.nix
   ./services/paperless-ai.nix
+  ./services/paperless-concierge.nix
+  ./services/paperless.nix
   ./services/pipewire.nix
   ./services/podman-auto-prune.nix
   ./services/shadowsocks.nix

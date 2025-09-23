@@ -31,6 +31,13 @@
     podman-auto-prune
 
     paperless
+    paperless-concierge
+    paperless-ai
+    {
+      services.paperless-concierge = {
+        envFile = "/etc/paperless-concierge/.env";
+      };
+    }
 
     tailscale
     avahi

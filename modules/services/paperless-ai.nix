@@ -1,6 +1,7 @@
 { lib, config, ... }:
 
 {
+  # TODO: env file
   config = {
     virtualisation.oci-containers.containers."paperless-ai" = {
       autoStart = true;
