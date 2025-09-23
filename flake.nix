@@ -34,11 +34,6 @@
       flake = false;
     };
 
-    paperwm-spoon = {
-      url = "github:mogenson/PaperWM.spoon";
-      flake = false;
-    };
-
     agenix.url = "github:ryantm/agenix";
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
@@ -47,8 +42,6 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixneovim.url = "github:nixneovim/nixneovim";
 
     foundryvtt.url = "github:reckenrode/nix-foundryvtt";
   };
