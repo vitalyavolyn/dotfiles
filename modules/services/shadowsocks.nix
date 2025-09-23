@@ -4,6 +4,7 @@
   services = {
     shadowsocks = {
       enable = true;
+      localAddress = "0.0.0.0";
       port = 8388;
       plugin = "${pkgs.shadowsocks-v2ray-plugin}/bin/v2ray-plugin";
       pluginOpts = "server";

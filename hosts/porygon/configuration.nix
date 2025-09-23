@@ -8,17 +8,16 @@
     inputs.self.nixosProfiles.base-linux
 
     shadowsocks
-    { services.shadowsocks.localAddress = "0.0.0.0"; }
     tailscale
     tailscale-exit-node
 
     foundry
 
     podman-auto-prune
-    minecraft-atm10
-    {
-      modules.minecraft-atm10.volumes = [ "/mnt/extra/minecraft-atm10/data:/data" ];
-    }
+    # minecraft-atm10
+    # {
+    #   modules.minecraft-atm10.volumes = [ "/mnt/extra/minecraft-atm10/data:/data" ];
+    # }
 
     nginx
     {
