@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, config, ... }:
 
 {
   imports = with inputs.self.nixosModules; [
@@ -61,7 +61,7 @@
           addSSL = true;
           enableACME = true;
           locations."/" = {
-            proxyPass = "http://localhost:${toString services.komga.settings.server.port}/";
+            proxyPass = "http://localhost:${toString config.services.komga.settings.server.port}/";
             proxyWebsockets = true;
           };
         };
