@@ -1,4 +1,4 @@
-{ pkgs, lib, options, inputs, ... }:
+{ lib, options, inputs, ... }:
 with lib;
 {
   config = mkMerge [

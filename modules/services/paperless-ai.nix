@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ ... }:
 
 {
   # TODO: env file

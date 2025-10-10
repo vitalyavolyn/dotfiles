@@ -1,4 +1,4 @@
-{ lib, config, self, ... }:
+{ lib, config, ... }:
 
 let
   cfg = config.modules.home-assistant;
