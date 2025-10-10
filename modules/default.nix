@@ -56,7 +56,6 @@ builtins.listToAttrs (builtins.map
   ./services/gnome-xrdp.nix
   ./services/home-assistant
   ./services/homepage.nix
-  ./services/komga.nix
   ./services/media-server.nix
   ./services/minecraft-atm10-2.nix
   ./services/minecraft-atm10.nix

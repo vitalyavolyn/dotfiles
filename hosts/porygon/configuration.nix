@@ -12,10 +12,6 @@
     tailscale-exit-node
 
     foundry
-    komga
-    {
-      modules.komga.stateDir = "/mnt/extra/komga";
-    }
 
     podman-auto-prune
     # minecraft-atm10
@@ -54,14 +50,6 @@
           enableACME = true;
           locations."/" = {
             proxyPass = "http://localhost:30000/";
-            proxyWebsockets = true;
-          };
-        };
-        "komga.porygon.vitalya.me" = {
-          addSSL = true;
-          enableACME = true;
-          locations."/" = {
-            proxyPass = "http://localhost:${toString config.services.komga.settings.server.port}/";
             proxyWebsockets = true;
           };
         };
