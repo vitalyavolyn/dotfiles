@@ -38,13 +38,13 @@
 
       git = {
         enable = true;
-        userName = "Vitaliy Volynskiy";
-        userEmail = "i@vitalya.me";
         signing = {
           key = "C5FD1B39EB6F5BFE";
           signByDefault = true;
         };
-        extraConfig = {
+        settings = {
+          user.name = "Vitaliy Volynskiy";
+          user.email = "i@vitalya.me";
           credential.helper = "store";
           push.followTags = true;
           init.defaultBranch = "main";
