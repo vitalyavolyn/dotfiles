@@ -36,6 +36,11 @@ with lib;
         inputs.nix-vscode-extensions.overlays.default
       ];
 
+      # TODO: shadowsocks 🙄
+      nixpkgs.config.permittedInsecurePackages = [
+        "mbedtls-2.28.10"
+      ];
+
       nix.settings.substituters = [
         "https://nix-community.cachix.org"
       ];
