@@ -18,7 +18,7 @@
 
       # dev tools
       nodejs_latest
-      yarn
+      yarn-berry
       bun
       httpie
     ];
