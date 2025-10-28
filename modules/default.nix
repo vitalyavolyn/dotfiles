@@ -58,6 +58,7 @@ builtins.listToAttrs (builtins.map
   ./services/homepage.nix
   ./services/media-server.nix
   ./services/minecraft-atm10-2.nix
+  ./services/minecraft-atm10-tts.nix
   ./services/minecraft-atm10.nix
   ./services/minecraft-atm9.nix
   ./services/minecraft-mzhip.nix

@@ -15,9 +15,10 @@
 
     podman-auto-prune
     # minecraft-atm10
-    # {
-    #   modules.minecraft-atm10.volumes = [ "/mnt/extra/minecraft-atm10/data:/data" ];
-    # }
+    minecraft-atm10-tts
+    {
+      modules.minecraft-atm10-tts.volumes = [ "/mnt/extra/minecraft-atm10-tts/data:/data" ];
+    }
 
     nginx
     {
@@ -50,6 +51,14 @@
           enableACME = true;
           locations."/" = {
             proxyPass = "http://localhost:30000/";
+            proxyWebsockets = true;
+          };
+        };
+        "map.porygon.vitalya.me" = {
+          addSSL = true;
+          enableACME = true;
+          locations."/" = {
+            proxyPass = "http://localhost:8101";
             proxyWebsockets = true;
           };
         };
