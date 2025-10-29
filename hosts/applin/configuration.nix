@@ -35,10 +35,8 @@
   };
 
   home-manager.users.vitalya.home.packages = with pkgs; [
-    jdk17
+    jdk
   ];
-
-  home-manager.users.vitalya.home.file.".jdk/openjdk21".source = pkgs.jdk;
 
   home-manager.users.vitalya.home.stateVersion = "24.05";
 
