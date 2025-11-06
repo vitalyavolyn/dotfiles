@@ -12,7 +12,7 @@ with lib;
         (discord.override {
           withOpenASAR = true;
         })
-        tdesktop
+        telegram-desktop
       ];
     })
   ];
