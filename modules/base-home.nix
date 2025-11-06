@@ -14,7 +14,7 @@
       # ranger preview utilities
       atool
       unzip
-      poppler_utils
+      poppler-utils
 
       # dev tools
       nodejs_latest
