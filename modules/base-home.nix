@@ -23,6 +23,17 @@
       httpie
     ];
 
+    # TODO: move to vim module? use neovim???
+    home.file.".vimrc".text = ''
+      set smartindent
+      set autoindent
+      set number
+
+      set backupdir=~/.vim/backup//
+      set directory=~/.vim/swap//
+      set undodir=~/.vim/undo//
+    '';
+
     # nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
     manual.manpages.enable = false;
@@ -47,6 +58,7 @@
           user.email = "i@vitalya.me";
           credential.helper = "store";
           push.followTags = true;
+          push.autoSetupRemote = true;
           init.defaultBranch = "main";
         };
       };
