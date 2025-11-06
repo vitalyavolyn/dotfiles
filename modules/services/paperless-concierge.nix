@@ -13,7 +13,7 @@ let
       owner = "mitchins";
       repo = "paperless-concierge";
       rev = "main";
-      sha256 = "sha256-c7RGyxq1T2ot4CY6NnhMPPi5iz4TFS3Ne/eRDUOcht4=";
+      sha256 = "sha256-10UR+1OniiyQwyHf195Pt9nLtEhlmEL+v2wCFdy5JxY=";
     };
 
     # Specify build system for modern Python packaging
