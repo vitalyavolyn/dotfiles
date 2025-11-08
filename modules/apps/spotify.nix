@@ -16,7 +16,7 @@ in
         programs.spicetify = {
           enable = true;
           theme = spicePkgs.themes.default;
-          colorScheme = "flamingo";
+          # colorScheme = "flamingo";
           enabledExtensions = with spicePkgs.extensions; [ popupLyrics ];
         };
       };

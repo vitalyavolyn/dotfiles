@@ -83,6 +83,19 @@
               ./hosts/porygon/configuration.nix
             ];
           };
+        tynamo = nixpkgs.lib.nixosSystem
+          {
+            system = "x86_64-linux";
+            specialArgs = { inherit inputs; };
+            modules = [
+              ./hosts/tynamo/configuration.nix
+
+              nixos-hardware.nixosModules.common-cpu-amd
+              #nixos-hardware.nixosModules.common-gpu-nvidia
+              nixos-hardware.nixosModules.common-pc-ssd
+              nixos-hardware.nixosModules.common-pc-laptop
+            ];
+          };
       };
 
       darwinConfigurations."applin" = nix-darwin.lib.darwinSystem {
