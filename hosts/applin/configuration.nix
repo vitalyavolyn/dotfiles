@@ -12,20 +12,21 @@
     minecraft
     messaging
     spotify
-    qflipper
     krita
+    obsidian
+    steam
   ];
 
   homebrew = {
     casks = [
       "microsoft-teams"
       "tunnelblick"
-      "steam"
       "chatgpt"
       "ticktick"
       "bitwarden"
       "cyberduck"
-      "obsidian"
+      # TODO: cross platform logitech module with
+      # https://github.com/pwr-Solaar/Solaar
       "logi-options+"
     ];
 

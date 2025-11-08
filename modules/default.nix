@@ -29,6 +29,7 @@ builtins.listToAttrs (builtins.map
   ./apps/krita.nix
   ./apps/messaging.nix
   ./apps/minecraft.nix
+  ./apps/obsidian.nix
   ./apps/qflipper.nix
   ./apps/spotify.nix
   ./apps/steam.nix
