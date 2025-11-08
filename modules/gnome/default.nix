@@ -14,6 +14,7 @@
     gnome-tweaks
   ] ++ (with pkgs.gnomeExtensions; [
     appindicator
+    screen-rotate
   ]);
 
   services.udev.packages = with pkgs; [

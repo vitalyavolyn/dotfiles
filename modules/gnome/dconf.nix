@@ -42,6 +42,7 @@ in
         # `gnome-extensions list` for a list
         enabled-extensions = [
           "appindicatorsupport@rgcjonas.gmail.com"
+          "screen-rotate@shyzus.github.io"
         ];
 
         favorite-apps =

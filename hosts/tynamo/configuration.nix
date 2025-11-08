@@ -42,6 +42,8 @@
     enableUserService = true;
   };
 
+  hardware.sensor.iio.enable = true;
+
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
