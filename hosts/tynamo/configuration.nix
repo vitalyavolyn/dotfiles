@@ -26,6 +26,8 @@
     streaming
     vlc
     steam-run
+
+    steam
   ];
 
   networking = {
@@ -43,8 +45,6 @@
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
-
-    # Modesetting is required.
     modesetting.enable = true;
 
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
@@ -81,6 +81,7 @@
       amdgpuBusId = "PCI:8:0:0";
     };
   };
+
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
