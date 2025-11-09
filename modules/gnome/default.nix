@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
+let
+  hasModule = name: builtins.hasAttr name config.modules;
+  optionals = lib.optionals;
+in
 {
   imports = [
     ./dconf.nix
@@ -15,7 +19,11 @@
   ] ++ (with pkgs.gnomeExtensions; [
     appindicator
     screen-rotate
-  ]);
+    wiggle
+    bluetooth-battery-meter
+  ]) ++ optionals (hasModule "tailscale") [
+    pkgs.gnomeExtensions.tailscale-qs
+  ];
 
   services.udev.packages = with pkgs; [
     gnome-settings-daemon

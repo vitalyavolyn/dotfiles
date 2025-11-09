@@ -48,6 +48,10 @@ in
         enabled-extensions = [
           "appindicatorsupport@rgcjonas.gmail.com"
           "screen-rotate@shyzus.github.io"
+          "tailscale@joaophi.github.com"
+          "Bluetooth-Battery-Meter@maniacx.github.com"
+        ] ++ optionals (hasModule "tailscale") [
+          "wiggle@mechtifs"
         ];
 
         favorite-apps =
@@ -58,12 +62,21 @@ in
           ++ optionals (hasModule "dev") [ "code.desktop" ]
           ++ optionals (hasModule "messaging") [ "org.telegram.desktop.desktop" ]
           ++ optionals (hasModule "messaging") [ "discord.desktop" ]
-          ++ optionals (hasModule "spotify") [ "spotify.desktop" ];
+          ++ optionals (hasModule "spotify") [ "spotify.desktop" ]
+          ++ optionals (hasModule "steam") [ "steam.desktop" ]
+          ++ optionals (hasModule "minecraft") [ "org.prismlauncher.PrismLauncher.desktop" ];
       };
 
       "org/gnome/mutter" = {
+        dynamic-workspaces = false;
         edge-tiling = true;
         center-new-windows = true;
+      };
+
+      "org/gnome/shell/extensions/Bluetooth-Battery-Meter" = {
+        enable-battery-level-text = true;
+        enable-battery-level-icon = false;
+        enable-battery-indicator = false;
       };
     };
   };

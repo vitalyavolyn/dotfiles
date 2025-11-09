@@ -1,7 +1,11 @@
-{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 {
-  services.tailscale.enable = true;
+  services.tailscale = {
+    enable = true;
+    # TODO: what if i change username?
+    extraSetFlags = lib.optionals pkgs.stdenv.isLinux [ "--operator=vitalya" ];
+  };
 
   networking =
     if pkgs.stdenv.isLinux then {

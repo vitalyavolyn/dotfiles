@@ -5,6 +5,7 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
+  # TODO: fingerprint reader
   imports = with inputs.self.nixosModules; [
     # hardware-specific config,
     # see also flake.nix -> nixos-hardware modules
