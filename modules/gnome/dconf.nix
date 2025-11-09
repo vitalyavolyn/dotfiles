@@ -48,10 +48,10 @@ in
         enabled-extensions = [
           "appindicatorsupport@rgcjonas.gmail.com"
           "screen-rotate@shyzus.github.io"
-          "tailscale@joaophi.github.com"
+          "wiggle@mechtifs"
           "Bluetooth-Battery-Meter@maniacx.github.com"
         ] ++ optionals (hasModule "tailscale") [
-          "wiggle@mechtifs"
+          "tailscale@joaophi.github.com"
         ];
 
         favorite-apps =
