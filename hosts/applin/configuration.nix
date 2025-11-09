@@ -14,7 +14,6 @@
     spotify
     krita
     obsidian
-    steam
   ];
 
   homebrew = {
