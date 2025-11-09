@@ -34,6 +34,19 @@
       set undodir=~/.vim/undo//
     '';
 
+    home.file.".vim/backup/.keep" = {
+      text = "";
+      recursive = true;
+    };
+    home.file.".vim/swap/.keep" = {
+      text = "";
+      recursive = true;
+    };
+    home.file.".vim/undo/.keep" = {
+      text = "";
+      recursive = true;
+    };
+
     # nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
     manual.manpages.enable = false;
