@@ -36,6 +36,11 @@ in
         switch-to-application-5 = [ ];
       };
 
+      "org/gnome/desktop/wm/keybindings" = {
+        switch-input-source = [ "<Control>space" ];
+        switch-input-source-backward = [ "<Shift><Control>space" ];
+      };
+
       "org/gnome/shell" = {
         disable-user-extensions = false;
 
