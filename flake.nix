@@ -44,6 +44,11 @@
     };
 
     foundryvtt.url = "github:reckenrode/nix-foundryvtt";
+
+    solaar = {
+      url = "github:Svenum/Solaar-Flake/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, nixos-hardware, nix-darwin, ... } @ inputs:

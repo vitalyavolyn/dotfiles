@@ -28,8 +28,8 @@
     streaming
     vlc
     steam-run
-
     steam
+    logitech-mouse
   ];
 
   networking = {
