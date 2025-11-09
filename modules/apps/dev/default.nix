@@ -3,7 +3,6 @@ with lib;
 {
   imports = [
     ./vscode
-    ./insomnia.nix
     ./db.nix
   ];
 
