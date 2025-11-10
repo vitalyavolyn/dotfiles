@@ -21,6 +21,8 @@ in
     screen-rotate
     wiggle
     bluetooth-battery-meter
+    search-light
+    window-is-ready-remover
   ]) ++ optionals (hasModule "tailscale") [
     pkgs.gnomeExtensions.tailscale-qs
   ];

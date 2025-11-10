@@ -50,6 +50,8 @@ in
           "screen-rotate@shyzus.github.io"
           "wiggle@mechtifs"
           "Bluetooth-Battery-Meter@maniacx.github.com"
+          "search-light@icedman.github.com"
+          "windowIsReady_Remover@nunofarruca@gmail.com"
         ] ++ optionals (hasModule "tailscale") [
           "tailscale@joaophi.github.com"
         ];
@@ -60,6 +62,7 @@ in
           ++ optionals (hasModule "chrome") [ "google-chrome.desktop" ]
           ++ optionals (hasModule "firefox") [ "firefox.desktop" ]
           ++ optionals (hasModule "dev") [ "code.desktop" ]
+          ++ optionals (hasModule "dev") [ "dev.zed.Zed.desktop" ]
           ++ optionals (hasModule "messaging") [ "org.telegram.desktop.desktop" ]
           ++ optionals (hasModule "messaging") [ "discord.desktop" ]
           ++ optionals (hasModule "spotify") [ "spotify.desktop" ]
@@ -77,6 +80,12 @@ in
         enable-battery-level-text = true;
         enable-battery-level-icon = false;
         enable-battery-indicator = false;
+      };
+
+      "org/gnome/shell/extensions/search-light" = {
+        shortcut-search = [ "<Super>space" ];
+        border-radius = 3.0;
+        background-color = lib.gvariant.mkTuple [ 0.0 0.0 0.0 0.5 ];
       };
     };
   };
