@@ -1,4 +1,4 @@
-{ pkgs, lib, options, ... }:
+{ pkgs, lib, ... }:
 with lib;
 {
   imports = [
@@ -9,6 +9,7 @@ with lib;
   home-manager.users.vitalya.home.packages = with pkgs; [
     gnumake
     nixd
+    nil
     zed-editor
   ];
 }
