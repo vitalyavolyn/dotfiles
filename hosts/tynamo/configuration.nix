@@ -18,6 +18,8 @@
     avahi
     # plymouth
     dev
+    { modules.dev.enable-nix-ld = true; }
+
     spotify
     qflipper
     messaging
@@ -58,4 +60,3 @@
   system.stateVersion = "25.05"; # Did you read the comment?
   home-manager.users.vitalya.home.stateVersion = "25.05";
 }
-
