@@ -14,6 +14,7 @@
     spotify
     krita
     obsidian
+    logitech-mouse
   ];
 
   homebrew = {
@@ -24,9 +25,6 @@
       "ticktick"
       "bitwarden"
       "cyberduck"
-      # TODO: cross platform logitech module with
-      # https://github.com/pwr-Solaar/Solaar
-      "logi-options+"
     ];
 
     brews = [

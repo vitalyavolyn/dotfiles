@@ -32,8 +32,8 @@ builtins.listToAttrs (builtins.map
   ./apps/obsidian.nix
   ./apps/qflipper.nix
   ./apps/spotify.nix
-  ./apps/steam.nix
   ./apps/steam-run.nix
+  ./apps/steam.nix
   ./apps/streaming.nix
   ./apps/torrent.nix
   ./apps/vlc.nix
@@ -57,6 +57,7 @@ builtins.listToAttrs (builtins.map
   ./services/gnome-xrdp.nix
   ./services/home-assistant
   ./services/homepage.nix
+  ./services/logitech-mouse.nix
   ./services/media-server.nix
   ./services/minecraft-atm10-2.nix
   ./services/minecraft-atm10-tts.nix
