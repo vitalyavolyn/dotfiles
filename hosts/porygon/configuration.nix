@@ -14,10 +14,11 @@
     foundry
 
     podman-auto-prune
-    # minecraft-atm10
     minecraft-atm10-tts
+    minecraft-chp
     {
       modules.minecraft-atm10-tts.volumes = [ "/mnt/extra/minecraft-atm10-tts/data:/data" ];
+      modules.minecraft-chp.volumes = [ "/mnt/extra/minecraft-chp/data:/data" ];
     }
 
     nginx

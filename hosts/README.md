@@ -4,4 +4,4 @@
 - `shinx` - Intel NUC6i5SYB, [probe](https://linux-hardware.org/?probe=f566c56a9f)
 - `porygon` - a free Oracle ARM Ampere A1 Compute instance, used mainly for minecraft
 - `applin` - MacBook Air (M3)
-- `tynamo` - ASUS ROG FLOW X13
+- `tynamo` - ASUS ROG FLOW X13, [probe](https://linux-hardware.org/?probe=a723a6a441)

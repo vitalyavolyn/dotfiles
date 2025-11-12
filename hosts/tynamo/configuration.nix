@@ -25,6 +25,7 @@
     messaging
     torrent
     firefox
+    chrome
     minecraft
     krita
     streaming

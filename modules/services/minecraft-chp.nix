@@ -1,10 +1,10 @@
 { lib, config, ... }:
 
 let
-  cfg = config.modules.minecraft-atm9;
+  cfg = config.modules.minecraft-chp;
 in
 {
-  options.modules.minecraft-atm9.volumes = lib.mkOption {
+  options.modules.minecraft-chp.volumes = lib.mkOption {
     type = lib.types.listOf lib.types.str;
     description = "Volumes to mount (needs /data)";
   };
@@ -12,26 +12,30 @@ in
   config = {
     age.secrets.curseforge-token.file = ../../secrets/curseforge-token.age;
 
-    virtualisation.oci-containers.containers."minecraft-atm9" = {
+    virtualisation.oci-containers.containers."minecraft-chp" = {
       autoStart = true;
-      image = "docker.io/itzg/minecraft-server:java17";
+      image = "docker.io/itzg/minecraft-server:java21";
       volumes = cfg.volumes;
       environment = {
         TZ = "America/New_York";
         EULA = "TRUE";
         TYPE = "AUTO_CURSEFORGE";
-        CF_SLUG = "all-the-mods-9";
+        CF_SLUG = "cave-horror-project";
         INIT_MEMORY = "4G";
-        MAX_MEMORY = "8G";
-        RCON_PASSWORD = "minecraft-atm9";
+        MAX_MEMORY = "12G";
+        RCON_PASSWORD = "minecraft-chp";
         USE_AIKAR_FLAGS = "true";
+        CF_EXCLUDE_MODS = "1133580";
       };
       environmentFiles = [
         config.age.secrets.curseforge-token.path
       ];
-      ports = [ "0.0.0.0:1339:25565" ];
+      ports = [
+        "0.0.0.0:1349:25565"
+        "0.0.0.0:8101:8100"
+      ];
       extraOptions = [
-        "--hostname=minecraft-atm9"
+        "--hostname=minecraft-chp"
         "--health-cmd"
         "mc-health"
         "--health-interval"
@@ -46,7 +50,6 @@ in
       ];
     };
 
-    networking.firewall.allowedTCPPorts = [ 1339 ];
+    networking.firewall.allowedTCPPorts = [ 1349 ];
   };
 }
-
