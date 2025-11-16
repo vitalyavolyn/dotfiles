@@ -73,6 +73,7 @@ builtins.listToAttrs (
       ./services/podman-auto-prune.nix
       ./services/shadowsocks.nix
       ./services/ssh-server.nix
+      ./services/sunshine.nix
       ./services/tailscale-exit-node.nix
       ./services/tailscale.nix
       ./user.nix

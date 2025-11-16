@@ -33,6 +33,7 @@
     steam-run
 
     steam
+    sunshine
   ];
 
   networking = {
