@@ -36,6 +36,8 @@
     sunshine
   ];
 
+  services.logind.lidSwitchExternalPower = "ignore";
+
   networking = {
     hostName = "tynamo";
     networkmanager.enable = true;
