@@ -53,6 +53,7 @@ builtins.listToAttrs (
       ./services/adguard-home.nix
       ./services/avahi.nix
       ./services/caddy.nix
+      ./services/devon-server.nix
       ./services/docker.nix
       ./services/fail2ban.nix
       ./services/foundry.nix

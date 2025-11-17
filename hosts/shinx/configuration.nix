@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, config, ... }:
 
 {
   imports = with inputs.self.nixosModules; [
@@ -31,6 +31,8 @@
     # docker
     firefox
     spotify
+
+    devon-server
   ];
 
   networking = {
@@ -39,26 +41,18 @@
     firewall.enable = false;
   };
 
-  system.stateVersion = "23.11";
+  # for devon
+  age.secrets.devon-env.file = ../../secrets/devon-env.age;
+  services.mongodb.enable = true;
+  services.devon-server.envFile = config.age.secrets.devon-env.path;
 
+  # Autologin. This machine is connected to my TV.
   # https://github.com/NixOS/nixpkgs/issues/103746
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "vitalya";
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  services.create_ap = {
-    enable = false;
-    settings = {
-      INTERNET_IFACE = "eno1";
-      WIFI_IFACE = "wlp1s0";
-      SSID = "shinx";
-      # i know it's public
-      # are you me neighbor? probably not
-      # this is a temp solution, my access point is shit
-      PASSPHRASE = "bulbasaur";
-    };
-  };
-
+  system.stateVersion = "23.11";
   home-manager.users.vitalya.home.stateVersion = "23.11";
 }

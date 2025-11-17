@@ -44,6 +44,11 @@
     };
 
     foundryvtt.url = "github:reckenrode/nix-foundryvtt";
+
+    devon-server = {
+      url = "github:vitalyavolyn/devon-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, nixos-hardware, nix-darwin, ... } @ inputs:
