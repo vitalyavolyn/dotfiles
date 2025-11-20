@@ -10,7 +10,10 @@ in
   home-manager.users.vitalya.dconf = {
     enable = true;
     settings = {
-      "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+        clock-show-weekday = true;
+      };
 
       "org/gnome/desktop/wm/preferences".num-workspaces = 5;
 
