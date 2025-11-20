@@ -32,7 +32,7 @@
     firefox
     spotify
 
-    devon-server
+    # devon-server
   ];
 
   networking = {
@@ -42,12 +42,12 @@
   };
 
   # for devon
-  age.secrets.devon-env.file = ../../secrets/devon-env.age;
-  services.mongodb = {
-    enable = true;
-    bind_ip = "\"*\"";
-  };
-  services.devon-server.envFile = config.age.secrets.devon-env.path;
+  # age.secrets.devon-env.file = ../../secrets/devon-env.age;
+  # services.mongodb = {
+  #   enable = true;
+  #   bind_ip = "\"*\"";
+  # };
+  # services.devon-server.envFile = config.age.secrets.devon-env.path;
 
   # Autologin. This machine is connected to my TV.
   # https://github.com/NixOS/nixpkgs/issues/103746

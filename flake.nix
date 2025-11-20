@@ -45,6 +45,7 @@
 
     foundryvtt.url = "github:reckenrode/nix-foundryvtt";
 
+    # TODO: remove this and the module? it lives on ubuntu for now
     devon-server = {
       url = "github:vitalyavolyn/devon-server";
       inputs.nixpkgs.follows = "nixpkgs";
