@@ -27,6 +27,7 @@
     }
 
     tailscale
+    tailscale-exit-node
     avahi
     # docker
     firefox
@@ -48,6 +49,20 @@
   #   bind_ip = "\"*\"";
   # };
   # services.devon-server.envFile = config.age.secrets.devon-env.path;
+
+  services.plex = {
+    enable = true;
+    group = "multimedia";
+  };
+  services.tailscale = {
+    extraUpFlags = [
+      "--advertise-routes=192.168.0.0/16"
+    ];
+    extraSetFlags = [
+      "--advertise-routes=192.168.0.0/16"
+    ];
+    useRoutingFeatures = "both";
+  };
 
   # Autologin. This machine is connected to my TV.
   # https://github.com/NixOS/nixpkgs/issues/103746
