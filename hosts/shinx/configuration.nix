@@ -33,7 +33,7 @@
     firefox
     spotify
 
-    # devon-server
+    adguard-home
   ];
 
   networking = {
@@ -41,14 +41,6 @@
     networkmanager.enable = true;
     firewall.enable = false;
   };
-
-  # for devon
-  # age.secrets.devon-env.file = ../../secrets/devon-env.age;
-  # services.mongodb = {
-  #   enable = true;
-  #   bind_ip = "\"*\"";
-  # };
-  # services.devon-server.envFile = config.age.secrets.devon-env.path;
 
   services.plex = {
     enable = true;
