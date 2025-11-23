@@ -83,6 +83,8 @@ in
         enable-battery-level-text = true;
         enable-battery-level-icon = false;
         enable-battery-indicator = false;
+        indicator-type = 0;
+        popup-in-quick-settings = false;
       };
 
       "org/gnome/shell/extensions/search-light" = {
