@@ -32,8 +32,6 @@
     # docker
     firefox
     spotify
-
-    adguard-home
   ];
 
   networking = {
