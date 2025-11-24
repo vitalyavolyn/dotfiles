@@ -23,6 +23,7 @@ in
     bluetooth-battery-meter
     search-light
     window-is-ready-remover
+    pip-on-top
   ]) ++ optionals (hasModule "tailscale") [
     pkgs.gnomeExtensions.tailscale-qs
   ];

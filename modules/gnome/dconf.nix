@@ -55,6 +55,7 @@ in
           "Bluetooth-Battery-Meter@maniacx.github.com"
           "search-light@icedman.github.com"
           "windowIsReady_Remover@nunofarruca@gmail.com"
+          "pip-on-top@rafostar.github.com"
         ] ++ optionals (hasModule "tailscale") [
           "tailscale@joaophi.github.com"
         ];
