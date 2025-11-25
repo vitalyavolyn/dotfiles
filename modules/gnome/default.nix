@@ -1,9 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}:
+{ lib, config, pkgs, ... }:
 
 let
   hasModule = name: builtins.hasAttr name config.modules;
@@ -19,23 +14,19 @@ in
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
-  environment.systemPackages =
-    with pkgs;
-    [
-      gnome-tweaks
-    ]
-    ++ (with pkgs.gnomeExtensions; [
-      appindicator
-      screen-rotate
-      wiggle
-      bluetooth-battery-meter
-      search-light
-      window-is-ready-remover
-      pip-on-top
-    ])
-    ++ optionals (hasModule "tailscale") [
-      pkgs.gnomeExtensions.tailscale-qs
-    ];
+  environment.systemPackages = with pkgs; [
+    gnome-tweaks
+  ] ++ (with pkgs.gnomeExtensions; [
+    appindicator
+    screen-rotate
+    wiggle
+    bluetooth-battery-meter
+    search-light
+    window-is-ready-remover
+    pip-on-top
+  ]) ++ optionals (hasModule "tailscale") [
+    pkgs.gnomeExtensions.tailscale-qs
+  ];
 
   services.udev.packages = with pkgs; [
     gnome-settings-daemon
