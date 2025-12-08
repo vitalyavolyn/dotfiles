@@ -18,7 +18,7 @@
     minecraft-rlcraft
     {
       # modules.minecraft-atm10-tts.volumes = [ "/mnt/extra/minecraft-atm10-tts/data:/data" ];
-      modules.minecraft-chp.volumes = [ "/mnt/extra/minecraft-rlcraft/data:/data" ];
+      modules.minecraft-rlcraft.volumes = [ "/mnt/extra/minecraft-rlcraft/data:/data" ];
     }
 
     nginx
