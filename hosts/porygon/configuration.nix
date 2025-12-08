@@ -15,10 +15,10 @@
 
     podman-auto-prune
     # minecraft-atm10-tts
-    minecraft-chp
+    minecraft-rlcraft
     {
       # modules.minecraft-atm10-tts.volumes = [ "/mnt/extra/minecraft-atm10-tts/data:/data" ];
-      modules.minecraft-chp.volumes = [ "/mnt/extra/minecraft-chp/data:/data" ];
+      modules.minecraft-chp.volumes = [ "/mnt/extra/minecraft-rlcraft/data:/data" ];
     }
 
     nginx

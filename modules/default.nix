@@ -63,8 +63,8 @@ builtins.listToAttrs (
       ./services/homepage.nix
       ./services/media-server.nix
       ./services/minecraft-atm10-tts.nix
-      ./services/minecraft-chp.nix
       ./services/minecraft-mzhip.nix
+      ./services/minecraft-rlcraft.nix
       ./services/miniflux.nix
       ./services/n8n.nix
       ./services/nginx.nix
