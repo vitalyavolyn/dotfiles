@@ -14,7 +14,7 @@ in
 
     virtualisation.oci-containers.containers."minecraft-rlcraft" = {
       autoStart = true;
-      image = "docker.io/itzg/minecraft-server:java16";
+      image = "docker.io/itzg/minecraft-server:java8";
       volumes = cfg.volumes;
       environment = {
         TZ = "America/New_York";
