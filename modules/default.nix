@@ -56,6 +56,7 @@ builtins.listToAttrs (
       ./services/devon-server.nix
       ./services/docker.nix
       ./services/fail2ban.nix
+      ./services/flatpak.nix
       ./services/foundry.nix
       ./services/gnome-xrdp.nix
       ./services/home-assistant

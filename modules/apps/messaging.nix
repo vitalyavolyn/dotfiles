@@ -9,9 +9,10 @@ with lib;
       ];
     } else {
       home-manager.users.vitalya.home.packages = with pkgs; [
-        (discord.override {
-          withOpenASAR = true;
-        })
+        # (discord.override {
+        #   withOpenASAR = true;
+        # })
+        discord
         telegram-desktop
       ];
     })

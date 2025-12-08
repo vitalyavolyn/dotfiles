@@ -50,6 +50,8 @@
       url = "github:vitalyavolyn/devon-server";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
   outputs = { nixpkgs, nixos-hardware, nix-darwin, ... } @ inputs:

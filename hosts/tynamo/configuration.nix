@@ -34,9 +34,15 @@
 
     steam
     sunshine
+
+    flatpak
   ];
 
   services.logind.settings.Login.HandleLidSwitchExternalPower = "ignore";
+
+  services.flatpak.packages = [
+    "re.sonny.Workbench"
+  ];
 
   networking = {
     hostName = "tynamo";
