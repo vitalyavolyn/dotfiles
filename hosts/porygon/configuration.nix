@@ -15,10 +15,10 @@
 
     podman-auto-prune
     # minecraft-atm10-tts
-    minecraft-rlcraft
+    minecraft-liminal-industries
     {
       # modules.minecraft-atm10-tts.volumes = [ "/mnt/extra/minecraft-atm10-tts/data:/data" ];
-      modules.minecraft-rlcraft.volumes = [ "/mnt/extra/minecraft-rlcraft/data:/data" ];
+      modules.minecraft-liminal-industries.volumes = [ "/mnt/extra/minecraft-liminal-industries/data:/data" ];
     }
 
     nginx
