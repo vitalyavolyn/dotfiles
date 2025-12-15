@@ -6,7 +6,6 @@
 
     dev
     tailscale
-    torrent
     firefox
     chrome
     vlc
@@ -31,9 +30,9 @@
       "logi-options+"
     ];
 
-    brews = [
-      "libusb"
-    ];
+    # brews = [
+    #   "libusb"
+    # ];
   };
 
   system.stateVersion = 4;
