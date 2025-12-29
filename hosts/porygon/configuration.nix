@@ -16,9 +16,11 @@
     podman-auto-prune
     # minecraft-atm10-tts
     minecraft-liminal-industries
+    minecraft-mzhip
     {
       # modules.minecraft-atm10-tts.volumes = [ "/mnt/extra/minecraft-atm10-tts/data:/data" ];
       modules.minecraft-liminal-industries.volumes = [ "/mnt/extra/minecraft-liminal-industries/data:/data" ];
+      modules.minecraft-mzhip.volumes = [ "/mnt/extra/minecraft-mzhip/data:/data" ];
     }
 
     nginx
@@ -59,7 +61,7 @@
           addSSL = true;
           enableACME = true;
           locations."/" = {
-            proxyPass = "http://localhost:8101";
+            proxyPass = "http://localhost:8100";
             proxyWebsockets = true;
           };
         };
