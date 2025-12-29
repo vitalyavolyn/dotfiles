@@ -33,6 +33,7 @@ builtins.listToAttrs (
       ./apps/minecraft.nix
       ./apps/obsidian.nix
       ./apps/qflipper.nix
+      ./apps/solaar.nix
       ./apps/spotify.nix
       ./apps/steam.nix
       ./apps/steam-run.nix

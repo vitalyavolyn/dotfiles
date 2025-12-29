@@ -36,6 +36,7 @@
     sunshine
 
     flatpak
+    solaar
   ];
 
   services.logind.settings.Login.HandleLidSwitchExternalPower = "ignore";
