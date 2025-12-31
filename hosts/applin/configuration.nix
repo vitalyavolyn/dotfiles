@@ -30,9 +30,9 @@
       "logi-options+"
     ];
 
-    # brews = [
-    #   "libusb"
-    # ];
+    brews = [
+      "mole"
+    ];
   };
 
   system.stateVersion = 4;
