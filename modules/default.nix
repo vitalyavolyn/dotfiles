@@ -24,6 +24,7 @@ builtins.listToAttrs (
     })
     [
       ./apps/chrome.nix
+      ./apps/claude-desktop.nix
       ./apps/dev
       ./apps/firefox.nix
       ./apps/keybase.nix

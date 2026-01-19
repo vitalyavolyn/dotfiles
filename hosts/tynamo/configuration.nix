@@ -32,6 +32,8 @@
     vlc
     steam-run
 
+    claude-desktop
+
     steam
     sunshine
 
