@@ -37,6 +37,10 @@
     ];
   };
 
+  home-manager.users.vitalya.home.packages = with pkgs; [
+    jdk
+  ];
+
   system.stateVersion = 4;
   home-manager.users.vitalya.home.stateVersion = "24.05";
 
