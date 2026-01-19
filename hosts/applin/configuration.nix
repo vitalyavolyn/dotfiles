@@ -22,6 +22,7 @@
       "microsoft-teams"
       "tunnelblick"
       "chatgpt"
+      "claude"
       "ticktick"
       "bitwarden"
       "cyberduck"
