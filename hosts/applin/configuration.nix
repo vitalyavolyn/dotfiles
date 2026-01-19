@@ -26,6 +26,7 @@
       "ticktick"
       "bitwarden"
       "cyberduck"
+      "helium-browser" # TODO: a module
       # TODO: cross platform logitech module with
       # https://github.com/pwr-Solaar/Solaar
       "logi-options+"
