@@ -27,6 +27,7 @@ builtins.listToAttrs (
       ./apps/claude-desktop.nix
       ./apps/dev
       ./apps/firefox.nix
+      ./apps/helium.nix
       ./apps/keybase.nix
       ./apps/kitty.nix
       ./apps/krita.nix

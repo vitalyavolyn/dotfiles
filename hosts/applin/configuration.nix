@@ -15,6 +15,8 @@
     spotify
     krita
     obsidian
+    claude-desktop
+    helium
   ];
 
   homebrew = {
@@ -22,11 +24,10 @@
       "microsoft-teams"
       "tunnelblick"
       "chatgpt"
-      "claude"
       "ticktick"
       "bitwarden"
       "cyberduck"
-      "helium-browser" # TODO: a module
+
       # TODO: cross platform logitech module with
       # https://github.com/pwr-Solaar/Solaar
       "logi-options+"

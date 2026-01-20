@@ -3,10 +3,10 @@ with lib;
 {
   config = mkMerge [
     (if (builtins.hasAttr "homebrew" options) then {
-      homebrew.casks = [ "claude" ];
+      homebrew.casks = [ "helium-browser" ];
     } else {
       home-manager.users.vitalya.home.packages = [
-        inputs.claude-desktop.packages.${pkgs.stdenv.hostPlatform.system}.claude-desktop-with-fhs
+        inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
     })
   ];

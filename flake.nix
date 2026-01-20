@@ -62,6 +62,11 @@
       url = "github:k3d3/claude-desktop-linux-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    helium = {
+      url = "github:vikingnope/helium-browser-nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, nixos-hardware, nix-darwin, ... } @ inputs:
