@@ -7,7 +7,7 @@
     dev
     tailscale
     firefox
-    chrome
+    # chrome
     vlc
     streaming
     minecraft

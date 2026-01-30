@@ -25,7 +25,7 @@
     messaging
     torrent
     firefox
-    chrome
+    # chrome
     helium
     minecraft
     krita
