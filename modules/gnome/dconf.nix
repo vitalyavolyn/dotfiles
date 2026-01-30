@@ -65,6 +65,7 @@ in
           ++ [ "kitty.desktop" ]
           ++ optionals (hasModule "chrome") [ "google-chrome.desktop" ]
           ++ optionals (hasModule "firefox") [ "firefox.desktop" ]
+          ++ optionals (hasModule "helium") [ "helium.desktop" ]
           ++ optionals (hasModule "dev") [ "code.desktop" ]
           ++ optionals (hasModule "dev") [ "dev.zed.Zed.desktop" ]
           ++ optionals (hasModule "messaging") [ "org.telegram.desktop.desktop" ]

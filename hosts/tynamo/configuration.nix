@@ -26,6 +26,7 @@
     torrent
     firefox
     chrome
+    helium
     minecraft
     krita
     streaming
@@ -37,15 +38,15 @@
     steam
     sunshine
 
-    flatpak
+    # flatpak
     solaar
   ];
 
   services.logind.settings.Login.HandleLidSwitchExternalPower = "ignore";
 
-  services.flatpak.packages = [
-    "re.sonny.Workbench"
-  ];
+  # services.flatpak.packages = [
+  #   "re.sonny.Workbench"
+  # ];
 
   networking = {
     hostName = "tynamo";
