@@ -23,6 +23,8 @@ in
       extraOptions = [
         "--network=host"
         "--pull=newer"
+        "--cap-add=NET_ADMIN"
+        "--cap-add=NET_RAW"
       ];
       entrypoint = "/patches/start.sh";
     };
