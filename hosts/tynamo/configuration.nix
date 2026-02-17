@@ -44,6 +44,9 @@
 
   services.logind.settings.Login.HandleLidSwitchExternalPower = "ignore";
 
+  # TODO: nvidia driver doesnt build on latest
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_18;
+
   # services.flatpak.packages = [
   #   "re.sonny.Workbench"
   # ];
