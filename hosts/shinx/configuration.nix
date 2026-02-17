@@ -8,6 +8,9 @@
 
     inputs.self.nixosProfiles.desktop-gnome
 
+    immich
+    { services.immich.mediaLocation = "/mnt/media/immich"; }
+
     media-server
     { services.deluge.config.download_location = "/mnt/media/downloads/complete"; }
 

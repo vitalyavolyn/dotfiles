@@ -64,6 +64,7 @@ builtins.listToAttrs (
       ./services/gnome-xrdp.nix
       ./services/home-assistant
       ./services/homepage.nix
+      ./services/immich.nix
       ./services/media-server.nix
       ./services/minecraft-atm10-tts.nix
       ./services/minecraft-mzhip.nix
