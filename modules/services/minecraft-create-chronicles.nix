@@ -1,10 +1,10 @@
 { lib, config, ... }:
 
 let
-  cfg = config.modules.minecraft-create-chronicles-the-endventure;
+  cfg = config.modules.minecraft-create-chronicles;
 in
 {
-  options.modules.minecraft-create-chronicles-the-endventure.volumes = lib.mkOption {
+  options.modules.minecraft-create-chronicles.volumes = lib.mkOption {
     type = lib.types.listOf lib.types.str;
     description = "Volumes to mount (needs /data)";
   };
@@ -12,7 +12,7 @@ in
   config = {
     age.secrets.curseforge-token.file = ../../secrets/curseforge-token.age;
 
-    virtualisation.oci-containers.containers."minecraft-create-chronicles-the-endventure" = {
+    virtualisation.oci-containers.containers."minecraft-create-chronicles" = {
       autoStart = true;
       image = "docker.io/itzg/minecraft-server:java21";
       volumes = cfg.volumes;
@@ -23,7 +23,7 @@ in
         CF_SLUG = "create-chronicles-the-endventure";
         INIT_MEMORY = "4G";
         MAX_MEMORY = "12G";
-        RCON_PASSWORD = "minecraft-create-chronicles-the-endventure";
+        RCON_PASSWORD = "minecraft-create-chronicles";
         USE_AIKAR_FLAGS = "true";
       };
       environmentFiles = [
@@ -33,7 +33,7 @@ in
         "0.0.0.0:1349:25565"
       ];
       extraOptions = [
-        "--hostname=minecraft-create-chronicles-the-endventure"
+        "--hostname=minecraft-create-chronicles"
         "--health-cmd"
         "mc-health"
         "--health-interval"
