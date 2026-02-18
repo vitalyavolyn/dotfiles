@@ -15,11 +15,13 @@
 
     podman-auto-prune
     # minecraft-atm10-tts
-    minecraft-ftb-oceanblock-2
+    # minecraft-ftb-oceanblock-2
+    minecraft-create-chronicles
     minecraft-mzhip
     {
       # modules.minecraft-atm10-tts.volumes = [ "/mnt/extra/minecraft-atm10-tts/data:/data" ];
-      modules.minecraft-ftb-oceanblock-2.volumes = [ "/mnt/extra/minecraft-ftb-oceanblock-2/data:/data" ];
+      # modules.minecraft-ftb-oceanblock-2.volumes = [ "/mnt/extra/minecraft-ftb-oceanblock-2/data:/data" ];
+      modules.minecraft-create-chronicles.volumes = [ "/mnt/extra/minecraft-create-chronicles/data:/data" ];
       modules.minecraft-mzhip.volumes = [ "/mnt/extra/minecraft-mzhip/data:/data" ];
     }
 

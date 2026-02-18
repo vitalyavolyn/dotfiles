@@ -67,8 +67,9 @@ builtins.listToAttrs (
       ./services/immich.nix
       ./services/media-server.nix
       ./services/minecraft-atm10-tts.nix
-      ./services/minecraft-mzhip.nix
+      ./services/minecraft-create-chronicles.nix
       ./services/minecraft-ftb-oceanblock-2.nix
+      ./services/minecraft-mzhip.nix
       ./services/miniflux.nix
       ./services/n8n.nix
       ./services/nginx.nix
