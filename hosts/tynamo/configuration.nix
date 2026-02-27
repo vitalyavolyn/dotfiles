@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, lib, ... }:
 
 {
   # TODO: fingerprint reader
@@ -56,6 +56,33 @@
     networkmanager.enable = true;
     firewall.enable = false;
   };
+
+  environment.systemPackages = with pkgs; [
+    android-tools
+  ];
+
+  services.wivrn = {
+    enable = true;
+    openFirewall = true;
+    defaultRuntime = true;
+    autoStart = true;
+    package = pkgs.wivrn.override { cudaSupport = true; };
+    steam.importOXRRuntimes = true;
+    config = {
+      enable = true;
+      json = {
+        application = [ pkgs.wayvr ];
+      };
+    };
+  };
+
+  programs.steam.package = lib.mkForce (
+    pkgs.steam.override (prev: {
+      extraEnv = {
+        PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/wivrn/comp_ipc";
+      } // (prev.extraEnv or {});
+    })
+  );
 
   # Fix for Tailscale subnet routing conflicting with local network
   # Only adds the route when wlp6s0 has a 192.168.3.x address (i.e., at home)

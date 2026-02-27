@@ -31,6 +31,7 @@ with lib;
 
       nixpkgs.config.allowUnfreePredicate = (pkg: true);
       nixpkgs.config.allowUnfree = true;
+      nixpkgs.config.nvidia.acceptLicense = true;
 
       nixpkgs.overlays = [
         inputs.nix-vscode-extensions.overlays.default
@@ -40,8 +41,6 @@ with lib;
       nixpkgs.config.permittedInsecurePackages = [
         "mbedtls-2.28.10"
       ];
-
-
     }
   ];
 }

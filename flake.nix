@@ -67,9 +67,11 @@
       url = "github:vikingnope/helium-browser-nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
   };
 
-  outputs = { nixpkgs, nixos-hardware, nix-darwin, ... } @ inputs:
+  outputs = { nixpkgs, nixos-hardware, nix-darwin, nixpkgs-xr, ... } @ inputs:
     {
       nixosModules = (import ./modules { lib = nixpkgs.lib; });
       nixosProfiles = import ./profiles;
@@ -112,6 +114,8 @@
             specialArgs = { inherit inputs; };
             modules = [
               ./hosts/tynamo/configuration.nix
+
+              { nixpkgs.overlays = [ nixpkgs-xr.overlays.default ]; }
 
               nixos-hardware.nixosModules.common-cpu-amd
               #nixos-hardware.nixosModules.common-gpu-nvidia
