@@ -28,4 +28,5 @@
   ]);
 
   environment.variables.FLAKE = "/Users/vitalya/dotfiles";
+  environment.variables.NH_FLAKE = "/Users/vitalya/dotfiles";
 }
