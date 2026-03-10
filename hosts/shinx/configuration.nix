@@ -35,6 +35,7 @@
     # docker
     firefox
     spotify
+    logiops
   ];
 
   networking = {
