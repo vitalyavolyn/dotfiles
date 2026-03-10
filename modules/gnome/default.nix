@@ -41,8 +41,10 @@ in
     gnome-music
   ];
 
-  # disable screenshot sound
+  # disable screenshot sound by replacing it with a silent OGG file
   home-manager.users.vitalya.xdg.dataFile = {
-    "sounds/__custom/screen-capture.disabled".text = "";
+    "sounds/freedesktop/stereo/screen-capture.oga".source = pkgs.runCommand "silent.oga" { nativeBuildInputs = [ pkgs.sox ]; } ''
+      sox -n -r 44100 -c 2 -t ogg $out trim 0.0 0.1
+    '';
   };
 }

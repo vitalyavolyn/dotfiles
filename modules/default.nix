@@ -36,7 +36,6 @@ builtins.listToAttrs (
       ./apps/obsidian.nix
       ./apps/qflipper.nix
       ./apps/logiops.nix
-
       ./apps/spotify.nix
       ./apps/steam.nix
       ./apps/steam-run.nix
