@@ -6,7 +6,7 @@
       # system utilities
       nixpkgs-fmt
       p7zip
-      neofetch
+      fastfetch
       file
       htop
       ranger
