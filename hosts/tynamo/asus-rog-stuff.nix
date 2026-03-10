@@ -4,16 +4,15 @@
   services.supergfxd.enable = true;
   services.asusd = {
     enable = true;
-    enableUserService = true;
   };
 
   hardware.sensor.iio.enable = true;
 
   hardware.graphics = {
     enable = true;
-    extraPackages = with pkgs; [
-      nvidia-vaapi-driver
-    ];
+    # extraPackages = with pkgs; [
+    #   nvidia-vaapi-driver
+    # ];
   };
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
@@ -42,7 +41,7 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
 
     prime = {
       offload = {

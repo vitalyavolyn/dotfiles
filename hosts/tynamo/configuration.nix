@@ -76,13 +76,13 @@
     };
   };
 
-  programs.steam.package = lib.mkForce (
-    pkgs.steam.override (prev: {
-      extraEnv = {
-        PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/wivrn/comp_ipc";
-      } // (prev.extraEnv or {});
-    })
-  );
+  # programs.steam.package = lib.mkForce (
+  #   pkgs.steam.override (prev: {
+  #     extraEnv = {
+  #       PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/wivrn/comp_ipc";
+  #     } // (prev.extraEnv or {});
+  #   })
+  # );
 
   # Fix for Tailscale subnet routing conflicting with local network
   # Only adds the route when wlp6s0 has a 192.168.3.x address (i.e., at home)
