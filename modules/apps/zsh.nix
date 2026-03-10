@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   programs.zsh.enable = true;
@@ -20,7 +20,7 @@
         la = "ls -a";
         x = "xclip -sel clip";
         p = "nix-shell --run zsh -p";
-        nbs = "nh os switch";
+        nbs = lib.mkDefault "nh os switch";
       };
 
       # TODO: how to make REPORTTIME work?
