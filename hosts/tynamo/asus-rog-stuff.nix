@@ -53,6 +53,14 @@
     };
   };
 
+  home-manager.users.vitalya.xdg.configFile."autostart/rog-control-center.desktop".text = ''
+    [Desktop Entry]
+    Type=Application
+    Name=ROG Control Center
+    Exec=rog-control-center
+    X-GNOME-Autostart-enabled=true
+  '';
+
   home-manager.users.vitalya.dconf = {
     enable = true;
     settings = {
