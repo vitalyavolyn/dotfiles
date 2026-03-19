@@ -16,8 +16,13 @@ in
   };
 
   config = {
+    environment.etc."home-assistant-patches/start.sh" = {
+      source = ./start.sh;
+      mode = "0755";
+    };
+
     virtualisation.oci-containers.containers."homeassistant" = {
-      volumes = cfg.volumes ++ lib.optionals cfg.addDbusVolume [ "/run/dbus:/run/dbus:ro" ] ++ [ (builtins.toString ./. + ":/patches") ];
+      volumes = cfg.volumes ++ lib.optionals cfg.addDbusVolume [ "/run/dbus:/run/dbus:ro" ] ++ [ "/etc/home-assistant-patches:/patches" ];
       environment.TZ = config.time.timeZone;
       image = "ghcr.io/home-assistant/home-assistant:stable";
       extraOptions = [
