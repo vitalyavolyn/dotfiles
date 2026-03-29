@@ -1,6 +1,16 @@
 { config, ... }:
 
 {
+  nixpkgs.overlays = [
+    (final: prev: {
+      paperless-ngx = prev.paperless-ngx.overrideAttrs (_: { doCheck = false; });
+      pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+        (_: pyprev: {
+          ocrmypdf = pyprev.ocrmypdf.overridePythonAttrs (_: { doCheck = false; });
+        })
+      ];
+    })
+  ];
   age.secrets.paperless-password = {
     file = ../../secrets/paperless-password.age;
     owner = config.services.paperless.user;
