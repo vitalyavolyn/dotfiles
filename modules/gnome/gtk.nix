@@ -21,6 +21,7 @@
         package = pkgs.paper-icon-theme;
         name = "Paper";
       };
+      gtk4.theme = null;
     };
 
     qt = {

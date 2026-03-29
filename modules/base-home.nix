@@ -65,6 +65,7 @@
         signing = {
           key = "C5FD1B39EB6F5BFE";
           signByDefault = true;
+          format = "openpgp";
         };
         settings = {
           user.name = "Vitaliy Volynskiy";
