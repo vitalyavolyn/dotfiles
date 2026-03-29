@@ -58,13 +58,6 @@
     useRoutingFeatures = "both";
   };
 
-  # Autologin. This machine is connected to my TV.
-  # https://github.com/NixOS/nixpkgs/issues/103746
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "vitalya";
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
-
   system.stateVersion = "23.11";
   home-manager.users.vitalya.home.stateVersion = "23.11";
 }
