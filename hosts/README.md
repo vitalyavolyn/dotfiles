@@ -5,3 +5,4 @@
 - `porygon` - a free Oracle ARM Ampere A1 Compute instance, used mainly for minecraft
 - `applin` - MacBook Air (M3)
 - `tynamo` - ASUS ROG FLOW X13, [probe](https://linux-hardware.org/?probe=a723a6a441)
+- `sinistea` - a tiny little vm i got for free with 10gb storage (barely enough for my base-linux profile)
