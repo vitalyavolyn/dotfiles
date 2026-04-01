@@ -19,8 +19,6 @@
 
   services.qemuGuest.enable = true;
 
-  users.users.root.openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDJOIQWALhrUwF6a23G9g3i/LjI50Bl/PGO1RauHJBks vitalya@celebi" ];
-
   networking.hostName = "sinistea";
   networking.firewall.enable = true;
 
