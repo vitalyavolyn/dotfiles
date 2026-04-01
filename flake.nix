@@ -103,6 +103,14 @@
               ./hosts/porygon/configuration.nix
             ];
           };
+        sinistea = nixpkgs.lib.nixosSystem
+          {
+            system = "x86_64-linux";
+            specialArgs = { inherit inputs; };
+            modules = [
+              ./hosts/sinistea/configuration.nix
+            ];
+          };
         tynamo = nixpkgs.lib.nixosSystem
           {
             system = "x86_64-linux";
