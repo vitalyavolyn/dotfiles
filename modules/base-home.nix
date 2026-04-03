@@ -11,11 +11,11 @@
     home.packages = with pkgs; [
       # system utilities
       p7zip
-      fastfetch
       file
       htop
       httpie
     ] ++ lib.optionals config.modules.base-home.extras [
+      fastfetch
       nixpkgs-fmt
       ranger
       speedtest-cli
