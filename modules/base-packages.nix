@@ -6,7 +6,6 @@
     vim
     wget
     curl
-    speedtest-cli
     htop
     dnsutils
     tree

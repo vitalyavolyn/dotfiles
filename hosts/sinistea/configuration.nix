@@ -6,6 +6,8 @@
     ./networking.nix
 
     inputs.self.nixosProfiles.base-linux
+
+    inputs.self.nixosModules.docker
   ];
 
   # Workaround for https://github.com/NixOS/nix/issues/8502
@@ -18,6 +20,8 @@
   zramSwap.enable = true;
 
   services.qemuGuest.enable = true;
+
+  modules.base-home.extras = false;
 
   networking.hostName = "sinistea";
   networking.firewall.enable = true;

@@ -1,15 +1,24 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
 {
-  home-manager.users.vitalya = {
+  options.modules.base-home.extras = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+    description = "Whether to include some extras.";
+  };
+
+  config.home-manager.users.vitalya = {
     home.packages = with pkgs; [
       # system utilities
-      nixpkgs-fmt
       p7zip
       fastfetch
       file
       htop
+      httpie
+    ] ++ lib.optionals config.modules.base-home.extras [
+      nixpkgs-fmt
       ranger
+      speedtest-cli
 
       # ranger preview utilities
       atool
@@ -20,7 +29,6 @@
       nodejs_latest
       yarn-berry
       bun
-      httpie
     ];
 
     # TODO: move to vim module? use neovim???
@@ -52,7 +60,7 @@
     manual.manpages.enable = false;
 
     programs = {
-      ranger = {
+      ranger = lib.mkIf config.modules.base-home.extras {
         enable = true;
         settings = {
           preview_images = true;
