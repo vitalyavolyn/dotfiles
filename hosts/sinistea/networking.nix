@@ -19,8 +19,8 @@
           { address = "2a12:bec4:1bb0:104f::2"; prefixLength = 64; }
           { address = "fe80::5054:ff:fe07:c84c"; prefixLength = 64; }
         ];
-        ipv4.routes = [ { address = "10.0.0.1"; prefixLength = 32; } ];
-        ipv6.routes = [ { address = "2a12:bec4:1bb0:104f::1"; prefixLength = 128; } ];
+        ipv4.routes = [{ address = "10.0.0.1"; prefixLength = 32; }];
+        ipv6.routes = [{ address = "2a12:bec4:1bb0:104f::1"; prefixLength = 128; }];
       };
     };
   };

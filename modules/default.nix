@@ -54,8 +54,10 @@ builtins.listToAttrs (
       ./nix.nix
       ./plymouth.nix
       ./services/adguard-home.nix
+      ./services/alloy.nix
       ./services/avahi.nix
       ./services/caddy.nix
+      ./services/cloudflared.nix
       ./services/devon-server.nix
       ./services/docker.nix
       ./services/fail2ban.nix
@@ -65,6 +67,7 @@ builtins.listToAttrs (
       ./services/home-assistant
       ./services/homepage.nix
       ./services/immich.nix
+      ./services/loki.nix
       ./services/media-server.nix
       ./services/minecraft-atm10-tts.nix
       ./services/minecraft-create-chronicles.nix
@@ -77,12 +80,13 @@ builtins.listToAttrs (
       ./services/paperless-concierge.nix
       ./services/paperless.nix
       ./services/pipewire.nix
-      ./services/podman-auto-prune.nix
+      ./services/podman.nix
       ./services/shadowsocks.nix
       ./services/ssh-server.nix
       ./services/sunshine.nix
       ./services/tailscale-exit-node.nix
       ./services/tailscale.nix
+      ./services/unbound.nix
       ./user.nix
     ]
 )

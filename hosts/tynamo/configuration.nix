@@ -16,6 +16,8 @@
 
     tailscale
     avahi
+    alloy
+    { modules.alloy.lokiUrl = "http://loki.eepo.boo/loki/api/v1/push"; }
     # plymouth
     dev
     { modules.dev.enable-nix-ld = true; }

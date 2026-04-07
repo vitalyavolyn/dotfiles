@@ -2,6 +2,7 @@
 
 {
   services = {
+    plex = { enable = true; group = "multimedia"; };
     jellyfin = { enable = true; group = "multimedia"; };
     radarr = { enable = true; group = "multimedia"; };
     sonarr = { enable = true; group = "multimedia"; };

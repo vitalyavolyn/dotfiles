@@ -12,4 +12,12 @@ in
   "homepage-env.age".publicKeys = [ vitalya ] ++ systems;
   "paperless-password.age".publicKeys = [ vitalya ] ++ systems;
   "devon-env.age".publicKeys = [ vitalya ] ++ systems;
+
+  # CLOUDFLARE_DNS_API_TOKEN=<token with Zone:Read + DNS:Edit scoped to eepo.boo>
+  # Used by security.acme on porygon for the *.eepo.boo wildcard cert
+  "cloudflare-acme.age".publicKeys = [ vitalya porygon shinx ];
+
+  # Cloudflare Tunnel credentials JSON from: cloudflared tunnel create ha-tunnel
+  # Used by cloudflared on shinx
+  "cloudflared-credentials.age".publicKeys = [ vitalya shinx ];
 }

@@ -15,6 +15,9 @@
     home-manager.darwinModules.home-manager
     nix-index-database.darwinModules.nix-index
     agenix.nixosModules.default
+    ({ pkgs, ... }: {
+      environment.systemPackages = [ inputs.agenix.packages.${pkgs.system}.agenix ];
+    })
 
     {
       home-manager = {
