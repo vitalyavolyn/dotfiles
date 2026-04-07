@@ -83,7 +83,7 @@ in
 
         # ── Public eepo.boo services ─────────────────────────────────────────
 
-        "foundryvtt.eepo.boo" = pubEepo "http://localhost:30000/";
+        "foundry.eepo.boo" = pubEepo "http://localhost:30000/";
 
         # ── Tailscale-only eepo.boo services ─────────────────────────────────
 

@@ -43,8 +43,8 @@ let cfg = config.modules.unbound; in
       enable = true;
       settings = {
         server = {
-          interface = [ "tailscale0" ];
-          access-control = [ "100.0.0.0/8 allow" ];
+          interface = lib.mkForce [ "0.0.0.0" "::0" ];
+          access-control = [ "100.0.0.0/8 allow" "127.0.0.0/8 allow" ];
           local-data = cfg.localData;
         };
 

@@ -40,7 +40,7 @@ in
 
     alloy
     {
-      modules.alloy.lokiUrl = "http://loki.eepo.boo/loki/api/v1/push";
+      modules.alloy.lokiUrl = "https://loki.eepo.boo/loki/api/v1/push";
     }
 
     cloudflared
