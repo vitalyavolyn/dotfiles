@@ -46,19 +46,32 @@ in
     { modules.alloy.lokiUrl = "http://127.0.0.1:3100/loki/api/v1/push"; }
 
     unbound
-    (let
-      tailnet = "ewe-lizard.ts.net";
-      cname = host: sub: ''"${sub}.eepo.boo. IN CNAME ${host}.${tailnet}."'';
-    in {
-      modules.unbound = {
-        tailnetName = tailnet;
-        cloudflareNs = [ "108.162.194.108" "108.162.193.150" ]; # serenity + woz
-        localData =
-          map (cname "porygon") [ "loki" ] ++
-          map (cname "shinx")   [ "ha" "plex" "immich" "paperless" "jellyfin"
-                                   "sonarr" "radarr" "prowlarr" "bazarr" "shinx" ];
-      };
-    })
+    (
+      let
+        tailnet = "ewe-lizard.ts.net";
+        cname = host: sub: ''"${sub}.eepo.boo. IN CNAME ${host}.${tailnet}."'';
+      in
+      {
+        modules.unbound = {
+          tailnetName = tailnet;
+          cloudflareNs = [ "108.162.194.108" "108.162.193.150" ]; # serenity + woz
+          localData =
+            map (cname "porygon") [ "loki" ] ++
+            map (cname "shinx") [
+              "ha"
+              "plex"
+              "immich"
+              "paperless"
+              "jellyfin"
+              "sonarr"
+              "radarr"
+              "prowlarr"
+              "bazarr"
+              "shinx"
+            ];
+        };
+      }
+    )
 
     nginx
     {

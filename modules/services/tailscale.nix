@@ -1,17 +1,16 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, options, ... }:
 
 {
-  services.tailscale =
-    if pkgs.stdenv.isLinux then {
+  config = if (builtins.hasAttr "homebrew" options) then {
+    homebrew.casks = [ "tailscale" ];
+  } else {
+    services.tailscale = {
       enable = true;
       extraSetFlags = [ "--operator=vitalya" ];
-    } else {
-      enable = true;
     };
-
-  networking =
-    if pkgs.stdenv.isLinux then {
+    networking = {
       firewall.trustedInterfaces = [ "tailscale0" ];
       firewall.allowedUDPPorts = [ config.services.tailscale.port ];
-    } else { };
+    };
+  };
 }
