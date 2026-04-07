@@ -49,15 +49,17 @@ in
     (
       let
         tailnet = "ewe-lizard.ts.net";
-        cname = host: sub: ''"${sub}.eepo.boo. IN CNAME ${host}.${tailnet}."'';
+        a = ip: sub: ''"${sub}.eepo.boo. IN A ${ip}"'';
       in
       {
         modules.unbound = {
           tailnetName = tailnet;
           cloudflareNs = [ "108.162.194.108" "108.162.193.150" ]; # serenity + woz
           localData =
-            map (cname "porygon") [ "loki" ] ++
-            map (cname "shinx") [
+            # porygon
+            map (a "100.114.242.59") [ "loki" ] ++
+            # shinx
+            map (a "100.68.131.102") [
               "ha"
               "plex"
               "immich"

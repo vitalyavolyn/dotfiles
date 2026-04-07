@@ -22,12 +22,12 @@ let cfg = config.modules.unbound; in
     localData = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       description = ''
-        Private DNS records for the eepo.boo zone (CNAME to MagicDNS hostnames).
+        Private DNS A records for the eepo.boo zone pointing to Tailscale IPs.
         Public subdomains (foundryvtt, mc, ha via CF tunnel) should NOT be listed
         here — they are resolved by forwarding to Cloudflare's authoritative NS.
       '';
       example = [
-        ''"plex.eepo.boo.  IN CNAME porygon.tail1234.ts.net."''
+        ''"plex.eepo.boo. IN A 100.68.131.102"''
       ];
     };
   };
