@@ -63,6 +63,7 @@ builtins.listToAttrs (
       ./services/fail2ban.nix
       ./services/flatpak.nix
       ./services/foundry.nix
+      ./services/grafana.nix
       ./services/gnome-xrdp.nix
       ./services/home-assistant
       ./services/homepage.nix

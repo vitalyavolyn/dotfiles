@@ -42,6 +42,7 @@ in
     }
 
     loki
+    grafana
     alloy
     { modules.alloy.lokiUrl = "http://127.0.0.1:3100/loki/api/v1/push"; }
 
@@ -57,7 +58,7 @@ in
           cloudflareNs = [ "108.162.194.108" "108.162.193.150" ]; # serenity + woz
           localData =
             # porygon
-            map (a "100.114.242.59") [ "loki" ] ++
+            map (a "100.114.242.59") [ "loki" "grafana" ] ++
             # shinx
             map (a "100.68.131.102") [
               "ha"
@@ -109,6 +110,7 @@ in
         # ── Tailscale-only eepo.boo services ─────────────────────────────────
 
         "loki.eepo.boo" = tsOnly "http://localhost:3100";
+        "grafana.eepo.boo" = tsOnly "http://localhost:3001";
       };
     }
   ];
