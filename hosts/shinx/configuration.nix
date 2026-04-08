@@ -64,6 +64,8 @@ in
         "radarr.eepo.boo" = tsOnly "http://localhost:7878";
         "prowlarr.eepo.boo" = tsOnly "http://localhost:9696";
         "bazarr.eepo.boo" = tsOnly "http://localhost:6767";
+        "paperless-ai.eepo.boo" = tsOnly "http://localhost:3000";
+        "deluge.eepo.boo" = tsOnly "http://localhost:8112";
       };
     }
 

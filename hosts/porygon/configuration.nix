@@ -70,7 +70,8 @@ in
               "radarr"
               "prowlarr"
               "bazarr"
-              "shinx"
+              "deluge"
+              "paperless-ai"
             ];
         };
       }
