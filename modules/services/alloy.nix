@@ -12,17 +12,8 @@ let cfg = config.modules.alloy; in
     services.alloy = {
       enable = true;
       configPath = pkgs.writeText "config.alloy" ''
-        loki.source.journal "journal" {
-          max_age    = "12h"
-          forward_to = [loki.relabel.journal.receiver]
-          labels = {
-            job  = "systemd-journal",
-            host = "${config.networking.hostName}",
-          }
-        }
-
         loki.relabel "journal" {
-          forward_to = [loki.write.default.receiver]
+          forward_to = []
 
           rule {
             source_labels = ["__journal__systemd_unit"]
@@ -36,6 +27,16 @@ let cfg = config.modules.alloy; in
           rule {
             source_labels = ["__journal__container_name"]
             target_label  = "container"
+          }
+        }
+
+        loki.source.journal "journal" {
+          max_age      = "12h"
+          forward_to   = [loki.write.default.receiver]
+          relabel_rules = loki.relabel.journal.rules
+          labels = {
+            job  = "systemd-journal",
+            host = "${config.networking.hostName}",
           }
         }
 
