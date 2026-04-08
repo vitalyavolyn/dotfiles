@@ -98,6 +98,12 @@ in
 
         # ── Public eepo.boo services ─────────────────────────────────────────
 
+        "eepo.boo" = {
+          useACMEHost = "eepo.boo";
+          forceSSL = true;
+          locations."/".return = "404";
+        };
+
         "foundry.eepo.boo" = pubEepo "http://localhost:30000/";
 
         # ── Tailscale-only eepo.boo services ─────────────────────────────────
