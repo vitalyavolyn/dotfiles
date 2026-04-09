@@ -8,7 +8,7 @@ let
     locations."/" = { proxyPass = backend; proxyWebsockets = true; };
   };
 
-  # Public vhost with wildcard cert (eepo.boo domains, no IP restriction)
+  # Public vhost with wildcard cert (eepo.boo domains)
   pubEepo = backend: {
     useACMEHost = "eepo.boo";
     forceSSL = true;
@@ -41,6 +41,12 @@ in
       modules.minecraft-create-chronicles.volumes = [ "/mnt/extra/minecraft-create-chronicles/data:/data" ];
     }
 
+    forgejo
+    {
+      services.postgresql.enable = true;
+      services.postgresql.dataDir = "/mnt/extra/postgresql";
+    }
+
     loki
     grafana
     alloy
@@ -58,7 +64,7 @@ in
           cloudflareNs = [ "108.162.194.108" "108.162.193.150" ]; # serenity + woz
           localData =
             # porygon
-            map (a "100.114.242.59") [ "loki" "grafana" ] ++
+            map (a "100.114.242.59") [ "loki" "grafana" "git" ] ++
             # shinx
             map (a "100.68.131.102") [
               "ha"
@@ -107,6 +113,7 @@ in
         };
 
         "foundry.eepo.boo" = pubEepo "http://localhost:30000/";
+        "git.eepo.boo" = pubEepo "http://localhost:3002";
 
         # ── Tailscale-only eepo.boo services ─────────────────────────────────
 

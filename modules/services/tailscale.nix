@@ -1,4 +1,4 @@
-{ lib, config, options, ... }:
+{ config, options, ... }:
 
 {
   config = if (builtins.hasAttr "homebrew" options) then {

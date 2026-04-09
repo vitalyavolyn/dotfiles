@@ -62,6 +62,7 @@ builtins.listToAttrs (
       ./services/docker.nix
       ./services/fail2ban.nix
       ./services/flatpak.nix
+      ./services/forgejo.nix
       ./services/foundry.nix
       ./services/grafana.nix
       ./services/gnome-xrdp.nix
