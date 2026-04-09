@@ -40,6 +40,7 @@ in
 
     alloy
     {
+      # TODO: maybe have a global variable for this
       modules.alloy.lokiUrl = "https://loki.eepo.boo/loki/api/v1/push";
     }
 
