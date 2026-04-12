@@ -36,9 +36,9 @@ in
     foundry
 
     podman
-    minecraft-create-chronicles
+    minecraft-journey-to-dawn
     {
-      modules.minecraft-create-chronicles.volumes = [ "/mnt/extra/minecraft-create-chronicles/data:/data" ];
+      modules.minecraft-journey-to-dawn.volumes = [ "/mnt/extra/minecraft-journey-to-dawn/data:/data" ];
     }
 
     forgejo

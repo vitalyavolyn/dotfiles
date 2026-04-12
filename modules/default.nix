@@ -74,6 +74,7 @@ builtins.listToAttrs (
       ./services/minecraft-atm10-tts.nix
       ./services/minecraft-create-chronicles.nix
       ./services/minecraft-ftb-oceanblock-2.nix
+      ./services/minecraft-journey-to-dawn.nix
       ./services/minecraft-mzhip.nix
       ./services/miniflux.nix
       ./services/n8n.nix
