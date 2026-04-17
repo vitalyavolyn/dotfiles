@@ -1,8 +1,9 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   services.forgejo = {
     enable = true;
+    package = pkgs.forgejo;
     stateDir = "/mnt/extra/forgejo";
     database.type = "postgres";
     settings = {
