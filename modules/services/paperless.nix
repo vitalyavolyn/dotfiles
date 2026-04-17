@@ -2,8 +2,7 @@
 
 {
   nixpkgs.overlays = [
-    (final: prev: {
-      paperless-ngx = prev.paperless-ngx.overrideAttrs (_: { doCheck = false; doInstallCheck = false; });
+    (_: prev: {
       pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
         (_: pyprev: {
           ocrmypdf = pyprev.ocrmypdf.overridePythonAttrs (_: { doCheck = false; });
