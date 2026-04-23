@@ -8,6 +8,7 @@ let cfg = config.modules.${name}; in
 {
   options.modules.${name}.volumes = lib.mkOption {
     type = lib.types.listOf lib.types.str;
+    default = [ "/mnt/extra/${name}/data:/data" ];
     description = "Volumes to mount (needs /data)";
   };
 

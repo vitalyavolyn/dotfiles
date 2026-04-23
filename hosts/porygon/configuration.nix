@@ -31,9 +31,6 @@ in
 
     podman
     minecraft-journey-to-dawn
-    {
-      modules.minecraft-journey-to-dawn.volumes = [ "/mnt/extra/minecraft-journey-to-dawn/data:/data" ];
-    }
 
     forgejo
     {
