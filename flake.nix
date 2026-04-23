@@ -106,7 +106,27 @@
             modules = [
               ./hosts/tynamo/configuration.nix
 
-              { nixpkgs.overlays = [ nixpkgs-xr.overlays.default ]; }
+              {
+                nixpkgs.overlays = [
+                  nixpkgs-xr.overlays.default
+                  (final: prev: {
+                    # Patch libfprint to skip broken calibration for ELAN 04f3:0c6e
+                    libfprint = prev.libfprint.overrideAttrs (old: {
+                      postPatch = (old.postPatch or "") + ''
+                        # For ELAN 04f3:0c6e: device returns non-0x55 ("no finger yet")
+                        # instead of blocking until finger placed. Retry instead of fatal error.
+                        sed -i 's/fpi_ssm_mark_failed (ssm, fpi_device_error_new (FP_DEVICE_ERROR_PROTO));/fpi_ssm_jump_to_state (ssm, CAPTURE_WAIT_FINGER);/' \
+                          libfprint/drivers/elan.c
+                        # Increase calibration attempts and delta tolerance for 0c6e
+                        substituteInPlace libfprint/drivers/elan.h \
+                          --replace-fail '#define ELAN_CALIBRATION_MAX_DELTA 500' '#define ELAN_CALIBRATION_MAX_DELTA 2000'
+                        substituteInPlace libfprint/drivers/elan.h \
+                          --replace-fail '#define ELAN_CALIBRATION_ATTEMPTS 10' '#define ELAN_CALIBRATION_ATTEMPTS 50'
+                      '';
+                    });
+                  })
+                ];
+              }
 
               nixos-hardware.nixosModules.common-cpu-amd
               #nixos-hardware.nixosModules.common-gpu-nvidia
