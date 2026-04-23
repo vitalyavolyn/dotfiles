@@ -25,7 +25,7 @@ let inherit (inputs.self.lib) tsOnly; in
     paperless-concierge
     paperless-ai
     {
-      services.paperless-concierge = {
+      modules.paperless-concierge = {
         # TODO: why is this not in secrets?
         envFile = "/etc/paperless-concierge/.env";
       };

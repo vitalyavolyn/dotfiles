@@ -45,12 +45,6 @@
 
     foundryvtt.url = "github:reckenrode/nix-foundryvtt";
 
-    # TODO: remove this and the module? it lives on ubuntu for now
-    devon-server = {
-      url = "github:vitalyavolyn/devon-server";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     helium = {
       url = "github:vikingnope/helium-browser-nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";

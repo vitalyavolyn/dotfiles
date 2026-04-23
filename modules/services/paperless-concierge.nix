@@ -3,7 +3,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.services.paperless-concierge;
+  cfg = config.modules.paperless-concierge;
 
   paperless-concierge = pkgs.python3.pkgs.buildPythonApplication {
     pname = "paperless-concierge";
@@ -48,8 +48,7 @@ let
 
 in
 {
-  # TODO: other modules use modules.*
-  options.services.paperless-concierge = {
+  options.modules.paperless-concierge = {
     user = lib.mkOption {
       type = lib.types.str;
       default = "paperless-concierge";

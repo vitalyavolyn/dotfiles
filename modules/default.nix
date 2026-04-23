@@ -52,13 +52,11 @@ builtins.listToAttrs (
       ./gnome
       ./locale.nix
       ./nix.nix
-      ./plymouth.nix
       ./services/acme-eepo.nix
       ./services/alloy.nix
       ./services/avahi.nix
       ./services/caddy.nix
       ./services/cloudflared.nix
-      ./services/devon-server.nix
       ./services/docker.nix
       ./services/fail2ban.nix
       ./services/forgejo.nix
@@ -73,7 +71,6 @@ builtins.listToAttrs (
       ./services/minecraft-create-chronicles.nix
       ./services/minecraft-journey-to-dawn.nix
       ./services/minecraft-mzhip.nix
-      ./services/miniflux.nix
       ./services/nginx.nix
       ./services/paperless-ai.nix
       ./services/paperless-concierge.nix
