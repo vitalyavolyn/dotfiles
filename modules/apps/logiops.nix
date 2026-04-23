@@ -2,7 +2,7 @@
 
 let
   config = pkgs.writeText "logid.cfg" ''
-      io_timeout: 60000.0;
+    io_timeout: 60000.0;
     workers: 16;
 
     devices: ({

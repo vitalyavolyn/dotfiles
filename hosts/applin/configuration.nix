@@ -28,8 +28,7 @@
       "bitwarden"
       "cyberduck"
 
-      # TODO: cross platform logitech module with
-      # https://github.com/pwr-Solaar/Solaar
+      # TODO: cross platform logitech module
       "logi-options+"
     ];
 
