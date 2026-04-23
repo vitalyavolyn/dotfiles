@@ -1,16 +1,17 @@
-{ config, options, ... }:
+{ config, options, inputs, ... }:
 
 {
-  config = if (builtins.hasAttr "homebrew" options) then {
-    homebrew.casks = [ "tailscale" ];
-  } else {
-    services.tailscale = {
-      enable = true;
-      extraSetFlags = [ "--operator=vitalya" ];
+  config =
+    if (inputs.self.lib.isDarwin options) then {
+      homebrew.casks = [ "tailscale" ];
+    } else {
+      services.tailscale = {
+        enable = true;
+        extraSetFlags = [ "--operator=vitalya" ];
+      };
+      networking = {
+        firewall.trustedInterfaces = [ "tailscale0" ];
+        firewall.allowedUDPPorts = [ config.services.tailscale.port ];
+      };
     };
-    networking = {
-      firewall.trustedInterfaces = [ "tailscale0" ];
-      firewall.allowedUDPPorts = [ config.services.tailscale.port ];
-    };
-  };
 }

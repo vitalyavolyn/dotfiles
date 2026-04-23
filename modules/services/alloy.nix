@@ -4,6 +4,7 @@ let cfg = config.modules.alloy; in
 {
   options.modules.alloy.lokiUrl = lib.mkOption {
     type = lib.types.str;
+    default = "https://loki.eepo.boo/loki/api/v1/push";
     description = "Full URL of the Loki push endpoint";
     example = "http://porygon.tail1234.ts.net:3100/loki/api/v1/push";
   };

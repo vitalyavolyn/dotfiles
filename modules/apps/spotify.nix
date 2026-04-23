@@ -11,7 +11,7 @@ in
 {
   config = mkMerge [
     (
-      if (builtins.hasAttr "homebrew" options) then
+      if (inputs.self.lib.isDarwin options) then
         {
           homebrew.casks = [ "spotify" ];
         }

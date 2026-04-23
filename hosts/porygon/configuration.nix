@@ -1,6 +1,8 @@
-{ inputs, pkgs, config, ... }:
+{ inputs, pkgs, ... }:
 
 let
+  inherit (inputs.self.lib) tsOnly;
+
   # Public vhost with HTTP-01 ACME (vitalya.me domains)
   pub = backend: {
     addSSL = true;
@@ -12,14 +14,6 @@ let
   pubEepo = backend: {
     useACMEHost = "eepo.boo";
     forceSSL = true;
-    locations."/" = { proxyPass = backend; proxyWebsockets = true; };
-  };
-
-  # Tailscale-only vhost with wildcard cert, restricted to 100.0.0.0/8
-  tsOnly = backend: {
-    useACMEHost = "eepo.boo";
-    forceSSL = true;
-    extraConfig = "allow 100.0.0.0/8; deny all;";
     locations."/" = { proxyPass = backend; proxyWebsockets = true; };
   };
 in
@@ -83,6 +77,7 @@ in
       }
     )
 
+    acme-eepo
     nginx
     {
       services.nginx.clientMaxBodySize = "100m";
@@ -101,7 +96,6 @@ in
             proxyPass = "http://shinx:8989/feed/v3/calendar/Sonarr.ics";
           };
         };
-        "hass.porygon.vitalya.me" = pub "http://shinx:8123/";
         "foundry.porygon.vitalya.me" = pub "http://localhost:30000/";
 
         # ── Public eepo.boo services ─────────────────────────────────────────
@@ -122,22 +116,6 @@ in
       };
     }
   ];
-
-  # Wildcard cert for eepo.boo via DNS-01 challenge (Cloudflare)
-  age.secrets.cloudflare-acme.file = ../../secrets/cloudflare-acme.age;
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "i@vitalya.me";
-    certs."eepo.boo" = {
-      group = "nginx";
-      domain = "eepo.boo";
-      extraDomainNames = [ "*.eepo.boo" ];
-      dnsProvider = "cloudflare";
-      dnsResolver = "1.1.1.1:53";
-      webroot = null;
-      environmentFile = config.age.secrets.cloudflare-acme.path;
-    };
-  };
 
   # alexander manages foundry
   users.users.sanyasuper2002 = {

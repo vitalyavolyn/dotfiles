@@ -16,7 +16,7 @@
     nix-index-database.nixosModules.nix-index
     agenix.nixosModules.default
     ({ pkgs, ... }: {
-      environment.systemPackages = [ inputs.agenix.packages.${pkgs.system}.agenix ];
+      environment.systemPackages = [ inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.agenix ];
     })
 
     {

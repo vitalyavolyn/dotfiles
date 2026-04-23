@@ -15,12 +15,8 @@
     inputs.self.nixosProfiles.desktop-gnome
 
     tailscale
-    avahi
     alloy
-    { modules.alloy.lokiUrl = "https://loki.eepo.boo/loki/api/v1/push"; }
-    # plymouth
     dev
-    { modules.dev.enable-nix-ld = true; }
 
     spotify
     qflipper
@@ -40,9 +36,10 @@
     steam
     sunshine
 
-    # flatpak
     logiops
   ];
+
+  modules.dev.enable-nix-ld = true;
 
   services.logind.settings.Login.HandleLidSwitchExternalPower = "ignore";
 

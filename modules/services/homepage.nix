@@ -97,20 +97,7 @@ let
     }
   ];
 
-  homeServices = lib.optionals services.adguardhome.enable [
-    {
-      Adguard = {
-        icon = "adguard-home.png";
-        href = "${url}";
-        widget = {
-          type = "adguard";
-          url = "http://localhost";
-          username = "vitalya";
-          password = "{{HOMEPAGE_VAR_ADGUARD_PASS}}";
-        };
-      };
-    }
-  ] ++ lib.optionals config.modules.home-assistant.enable [
+  homeServices = lib.optionals config.modules.home-assistant.enable [
     {
       HomeAssistant = {
         icon = "home-assistant.png";

@@ -1,4 +1,4 @@
-{ lib, config, pkgs, options, ... }:
+{ lib, config, pkgs, options, inputs, ... }:
 
 {
   options.modules.dev.enable-nix-ld = lib.mkOption {
@@ -100,7 +100,7 @@
       };
     }
 
-    (if (builtins.hasAttr "homebrew" options) then { } else {
+    (if (inputs.self.lib.isDarwin options) then { } else {
       programs.nix-ld = lib.mkIf config.modules.dev.enable-nix-ld {
         enable = true;
       };

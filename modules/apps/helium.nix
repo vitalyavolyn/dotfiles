@@ -2,7 +2,7 @@
 with lib;
 {
   config = mkMerge [
-    (if (builtins.hasAttr "homebrew" options) then {
+    (if (inputs.self.lib.isDarwin options) then {
       homebrew.casks = [ "helium-browser" ];
     } else {
       home-manager.users.vitalya.home.packages = [

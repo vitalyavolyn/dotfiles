@@ -5,6 +5,7 @@
     ./base-linux.nix
 
     kitty
+    avahi
     fonts
   ];
 }

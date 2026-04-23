@@ -2,8 +2,7 @@
 with lib;
 {
   config = mkMerge [
-    # a fucked up way to check if this is macOS
-    (if (builtins.hasAttr "homebrew" options) then {
+    (if (inputs.self.lib.isDarwin options) then {
       nix.gc.automatic = true;
       nix.gc.interval = { Weekday = 0; Hour = 0; Minute = 0; };
     } else {

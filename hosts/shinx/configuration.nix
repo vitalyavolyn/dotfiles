@@ -1,13 +1,6 @@
 { inputs, config, ... }:
 
-let
-  tsOnly = backend: {
-    useACMEHost = "eepo.boo";
-    forceSSL = true;
-    extraConfig = "allow 100.0.0.0/8; deny all;";
-    locations."/" = { proxyPass = backend; proxyWebsockets = true; };
-  };
-in
+let inherit (inputs.self.lib) tsOnly; in
 
 {
   imports = with inputs.self.nixosModules; [
@@ -39,10 +32,6 @@ in
     }
 
     alloy
-    {
-      # TODO: maybe have a global variable for this
-      modules.alloy.lokiUrl = "https://loki.eepo.boo/loki/api/v1/push";
-    }
 
     cloudflared
     {
@@ -53,6 +42,7 @@ in
       };
     }
 
+    acme-eepo
     nginx
     {
       services.nginx.virtualHosts = {
@@ -72,28 +62,12 @@ in
 
     tailscale
     tailscale-exit-node
-    avahi
     firefox
     spotify
     logiops
   ];
 
   age.secrets.cloudflared-credentials.file = ../../secrets/cloudflared-credentials.age;
-
-  age.secrets.cloudflare-acme.file = ../../secrets/cloudflare-acme.age;
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "i@vitalya.me";
-    certs."eepo.boo" = {
-      group = "nginx";
-      domain = "eepo.boo";
-      extraDomainNames = [ "*.eepo.boo" ];
-      dnsProvider = "cloudflare";
-      dnsResolver = "1.1.1.1:53";
-      webroot = null;
-      environmentFile = config.age.secrets.cloudflare-acme.path;
-    };
-  };
 
   networking = {
     hostName = "shinx";

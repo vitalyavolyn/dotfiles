@@ -51,8 +51,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-
     helium = {
       url = "github:vikingnope/helium-browser-nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -63,6 +61,7 @@
 
   outputs = { nixpkgs, nixos-hardware, nix-darwin, nixpkgs-xr, ... } @ inputs:
     {
+      lib = import ./lib;
       nixosModules = (import ./modules { lib = nixpkgs.lib; });
       nixosProfiles = import ./profiles;
 

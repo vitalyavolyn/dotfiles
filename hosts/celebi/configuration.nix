@@ -10,8 +10,6 @@
 
     gnome-xrdp
     tailscale
-    avahi
-    plymouth
     dev
     spotify
     qflipper

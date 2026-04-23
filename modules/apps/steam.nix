@@ -1,8 +1,8 @@
-{ pkgs, lib, options, ... }:
+{ pkgs, lib, options, inputs, ... }:
 with lib;
 {
   config = mkMerge [
-    (if (builtins.hasAttr "homebrew" options) then {
+    (if (inputs.self.lib.isDarwin options) then {
       homebrew.casks = [ "steam" ];
     } else {
       programs.steam = {

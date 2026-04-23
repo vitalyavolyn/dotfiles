@@ -53,7 +53,7 @@ builtins.listToAttrs (
       ./locale.nix
       ./nix.nix
       ./plymouth.nix
-      ./services/adguard-home.nix
+      ./services/acme-eepo.nix
       ./services/alloy.nix
       ./services/avahi.nix
       ./services/caddy.nix
@@ -61,7 +61,6 @@ builtins.listToAttrs (
       ./services/devon-server.nix
       ./services/docker.nix
       ./services/fail2ban.nix
-      ./services/flatpak.nix
       ./services/forgejo.nix
       ./services/foundry.nix
       ./services/grafana.nix
@@ -71,13 +70,10 @@ builtins.listToAttrs (
       ./services/immich.nix
       ./services/loki.nix
       ./services/media-server.nix
-      ./services/minecraft-atm10-tts.nix
       ./services/minecraft-create-chronicles.nix
-      ./services/minecraft-ftb-oceanblock-2.nix
       ./services/minecraft-journey-to-dawn.nix
       ./services/minecraft-mzhip.nix
       ./services/miniflux.nix
-      ./services/n8n.nix
       ./services/nginx.nix
       ./services/paperless-ai.nix
       ./services/paperless-concierge.nix

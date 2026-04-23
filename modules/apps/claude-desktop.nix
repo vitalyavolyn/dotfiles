@@ -1,8 +1,8 @@
-{ lib, options, ... }:
+{ lib, options, inputs, ... }:
 with lib;
 {
   config = mkMerge [
-    (if (builtins.hasAttr "homebrew" options) then {
+    (if (inputs.self.lib.isDarwin options) then {
       homebrew.casks = [ "claude" ];
     } else {
       # broken: nodePackages.asar was removed from nixpkgs (2026-03-03)
