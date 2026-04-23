@@ -8,4 +8,6 @@
     avahi
     fonts
   ];
+
+  boot.plymouth.enable = true;
 }

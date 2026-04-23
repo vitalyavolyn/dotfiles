@@ -8,6 +8,5 @@
     };
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     tmp.cleanOnBoot = true;
-    plymouth.enable = true;
   };
 }
