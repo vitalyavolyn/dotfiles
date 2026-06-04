@@ -130,6 +130,8 @@ in
     firewall.enable = true;
   };
 
+  modules.base-home.extras = false;
+
   system.stateVersion = "24.05";
 
   home-manager.users.vitalya.home.stateVersion = "24.05";

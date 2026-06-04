@@ -14,8 +14,8 @@
       file
       htop
       httpie
+      (if config.modules.base-home.extras then fastfetch else fastfetchMinimal)
     ] ++ lib.optionals config.modules.base-home.extras [
-      fastfetch
       nixpkgs-fmt
       ranger
       speedtest-cli
