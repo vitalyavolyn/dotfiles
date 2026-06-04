@@ -15,37 +15,36 @@
         extraPackages = [ pkgs.nil ];
         userSettings = {
           agent = {
+            dock = "right";
+            sidebar_side = "right";
             default_model = {
               provider = "zed.dev";
-              model = "grok-code-fast-1";
+              model = "";
             };
-            play_sound_when_agent_done = true;
+            play_sound_when_agent_done = "always";
             model_parameters = [ ];
           };
+          agent_servers.claude-acp.type = "registry";
+          edit_predictions.provider = "none";
           collaboration_panel = {
+            dock = "left";
             button = false;
           };
           project_panel = {
+            dock = "left";
             hide_hidden = false;
             hide_root = false;
             indent_size = 20.0;
             hide_gitignore = false;
           };
           use_system_window_tabs = false;
-          tab_bar = {
-            show_nav_history_buttons = false;
-          };
+          tab_bar.show_nav_history_buttons = false;
           tabs = {
             file_icons = false;
             git_status = true;
           };
-          title_bar = {
-            show_branch_icon = false;
-            show_user_picture = false;
-          };
-          prettier = {
-            allowed = false;
-          };
+          title_bar.show_user_picture = false;
+          prettier.allowed = false;
           indent_guides = {
             background_coloring = "disabled";
             coloring = "indent_aware";
@@ -58,9 +57,7 @@
           auto_update = false;
           vim_mode = true;
           terminal = {
-            toolbar = {
-              breadcrumbs = false;
-            };
+            toolbar.breadcrumbs = false;
             max_scroll_history_lines = 10000000;
           };
           base_keymap = "VSCode";
@@ -72,9 +69,7 @@
           buffer_font_family = "Fira Code";
           linked_edits = true;
           show_whitespaces = "all";
-          wrap_guides = [
-            100
-          ];
+          wrap_guides = [ 100 ];
           tab_size = 2;
           icon_theme = {
             mode = "system";
@@ -85,17 +80,12 @@
           buffer_font_size = 12.0;
           theme = "One Dark";
           languages = {
-            TypeScript = {
-              prettier = {
-                allowed = true;
-              };
-            };
-            JavaScript = {
-              prettier = {
-                allowed = true;
-              };
-            };
+            TypeScript.prettier.allowed = true;
+            JavaScript.prettier.allowed = true;
           };
+          outline_panel.dock = "left";
+          git_panel.dock = "left";
+          auto_install_extensions.nix = true;
         };
       };
     }
