@@ -57,7 +57,7 @@ in
           "windowIsReady_Remover@nunofarruca@gmail.com"
           "pip-on-top@rafostar.github.com"
         ] ++ optionals (hasModule "tailscale") [
-          "tailscale@joaophi.github.com"
+          "tailscale-gnome-qs@tailscale-qs.github.io"
         ];
 
         favorite-apps =
