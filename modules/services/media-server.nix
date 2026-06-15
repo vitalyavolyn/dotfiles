@@ -15,6 +15,8 @@
       declarative = true;
       config = {
         enabled_plugins = [ "Label" ];
+        random_port = false;
+        listen_ports = [ 6881 6881 ];
       };
       authFile = pkgs.writeTextFile {
         name = "deluge-auth";
