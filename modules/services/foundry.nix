@@ -8,9 +8,9 @@
   services.foundryvtt = {
     enable = true;
     # FIXME/TODO: move this stuff to options
-    hostName = "foundry.porygon.vitalya.me";
+    hostName = "foundry.eepo.boo";
     minifyStaticFiles = true;
-    package = inputs.foundryvtt.packages.${pkgs.stdenv.hostPlatform.system}.foundryvtt_13;
+    package = inputs.foundryvtt.packages.${pkgs.stdenv.hostPlatform.system}.foundryvtt_14;
     proxyPort = 443;
     proxySSL = true;
     upnp = false;

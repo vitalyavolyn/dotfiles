@@ -100,15 +100,16 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1778746725,
-        "narHash": "sha256-Okv5rnIBFaXShyg1h4hsDA7Fs4bKEmcSKPQQf1HR5Rc=",
-        "owner": "reckenrode",
+        "lastModified": 1780997208,
+        "narHash": "sha256-K/L0r08eey2svBGyCL7n0I0ekEhhUPmWRpJ6v4aPg4I=",
+        "owner": "yahvk-cuna",
         "repo": "nix-foundryvtt",
-        "rev": "db075efec1947c593c237af6f0a8629ca8709bf1",
+        "rev": "213dd79d796af6e46f40ffaf40a37c03c6c14071",
         "type": "github"
       },
       "original": {
-        "owner": "reckenrode",
+        "owner": "yahvk-cuna",
+        "ref": "362",
         "repo": "nix-foundryvtt",
         "type": "github"
       }
