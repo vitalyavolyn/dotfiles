@@ -7,7 +7,7 @@ let
   databaseName = "meme_search";
   databaseUser = "meme_search";
   appImage = "ghcr.io/neonwatty/meme_search:latest";
-  databaseUrl = "postgres://${databaseUser}@10.89.0.1:5432/${databaseName}";
+  databaseUrl = "postgres://${databaseUser}@/${databaseName}?host=/run/postgresql";
 
   commonEnvironment = {
     DATABASE_URL = databaseUrl;
@@ -17,6 +17,7 @@ let
   };
 
   commonVolumes = [
+    "/run/postgresql:/run/postgresql"
     "${cfg.memeLibraryDir}:/rails/public/memes/library:ro"
     "${cfg.directUploadsDir}:/rails/public/memes/direct-uploads"
   ];
@@ -84,7 +85,6 @@ in
 
       services.postgresql = {
         enable = true;
-        enableTCPIP = true;
         ensureDatabases = [ databaseName ];
         ensureUsers = [
           {
@@ -94,9 +94,8 @@ in
           }
         ];
         authentication = ''
-          host ${databaseName} ${databaseUser} ${networkSubnet} trust
+          local ${databaseName} ${databaseUser} trust
         '';
-        settings.listen_addresses = lib.mkForce "localhost,10.89.0.1";
       };
 
       systemd.services.postgresql-setup.serviceConfig.ExecStartPost = [
@@ -149,11 +148,6 @@ in
       };
 
       systemd.services = {
-        postgresql = {
-          requires = [ "podman-meme-search-network.service" ];
-          after = [ "podman-meme-search-network.service" ];
-        };
-
         podman-meme-search = {
           requires = [ "postgresql.service" "podman-meme-search-network.service" ];
           after = [ "postgresql.service" "podman-meme-search-network.service" ];
