@@ -7,7 +7,7 @@ let
   databaseName = "meme_search";
   databaseUser = "meme_search";
   appImage = "ghcr.io/neonwatty/meme_search:latest";
-  databaseUrl = "postgres://${databaseUser}@/${databaseName}?host=/run/postgresql";
+  databaseUrl = "postgresql://${databaseUser}@%2Frun%2Fpostgresql/${databaseName}";
 
   commonEnvironment = {
     DATABASE_URL = databaseUrl;
