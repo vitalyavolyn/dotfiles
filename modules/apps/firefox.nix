@@ -8,6 +8,7 @@ with lib;
       home-manager.users.vitalya.programs.firefox = {
         enable = true;
         package = pkgs.firefox;
+        configPath = ".mozilla/firefox";
       };
     })
   ];
