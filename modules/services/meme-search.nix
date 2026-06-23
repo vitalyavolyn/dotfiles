@@ -63,7 +63,7 @@ in
 
     visionModel = lib.mkOption {
       type = lib.types.str;
-      default = "openrouter/free";
+      default = "google/gemma-4-31b-it:free";
       description = "OpenAI-compatible vision model slug.";
     };
 
