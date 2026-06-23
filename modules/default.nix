@@ -68,6 +68,7 @@ builtins.listToAttrs (
       ./services/immich.nix
       ./services/loki.nix
       ./services/media-server.nix
+      ./services/meme-search.nix
       ./services/minecraft-create-chronicles.nix
       ./services/minecraft-journey-to-dawn.nix
       ./services/minecraft-mzhip.nix

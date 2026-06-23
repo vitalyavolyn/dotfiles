@@ -68,6 +68,7 @@ in
               "prowlarr"
               "bazarr"
               "deluge"
+              "meme"
               "paperless-ai"
             ];
         };

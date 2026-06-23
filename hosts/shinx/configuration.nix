@@ -16,6 +16,8 @@ let inherit (inputs.self.lib) tsOnly; in
     media-server
     { services.deluge.config.download_location = "/mnt/media/downloads/complete"; }
 
+    meme-search
+
     home-assistant
     { modules.home-assistant.volumes = [ "/mnt/media/home-assistant:/config" ]; }
 
@@ -56,6 +58,7 @@ let inherit (inputs.self.lib) tsOnly; in
         "prowlarr.eepo.boo" = tsOnly "http://localhost:9696";
         "bazarr.eepo.boo" = tsOnly "http://localhost:6767";
         "paperless-ai.eepo.boo" = tsOnly "http://localhost:3000";
+        "meme.eepo.boo" = tsOnly "http://localhost:3010";
         "deluge.eepo.boo" = tsOnly "http://localhost:8112";
       };
     }
