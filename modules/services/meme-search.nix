@@ -158,12 +158,22 @@ in
           requires = [ "postgresql.service" "podman-meme-search-network.service" ];
           after = [ "postgresql.service" "podman-meme-search-network.service" ];
           unitConfig.RequiresMountsFor = [ cfg.stateDir cfg.memeLibraryDir ];
+          preStart = ''
+            install -d -m 0755 ${cfg.stateDir}
+            install -d -m 0755 ${cfg.memeLibraryDir}
+            install -d -m 0755 -o 1000 -g 1000 ${cfg.directUploadsDir}
+          '';
         };
 
         podman-meme-search-jobs = {
           requires = [ "postgresql.service" "podman-meme-search-network.service" ];
           after = [ "postgresql.service" "podman-meme-search-network.service" ];
           unitConfig.RequiresMountsFor = [ cfg.stateDir cfg.memeLibraryDir ];
+          preStart = ''
+            install -d -m 0755 ${cfg.stateDir}
+            install -d -m 0755 ${cfg.memeLibraryDir}
+            install -d -m 0755 -o 1000 -g 1000 ${cfg.directUploadsDir}
+          '';
         };
       };
     };
