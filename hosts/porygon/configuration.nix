@@ -28,18 +28,21 @@ in
     tailscale-exit-node
 
     foundry
+    { services.foundryvtt.hostName = "foundry.eepo.boo"; }
 
     podman
     minecraft-journey-to-dawn
 
     forgejo
     {
-      services.postgresql.enable = true;
-      services.postgresql.dataDir = "/mnt/extra/postgresql";
+      services.forgejo.stateDir = "/mnt/extra/forgejo";
+      services.forgejo.settings.server = { DOMAIN = "git.eepo.boo"; ROOT_URL = "https://git.eepo.boo/"; SSH_DOMAIN = "git.eepo.boo"; };
+      services.postgresql = { enable = true; dataDir = "/mnt/extra/postgresql"; };
     }
 
     loki
     grafana
+    { services.grafana.settings.server = { domain = "grafana.eepo.boo"; root_url = "https://grafana.eepo.boo/"; }; }
     alloy
     { modules.alloy.lokiUrl = "http://127.0.0.1:3100/loki/api/v1/push"; }
 

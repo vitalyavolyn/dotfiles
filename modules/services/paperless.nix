@@ -7,6 +7,7 @@
     group = config.services.paperless.user;
   };
 
+  # Host must set: settings.PAPERLESS_URL
   services.paperless = {
     enable = true;
     address = "0.0.0.0";

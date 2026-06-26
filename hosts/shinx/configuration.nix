@@ -24,6 +24,7 @@ let inherit (inputs.self.lib) tsOnly; in
     podman
 
     paperless
+    { services.paperless.settings.PAPERLESS_URL = "https://paperless.eepo.boo"; }
     paperless-concierge
     paperless-ai
     {
