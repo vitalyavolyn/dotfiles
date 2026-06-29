@@ -126,6 +126,7 @@ in
     createHome = true;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFdbYRTexJEZuXoOUt6XazFoL1MNgGoV2muVujWvrRGk raido@starlight"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMeWxlo7NgypRpXx5mjOgESmdfquy0ofICN6i29WTcf0"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPYJ29XuKpoFlrWQVvQtqW+zL/KMTG+Epxm34v6TFls3 raido@moonlight"
     ];
   };
