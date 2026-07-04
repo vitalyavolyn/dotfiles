@@ -70,8 +70,8 @@ builtins.listToAttrs (
       ./services/media-server.nix
       ./services/meme-search.nix
       ./services/minecraft-create-chronicles.nix
-      ./services/minecraft-journey-to-dawn.nix
       ./services/minecraft-mzhip.nix
+      ./services/minecraft-vortex.nix
       ./services/nginx.nix
       ./services/paperless-ai.nix
       ./services/paperless-concierge.nix

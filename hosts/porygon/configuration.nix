@@ -31,7 +31,7 @@ in
     { services.foundryvtt.hostName = "foundry.eepo.boo"; }
 
     podman
-    minecraft-journey-to-dawn
+    minecraft-vortex
 
     forgejo
     {
