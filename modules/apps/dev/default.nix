@@ -3,7 +3,7 @@
 with lib;
 {
   imports = [
-    ./vscode
+    # ./vscode
     ./db.nix
     ./zed.nix
   ];

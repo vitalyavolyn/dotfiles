@@ -6,7 +6,7 @@
 
     dev
     tailscale
-    firefox
+    # firefox
     # chrome
     vlc
     streaming
@@ -39,6 +39,7 @@
 
   home-manager.users.vitalya.home.packages = with pkgs; [
     jdk
+    (python3.withPackages (p: [ p.numpy p.requests ]))
   ];
 
   system.stateVersion = 4;
