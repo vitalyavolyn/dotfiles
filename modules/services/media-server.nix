@@ -13,6 +13,14 @@
       group = "multimedia";
       web.enable = true;
       declarative = true;
+      # workaround for pkg_resources removal in setuptools 82 breaking deluge
+      # https://github.com/NixOS/nixpkgs/issues/540545
+      # TODO: remove once fixed upstream
+      package = pkgs.deluge.override {
+        python3Packages = pkgs.python3Packages.overrideScope (
+          final: prev: { setuptools = prev.setuptools_80; }
+        );
+      };
       config = {
         enabled_plugins = [ "Label" ];
         random_port = false;
