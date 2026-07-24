@@ -3,6 +3,7 @@
 {
   # TODO: remove when nvidia-open builds on latest kernel (of_gpio.h removed in 7.1)
   boot.kernelPackages = pkgs.linuxPackages_6_12;
+  boot.extraModprobeConfig = "options asus_nb_wmi tablet_mode_sw=3";
   services.supergfxd.enable = true;
   services.asusd = {
     enable = true;
