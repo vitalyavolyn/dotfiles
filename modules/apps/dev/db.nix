@@ -9,7 +9,8 @@ with lib;
       ];
     } else {
       home-manager.users.vitalya.home.packages = with pkgs; [
-        mongodb-compass
+        # TODO: compass broken for a bit.
+        # mongodb-compass
         dbeaver-bin
       ];
     })
