@@ -14,7 +14,6 @@ let inherit (inputs.self.lib) tsOnly; in
     { services.immich.mediaLocation = "/mnt/media/immich"; }
 
     media-server
-    { services.deluge.config.download_location = "/mnt/media/downloads/complete"; }
 
     meme-search
 
@@ -60,7 +59,7 @@ let inherit (inputs.self.lib) tsOnly; in
         "bazarr.eepo.boo" = tsOnly "http://localhost:6767";
         "paperless-ai.eepo.boo" = tsOnly "http://localhost:3000";
         "meme.eepo.boo" = tsOnly "http://localhost:3010";
-        "deluge.eepo.boo" = tsOnly "http://localhost:8112";
+        "torrent.eepo.boo" = tsOnly "http://localhost:8080";
       };
     }
 

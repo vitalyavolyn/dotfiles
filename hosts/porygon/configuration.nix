@@ -70,7 +70,7 @@ in
               "radarr"
               "prowlarr"
               "bazarr"
-              "deluge"
+              "torrent"
               "meme"
               "paperless-ai"
             ];
