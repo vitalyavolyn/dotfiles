@@ -8,6 +8,7 @@
     sonarr = { enable = true; group = "multimedia"; };
     bazarr = { enable = true; group = "multimedia"; };
     prowlarr.enable = true;
+    flaresolverr.enable = true;
     qbittorrent = {
       enable = true;
       group = "multimedia";
