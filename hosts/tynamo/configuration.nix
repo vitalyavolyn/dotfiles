@@ -5,7 +5,12 @@
 { inputs, pkgs, lib, ... }:
 
 {
-  # TODO: fingerprint reader
+  services.fprintd.enable = true;
+  # Prevent ELAN fingerprint sensor from autosuspending mid-enrollment
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="04f3", ATTRS{idProduct}=="0c6e", ATTR{power/control}="on", ATTR{power/autosuspend}="-1"
+  '';
+
   imports = with inputs.self.nixosModules; [
     # hardware-specific config,
     # see also flake.nix -> nixos-hardware modules
