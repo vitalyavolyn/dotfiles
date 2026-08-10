@@ -43,6 +43,7 @@ let inherit (inputs.self.lib) tsOnly; in
         credentialsFile = config.age.secrets.cloudflared-credentials.path;
         ingress."ha.eepo.boo" = "http://localhost:8123";
         ingress."trmnl.eepo.boo" = "http://localhost:4567";
+        ingress."miniflux.eepo.boo" = "http://localhost:8401";
       };
     }
 

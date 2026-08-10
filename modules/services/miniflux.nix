@@ -40,7 +40,11 @@ in
         BATCH_SIZE = "100";
         CLEANUP_ARCHIVE_READ_DAYS = "60";
         # Default (localhost:8080) collides with torrent.eepo.boo on shinx.
-        LISTEN_ADDR = "localhost:8401";
+        # Bound to all interfaces (not just loopback) so podman containers
+        # (e.g. larapaper) can reach it via host.containers.internal —
+        # shinx's firewall is already disabled, so this doesn't change the
+        # actual exposure, just who can dial in locally.
+        LISTEN_ADDR = "0.0.0.0:8401";
       };
     };
   };
