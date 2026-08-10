@@ -72,6 +72,7 @@ builtins.listToAttrs (
       ./services/minecraft-create-chronicles.nix
       ./services/minecraft-craftoria.nix
       ./services/minecraft-mzhip.nix
+      ./services/minecraft-skyfactory-5.nix
       ./services/minecraft-vortex.nix
       ./services/nginx.nix
       ./services/paperless-ai.nix
