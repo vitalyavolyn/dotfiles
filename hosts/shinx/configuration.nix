@@ -34,6 +34,7 @@ let inherit (inputs.self.lib) tsOnly; in
     alloy
 
     larapaper
+    miniflux
 
     cloudflared
     {
@@ -61,6 +62,7 @@ let inherit (inputs.self.lib) tsOnly; in
         "paperless-ai.eepo.boo" = tsOnly "http://localhost:3000";
         "torrent.eepo.boo" = tsOnly "http://localhost:8080";
         "trmnl.eepo.boo" = tsOnly "http://localhost:4567";
+        "miniflux.eepo.boo" = tsOnly "http://localhost:8401";
       };
     }
 

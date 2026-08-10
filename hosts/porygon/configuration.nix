@@ -75,6 +75,7 @@ in
               "torrent"
               "paperless-ai"
               "trmnl"
+              "miniflux"
             ];
         };
       }

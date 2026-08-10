@@ -74,6 +74,7 @@ builtins.listToAttrs (
       ./services/minecraft-mzhip.nix
       ./services/minecraft-skyfactory-5.nix
       ./services/minecraft-vortex.nix
+      ./services/miniflux.nix
       ./services/nginx.nix
       ./services/paperless-ai.nix
       ./services/paperless-concierge.nix
