@@ -52,6 +52,11 @@
     };
 
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
+
+    terminus = {
+      url = "github:vitalyavolyn/terminus";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, nixos-hardware, nix-darwin, nixpkgs-xr, ... } @ inputs:

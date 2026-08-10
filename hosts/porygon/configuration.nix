@@ -74,6 +74,7 @@ in
               "torrent"
               "meme"
               "paperless-ai"
+              "trmnl"
             ];
         };
       }

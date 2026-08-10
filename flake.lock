@@ -498,7 +498,8 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-xr": "nixpkgs-xr",
-        "spicetify-nix": "spicetify-nix"
+        "spicetify-nix": "spicetify-nix",
+        "terminus": "terminus"
       }
     },
     "spicetify-nix": {
@@ -579,6 +580,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "terminus": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786359730,
+        "narHash": "sha256-vuD2vPGd0IFtxf0DfuQLLuLHuTLTMtX5tsrv8KFqEBk=",
+        "owner": "vitalyavolyn",
+        "repo": "terminus",
+        "rev": "1e4b61a77ce81a79019c23a683159026718ead02",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vitalyavolyn",
+        "repo": "terminus",
         "type": "github"
       }
     },

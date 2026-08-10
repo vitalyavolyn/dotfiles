@@ -35,12 +35,22 @@ let inherit (inputs.self.lib) tsOnly; in
 
     alloy
 
+    inputs.terminus.nixosModules.default
+    { nixpkgs.overlays = [ inputs.terminus.overlays.default ]; }
+    {
+      services.terminus = {
+        enable = true;
+        apiUri = "https://trmnl.eepo.boo";
+      };
+    }
+
     cloudflared
     {
       modules.cloudflared = {
         tunnelId = "ce5aebf4-adc5-4c20-85e2-d086c3f79079";
         credentialsFile = config.age.secrets.cloudflared-credentials.path;
         ingress."ha.eepo.boo" = "http://localhost:8123";
+        ingress."trmnl.eepo.boo" = "http://localhost:2300";
       };
     }
 
@@ -60,6 +70,7 @@ let inherit (inputs.self.lib) tsOnly; in
         "paperless-ai.eepo.boo" = tsOnly "http://localhost:3000";
         "meme.eepo.boo" = tsOnly "http://localhost:3010";
         "torrent.eepo.boo" = tsOnly "http://localhost:8080";
+        "trmnl.eepo.boo" = tsOnly "http://localhost:2300";
       };
     }
 
