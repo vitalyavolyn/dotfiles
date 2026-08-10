@@ -73,7 +73,6 @@ in
               "prowlarr"
               "bazarr"
               "torrent"
-              "meme"
               "paperless-ai"
               "trmnl"
             ];
