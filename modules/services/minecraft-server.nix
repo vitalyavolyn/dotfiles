@@ -1,6 +1,6 @@
 # Not a NixOS module — call this as a function to get one.
 # Usage: import ./minecraft-server.nix { name = "..."; cfSlug = "..."; port = 1234; }
-{ name, cfSlug, port, initMemory ? "4G", maxMemory ? "12G", javaVersion ? "java21" }:
+{ name, cfSlug, port, initMemory ? "4G", maxMemory ? "8G", javaVersion ? "java21" }:
 
 { lib, config, ... }:
 

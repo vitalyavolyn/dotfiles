@@ -70,6 +70,7 @@ builtins.listToAttrs (
       ./services/media-server.nix
       ./services/meme-search.nix
       ./services/minecraft-create-chronicles.nix
+      ./services/minecraft-craftoria.nix
       ./services/minecraft-mzhip.nix
       ./services/minecraft-vortex.nix
       ./services/nginx.nix

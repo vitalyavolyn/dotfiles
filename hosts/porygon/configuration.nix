@@ -31,7 +31,8 @@ in
     { services.foundryvtt.hostName = "foundry.eepo.boo"; }
 
     podman
-    minecraft-vortex
+    # minecraft-vortex
+    minecraft-craftoria
 
     forgejo
     {
@@ -135,6 +136,8 @@ in
     hostName = "porygon";
     firewall.enable = true;
   };
+
+  swapDevices = [ { device = "/mnt/extra/swapfile"; size = 8192; } ];
 
   modules.base-home.extras = false;
 

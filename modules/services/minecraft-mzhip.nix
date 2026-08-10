@@ -22,7 +22,7 @@ in
         TYPE = "FABRIC";
         VERSION = "1.21.5";
         INIT_MEMORY = "4G";
-        MAX_MEMORY = "19G";
+        MAX_MEMORY = "8G";
         RCON_PASSWORD = "minecraft-mzhip";
         USE_AIKAR_FLAGS = "true";
       };
