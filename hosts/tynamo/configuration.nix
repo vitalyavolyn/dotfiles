@@ -15,7 +15,6 @@
     inputs.self.nixosProfiles.desktop-gnome
 
     tailscale
-    alloy
     dev
 
     spotify

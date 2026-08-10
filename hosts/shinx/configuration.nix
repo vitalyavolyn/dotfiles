@@ -31,8 +31,6 @@ let inherit (inputs.self.lib) tsOnly; in
       };
     }
 
-    alloy
-
     larapaper
     miniflux
 

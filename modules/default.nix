@@ -53,7 +53,6 @@ builtins.listToAttrs (
       ./locale.nix
       ./nix.nix
       ./services/acme-eepo.nix
-      ./services/alloy.nix
       ./services/avahi.nix
       ./services/caddy.nix
       ./services/cloudflared.nix
@@ -61,13 +60,11 @@ builtins.listToAttrs (
       ./services/fail2ban.nix
       ./services/forgejo.nix
       ./services/foundry.nix
-      ./services/grafana.nix
       ./services/gnome-xrdp.nix
       ./services/home-assistant
       ./services/homepage.nix
       ./services/immich.nix
       ./services/larapaper.nix
-      ./services/loki.nix
       ./services/media-server.nix
       ./services/minecraft-create-chronicles.nix
       ./services/minecraft-craftoria.nix

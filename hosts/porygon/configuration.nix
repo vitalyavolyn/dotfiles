@@ -1,8 +1,6 @@
 { inputs, pkgs, ... }:
 
 let
-  inherit (inputs.self.lib) tsOnly;
-
   # Public vhost with HTTP-01 ACME (vitalya.me domains)
   pub = backend: {
     addSSL = true;
@@ -42,12 +40,6 @@ in
       services.postgresql = { enable = true; dataDir = "/mnt/extra/postgresql"; };
     }
 
-    loki
-    grafana
-    { services.grafana.settings.server = { domain = "grafana.eepo.boo"; root_url = "https://grafana.eepo.boo/"; }; }
-    alloy
-    { modules.alloy.lokiUrl = "http://127.0.0.1:3100/loki/api/v1/push"; }
-
     unbound
     (
       let
@@ -60,7 +52,7 @@ in
           cloudflareNs = [ "108.162.194.108" "108.162.193.150" ]; # serenity + woz
           localData =
             # porygon
-            map (a "100.114.242.59") [ "loki" "grafana" "git" ] ++
+            map (a "100.114.242.59") [ "git" ] ++
             # shinx
             map (a "100.68.131.102") [
               "ha"
@@ -112,11 +104,6 @@ in
 
         "foundry.eepo.boo" = pubEepo "http://localhost:30000/";
         "git.eepo.boo" = pubEepo "http://localhost:3002";
-
-        # ── Tailscale-only eepo.boo services ─────────────────────────────────
-
-        "loki.eepo.boo" = tsOnly "http://localhost:3100";
-        "grafana.eepo.boo" = tsOnly "http://localhost:3001";
       };
     }
   ];
