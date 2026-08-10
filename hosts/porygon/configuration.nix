@@ -32,7 +32,7 @@ in
 
     podman
     # minecraft-vortex
-    minecraft-craftoria
+    # minecraft-craftoria
     minecraft-skyfactory-5
 
     forgejo
