@@ -62,7 +62,6 @@ builtins.listToAttrs (
       ./services/foundry.nix
       ./services/gnome-xrdp.nix
       ./services/home-assistant
-      ./services/homepage.nix
       ./services/immich.nix
       ./services/larapaper.nix
       ./services/media-server.nix

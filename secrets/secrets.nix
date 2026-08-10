@@ -9,7 +9,6 @@ let
 in
 {
   "curseforge-token.age".publicKeys = [ vitalya ] ++ systems;
-  "homepage-env.age".publicKeys = [ vitalya ] ++ systems;
   "paperless-password.age".publicKeys = [ vitalya ] ++ systems;
 
   # CLOUDFLARE_DNS_API_TOKEN=<token with Zone:Read + DNS:Edit scoped to eepo.boo>
