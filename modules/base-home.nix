@@ -14,7 +14,7 @@
       file
       htop
       httpie
-      (if config.modules.base-home.extras then fastfetch else fastfetchMinimal)
+      (if config.modules.base-home.extras then fastfetch else fastfetch-unwrapped)
     ] ++ lib.optionals config.modules.base-home.extras [
       nixpkgs-fmt
       ranger

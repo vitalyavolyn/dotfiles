@@ -126,7 +126,7 @@ in
     firewall.enable = true;
   };
 
-  swapDevices = [ { device = "/mnt/extra/swapfile"; size = 8192; } ];
+  swapDevices = [{ device = "/mnt/extra/swapfile"; size = 8192; }];
 
   modules.base-home.extras = false;
 

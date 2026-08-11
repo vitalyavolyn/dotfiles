@@ -3,7 +3,7 @@
 {
   environment.systemPackages = [ pkgs.nh ];
 
-  home-manager.users.vitalya.programs.zsh.shellAliases.nbs = lib.mkForce "nh darwin switch && brew upgrade -g";
+  home-manager.users.vitalya.programs.zsh.shellAliases.nbs = lib.mkForce "nh darwin switch";
 
   security.pam.services.sudo_local.touchIdAuth = true;
   users.users.vitalya.home = "/Users/vitalya";

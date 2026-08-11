@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, ... }:
 
 {
   programs.zsh.enable = true;
@@ -23,10 +23,7 @@
         nbs = lib.mkDefault "nh os switch";
       };
 
-      # TODO: how to make REPORTTIME work?
-      localVariables = {
-        PATH = "$PATH:$HOME/bin:$HOME/.pub-cache/bin:$HOME/.yarn/bin:/opt/homebrew/bin";
-      };
+      localVariables.REPORTTIME = 10;
 
       plugins = with pkgs; [
         {
@@ -53,5 +50,11 @@
       enable = true;
       enableZshIntegration = true;
     };
+
+    home.sessionPath = [
+      "$HOME/bin"
+      "$HOME/.pub-cache/bin"
+      "$HOME/.yarn/bin"
+    ];
   };
 }

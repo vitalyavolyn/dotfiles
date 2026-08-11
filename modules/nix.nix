@@ -32,10 +32,6 @@ with lib;
       nixpkgs.config.allowUnfree = true;
       nixpkgs.config.nvidia.acceptLicense = true;
 
-      nixpkgs.overlays = [
-        inputs.nix-vscode-extensions.overlays.default
-      ];
-
       # TODO: shadowsocks 🙄
       nixpkgs.config.permittedInsecurePackages = [
         "mbedtls-2.28.10"
