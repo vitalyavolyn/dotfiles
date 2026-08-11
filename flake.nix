@@ -2,7 +2,19 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    den.url = "github:denful/den/latest";
+
+    import-tree.url = "github:vic/import-tree";
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -14,7 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-darwin = {
+    darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -34,7 +46,12 @@
       flake = false;
     };
 
-    agenix.url = "github:ryantm/agenix";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+      inputs.darwin.follows = "darwin";
+    };
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -47,83 +64,26 @@
     helium = {
       url = "github:vikingnope/helium-browser-nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-darwin.follows = "nixpkgs";
     };
 
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
   };
 
-  outputs = { nixpkgs, nixos-hardware, nix-darwin, nixpkgs-xr, ... } @ inputs:
-    {
-      lib = import ./lib;
-      nixosModules = (import ./modules { lib = nixpkgs.lib; });
-      nixosProfiles = import ./profiles;
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        inputs.den.flakeModule
+        ./den.nix
+        ./packages
+        (inputs.import-tree ./modules)
+        (inputs.import-tree ./profiles)
+        ((inputs.import-tree.match "(.*/)?configuration\\.nix") ./hosts)
+      ];
 
-      nixosConfigurations = {
-        celebi = nixpkgs.lib.nixosSystem
-          {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-            modules = [
-              ./hosts/celebi/configuration.nix
-
-              nixos-hardware.nixosModules.common-pc-laptop
-              nixos-hardware.nixosModules.common-pc-ssd
-              nixos-hardware.nixosModules.common-cpu-intel
-            ];
-          };
-        shinx = nixpkgs.lib.nixosSystem
-          {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-            modules = [
-              ./hosts/shinx/configuration.nix
-
-              nixos-hardware.nixosModules.common-cpu-intel
-              nixos-hardware.nixosModules.common-pc-ssd
-            ];
-          };
-        porygon = nixpkgs.lib.nixosSystem
-          {
-            system = "aarch64-linux";
-            specialArgs = { inherit inputs; };
-            modules = [
-              ./hosts/porygon/configuration.nix
-            ];
-          };
-        sinistea = nixpkgs.lib.nixosSystem
-          {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-            modules = [
-              ./hosts/sinistea/configuration.nix
-            ];
-          };
-        tynamo = nixpkgs.lib.nixosSystem
-          {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-            modules = [
-              ./hosts/tynamo/configuration.nix
-
-              { nixpkgs.overlays = [ nixpkgs-xr.overlays.default ]; }
-
-              nixos-hardware.nixosModules.common-cpu-amd
-              #nixos-hardware.nixosModules.common-gpu-nvidia
-              nixos-hardware.nixosModules.common-pc-ssd
-              nixos-hardware.nixosModules.common-pc-laptop
-            ];
-          };
+      perSystem = { pkgs, ... }: {
+        formatter = pkgs.nixpkgs-fmt;
       };
-
-      darwinConfigurations."applin" = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/applin/configuration.nix
-        ];
-      };
-
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
-      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
     };
 
   nixConfig = {

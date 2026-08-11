@@ -1,35 +1,37 @@
-{ inputs, ... }:
+{ den, inputs, ... }:
 
 {
-  imports = with inputs.self.nixosModules; [
-    base-home
-    base-packages
-    zsh
-    user
-    nix
-    darwin # general tweaks
-    brew
-    fonts
-  ] ++ (with inputs; [
-    nix-homebrew.darwinModules.nix-homebrew
-    home-manager.darwinModules.home-manager
-    nix-index-database.darwinModules.nix-index
-    agenix.nixosModules.default
-    ({ pkgs, ... }: {
-      environment.systemPackages = [ inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.agenix ];
-    })
+  den.aspects.base-darwin = {
+    includes = with den.aspects; [
+      base-home
+      base-packages
+      zsh
+      nix
+      darwin
+      brew
+      fonts
+    ];
 
-    {
+    darwin = { pkgs, ... }: {
+      imports = with inputs; [
+        nix-homebrew.darwinModules.nix-homebrew
+        nix-index-database.darwinModules.nix-index
+        agenix.darwinModules.default
+      ];
+
+      environment.systemPackages = [
+        inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.agenix
+      ];
+
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = {
-          inherit inputs;
-        };
       };
-    }
-  ]);
 
-  environment.variables.FLAKE = "/Users/vitalya/dotfiles";
-  environment.variables.NH_FLAKE = "/Users/vitalya/dotfiles";
+      environment.variables = {
+        FLAKE = "/Users/vitalya/dotfiles";
+        NH_FLAKE = "/Users/vitalya/dotfiles";
+      };
+    };
+  };
 }

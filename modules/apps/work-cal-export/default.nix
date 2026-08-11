@@ -1,39 +1,29 @@
-# See work-cal-export.swift for what this does and its config.
-# Sets up an hourly launch agent too.
-{ pkgs, ... }:
+{ inputs, ... }:
 
 let
-  workCalExport = pkgs.stdenv.mkDerivation {
-    pname = "work-cal-export";
-    version = "1.0.0";
-    src = ./work-cal-export.swift;
-    dontUnpack = true;
-    nativeBuildInputs = [ pkgs.swift ];
-
-    buildPhase = ''
-      runHook preBuild
-      swiftc -parse-as-library "$src" -o work-cal-export
-      runHook postBuild
-    '';
-
-    installPhase = ''
-      runHook preInstall
-      mkdir -p $out/bin
-      cp work-cal-export $out/bin/
-      runHook postInstall
-    '';
-  };
+  mkApp = import ../_mk-app.nix;
+  package = pkgs: inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.work-cal-export;
 in
 {
-  home-manager.users.vitalya.home.packages = [ workCalExport ];
+  den.aspects.work-cal-export = mkApp {
+    darwinHome = { config, pkgs, ... }:
+      let
+        workCalExport = package pkgs;
+        logPath = "${config.home.homeDirectory}/Library/Logs/work-cal-export.log";
+      in
+      {
+        home.packages = [ workCalExport ];
 
-  launchd.user.agents.work-cal-export = {
-    command = "${workCalExport}/bin/work-cal-export";
-    serviceConfig = {
-      RunAtLoad = true;
-      StartInterval = 3600;
-      StandardOutPath = "/Users/vitalya/Library/Logs/work-cal-export.log";
-      StandardErrorPath = "/Users/vitalya/Library/Logs/work-cal-export.log";
-    };
+        launchd.agents.work-cal-export = {
+          enable = true;
+          config = {
+            ProgramArguments = [ "${workCalExport}/bin/work-cal-export" ];
+            RunAtLoad = true;
+            StartInterval = 3600;
+            StandardOutPath = logPath;
+            StandardErrorPath = logPath;
+          };
+        };
+      };
   };
 }

@@ -1,16 +1,18 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-    publish = {
+  den.aspects.avahi.nixos = { pkgs, ... }: {
+    services.avahi = {
       enable = true;
-      userServices = true;
-    };
-    extraServiceFiles = {
-      ssh = "${pkgs.avahi}/etc/avahi/services/ssh.service";
+      nssmdns4 = true;
+      openFirewall = true;
+      publish = {
+        enable = true;
+        userServices = true;
+      };
+      extraServiceFiles = {
+        ssh = "${pkgs.avahi}/etc/avahi/services/ssh.service";
+      };
     };
   };
 }

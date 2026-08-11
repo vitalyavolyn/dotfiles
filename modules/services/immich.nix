@@ -1,11 +1,13 @@
 { ... }:
 
 {
-  services.immich = {
-    enable = true;
-    host = "0.0.0.0";
-    accelerationDevices = null;
-  };
+  den.aspects.immich.nixos = { ... }: {
+    services.immich = {
+      enable = true;
+      host = "0.0.0.0";
+      accelerationDevices = null;
+    };
 
-  users.users.immich.extraGroups = [ "video" "render" ];
+    users.users.immich.extraGroups = [ "video" "render" ];
+  };
 }

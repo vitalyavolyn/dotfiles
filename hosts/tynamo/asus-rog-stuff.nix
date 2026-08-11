@@ -56,33 +56,4 @@
     };
   };
 
-  home-manager.users.vitalya.xdg.configFile."autostart/rog-control-center.desktop".text = ''
-    [Desktop Entry]
-    Type=Application
-    Name=ROG Control Center
-    Exec=rog-control-center
-    X-GNOME-Autostart-enabled=true
-  '';
-
-  home-manager.users.vitalya.dconf = {
-    enable = true;
-    settings = {
-      "org/gnome/settings-daemon/plugins/media-keys" = {
-        custom-keybindings = [
-          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
-        ];
-      };
-      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-        binding = "Launch4";
-        command = "asusctl profile -n";
-        name = "Next fan profile";
-      };
-      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-        binding = "Launch1";
-        command = "rog-control-center";
-        name = "Open ROG control center";
-      };
-    };
-  };
 }

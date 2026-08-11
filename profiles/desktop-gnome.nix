@@ -1,7 +1,8 @@
-{ inputs, ... }: {
-  imports = with inputs.self.nixosModules; [
-    ./desktop.nix
+{ den, ... }:
 
+{
+  den.aspects.desktop-gnome.includes = with den.aspects; [
+    desktop
     gnome
     pipewire
   ];

@@ -1,11 +1,10 @@
-{ pkgs, lib, options, inputs, ... }:
-with lib;
+{ ... }:
+
+let mkApp = import ./_mk-app.nix;
+in
 {
-  config = mkMerge [
-    (if (inputs.self.lib.isDarwin options) then {
-      homebrew.casks = [ "qbittorrent" ];
-    } else {
-      home-manager.users.vitalya.home.packages = with pkgs; [ qbittorrent ];
-    })
-  ];
+  den.aspects.torrent = mkApp {
+    darwinCasks = [ "qbittorrent" ];
+    nixosHomePackages = pkgs: [ pkgs.qbittorrent ];
+  };
 }

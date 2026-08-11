@@ -1,7 +1,9 @@
-{ pkgs, ... }:
+{ ... }:
 
+let mkApp = import ./_mk-app.nix;
+in
 {
-  home-manager.users.vitalya.home.packages = with pkgs; [
-    steam-run
-  ];
+  den.aspects.steam-run = mkApp {
+    nixosHomePackages = pkgs: [ pkgs.steam-run ];
+  };
 }

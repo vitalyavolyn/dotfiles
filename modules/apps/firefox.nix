@@ -1,15 +1,16 @@
-{ pkgs, lib, options, inputs, ... }:
-with lib;
+{ ... }:
+
+let mkApp = import ./_mk-app.nix;
+in
 {
-  config = mkMerge [
-    (if (inputs.self.lib.isDarwin options) then {
-      homebrew.casks = [ "firefox" ];
-    } else {
-      home-manager.users.vitalya.programs.firefox = {
+  den.aspects.firefox = mkApp {
+    darwinCasks = [ "firefox" ];
+    nixosHome = { pkgs, ... }: {
+      programs.firefox = {
         enable = true;
         package = pkgs.firefox;
         configPath = ".mozilla/firefox";
       };
-    })
-  ];
+    };
+  };
 }

@@ -1,11 +1,10 @@
-{ pkgs, lib, options, inputs, ... }:
-with lib;
+{ ... }:
+
+let mkApp = import ./_mk-app.nix;
+in
 {
-  config = mkMerge [
-    (if (inputs.self.lib.isDarwin options) then {
-      homebrew.casks = [ "obs" ];
-    } else {
-      home-manager.users.vitalya.home.packages = with pkgs; [ obs-studio ];
-    })
-  ];
+  den.aspects.streaming = mkApp {
+    darwinCasks = [ "obs" ];
+    nixosHomePackages = pkgs: [ pkgs.obs-studio ];
+  };
 }

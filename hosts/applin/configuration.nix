@@ -1,50 +1,55 @@
-{ pkgs, inputs, ... }:
+{ den, ... }:
 
 {
-  imports = with inputs.self.nixosModules; [
-    inputs.self.nixosProfiles.base-darwin
+  den.hosts.aarch64-darwin.applin.users.vitalya = { };
 
-    dev
-    tailscale
-    # firefox
-    # chrome
-    vlc
-    streaming
-    minecraft
-    messaging
-    spotify
-    krita
-    obsidian
-    claude-desktop
-    helium
-    work-cal-export
-  ];
-
-  homebrew = {
-    casks = [
-      "microsoft-teams"
-      "tunnelblick"
-      "chatgpt"
-      "ticktick"
-      "bitwarden"
-      "cyberduck"
-
-      # TODO: cross platform logitech module
-      "logi-options+"
+  den.aspects.applin = {
+    includes = with den.aspects; [
+      base-darwin
+      dev
+      tailscale
+      vlc
+      streaming
+      minecraft
+      messaging
+      spotify
+      krita
+      obsidian
+      claude-desktop
+      helium
+      work-cal-export
     ];
 
-    brews = [
-      "mole"
-    ];
+    darwin = {
+      homebrew = {
+        casks = [
+          "microsoft-teams"
+          "tunnelblick"
+          "chatgpt"
+          "ticktick"
+          "bitwarden"
+          "cyberduck"
+
+          # TODO: cross platform logitech module
+          "logi-options+"
+        ];
+
+        brews = [
+          "mole"
+        ];
+      };
+
+      system.stateVersion = 4;
+    };
+
+    homeManager = { pkgs, ... }: {
+      home = {
+        stateVersion = "24.05";
+        packages = with pkgs; [
+          jdk
+          (python3.withPackages (p: [ p.numpy p.requests ]))
+        ];
+      };
+    };
   };
-
-  home-manager.users.vitalya.home.packages = with pkgs; [
-    jdk
-    (python3.withPackages (p: [ p.numpy p.requests ]))
-  ];
-
-  system.stateVersion = 4;
-  home-manager.users.vitalya.home.stateVersion = "24.05";
-
-  nixpkgs.hostPlatform = "aarch64-darwin";
 }

@@ -1,35 +1,20 @@
-{ pkgs
-, lib
-, inputs
-, options
-, ...
-}:
-with lib;
-let
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+{ inputs, ... }:
+
+let mkApp = import ./_mk-app.nix;
 in
 {
-  config = mkMerge [
-    (
-      if (inputs.self.lib.isDarwin options) then
-        {
-          homebrew.casks = [ "spotify" ];
-        }
-      else
-        {
-          home-manager.users.vitalya = {
-            imports = [
-              inputs.spicetify-nix.homeManagerModules.default
-            ];
+  den.aspects.spotify = mkApp {
+    darwinCasks = [ "spotify" ];
+    nixosHome = { pkgs, ... }:
+      let spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+      in {
+        imports = [ inputs.spicetify-nix.homeManagerModules.default ];
 
-            programs.spicetify = {
-              enable = true;
-              theme = spicePkgs.themes.default;
-              # colorScheme = "flamingo";
-              enabledExtensions = with spicePkgs.extensions; [ popupLyrics ];
-            };
-          };
-        }
-    )
-  ];
+        programs.spicetify = {
+          enable = true;
+          theme = spicePkgs.themes.default;
+          enabledExtensions = [ spicePkgs.extensions.popupLyrics ];
+        };
+      };
+  };
 }

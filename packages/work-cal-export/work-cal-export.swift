@@ -1,4 +1,4 @@
-// Syncs the work Calendar into the Google-backed "Work" calendar; macOS's
+// Synchronizes the work Calendar into the Google-backed "Work" calendar; macOS's
 // own Google account sync (CalDAV, bidirectional) pushes those to real
 // Google Calendar
 //

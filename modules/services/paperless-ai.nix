@@ -1,8 +1,8 @@
 { ... }:
 
 {
-  # TODO: env file
-  config = {
+  den.aspects.paperless-ai.nixos = { ... }: {
+    # TODO: env file
     virtualisation.oci-containers.containers."paperless-ai" = {
       autoStart = true;
       image = "docker.io/clusterzx/paperless-ai";

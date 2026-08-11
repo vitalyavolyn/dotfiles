@@ -1,52 +1,55 @@
-{ lib, config, ... }:
+{ ... }:
 
-let
-  cfg = config.modules.minecraft-vortex;
-in
 {
-  options.modules.minecraft-vortex.volumes = lib.mkOption {
-    type = lib.types.listOf lib.types.str;
-    default = [
-      "/mnt/extra/minecraft-vortex/data:/data"
-      "/home/sanyasuper2002/vortex-1.1.1c-server.zip:/server-pack.zip:ro"
-    ];
-    description = "Volumes to mount (needs /data and pack zip at /server-pack.zip)";
-  };
-
-  config = {
-    virtualisation.oci-containers.containers."minecraft-vortex" = {
-      autoStart = true;
-      image = "docker.io/itzg/minecraft-server:java17";
-      volumes = cfg.volumes;
-      environment = {
-        TZ = "America/New_York";
-        EULA = "TRUE";
-        TYPE = "FORGE";
-        VERSION = "1.20.1";
-        FORGE_VERSION = "47.4.0";
-        GENERIC_PACK = "/server-pack.zip";
-        INIT_MEMORY = "8G";
-        MAX_MEMORY = "8G";
-        RCON_PASSWORD = "minecraft-vortex";
-        USE_AIKAR_FLAGS = "true";
+  den.aspects.minecraft-vortex.nixos = { lib, config, ... }:
+    let
+      cfg = config.services.minecraft-vortex;
+    in
+    {
+      options.services.minecraft-vortex.volumes = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        default = [
+          "/mnt/extra/minecraft-vortex/data:/data"
+          "/home/sanyasuper2002/vortex-1.1.1c-server.zip:/server-pack.zip:ro"
+        ];
+        description = "Volumes to mount (needs /data and pack zip at /server-pack.zip)";
       };
-      ports = [ "0.0.0.0:25565:25565" ];
-      extraOptions = [
-        "--hostname=minecraft-vortex"
-        "--health-cmd"
-        "mc-health"
-        "--health-interval"
-        "10s"
-        "--health-retries"
-        "6"
-        "--health-timeout"
-        "1s"
-        "--health-start-period"
-        "20m"
-        "--pull=newer"
-      ];
-    };
 
-    networking.firewall.allowedTCPPorts = [ 25565 ];
-  };
+      config = {
+        virtualisation.oci-containers.containers."minecraft-vortex" = {
+          autoStart = true;
+          image = "docker.io/itzg/minecraft-server:java17";
+          volumes = cfg.volumes;
+          environment = {
+            TZ = "America/New_York";
+            EULA = "TRUE";
+            TYPE = "FORGE";
+            VERSION = "1.20.1";
+            FORGE_VERSION = "47.4.0";
+            GENERIC_PACK = "/server-pack.zip";
+            INIT_MEMORY = "8G";
+            MAX_MEMORY = "8G";
+            RCON_PASSWORD = "minecraft-vortex";
+            USE_AIKAR_FLAGS = "true";
+          };
+          ports = [ "0.0.0.0:25565:25565" ];
+          extraOptions = [
+            "--hostname=minecraft-vortex"
+            "--health-cmd"
+            "mc-health"
+            "--health-interval"
+            "10s"
+            "--health-retries"
+            "6"
+            "--health-timeout"
+            "1s"
+            "--health-start-period"
+            "20m"
+            "--pull=newer"
+          ];
+        };
+
+        networking.firewall.allowedTCPPorts = [ 25565 ];
+      };
+    };
 }

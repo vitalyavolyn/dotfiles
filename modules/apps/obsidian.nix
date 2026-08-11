@@ -1,11 +1,10 @@
-{ pkgs, lib, options, inputs, ... }:
-with lib;
+{ ... }:
+
+let mkApp = import ./_mk-app.nix;
+in
 {
-  config = mkMerge [
-    (if (inputs.self.lib.isDarwin options) then {
-      homebrew.casks = [ "obsidian" ];
-    } else {
-      home-manager.users.vitalya.home.packages = with pkgs; [ obsidian ];
-    })
-  ];
+  den.aspects.obsidian = mkApp {
+    darwinCasks = [ "obsidian" ];
+    nixosHomePackages = pkgs: [ pkgs.obsidian ];
+  };
 }

@@ -1,12 +1,12 @@
 # Not a NixOS module — call this as a function to get one.
-# Usage: import ./minecraft-server.nix { name = "..."; cfSlug = "..."; port = 1234; }
+# Usage: import ./_minecraft-server.nix { name = "..."; cfSlug = "..."; port = 1234; }
 { name, cfSlug, port, initMemory ? "4G", maxMemory ? "8G", javaVersion ? "java21" }:
 
 { lib, config, ... }:
 
-let cfg = config.modules.${name}; in
+let cfg = config.services.${name}; in
 {
-  options.modules.${name}.volumes = lib.mkOption {
+  options.services.${name}.volumes = lib.mkOption {
     type = lib.types.listOf lib.types.str;
     default = [ "/mnt/extra/${name}/data:/data" ];
     description = "Volumes to mount (needs /data)";

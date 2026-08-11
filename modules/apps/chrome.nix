@@ -1,14 +1,10 @@
-{ pkgs, lib, options, inputs, ... }:
-with lib;
+{ ... }:
+
+let mkApp = import ./_mk-app.nix;
+in
 {
-  config = mkMerge [
-    (if (inputs.self.lib.isDarwin options) then {
-      homebrew.casks = [ "google-chrome" ];
-    } else {
-      home-manager.users.vitalya.programs.chromium = {
-        enable = true;
-        package = pkgs.google-chrome;
-      };
-    })
-  ];
+  den.aspects.chrome = mkApp {
+    darwinCasks = [ "google-chrome" ];
+    nixosHomePackages = pkgs: [ pkgs.google-chrome ];
+  };
 }

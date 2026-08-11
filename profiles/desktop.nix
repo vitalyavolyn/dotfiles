@@ -1,13 +1,14 @@
-{ inputs, ... }:
+{ den, ... }:
 
 {
-  imports = with inputs.self.nixosModules; [
-    ./base-linux.nix
+  den.aspects.desktop = {
+    includes = with den.aspects; [
+      base-linux
+      kitty
+      avahi
+      fonts
+    ];
 
-    kitty
-    avahi
-    fonts
-  ];
-
-  boot.plymouth.enable = true;
+    nixos.boot.plymouth.enable = true;
+  };
 }

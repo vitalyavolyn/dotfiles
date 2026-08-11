@@ -1,36 +1,44 @@
-{ inputs, ... }:
+{ den, inputs, ... }:
 
 {
-  imports = with inputs.self.nixosModules; [
-    # hardware-specific config,
-    # see also flake.nix -> nixos-hardware modules
-    ./hardware-configuration.nix
+  den.hosts.x86_64-linux.celebi.users.vitalya = { };
 
-    inputs.self.nixosProfiles.desktop-gnome
+  den.aspects.celebi = {
+    includes = with den.aspects; [
+      desktop-gnome
+      gnome-xrdp
+      tailscale
+      dev
+      spotify
+      qflipper
+      keybase
+      messaging
+      torrent
+      chrome
+      minecraft
+      krita
+      streaming
+      vlc
+      steam-run
+      docker
+    ];
 
-    gnome-xrdp
-    tailscale
-    dev
-    spotify
-    qflipper
-    keybase
-    messaging
-    torrent
-    chrome
-    minecraft
-    krita
-    streaming
-    vlc
-    steam-run
-    docker
-  ];
+    nixos = {
+      imports = with inputs.nixos-hardware.nixosModules; [
+        ./hardware-configuration.nix
+        common-pc-laptop
+        common-pc-ssd
+        common-cpu-intel
+      ];
 
-  networking = {
-    hostName = "celebi";
-    networkmanager.enable = true;
-    firewall.enable = false;
+      networking = {
+        networkmanager.enable = true;
+        firewall.enable = false;
+      };
+
+      system.stateVersion = "20.09";
+    };
+
+    homeManager.home.stateVersion = "20.09";
   };
-
-  system.stateVersion = "20.09";
-  home-manager.users.vitalya.home.stateVersion = "20.09";
 }

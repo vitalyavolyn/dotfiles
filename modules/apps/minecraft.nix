@@ -1,11 +1,10 @@
-{ pkgs, lib, options, inputs, ... }:
-with lib;
+{ ... }:
+
+let mkApp = import ./_mk-app.nix;
+in
 {
-  config = mkMerge [
-    (if (inputs.self.lib.isDarwin options) then {
-      homebrew.casks = [ "prismlauncher" ];
-    } else {
-      home-manager.users.vitalya.home.packages = with pkgs; [ prismlauncher ];
-    })
-  ];
+  den.aspects.minecraft = mkApp {
+    darwinCasks = [ "prismlauncher" ];
+    nixosHomePackages = pkgs: [ pkgs.prismlauncher ];
+  };
 }

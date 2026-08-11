@@ -1,60 +1,47 @@
-{ pkgs, lib, ... }:
+{ den, ... }:
 
 {
-  programs.zsh.enable = true;
+  den.aspects.zsh = { host, ... }: {
+    os.programs.zsh.enable = true;
 
-  home-manager.users.vitalya = {
-    programs.zsh = {
-      enable = true;
+    homeManager = { lib, pkgs, ... }:
+      let
+        hasDesktop = host.hasAspect den.aspects.desktop;
+      in
+      {
+        home.packages = lib.optionals hasDesktop [ pkgs.wl-clipboard ];
 
-      autocd = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
-
-      history = {
-        ignoreDups = true;
-      };
-
-      shellAliases = {
-        l = "ls";
-        la = "ls -a";
-        x = "xclip -sel clip";
-        p = "nix-shell --run zsh -p";
-        nbs = lib.mkDefault "nh os switch";
-      };
-
-      localVariables.REPORTTIME = 10;
-
-      plugins = with pkgs; [
-        {
-          name = "zsh-nix-shell";
-          file = "nix-shell.plugin.zsh";
-          src = fetchFromGitHub {
-            owner = "chisui";
-            repo = "zsh-nix-shell";
-            rev = "v0.8.0";
-            sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
+        programs.zsh = {
+          enable = true;
+          autocd = true;
+          autosuggestion.enable = true;
+          syntaxHighlighting.enable = true;
+          history.ignoreDups = true;
+          shellAliases = {
+            l = "ls";
+            la = "ls -a";
+            p = "nix-shell --run zsh -p";
+            nbs = lib.mkDefault "nh os switch";
+          } // lib.optionalAttrs (host.class == "darwin" || hasDesktop) {
+            x = if host.class == "darwin" then "pbcopy" else "wl-copy";
           };
-        }
-      ];
-
-      oh-my-zsh = {
-        enable = true;
-
-        plugins = [ "git" "sudo" "dotenv" "yarn" "docker-compose" "history" ];
-        theme = "fishy";
+          localVariables.REPORTTIME = 10;
+          plugins = [{
+            name = "zsh-nix-shell";
+            file = "share/zsh/plugins/zsh-nix-shell/nix-shell.plugin.zsh";
+            src = pkgs.zsh-nix-shell;
+          }];
+          oh-my-zsh = {
+            enable = true;
+            plugins = [ "git" "sudo" "dotenv" "yarn" "docker-compose" "history" ];
+            theme = "fishy";
+          };
+        };
+        programs.fzf = {
+          enable = true;
+          enableZshIntegration = true;
+        };
+        home.sessionPath = [ "$HOME/bin" "$HOME/.pub-cache/bin" "$HOME/.yarn/bin" ];
       };
-    };
-
-    programs.fzf = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-
-    home.sessionPath = [
-      "$HOME/bin"
-      "$HOME/.pub-cache/bin"
-      "$HOME/.yarn/bin"
-    ];
   };
 }

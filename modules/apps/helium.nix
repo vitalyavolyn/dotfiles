@@ -1,13 +1,10 @@
-{ pkgs, inputs, lib, options, ... }:
-with lib;
+{ inputs, ... }:
+
+let mkApp = import ./_mk-app.nix;
+in
 {
-  config = mkMerge [
-    (if (inputs.self.lib.isDarwin options) then {
-      homebrew.casks = [ "helium-browser" ];
-    } else {
-      home-manager.users.vitalya.home.packages = [
-        inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
-      ];
-    })
-  ];
+  den.aspects.helium = mkApp {
+    darwinCasks = [ "helium-browser" ];
+    nixosHomePackages = pkgs: [ inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default ];
+  };
 }

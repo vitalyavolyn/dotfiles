@@ -1,11 +1,10 @@
-{ pkgs, lib, options, inputs, ... }:
-with lib;
+{ ... }:
+
+let mkApp = import ./_mk-app.nix;
+in
 {
-  config = mkMerge [
-    (if (inputs.self.lib.isDarwin options) then {
-      homebrew.casks = [ "vlc" ];
-    } else {
-      home-manager.users.vitalya.home.packages = with pkgs; [ vlc ];
-    })
-  ];
+  den.aspects.vlc = mkApp {
+    darwinCasks = [ "vlc" ];
+    nixosHomePackages = pkgs: [ pkgs.vlc ];
+  };
 }

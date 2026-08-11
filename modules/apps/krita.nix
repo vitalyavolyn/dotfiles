@@ -1,11 +1,10 @@
-{ pkgs, lib, options, inputs, ... }:
-with lib;
+{ ... }:
+
+let mkApp = import ./_mk-app.nix;
+in
 {
-  config = mkMerge [
-    (if (inputs.self.lib.isDarwin options) then {
-      homebrew.casks = [ "krita" ];
-    } else {
-      home-manager.users.vitalya.home.packages = with pkgs; [ krita ];
-    })
-  ];
+  den.aspects.krita = mkApp {
+    darwinCasks = [ "krita" ];
+    nixosHomePackages = pkgs: [ pkgs.krita ];
+  };
 }

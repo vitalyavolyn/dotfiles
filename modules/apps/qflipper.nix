@@ -1,18 +1,18 @@
-{ pkgs, lib, options, inputs, ... }:
-with lib;
-{
-  config = mkMerge [
-    (if (inputs.self.lib.isDarwin options) then {
-      homebrew.casks = [ "qflipper" ];
-    } else {
-      home-manager.users.vitalya.home.packages = with pkgs; [ qFlipper ];
+{ ... }:
 
+let mkApp = import ./_mk-app.nix;
+in
+{
+  den.aspects.qflipper = mkApp {
+    nixos = {
       services.udev.extraRules = ''
         #Flipper Zero serial port
         SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", ATTRS{manufacturer}=="Flipper Devices Inc.", GROUP="users", TAG+="uaccess"
         #Flipper Zero DFU
         SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", ATTRS{manufacturer}=="STMicroelectronics", GROUP="users", TAG+="uaccess"
       '';
-    })
-  ];
+    };
+    nixosHomePackages = pkgs: [ pkgs.qFlipper ];
+    darwinCasks = [ "qflipper" ];
+  };
 }

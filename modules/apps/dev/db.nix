@@ -1,18 +1,10 @@
-{ pkgs, lib, options, inputs, ... }:
-with lib;
+{ ... }:
+
+let mkApp = import ../_mk-app.nix;
+in
 {
-  config = mkMerge [
-    (if (inputs.self.lib.isDarwin options) then {
-      homebrew.casks = [
-        "mongodb-compass"
-        "dbeaver-community"
-      ];
-    } else {
-      home-manager.users.vitalya.home.packages = with pkgs; [
-        # TODO: compass broken for a bit.
-        # mongodb-compass
-        dbeaver-bin
-      ];
-    })
-  ];
+  den.aspects.dev-db = mkApp {
+    darwinCasks = [ "mongodb-compass" "dbeaver-community" ];
+    nixosHomePackages = pkgs: [ pkgs.dbeaver-bin ];
+  };
 }

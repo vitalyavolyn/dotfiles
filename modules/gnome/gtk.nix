@@ -1,15 +1,13 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
-  home-manager.users.vitalya = {
-    home = {
-      pointerCursor = {
-        enable = true;
-        x11.enable = true;
-        package = pkgs.paper-icon-theme;
-        name = "Paper";
-        size = 16;
-      };
+  den.aspects.gtk.homeManager = { pkgs, ... }: {
+    home.pointerCursor = {
+      enable = true;
+      x11.enable = true;
+      package = pkgs.paper-icon-theme;
+      name = "Paper";
+      size = 16;
     };
 
     gtk = {

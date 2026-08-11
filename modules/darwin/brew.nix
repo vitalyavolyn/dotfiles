@@ -1,31 +1,33 @@
-{ inputs, config, ... }:
+{ inputs, ... }:
 
 {
-  nix-homebrew = {
-    enable = true;
-    autoMigrate = true;
+  den.aspects.brew.darwin = { config, ... }: {
+    nix-homebrew = {
+      enable = true;
+      autoMigrate = true;
 
-    user = "vitalya";
+      user = "vitalya";
 
-    taps = {
-      "homebrew/homebrew-core" = inputs.homebrew-core;
-      "homebrew/homebrew-cask" = inputs.homebrew-cask;
-      "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+      taps = {
+        "homebrew/homebrew-core" = inputs.homebrew-core;
+        "homebrew/homebrew-cask" = inputs.homebrew-cask;
+        "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+      };
+
+      mutableTaps = false;
     };
 
-    mutableTaps = false;
-  };
+    homebrew = {
+      enable = true;
 
-  homebrew = {
-    enable = true;
+      taps = builtins.attrNames config.nix-homebrew.taps;
 
-    taps = builtins.attrNames config.nix-homebrew.taps;
-
-    onActivation = {
-      autoUpdate = true;
-      upgrade = true;
-      cleanup = "zap";
-      extraFlags = [ "--greedy" "--verbose" ];
+      onActivation = {
+        autoUpdate = true;
+        upgrade = true;
+        cleanup = "zap";
+        extraFlags = [ "--greedy" "--verbose" ];
+      };
     };
   };
 }

@@ -1,23 +1,25 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    wget
-    curl
-    htop
-    dnsutils
-    tree
-    gnupg
-  ];
+  den.aspects.base-packages.os = { pkgs, ... }: {
+    environment.systemPackages = with pkgs; [
+      git
+      vim
+      wget
+      curl
+      htop
+      dnsutils
+      tree
+      gnupg
+    ];
 
-  environment.variables.EDITOR = "vim";
+    environment.variables.EDITOR = "vim";
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+    programs.gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+
+    programs.nix-index-database.comma.enable = true;
   };
-
-  programs.nix-index-database.comma.enable = true;
 }

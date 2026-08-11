@@ -1,10 +1,8 @@
-{ config, options, inputs, ... }:
+{ ... }:
 
 {
-  config =
-    if (inputs.self.lib.isDarwin options) then {
-      homebrew.casks = [ "tailscale" ];
-    } else {
+  den.aspects.tailscale = {
+    nixos = { config, ... }: {
       services.tailscale = {
         enable = true;
         extraSetFlags = [ "--operator=vitalya" ];
@@ -14,4 +12,7 @@
         firewall.allowedUDPPorts = [ config.services.tailscale.port ];
       };
     };
+
+    darwin.homebrew.casks = [ "tailscale" ];
+  };
 }

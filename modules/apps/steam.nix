@@ -1,16 +1,13 @@
-{ pkgs, lib, options, inputs, ... }:
-with lib;
+{ ... }:
+
 {
-  config = mkMerge [
-    (if (inputs.self.lib.isDarwin options) then {
-      homebrew.casks = [ "steam" ];
-    } else {
+  den.aspects.steam = {
+    nixos = { pkgs, ... }: {
       programs.steam = {
         enable = true;
-        extraCompatPackages = with pkgs; [
-          proton-ge-bin
-        ];
+        extraCompatPackages = [ pkgs.proton-ge-bin ];
       };
-    })
-  ];
+    };
+    darwin.homebrew.casks = [ "steam" ];
+  };
 }

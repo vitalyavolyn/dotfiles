@@ -1,13 +1,14 @@
-{ pkgs, lib, ... }:
+{ lib, ... }:
 
 {
-  environment.systemPackages = [ pkgs.nh ];
+  den.aspects.darwin = {
+    darwin = { pkgs, ... }: {
+      environment.systemPackages = [ pkgs.nh ];
 
-  home-manager.users.vitalya.programs.zsh.shellAliases.nbs = lib.mkForce "nh darwin switch";
+      security.pam.services.sudo_local.touchIdAuth = true;
+      system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
+    };
 
-  security.pam.services.sudo_local.touchIdAuth = true;
-  users.users.vitalya.home = "/Users/vitalya";
-  system.primaryUser = "vitalya";
-
-  system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
+    homeManager.programs.zsh.shellAliases.nbs = lib.mkForce "nh darwin switch";
+  };
 }
