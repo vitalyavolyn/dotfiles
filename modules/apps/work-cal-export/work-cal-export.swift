@@ -38,9 +38,16 @@ func die(_ message: String) -> Never {
     exit(1)
 }
 
+// Google Calendar truncates event descriptions at 8192 characters. Our
+// tag must survive that truncation to stay trackable across syncs, so
+// notes get truncated first to leave it room.
+let maxNotesLength = 8000
+
 func tag(notes: String, uid: String) -> String {
-    let base = notes.isEmpty ? "" : notes + "\n\n"
-    return base + tagPrefix + uid + tagSuffix
+    let suffix = "\n\n" + tagPrefix + uid + tagSuffix
+    let budget = max(0, maxNotesLength - suffix.count)
+    let truncated = notes.count > budget ? String(notes.prefix(budget)) : notes
+    return truncated.isEmpty ? String(suffix.dropFirst(2)) : truncated + suffix
 }
 
 func extractUid(fromNotes notes: String?) -> String? {
