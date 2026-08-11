@@ -26,7 +26,7 @@
         autoUpdate = true;
         upgrade = true;
         cleanup = "zap";
-        extraFlags = [ "--greedy" "--verbose" ];
+        extraFlags = [ "--verbose" ];
       };
     };
   };
