@@ -55,6 +55,12 @@
       recursive = true;
     };
 
+    # for personal scripts/binaries; already on PATH via zsh.nix
+    home.file."bin/.keep" = {
+      text = "";
+      recursive = true;
+    };
+
     # nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
     manual.manpages.enable = false;
