@@ -58,7 +58,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    foundryvtt.url = "github:yahvk-cuna/nix-foundryvtt";
+    foundryvtt.url = "github:nix-foundryvtt/nix-foundryvtt";
 
     helium = {
       url = "github:vikingnope/helium-browser-nix-flake";
