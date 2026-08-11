@@ -42,6 +42,7 @@ builtins.listToAttrs (
       ./apps/streaming.nix
       ./apps/torrent.nix
       ./apps/vlc.nix
+      ./apps/work-cal-export
       ./apps/zsh.nix
       ./base-home.nix
       ./base-packages.nix

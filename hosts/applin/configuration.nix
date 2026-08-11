@@ -17,6 +17,7 @@
     obsidian
     claude-desktop
     helium
+    work-cal-export
   ];
 
   homebrew = {
