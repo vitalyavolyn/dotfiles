@@ -25,8 +25,8 @@
       logiops
     ];
 
-    nixos = { config, ... }:
-      let inherit ((import ../../lib)) tsOnly; in
+    nixos = { config, lib, ... }:
+      let inherit (import ../../lib { inherit lib; }) homelab; in
       {
         imports = with inputs.nixos-hardware.nixosModules; [
           ./hardware-configuration.nix
@@ -36,7 +36,7 @@
 
         services.immich.mediaLocation = "/mnt/media/immich";
         services.home-assistant-container.volumes = [ "/mnt/media/home-assistant:/config" ];
-        services.paperless.settings.PAPERLESS_URL = "https://paperless.eepo.boo";
+        services.paperless.settings.PAPERLESS_URL = homelab.urlFor "paperless";
 
         services.paperless-concierge = {
           # TODO: why is this not in secrets?
@@ -46,26 +46,10 @@
         services.cloudflared.eepoTunnel = {
           tunnelId = "ce5aebf4-adc5-4c20-85e2-d086c3f79079";
           credentialsFile = config.age.secrets.cloudflared-credentials.path;
-          ingress."ha.eepo.boo" = "http://localhost:8123";
-          ingress."trmnl.eepo.boo" = "http://localhost:4567";
-          ingress."miniflux.eepo.boo" = "http://localhost:8401";
+          ingress = homelab.cloudflareIngressFor "shinx";
         };
 
-        services.nginx.virtualHosts = {
-          "ha.eepo.boo" = tsOnly "http://localhost:8123";
-          "plex.eepo.boo" = tsOnly "http://localhost:32400";
-          "immich.eepo.boo" = tsOnly "http://localhost:2283";
-          "paperless.eepo.boo" = tsOnly "http://localhost:28981";
-          "jellyfin.eepo.boo" = tsOnly "http://localhost:8096";
-          "sonarr.eepo.boo" = tsOnly "http://localhost:8989";
-          "radarr.eepo.boo" = tsOnly "http://localhost:7878";
-          "prowlarr.eepo.boo" = tsOnly "http://localhost:9696";
-          "bazarr.eepo.boo" = tsOnly "http://localhost:6767";
-          "paperless-ai.eepo.boo" = tsOnly "http://localhost:3000";
-          "torrent.eepo.boo" = tsOnly "http://localhost:8080";
-          "trmnl.eepo.boo" = tsOnly "http://localhost:4567";
-          "miniflux.eepo.boo" = tsOnly "http://localhost:8401";
-        };
+        services.nginx.virtualHosts = homelab.privateVirtualHostsFor "shinx";
 
         age.secrets.cloudflared-credentials.file = ../../secrets/cloudflared-credentials.age;
 

@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   den.aspects.forgejo.nixos = { lib, config, pkgs, ... }: {
@@ -11,7 +11,7 @@
       settings = {
         server = {
           HTTP_ADDR = "127.0.0.1";
-          HTTP_PORT = 3002;
+          HTTP_PORT = inputs.self.lib.homelab.portFor "git";
           START_SSH_SERVER = false;
           SSH_PORT = lib.head config.services.openssh.ports;
         };

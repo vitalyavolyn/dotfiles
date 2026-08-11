@@ -9,6 +9,7 @@
     # Host must set: services.foundryvtt.hostName
     services.foundryvtt = {
       enable = true;
+      port = inputs.self.lib.homelab.portFor "foundry";
       minifyStaticFiles = true;
       package = inputs.foundryvtt.packages.${pkgs.stdenv.hostPlatform.system}.foundryvtt_14;
       proxyPort = 443;

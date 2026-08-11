@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   den.aspects.paperless.nixos = { config, ... }: {
@@ -12,6 +12,7 @@
     services.paperless = {
       enable = true;
       address = "0.0.0.0";
+      port = inputs.self.lib.homelab.portFor "paperless";
       passwordFile = config.age.secrets.paperless-password.path;
       settings = {
         PAPERLESS_ADMIN_USER = "vitalya";

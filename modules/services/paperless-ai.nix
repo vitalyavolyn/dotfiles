@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   den.aspects.paperless-ai.nixos = { ... }: {
@@ -7,7 +7,7 @@
       autoStart = true;
       image = "docker.io/clusterzx/paperless-ai";
       volumes = [ "/mnt/media/paperless-ai:/app/data" ];
-      ports = [ "0.0.0.0:3000:3000" ];
+      ports = [ "0.0.0.0:${toString (inputs.self.lib.homelab.portFor "paperless-ai")}:3000" ];
       extraOptions = [
         "--hostname=paperless-ai"
         "--pull=newer"

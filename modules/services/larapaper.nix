@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   den.aspects.larapaper.nixos = { ... }:
@@ -48,7 +48,7 @@
         environment = {
           APP_ENV = "production";
           APP_DEBUG = "false";
-          APP_URL = "https://trmnl.eepo.boo";
+          APP_URL = inputs.self.lib.homelab.urlFor "trmnl";
           DB_CONNECTION = "sqlite";
           DB_DATABASE = "database/storage/database.sqlite";
           PHP_OPCACHE_ENABLE = "1";
@@ -59,7 +59,7 @@
           FORCE_HTTPS = "true";
           TRUSTED_PROXIES = "*";
         };
-        ports = [ "127.0.0.1:4567:8080" ];
+        ports = [ "127.0.0.1:${toString (inputs.self.lib.homelab.portFor "trmnl")}:8080" ];
         extraOptions = [ "--env-file=${envFile}" ];
       };
     };

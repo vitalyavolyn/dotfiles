@@ -27,7 +27,7 @@ in
   den.schema.user.classes = lib.mkDefault [ "homeManager" ];
   den.default.includes = [ den.batteries.hostname ];
 
-  flake.lib = (import ./lib) // { inherit aspectInventory; };
+  flake.lib = (import ./lib { inherit lib; }) // { inherit aspectInventory; };
 
   perSystem = { pkgs, ... }:
     let

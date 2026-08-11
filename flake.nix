@@ -58,8 +58,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # TODO: temp fork
-    foundryvtt.url = "github:yahvk-cuna/nix-foundryvtt/362";
+    foundryvtt.url = "github:yahvk-cuna/nix-foundryvtt";
 
     helium = {
       url = "github:vikingnope/helium-browser-nix-flake";

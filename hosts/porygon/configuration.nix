@@ -18,34 +18,26 @@
       nginx
     ];
 
-    nixos = { pkgs, ... }:
+    nixos = { lib, pkgs, ... }:
       let
+        inherit (import ../../lib { inherit lib; }) homelab;
+
         # Public vhost with HTTP-01 ACME (vitalya.me domains)
         pub = backend: {
           addSSL = true;
           enableACME = true;
           locations."/" = { proxyPass = backend; proxyWebsockets = true; };
         };
-
-        # Public vhost with wildcard cert (eepo.boo domains)
-        pubEepo = backend: {
-          useACMEHost = "eepo.boo";
-          forceSSL = true;
-          locations."/" = { proxyPass = backend; proxyWebsockets = true; };
-        };
-
-        tailnet = "ewe-lizard.ts.net";
-        a = ip: sub: ''"${sub}.eepo.boo. IN A ${ip}"'';
       in
       {
         imports = [ ./hardware-configuration.nix ];
 
-        services.foundryvtt.hostName = "foundry.eepo.boo";
+        services.foundryvtt.hostName = homelab.domainFor "foundry";
         services.forgejo.stateDir = "/mnt/extra/forgejo";
         services.forgejo.settings.server = {
-          DOMAIN = "git.eepo.boo";
-          ROOT_URL = "https://git.eepo.boo/";
-          SSH_DOMAIN = "git.eepo.boo";
+          DOMAIN = homelab.domainFor "git";
+          ROOT_URL = "${homelab.urlFor "git"}/";
+          SSH_DOMAIN = homelab.domainFor "git";
         };
         services.postgresql = {
           enable = true;
@@ -53,27 +45,9 @@
         };
 
         services.unbound.eepoZone = {
-          tailnetName = tailnet;
+          tailnetName = homelab.tailnetName;
           cloudflareNs = [ "108.162.194.108" "108.162.193.150" ]; # serenity + woz
-          localData =
-            # porygon
-            map (a "100.114.242.59") [ "git" ] ++
-            # shinx
-            map (a "100.68.131.102") [
-              "ha"
-              "plex"
-              "immich"
-              "paperless"
-              "jellyfin"
-              "sonarr"
-              "radarr"
-              "prowlarr"
-              "bazarr"
-              "torrent"
-              "paperless-ai"
-              "trmnl"
-              "miniflux"
-            ];
+          localData = homelab.privateDnsRecords;
         };
 
         services.nginx.clientMaxBodySize = "100m";
@@ -86,25 +60,24 @@
               extraConfig = "add_header Content-Type text/plain;";
             };
             locations."/cal/radarr" = {
-              proxyPass = "http://shinx:7878/feed/v3/calendar/Radarr.ics";
+              proxyPass = "${homelab.backendForService "porygon" "radarr"}/feed/v3/calendar/Radarr.ics";
             };
             locations."/cal/sonarr" = {
-              proxyPass = "http://shinx:8989/feed/v3/calendar/Sonarr.ics";
+              proxyPass = "${homelab.backendForService "porygon" "sonarr"}/feed/v3/calendar/Sonarr.ics";
             };
           };
-          "foundry.porygon.vitalya.me" = pub "http://localhost:30000/";
+          "foundry.porygon.vitalya.me" = pub (homelab.backendForService "porygon" "foundry");
 
           # ── Public eepo.boo services ─────────────────────────────────────────
 
-          "eepo.boo" = {
-            useACMEHost = "eepo.boo";
+          "${homelab.domain}" = {
+            useACMEHost = homelab.domain;
             forceSSL = true;
             locations."/".return = "404";
           };
-
-          "foundry.eepo.boo" = pubEepo "http://localhost:30000/";
-          "git.eepo.boo" = pubEepo "http://localhost:3002";
-        };
+        }
+        // (homelab.privateVirtualHostsFor "porygon")
+        // (homelab.publicVirtualHostsFor "porygon");
 
         # alexander manages foundry
         users.users.sanyasuper2002 = {
