@@ -17,8 +17,12 @@
           play_sound_when_agent_done = "always";
           model_parameters = [ ];
         };
-        agent_servers.claude-acp.type = "registry";
+        agent_servers.claude-acp = {
+          type = "registry";
+          default_config_options.mode = "bypassPermissions";
+        };
         edit_predictions.provider = "none";
+        diff_view_style = "unified";
         collaboration_panel = {
           dock = "left";
           button = false;
