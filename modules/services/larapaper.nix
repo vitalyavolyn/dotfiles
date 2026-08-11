@@ -38,8 +38,8 @@ in
 
     virtualisation.oci-containers.containers."larapaper" = {
       autoStart = true;
-      # No floating `latest` tag is published — only semver tags on release.
-      image = "ghcr.io/usetrmnl/larapaper:0.39.0";
+      image = "ghcr.io/usetrmnl/larapaper:latest";
+      pull = "newer";
       volumes = [
         "${stateDir}/database:/var/www/html/database/storage"
         "${stateDir}/storage:/var/www/html/storage/app/public/images/generated"
