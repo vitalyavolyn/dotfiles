@@ -9,8 +9,6 @@
       system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
     };
 
-    # TODO: WHY do i need bew upgrade??? i can't just add --greedy to brew args, it errors out.
-    # this command is also interactive!!!!!!!!
-    homeManager.programs.zsh.shellAliases.nbs = lib.mkForce "nh darwin switch && brew upgrade -g";
+    homeManager.programs.zsh.shellAliases.nbs = lib.mkForce "nh darwin switch";
   };
 }
