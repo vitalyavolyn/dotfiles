@@ -50,21 +50,39 @@
 
       environment.systemPackages = with pkgs; [
         android-tools
+        xrizer
       ];
 
-      # services.wivrn = {
-      #   enable = true;
-      #   openFirewall = true;
-      #   autoStart = true;
-      #   package = pkgs.wivrn.override { cudaSupport = true; };
-      #   steam.importOXRRuntimes = true;
-      #   config = {
-      #     enable = true;
-      #     json = {
-      #       application = [ pkgs.wayvr ];
-      #     };
-      #   };
-      # };
+      # OpenXR (native/wayvr) already works over WiVRn. SteamVR games use the
+      # OpenVR API, which WiVRn doesn't speak directly - xrizer (above) bridges
+      # OpenVR calls to WiVRn's OpenXR runtime, bypassing SteamVR's own headset
+      # detection entirely. WiVRn auto-detects xrizer/OpenComposite on startup
+      # and configures ~/.config/openvr/openvrpaths.vrpath itself; if a SteamVR
+      # game still can't find a headset, check `journalctl --user -u wivrn` for
+      # an "openvr" detection line and fall back to setting
+      # services.wivrn.config.json."openvr-compat-path" explicitly.
+      services.wivrn = {
+        enable = true;
+        openFirewall = true;
+        autoStart = true;
+        package = pkgs.wivrn.override { cudaSupport = true; };
+        steam.importOXRRuntimes = true;
+        config = {
+          enable = true;
+          json = {
+            application = [ pkgs.wayvr ];
+          };
+        };
+      };
+
+      # Steam sandboxes games via pressure-vessel, which blocks access to the
+      # WiVRn IPC socket by default - without this, SteamVR games can't reach
+      # WiVRn even once xrizer bridges the OpenVR calls.
+      programs.steam.package = pkgs.steam.override {
+        extraEnv = {
+          PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/wivrn/comp_ipc";
+        };
+      };
 
       # Fix for Tailscale subnet routing conflicting with local network
       # Only adds the route when wlp6s0 has a 192.168.3.x address (i.e., at home)
