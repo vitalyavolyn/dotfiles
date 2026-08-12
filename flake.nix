@@ -65,8 +65,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-darwin.follows = "nixpkgs";
     };
-
-    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
   };
 
   outputs = inputs:

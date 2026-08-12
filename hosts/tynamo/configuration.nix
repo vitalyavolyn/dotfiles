@@ -37,8 +37,6 @@
         common-pc-laptop
       ];
 
-      nixpkgs.overlays = [ inputs.nixpkgs-xr.overlays.default ];
-
       programs.nix-ld.enable = true;
 
       services.logind.settings.Login.HandleLidSwitchExternalPower = "ignore";
