@@ -11,7 +11,7 @@
       tailscale-exit-node
       foundry
       podman
-      minecraft-skyfactory-5
+      minecraft-vortex
       forgejo
       unbound
       acme-eepo

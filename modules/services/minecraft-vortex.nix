@@ -10,7 +10,7 @@
         type = lib.types.listOf lib.types.str;
         default = [
           "/mnt/extra/minecraft-vortex/data:/data"
-          "/home/sanyasuper2002/vortex-1.1.1c-server.zip:/server-pack.zip:ro"
+          "/home/vitalya/vortex-1.1.2b-server.zip:/server-pack.zip:ro"
         ];
         description = "Volumes to mount (needs /data and pack zip at /server-pack.zip)";
       };
@@ -27,8 +27,9 @@
             VERSION = "1.20.1";
             FORGE_VERSION = "47.4.0";
             GENERIC_PACK = "/server-pack.zip";
-            INIT_MEMORY = "8G";
-            MAX_MEMORY = "8G";
+            SERVER_PORT = "25565";
+            INIT_MEMORY = "6G";
+            MAX_MEMORY = "6G";
             RCON_PASSWORD = "minecraft-vortex";
             USE_AIKAR_FLAGS = "true";
           };
