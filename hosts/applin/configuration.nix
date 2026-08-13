@@ -7,6 +7,7 @@
     includes = with den.aspects; [
       base-darwin
       dev
+      ollama
       tailscale
       vlc
       streaming
