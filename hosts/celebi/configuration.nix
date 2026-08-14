@@ -11,7 +11,6 @@
       dev
       spotify
       qflipper
-      keybase
       messaging
       torrent
       chrome
