@@ -70,8 +70,6 @@
           };
           "foundry.porygon.vitalya.me" = pub (homelab.backendForService "porygon" "foundry");
 
-          # ── Public eepo.boo services ─────────────────────────────────────────
-
           "${homelab.domain}" = {
             useACMEHost = homelab.domain;
             forceSSL = true;
@@ -81,11 +79,12 @@
         // (homelab.privateVirtualHostsFor "porygon")
         // (homelab.publicVirtualHostsFor "porygon");
 
+        programs.fish.enable = true;
         # alexander manages foundry
         users.users.sanyasuper2002 = {
           isNormalUser = true;
           extraGroups = [ "foundryvtt" "wheel" ];
-          shell = pkgs.zsh;
+          shell = pkgs.fish;
           createHome = true;
           openssh.authorizedKeys.keys = [
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFdbYRTexJEZuXoOUt6XazFoL1MNgGoV2muVujWvrRGk raido@starlight"
