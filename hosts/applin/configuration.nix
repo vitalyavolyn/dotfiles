@@ -17,6 +17,7 @@
       krita
       obsidian
       claude-desktop
+      chatgpt-desktop
       helium
       work-cal-export
     ];
@@ -26,7 +27,6 @@
         casks = [
           "microsoft-teams"
           "tunnelblick"
-          "chatgpt"
           "ticktick"
           "bitwarden"
           "cyberduck"

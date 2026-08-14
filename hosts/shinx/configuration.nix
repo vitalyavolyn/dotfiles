@@ -23,6 +23,8 @@
       firefox
       spotify
       logiops
+      claude-code
+      codex-cli
     ];
 
     nixos = { config, lib, ... }:

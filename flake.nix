@@ -33,6 +33,11 @@
 
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
+    mac-app-util = {
+      url = "github:hraban/mac-app-util";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;

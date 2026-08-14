@@ -17,6 +17,7 @@
         nix-homebrew.darwinModules.nix-homebrew
         nix-index-database.darwinModules.nix-index
         agenix.darwinModules.default
+        mac-app-util.darwinModules.default
       ];
 
       environment.systemPackages = [
@@ -33,5 +34,7 @@
         NH_FLAKE = "/Users/vitalya/dotfiles";
       };
     };
+
+    homeManager.imports = [ inputs.mac-app-util.homeManagerModules.default ];
   };
 }

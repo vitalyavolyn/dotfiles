@@ -16,6 +16,8 @@
       unbound
       acme-eepo
       nginx
+      claude-code
+      codex-cli
     ];
 
     nixos = { lib, pkgs, ... }:
