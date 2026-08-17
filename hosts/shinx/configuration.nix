@@ -19,7 +19,6 @@
       acme-eepo
       nginx
       tailscale
-      tailscale-exit-node
       firefox
       spotify
       logiops
@@ -60,15 +59,12 @@
           firewall.enable = false;
         };
 
-        services.tailscale = {
-          extraUpFlags = [
-            "--advertise-routes=192.168.0.0/16"
-          ];
-          extraSetFlags = [
-            "--advertise-routes=192.168.0.0/16"
-          ];
-          useRoutingFeatures = "both";
+        services.tailscale.router = {
+          exitNode = true;
+          advertiseRoutes = [ "192.168.0.0/16" ];
         };
+
+        services.tailscale.driveShares.media = "/mnt/media/downloads";
 
         # Prevent sleep/suspend — used as a server
         systemd.targets.sleep.enable = false;

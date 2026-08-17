@@ -8,7 +8,6 @@
       base-linux
       shadowsocks
       tailscale
-      tailscale-exit-node
       foundry
       podman
       minecraft-vortex
@@ -51,6 +50,8 @@
           cloudflareNs = [ "108.162.194.108" "108.162.193.150" ]; # serenity + woz
           localData = homelab.privateDnsRecords;
         };
+
+        services.tailscale.router.exitNode = true;
 
         services.nginx.clientMaxBodySize = "100m";
         services.nginx.virtualHosts = {
