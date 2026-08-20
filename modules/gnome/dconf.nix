@@ -71,6 +71,7 @@
                 ++ lib.optionals (hasAspect den.aspects.messaging) [ "org.telegram.desktop.desktop" ]
                 ++ lib.optionals (hasAspect den.aspects.messaging) [ "discord.desktop" ]
                 ++ lib.optionals (hasAspect den.aspects.spotify) [ "spotify.desktop" ]
+                ++ lib.optionals (hasAspect den.aspects.todoist) [ "todoist.desktop" ]
                 ++ lib.optionals (hasAspect den.aspects.steam) [ "steam.desktop" ]
                 ++ lib.optionals (hasAspect den.aspects.minecraft) [ "org.prismlauncher.PrismLauncher.desktop" ];
             };

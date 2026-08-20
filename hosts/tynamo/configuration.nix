@@ -13,6 +13,7 @@
       tailscale
       dev
       spotify
+      todoist
       qflipper
       messaging
       torrent

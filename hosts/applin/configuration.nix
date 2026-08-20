@@ -19,6 +19,7 @@
       claude-desktop
       chatgpt-desktop
       helium
+      todoist
       work-cal-export
     ];
 
@@ -27,7 +28,6 @@
         casks = [
           "microsoft-teams"
           "tunnelblick"
-          "ticktick"
           "bitwarden"
           "cyberduck"
 
