@@ -32,6 +32,18 @@
             ''"plex.eepo.boo. IN A 100.68.131.102"''
           ];
         };
+
+        interfaces = lib.mkOption {
+          type = lib.types.listOf lib.types.str;
+          default = [ ];
+          description = ''
+            Extra addresses to listen on, besides loopback. Should be this node's
+            Tailscale IP. Binding to a specific address (rather than 0.0.0.0)
+            avoids grabbing port 53 on every interface, which otherwise conflicts
+            with podman's aardvark-dns on per-network bridge gateways.
+          '';
+          example = [ "100.114.242.59" ];
+        };
       };
 
       config = {
@@ -45,7 +57,7 @@
           enable = true;
           settings = {
             server = {
-              interface = lib.mkForce [ "0.0.0.0" "::0" ];
+              interface = lib.mkForce ([ "127.0.0.1" "::1" ] ++ cfg.interfaces);
               access-control = [ "100.0.0.0/8 allow" "127.0.0.0/8 allow" ];
               local-data = cfg.localData;
             };
