@@ -16,7 +16,13 @@
           SSH_PORT = lib.head config.services.openssh.ports;
         };
         service.DISABLE_REGISTRATION = true;
-        actions.ENABLED = true;
+        actions = {
+          ENABLED = true;
+          # Bare `uses: owner/repo@ref` refs resolve against this. Forgejo defaults
+          # to its own curated mirror (data.forgejo.org), which doesn't carry every
+          # action (e.g. cachix/install-nix-action) — pull from GitHub directly instead.
+          DEFAULT_ACTIONS_URL = "github";
+        };
       };
     };
   };
