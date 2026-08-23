@@ -18,4 +18,9 @@ in
   # Cloudflare Tunnel credentials JSON from: cloudflared tunnel create ha-tunnel
   # Used by cloudflared on shinx
   "cloudflared-credentials.age".publicKeys = [ vitalya shinx ];
+
+  # Forgejo Actions runner registration token, from Forgejo's admin panel
+  # (Site Administration -> Actions -> Runners -> Create new Runner).
+  # Used by forgejo-runner on porygon.
+  "forgejo-runner-token.age".publicKeys = [ vitalya porygon ];
 }

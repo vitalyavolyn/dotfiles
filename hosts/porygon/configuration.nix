@@ -12,6 +12,7 @@
       podman
       minecraft-vortex
       forgejo
+      forgejo-runner
       unbound
       acme-eepo
       nginx
@@ -22,13 +23,6 @@
     nixos = { lib, pkgs, ... }:
       let
         inherit (import ../../lib { inherit lib; }) homelab;
-
-        # Public vhost with HTTP-01 ACME (vitalya.me domains)
-        pub = backend: {
-          addSSL = true;
-          enableACME = true;
-          locations."/" = { proxyPass = backend; proxyWebsockets = true; };
-        };
       in
       {
         imports = [ ./hardware-configuration.nix ];
@@ -43,6 +37,11 @@
         services.postgresql = {
           enable = true;
           dataDir = "/mnt/extra/postgresql";
+        };
+
+        services.forgejo-runner.instances.default.settings.server.connections.default = {
+          url = "${homelab.backendForService "porygon" "git"}/";
+          uuid = "25cef5ae-6149-4f20-a99c-583761f9e08a";
         };
 
         services.unbound.eepoZone = {
@@ -69,7 +68,11 @@
               proxyPass = "${homelab.backendForService "porygon" "sonarr"}/feed/v3/calendar/Sonarr.ics";
             };
           };
-          "foundry.porygon.vitalya.me" = pub (homelab.backendForService "porygon" "foundry");
+          "foundry.porygon.vitalya.me" = {
+            addSSL = true;
+            enableACME = true;
+            locations."/" = { proxyPass = homelab.backendForService "porygon" "foundry"; proxyWebsockets = true; };
+          };
 
           "${homelab.domain}" = {
             useACMEHost = homelab.domain;
