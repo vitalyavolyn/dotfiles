@@ -40,7 +40,9 @@
         };
 
         services.forgejo-runner.instances.default.settings.server.connections.default = {
-          url = "${homelab.backendForService "porygon" "git"}/";
+          # Must be reachable from job containers (separate netns), not just the host
+          # — so this has to match Forgejo's public ROOT_URL, not a localhost shortcut.
+          url = "${homelab.urlFor "git"}/";
           uuid = "25cef5ae-6149-4f20-a99c-583761f9e08a";
         };
 
