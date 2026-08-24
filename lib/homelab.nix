@@ -94,7 +94,10 @@ let
     let
       host =
         if service.node == localNode
-        then "localhost"
+        # Not "localhost": nginx resolves that to both 127.0.0.1 and ::1,
+        # and intermittently picks ::1 even for services (like Forgejo)
+        # that only bind their IPv4 loopback, causing random 502s.
+        then "127.0.0.1"
         else nodes.${service.node}.tailnetIp;
     in
     "http://${host}:${toString service.port}${service.backendPath or ""}";
