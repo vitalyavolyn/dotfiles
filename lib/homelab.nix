@@ -5,6 +5,7 @@ let
   tailnetName = "ewe-lizard.ts.net";
 
   nodes = {
+    applin.tailnetIp = "100.86.54.113";
     porygon.tailnetIp = "100.114.242.59";
     shinx.tailnetIp = "100.68.131.102";
   };
