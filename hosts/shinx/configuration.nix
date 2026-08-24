@@ -24,6 +24,7 @@
       logiops
       claude-code
       codex-cli
+      forgejo-runner
     ];
 
     nixos = { config, lib, ... }:
@@ -73,6 +74,19 @@
         systemd.services.redis-dev.serviceConfig = {
           IPAddressDeny = "any";
           IPAddressAllow = [ homelab.nodes.applin.tailnetIp ];
+        };
+
+        # x86_64 runner, kept separate from porygon's ARM runner so
+        # amd64-only jobs (image publishing) can target it specifically.
+        age.secrets.forgejo-runner-token.file = ../../secrets/forgejo-runner-token-shinx.age;
+        services.forgejo-runner.instances.default.settings = {
+          runner.labels = [
+            "linux-amd64:docker://node:current"
+          ];
+          server.connections.default = {
+            url = "${homelab.urlFor "git"}/";
+            uuid = "cab4cdec-1bc9-47eb-9b0a-b5648b880184";
+          };
         };
 
         services.paperless-concierge = {

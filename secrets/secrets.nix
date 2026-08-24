@@ -23,4 +23,7 @@ in
   # (Site Administration -> Actions -> Runners -> Create new Runner).
   # Used by forgejo-runner on porygon.
   "forgejo-runner-token.age".publicKeys = [ vitalya porygon ];
+
+  # Forgejo Actions runner registration token for the x86_64 runner on shinx
+  "forgejo-runner-token-shinx.age".publicKeys = [ vitalya shinx ];
 }
