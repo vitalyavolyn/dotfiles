@@ -56,7 +56,7 @@
         services.tailscale.router.exitNode = true;
 
         services.nginx.clientMaxBodySize = "100m";
-        services.nginx.virtualHosts = {
+        services.nginx.virtualHosts = lib.recursiveUpdate ({
           "porygon.vitalya.me" = {
             addSSL = true;
             enableACME = true;
@@ -84,7 +84,13 @@
           };
         }
         // (homelab.privateVirtualHostsFor "porygon")
-        // (homelab.publicVirtualHostsFor "porygon");
+        // (homelab.publicVirtualHostsFor "porygon"))
+        {
+          # Forgejo's container registry pushes image layers as chunked PATCH
+          # requests that can exceed the global 100m cap, so nginx was
+          # rejecting large layers with 413 before they reached Forgejo.
+          "${homelab.domainFor "git"}".extraConfig = "client_max_body_size 0;";
+        };
 
         programs.fish.enable = true;
         # alexander manages foundry
