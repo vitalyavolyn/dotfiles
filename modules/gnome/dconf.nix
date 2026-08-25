@@ -20,6 +20,11 @@
 
             "org/gnome/desktop/wm/preferences".num-workspaces = 5;
 
+            "org/gnome/desktop/default-applications/terminal" = {
+              exec = "ghostty";
+              exec-arg = "-e";
+            };
+
             "org/gnome/desktop/wm/keybindings" = {
               close = [ "<Shift><Super>q" ];
               move-to-workspace-1 = [ "<Shift><Super>1" ];
@@ -62,7 +67,8 @@
 
               favorite-apps =
                 [ "org.gnome.Nautilus.desktop" ]
-                ++ [ "kitty.desktop" ]
+                ++ lib.optionals (hasAspect den.aspects.ghostty) [ "com.mitchellh.ghostty.desktop" ]
+                ++ lib.optionals (hasAspect den.aspects.kitty) [ "kitty.desktop" ]
                 ++ lib.optionals (hasAspect den.aspects.chrome) [ "google-chrome.desktop" ]
                 ++ lib.optionals (hasAspect den.aspects.firefox) [ "firefox.desktop" ]
                 ++ lib.optionals (hasAspect den.aspects.helium) [ "helium.desktop" ]

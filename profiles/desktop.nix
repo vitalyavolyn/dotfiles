@@ -4,7 +4,7 @@
   den.aspects.desktop = {
     includes = with den.aspects; [
       base-linux
-      kitty
+      ghostty
       avahi
       fonts
     ];
