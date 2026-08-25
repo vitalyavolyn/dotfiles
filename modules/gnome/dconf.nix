@@ -55,6 +55,7 @@
               # `gnome-extensions list` for a list
               enabled-extensions = [
                 "appindicatorsupport@rgcjonas.gmail.com"
+                "caffeine@patapon.info"
                 "screen-rotate@shyzus.github.io"
                 "wiggle@mechtifs"
                 "Bluetooth-Battery-Meter@maniacx.github.com"

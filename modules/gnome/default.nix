@@ -21,6 +21,7 @@
           gnome-tweaks
         ] ++ (with pkgs.gnomeExtensions; [
           appindicator
+          caffeine
           screen-rotate
           wiggle
           bluetooth-battery-meter
