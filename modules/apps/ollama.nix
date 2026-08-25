@@ -7,5 +7,8 @@ in
     home = {
       services.ollama.enable = true;
     };
+    nixosHome = {
+      services.ollama.acceleration = "cuda";
+    };
   };
 }

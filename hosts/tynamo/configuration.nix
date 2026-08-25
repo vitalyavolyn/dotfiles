@@ -28,6 +28,7 @@
       steam
       sunshine
       logiops
+      ollama
     ];
 
     nixos = { pkgs, ... }:
