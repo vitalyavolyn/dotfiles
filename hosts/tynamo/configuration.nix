@@ -29,6 +29,7 @@
       sunshine
       logiops
       ollama
+      modrinth
     ];
 
     nixos = { pkgs, ... }:
