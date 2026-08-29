@@ -26,4 +26,6 @@ in
 
   # Forgejo Actions runner registration token for the x86_64 runner on shinx
   "forgejo-runner-token-shinx.age".publicKeys = [ vitalya shinx ];
+
+  "hermes-env.age".publicKeys = [ vitalya shinx ];
 }

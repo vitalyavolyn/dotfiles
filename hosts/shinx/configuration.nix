@@ -5,7 +5,8 @@
 
   den.aspects.shinx = {
     includes = with den.aspects; [
-      desktop-gnome
+      base-linux
+      avahi
       immich
       media-server
       home-assistant
@@ -19,12 +20,10 @@
       acme-eepo
       nginx
       tailscale
-      firefox
-      spotify
-      logiops
       claude-code
       codex-cli
       forgejo-runner
+      hermes
     ];
 
     nixos = { config, lib, ... }:
@@ -115,12 +114,6 @@
         };
 
         services.tailscale.driveShares.media = "/mnt/media/downloads";
-
-        # Prevent sleep/suspend — used as a server
-        systemd.targets.sleep.enable = false;
-        systemd.targets.suspend.enable = false;
-        systemd.targets.hibernate.enable = false;
-        systemd.targets.hybrid-sleep.enable = false;
 
         system.stateVersion = "23.11";
       };

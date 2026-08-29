@@ -84,6 +84,10 @@ let
       port = 8401;
       exposures = [ "cloudflare" ];
     };
+    hermes = {
+      node = "shinx";
+      port = 9119;
+    };
   };
 
   domainFor = name: "${name}.${domain}";

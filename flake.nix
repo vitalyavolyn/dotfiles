@@ -35,7 +35,11 @@
 
     mac-app-util = {
       url = "github:hraban/mac-app-util";
+      # followsmaxxing
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+      inputs.cl-nix-lite.inputs.nixpkgs.follows = "nixpkgs";
+      inputs.cl-nix-lite.inputs.treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     };
 
     homebrew-core = {
@@ -63,12 +67,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    foundryvtt.url = "github:nix-foundryvtt/nix-foundryvtt";
+    foundryvtt = {
+      url = "github:nix-foundryvtt/nix-foundryvtt";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     helium = {
       url = "github:vikingnope/helium-browser-nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-darwin.follows = "nixpkgs";
+    };
+
+    hermes-agent = {
+      url = "github:NousResearch/hermes-agent";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+      inputs.flake-parts.follows = "flake-parts";
     };
   };
 
