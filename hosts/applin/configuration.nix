@@ -8,7 +8,6 @@
       base-darwin
       dev
       ghostty
-      ollama
       tailscale
       vlc
       streaming

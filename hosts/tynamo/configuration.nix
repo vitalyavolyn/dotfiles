@@ -25,11 +25,10 @@
       steam-run
       claude-desktop
       chatgpt-desktop
-      hermes-desktop
+      # hermes-desktop  # blocked
       steam
       sunshine
       logiops
-      ollama
       modrinth
     ];
 
