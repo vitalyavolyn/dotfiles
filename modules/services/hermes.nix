@@ -11,7 +11,10 @@
       ];
 
       age.secrets.hermes-env.file = ../../secrets/hermes-env.age;
-      age.secrets.hermes-dashboard-auth.file = ../../secrets/hermes-dashboard-auth.age;
+      age.secrets.hermes-dashboard-token = {
+        file = ../../secrets/hermes-dashboard-token.age;
+        owner = "hermes";
+      };
 
       services.hermes-agent = {
         enable = true;
@@ -26,14 +29,16 @@
         extraPackages = [ pkgs.chromium pkgs.ffmpeg ];
         environmentFiles = [
           config.age.secrets.hermes-env.path
-          # HERMES_DASHBOARD_BASIC_AUTH_USERNAME/_PASSWORD — lets the
-          # Hermes Desktop app on applin/tynamo sign in to this backend
-          # (Settings -> Gateway -> Remote gateway) over the tailnet,
-          # instead of each spinning up its own separate agent.
-          config.age.secrets.hermes-dashboard-auth.path
         ];
         addToSystemPackages = true;
-        backend.mode = "dashboard";
+        backend = {
+          mode = "dashboard";
+          # A stable token instead of a random one per start — paste this
+          # value into the Hermes Desktop app's Remote gateway -> Session
+          # token field on applin/tynamo instead of each starting its own
+          # separate agent.
+          sessionTokenFile = config.age.secrets.hermes-dashboard-token.path;
+        };
       };
 
       services.nginx.virtualHosts.${homelab.domainFor "hermes"}.locations."/".extraConfig = ''

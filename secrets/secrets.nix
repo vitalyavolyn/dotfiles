@@ -30,10 +30,10 @@ in
 
   "hermes-env.age".publicKeys = [ vitalya shinx ];
 
-  # HERMES_DASHBOARD_BASIC_AUTH_USERNAME/_PASSWORD — lets the Hermes Desktop
-  # app on applin/tynamo sign in to shinx's dashboard backend (Settings ->
-  # Gateway -> Remote gateway) instead of each starting its own separate
-  # agent. Only shinx needs to decrypt this; the other hosts just need the
-  # credentials typed into the app once.
-  "hermes-dashboard-auth.age".publicKeys = [ vitalya shinx ];
+  # A stable HERMES_DASHBOARD_SESSION_TOKEN — pasted once into the Hermes
+  # Desktop app's Settings -> Gateway -> Remote gateway -> Session token
+  # field on applin/tynamo, so they connect to shinx's backend instead of
+  # each starting its own separate agent. Only shinx needs to decrypt this;
+  # the other hosts just need the value typed into the app once.
+  "hermes-dashboard-token.age".publicKeys = [ vitalya shinx ];
 }
