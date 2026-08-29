@@ -25,7 +25,7 @@
       steam-run
       claude-desktop
       chatgpt-desktop
-      # hermes-desktop  # blocked
+      hermes-desktop
       steam
       sunshine
       logiops
