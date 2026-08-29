@@ -4,6 +4,7 @@ let
   porygon = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL4f7e//awLVJfJ3bF3LTOpUJMutL1utX1n59IhEfmC6";
   applin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICOaxeBviEzDK8dORcoynD92597h9BUrk3Mw3r8TsgIK";
   shinx = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIOQusNBR22rntTIJao2YGvrfxutxAuaaWybufLEM362";
+  tynamo = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPv60/MCIjY3P3oBh+q4uCqjSKoQY4mvNwVjOvWC/fuo";
 
   systems = [ porygon applin shinx ];
 in
@@ -28,4 +29,9 @@ in
   "forgejo-runner-token-shinx.age".publicKeys = [ vitalya shinx ];
 
   "hermes-env.age".publicKeys = [ vitalya shinx ];
+
+  # Shared HERMES_DASHBOARD_SESSION_TOKEN — lets the Hermes Desktop app on
+  # applin/tynamo authenticate against shinx's hermes-agent backend instead
+  # of each starting its own separate agent.
+  "hermes-desktop-token.age".publicKeys = [ vitalya shinx applin tynamo ];
 }

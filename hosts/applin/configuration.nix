@@ -20,6 +20,7 @@
       claude-desktop
       chatgpt-desktop
       helium
+      hermes-desktop
       todoist
       work-cal-export
     ];

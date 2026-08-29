@@ -11,6 +11,10 @@
       ];
 
       age.secrets.hermes-env.file = ../../secrets/hermes-env.age;
+      age.secrets.hermes-desktop-token = {
+        file = ../../secrets/hermes-desktop-token.age;
+        owner = "hermes";
+      };
 
       services.hermes-agent = {
         enable = true;
@@ -27,7 +31,13 @@
           config.age.secrets.hermes-env.path
         ];
         addToSystemPackages = true;
-        backend.mode = "dashboard";
+        backend = {
+          mode = "dashboard";
+          # A stable token instead of a random one per start lets the
+          # Hermes Desktop app on applin/tynamo authenticate against this
+          # backend instead of each spinning up its own separate agent.
+          sessionTokenFile = config.age.secrets.hermes-desktop-token.path;
+        };
       };
 
       services.nginx.virtualHosts.${homelab.domainFor "hermes"}.locations."/".extraConfig = ''
