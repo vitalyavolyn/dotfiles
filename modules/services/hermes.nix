@@ -21,14 +21,16 @@
         settings = {
           model = {
             provider = "nvidia";
-            default = "deepseek-ai/deepseek-v4-flash";
+            default = "minimaxai/minimax-m3";
           };
           fallback_providers = [
+            { provider = "nvidia"; model = "deepseek-ai/deepseek-v4-flash"; }
             { provider = "nvidia"; model = "nvidia/nemotron-3-ultra-550b-a55b"; }
             { provider = "nvidia"; model = "moonshotai/kimi-k3"; }
             { provider = "openrouter"; model = "nvidia/nemotron-3-ultra-550b-a55b:free"; }
           ];
           toolsets = [ "all" ];
+          gateway.streaming.enabled = true;
         };
         extraDependencyGroups = [ "messaging" ];
         extraPackages = [ pkgs.chromium pkgs.ffmpeg ];

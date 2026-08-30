@@ -26,12 +26,14 @@
       hermes
     ];
 
-    nixos = { config, lib, ... }:
+    nixos = { config, lib, pkgs, ... }:
       let
         inherit (import ../../lib { inherit lib; }) homelab;
         developmentDatabase = "dev";
       in
       {
+        environment.systemPackages = [ pkgs.python3 ];
+
         imports = with inputs.nixos-hardware.nixosModules; [
           ./hardware-configuration.nix
           common-cpu-intel
