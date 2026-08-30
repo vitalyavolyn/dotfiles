@@ -5,6 +5,7 @@
     # The user class is forwarded to users.users.${user.userName} on every host.
     user.openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDJOIQWALhrUwF6a23G9g3i/LjI50Bl/PGO1RauHJBks vitalya@celebi"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDHxLEltEiXjU8yHEE2R9T72mWOA1QmIf4zvqzTzO5PW hermes-agent@shinx"
     ];
 
     os.nix.settings.trusted-users = [ user.userName ];

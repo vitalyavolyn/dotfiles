@@ -36,4 +36,6 @@ in
   # each starting its own separate agent. Only shinx needs to decrypt this;
   # the other hosts just need the value typed into the app once.
   "hermes-dashboard-token.age".publicKeys = [ vitalya shinx ];
+
+  "hermes-ssh-key.age".publicKeys = [ vitalya shinx ];
 }
