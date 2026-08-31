@@ -104,7 +104,10 @@
 
 
       systemd.services.hermes-agent.serviceConfig.NoNewPrivileges = lib.mkForce false;
+      systemd.services.hermes-agent.serviceConfig.ProtectSystem = lib.mkForce "off";
+      # Direct-edit verification after rebuild.
       systemd.services.hermes-backend.serviceConfig.NoNewPrivileges = lib.mkForce false;
+      systemd.services.hermes-backend.serviceConfig.ProtectSystem = lib.mkForce "off";
 
       services.nginx.virtualHosts.${homelab.domainFor "hermes"}.locations."/".extraConfig = ''
         proxy_set_header Host 127.0.0.1;
