@@ -29,13 +29,13 @@
     nixos = { config, lib, pkgs, ... }:
       let
         inherit (import ../../lib { inherit lib; }) homelab;
-        developmentDatabase = "dev";
       in
       {
         environment.systemPackages = [ pkgs.python3 ];
 
         imports = with inputs.nixos-hardware.nixosModules; [
           ./hardware-configuration.nix
+          ./dev-db.nix
           common-cpu-intel
           common-pc-ssd
         ];
@@ -43,39 +43,6 @@
         services.immich.mediaLocation = "/mnt/media/immich";
         services.home-assistant-container.volumes = [ "/mnt/media/home-assistant:/config" ];
         services.paperless.settings.PAPERLESS_URL = homelab.urlFor "paperless";
-
-        services.postgresql = {
-          ensureDatabases = [ developmentDatabase ];
-          ensureUsers = [{
-            name = developmentDatabase;
-            ensureDBOwnership = true;
-          }];
-          settings.listen_addresses = lib.mkForce
-            "localhost,${homelab.nodes.shinx.tailnetIp}";
-          authentication = lib.mkAfter ''
-            host ${developmentDatabase} ${developmentDatabase} ${homelab.nodes.applin.tailnetIp}/32 trust
-          '';
-        };
-
-        services.redis.servers.dev = {
-          enable = true;
-          bind = homelab.nodes.shinx.tailnetIp;
-          port = 6380;
-          unixSocket = null;
-          databases = 1;
-          appendOnly = false;
-          save = [ ];
-          settings = {
-            maxmemory = "128mb";
-            maxmemory-policy = "allkeys-lru";
-            protected-mode = "no";
-          };
-        };
-
-        systemd.services.redis-dev.serviceConfig = {
-          IPAddressDeny = "any";
-          IPAddressAllow = [ homelab.nodes.applin.tailnetIp ];
-        };
 
         # x86_64 runner, kept separate from porygon's ARM runner so
         # amd64-only jobs (image publishing) can target it specifically.

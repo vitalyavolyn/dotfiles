@@ -22,7 +22,7 @@
 
       environment.systemPackages = [
         inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.agenix
-        pkgs.ghostty.terminfo
+        pkgs.ghostty-bin.terminfo
         pkgs.kitty.terminfo
       ];
 

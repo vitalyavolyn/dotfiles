@@ -69,7 +69,8 @@
               after = [ "tailscaled.service" "tailscaled-autoconnect.service" ];
               wants = [ "tailscaled.service" ];
               wantedBy = [ "multi-user.target" ];
-              path = [ cfg.package pkgs.gawk ];
+              path = [ cfg.package pkgs.gawk pkgs.jq ];
+              restartTriggers = [ (builtins.toJSON cfg.driveShares) ];
               serviceConfig = {
                 Type = "oneshot";
                 User = "vitalya";
@@ -82,17 +83,32 @@
                   cfg.driveShares)}
                 )
 
-                while IFS= read -r name; do
-                  [ -z "$name" ] && continue
-                  if [ -z "''${wanted[$name]-}" ]; then
-                    echo "Removing stale taildrive share: $name"
-                    tailscale drive unshare "$name"
-                  fi
-                done < <(tailscale drive list | tail -n +3 | awk -F' {4,}' '{print $1}')
+                until tailscale status --json 2>/dev/null | jq -e '.BackendState == "Running"' >/dev/null; do
+                  echo "Waiting for Tailscale to become usable..."
+                  sleep 2
+                done
 
-                for name in "''${!wanted[@]}"; do
-                  echo "Sharing $name -> ''${wanted[$name]}"
-                  tailscale drive share "$name" "''${wanted[$name]}"
+                reconcile() {
+                  local shares
+                  shares="$(tailscale drive list)"
+
+                  while IFS= read -r name; do
+                    [ -z "$name" ] && continue
+                    if [ -z "''${wanted[$name]-}" ]; then
+                      echo "Removing stale taildrive share: $name"
+                      tailscale drive unshare "$name"
+                    fi
+                  done < <(printf '%s\n' "$shares" | tail -n +3 | awk -F' {4,}' '{print $1}')
+
+                  for name in "''${!wanted[@]}"; do
+                    echo "Sharing $name -> ''${wanted[$name]}"
+                    tailscale drive share "$name" "''${wanted[$name]}"
+                  done
+                }
+
+                until reconcile; do
+                  echo "Taildrive is not ready; retrying reconciliation..."
+                  sleep 2
                 done
               '';
             };
