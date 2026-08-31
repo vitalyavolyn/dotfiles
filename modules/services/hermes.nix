@@ -1,5 +1,4 @@
 { inputs, ... }:
-
 {
   den.aspects.hermes.nixos = { config, pkgs, lib, ... }:
     let
@@ -33,6 +32,8 @@
         '';
       };
 
+      users.users.hermes = { extraGroups = [ "wheel" ]; };
+
       services.hermes-agent = {
         enable = true;
         settings = {
@@ -52,20 +53,39 @@
           platforms.telegram.extra.guest_mode = true;
         };
         extraDependencyGroups = [ "messaging" ];
-        extraPackages = [ pkgs.chromium pkgs.ffmpeg pkgs.openssh ];
+        extraPackages = [
+          pkgs.chromium
+          pkgs.ffmpeg
+          pkgs.openssh
+          pkgs.nodejs
+          pkgs.corepack
+          pkgs.python3
+          pkgs.python3Packages.pip
+          pkgs.python3Packages.google-api-python-client
+          pkgs.python3Packages.google-auth
+          pkgs.python3Packages.google-auth-oauthlib
+          pkgs.python3Packages.google-auth-httplib2
+          pkgs.python3Packages.httplib2
+          pkgs.python3Packages.pyasn1
+        ];
+
         environmentFiles = [
           config.age.secrets.hermes-env.path
         ];
         addToSystemPackages = true;
+
         backend = {
           mode = "dashboard";
-          # A stable token instead of a random one per start — paste this
-          # value into the Hermes Desktop app's Remote gateway -> Session
-          # token field on applin/tynamo instead of each starting its own
-          # separate agent.
           sessionTokenFile = config.age.secrets.hermes-dashboard-token.path;
         };
+        environment = {
+          AGENT_BROWSER_EXECUTABLE_PATH = "/etc/profiles/per-user/hermes/bin/chromium";
+        };
       };
+
+
+      systemd.services.hermes-agent.serviceConfig.NoNewPrivileges = lib.mkForce false;
+      systemd.services.hermes-backend.serviceConfig.NoNewPrivileges = lib.mkForce false;
 
       services.nginx.virtualHosts.${homelab.domainFor "hermes"}.locations."/".extraConfig = ''
         proxy_set_header Host 127.0.0.1;
