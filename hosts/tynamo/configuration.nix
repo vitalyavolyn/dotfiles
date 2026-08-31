@@ -72,6 +72,7 @@
         environment.systemPackages = with pkgs; [
           android-tools
           xrizer
+          inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.shrimply
         ];
 
         # OpenXR (native/wayvr) already works over WiVRn. SteamVR games use the
