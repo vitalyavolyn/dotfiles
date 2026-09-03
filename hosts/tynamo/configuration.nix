@@ -25,7 +25,6 @@
       steam-run
       claude-desktop
       chatgpt-desktop
-      hermes-desktop
       steam
       sunshine
       logiops

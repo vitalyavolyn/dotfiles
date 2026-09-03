@@ -23,7 +23,6 @@
       claude-code
       codex-cli
       forgejo-runner
-      hermes
     ];
 
     nixos = { config, lib, pkgs, ... }:

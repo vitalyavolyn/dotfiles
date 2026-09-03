@@ -30,11 +30,6 @@
           "tunnelblick"
           "bitwarden"
           "cyberduck"
-          # Prebuilt DMG instead of the Nix-built Electron app — the Nix
-          # build pulls in hermes-agent's full ML dependency chain (torch,
-          # onnxruntime, faster-whisper) with poor aarch64-darwin binary
-          # cache coverage, so it builds most of it from source.
-          "hermes-desktop"
 
           # TODO: cross platform logitech module
           "logi-options+"
