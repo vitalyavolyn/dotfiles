@@ -52,7 +52,14 @@
             cwd = "/var/lib/hermes/workspace";
           };
           web.backend = "parallel";
-          stt.provider = "local";
+          stt = {
+            provider = "local";
+            language = "ru";
+            local = {
+              model = "small";
+              language = "ru";
+            };
+          };
           tts.provider = "edge";
           fallback_providers = [
             { provider = "nvidia"; model = "minimaxai/minimax-m3"; }
@@ -62,6 +69,7 @@
           ];
           toolsets = [ "all" ];
           gateway.streaming.enabled = true;
+          display.platforms.telegram.streaming = false;
           platforms.telegram.extra.guest_mode = true;
         };
         # Only include integrations used by this deployment. Hermes's `all`
