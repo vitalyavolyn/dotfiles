@@ -29,6 +29,7 @@
       sunshine
       logiops
       modrinth
+      genshin
     ];
 
     nixos = { pkgs, ... }:
@@ -74,16 +75,6 @@
           inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.shrimply
         ];
 
-        # OpenXR (native/wayvr) already works over WiVRn. SteamVR games use the
-        # OpenVR API, which WiVRn doesn't speak directly - xrizer (above) bridges
-        # OpenVR calls to WiVRn's OpenXR runtime, bypassing SteamVR's own headset
-        # detection entirely. WiVRn auto-detects xrizer/OpenComposite on startup
-        # and configures ~/.config/openvr/openvrpaths.vrpath itself; if a SteamVR
-        # game still can't find a headset, check `journalctl --user -u wivrn` for
-        # an "openvr" detection line and fall back to setting
-        # services.wivrn.config.json."openvr-compat-path" explicitly.
-        # xrizer input is overridden to xrizerCombined (see above) so 32-bit
-        # SteamVR games work too, not just 64-bit ones.
         services.wivrn = {
           enable = true;
           openFirewall = true;
@@ -101,9 +92,6 @@
           };
         };
 
-        # Steam sandboxes games via pressure-vessel, which blocks access to the
-        # WiVRn IPC socket by default - without this, SteamVR games can't reach
-        # WiVRn even once xrizer bridges the OpenVR calls.
         programs.steam.package = pkgs.steam.override {
           extraEnv = {
             PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/wivrn/comp_ipc";
