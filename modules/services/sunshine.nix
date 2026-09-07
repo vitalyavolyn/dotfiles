@@ -6,9 +6,12 @@
     let
       displayconfigMutter = inputs.displayconfig-mutter.packages.${pkgs.stdenv.hostPlatform.system}.default;
       displayState = "$XDG_RUNTIME_DIR/sunshine-display-config";
+      audioState = "$XDG_RUNTIME_DIR/sunshine-audio-sink";
 
       sunshineDisplayStart = pkgs.writeShellScript "sunshine-display-start" ''
         set -euo pipefail
+
+        ${pkgs.pulseaudio}/bin/pactl get-default-sink > "${audioState}"
 
         connector="$(${displayconfigMutter}/bin/displayconfig-mutter list \
           | ${pkgs.gawk}/bin/awk -F '│' '
@@ -44,11 +47,19 @@
       '';
 
       sunshineDisplayStop = pkgs.writeShellScript "sunshine-display-stop" ''
-        set -euo pipefail
+        set -u
 
         if [ -f "${displayState}" ]; then
-          ${displayconfigMutter}/bin/displayconfig-mutter load-file "${displayState}"
+          ${displayconfigMutter}/bin/displayconfig-mutter load-file "${displayState}" \
+            || echo "Failed to restore the pre-stream display layout" >&2
           ${pkgs.coreutils}/bin/rm -f "${displayState}"
+        fi
+
+        if [ -f "${audioState}" ]; then
+          sink="$(${pkgs.coreutils}/bin/cat "${audioState}")"
+          ${pkgs.pulseaudio}/bin/pactl set-default-sink "$sink" \
+            || echo "Failed to restore the pre-stream audio sink: $sink" >&2
+          ${pkgs.coreutils}/bin/rm -f "${audioState}"
         fi
       '';
 
