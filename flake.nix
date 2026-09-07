@@ -7,6 +7,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    displayconfig-mutter = {
+      url = "github:eaglesemanation/displayconfig-mutter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     den.url = "github:denful/den/latest";
 
     import-tree.url = "github:vic/import-tree";
