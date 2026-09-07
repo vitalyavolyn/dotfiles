@@ -27,10 +27,20 @@
         fi
 
         ${displayconfigMutter}/bin/displayconfig-mutter save-file "${displayState}"
-        ${displayconfigMutter}/bin/displayconfig-mutter set \
+        echo "Changing $connector to ''${SUNSHINE_CLIENT_WIDTH}x''${SUNSHINE_CLIENT_HEIGHT} at ''${SUNSHINE_CLIENT_FPS} Hz"
+        if ! ${displayconfigMutter}/bin/displayconfig-mutter set \
           --connector "$connector" \
           --resolution "''${SUNSHINE_CLIENT_WIDTH}x''${SUNSHINE_CLIENT_HEIGHT}" \
-          --refresh-rate "''${SUNSHINE_CLIENT_FPS}"
+          --refresh-rate "''${SUNSHINE_CLIENT_FPS}"; then
+          echo "Requested mode is unsupported; falling back to 1280x720" >&2
+          if ! ${displayconfigMutter}/bin/displayconfig-mutter set \
+            --connector "$connector" \
+            --resolution 1280x720 \
+            --refresh-rate "''${SUNSHINE_CLIENT_FPS}"; then
+            echo "Fallback mode also failed; keeping the current display mode" >&2
+            ${pkgs.coreutils}/bin/rm -f "${displayState}"
+          fi
+        fi
       '';
 
       sunshineDisplayStop = pkgs.writeShellScript "sunshine-display-stop" ''
@@ -84,5 +94,8 @@
           ];
         };
       };
+
+      # Application undo commands are skipped if Sunshine crashes mid-stream.
+      systemd.user.services.sunshine.serviceConfig.ExecStopPost = sunshineDisplayStop;
     };
 }
