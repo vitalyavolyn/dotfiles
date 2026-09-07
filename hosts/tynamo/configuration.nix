@@ -55,6 +55,7 @@
         imports = with inputs.nixos-hardware.nixosModules; [
           ./hardware-configuration.nix
           ./asus-rog-stuff.nix
+          ./cpu-undervolt.nix
           common-cpu-amd
           common-pc-ssd
           common-pc-laptop
