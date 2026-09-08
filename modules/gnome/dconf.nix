@@ -83,6 +83,17 @@
                 ++ lib.optionals (hasAspect den.aspects.minecraft) [ "org.prismlauncher.PrismLauncher.desktop" ];
             };
 
+            # Disable GNOME's native orientation manager so it cannot rotate
+            # the display on its own. The screen-rotate extension uses the
+            # unlocked setting below for its explicit sensor path.
+            "org/gnome/settings-daemon/plugins/orientation" = {
+              active = false;
+            };
+
+            "org/gnome/settings-daemon/peripherals/touchscreen" = {
+              orientation-lock = true;
+            };
+
             "org/gnome/mutter" = {
               dynamic-workspaces = false;
               edge-tiling = true;

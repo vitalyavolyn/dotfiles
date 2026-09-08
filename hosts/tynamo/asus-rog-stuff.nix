@@ -2,6 +2,20 @@
 
 {
   boot.extraModprobeConfig = "options asus_nb_wmi tablet_mode_sw=3";
+
+  # The Flow X13's built-in keyboard is exposed as two USB "Asus Keyboard"
+  # interfaces (0b05:19b6). libinput otherwise treats USB keyboards as
+  # external and deliberately excludes them from SW_TABLET_MODE suspension.
+  # Mark this exact ASUS device internal so the tablet switch disables it
+  # together with the internal I2C touchpad.
+  environment.etc."libinput/local-overrides.quirks".text = ''
+    [ ASUS ROG Flow X13 built-in keyboard ]
+    MatchUdevType=keyboard
+    MatchVendor=0x0B05
+    MatchProduct=0x19B6
+    AttrKeyboardIntegration=internal
+  '';
+
   services.supergfxd.enable = true;
   services.asusd = {
     enable = true;
