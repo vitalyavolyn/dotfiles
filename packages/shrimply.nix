@@ -11,6 +11,7 @@
 , ninja
 , python3
 , gn
+, gcc15
 , clang_22
 , llvmPackages_22
 , cudaPackages_13
@@ -50,23 +51,23 @@ let
   shrimplySrc = fetchFromGitHub {
     owner = "soirihiroka";
     repo = "shrimply";
-    rev = "0caceec9f4507c0ab42352b37660c4cb8a499e7b";
+    rev = "37638b2f85927343eddba08e6b6a455c37d3a743";
     fetchSubmodules = true;
-    hash = "sha256-19w8jqapwEKgZQX8o10kdoyuTmMAqLGiRik2iWLvQSU=";
+    hash = "sha256-6xTwETuDIa/OOkNVl7XrC5qq8rBg8rojDeOUOQXmCKA=";
   };
-  oxideCargoDeps = rustPlatform.fetchCargoVendor {
-    src = shrimplySrc;
-    cargoRoot = "external/cuda-oxide";
-    hash = "sha256-zQTTSFhxK6ERd5kJNYS8sKwqvEgMA8nZx3YrammHBbE=";
+  pocketSphinxResources = fetchFromGitHub {
+    owner = "DanielSWolf";
+    repo = "rhubarb-lip-sync";
+    rev = "9b9573cd21b253c9ba58739bbd1aa0b50b991bff";
+    hash = "sha256-w6TgklwHtwzSHsyz4akT6Nqr/mD8IOGppTMXpikMIHo=";
+  };
+  pocketSphinxPhoneLm = fetchurl {
+    url = "https://raw.githubusercontent.com/DanielSWolf/rhubarb-lip-sync/9b9573cd21b253c9ba58739bbd1aa0b50b991bff/rhubarb/lib/pocketsphinx-rev13216/model/en-us/en-us-phone.lm.bin";
+    hash = "sha256-xX4PpBkbCWsSec/jp3kn9SVo/ez8ZiTdtc7JUnx2OlQ=";
   };
   hostCargoDeps = rustPlatform.fetchCargoVendor {
     src = shrimplySrc;
-    hash = "sha256-fWOpWnV6vjWnHwq1LR64NUN81RmFey/g08aHrkG4mQk=";
-  };
-  backendCargoDeps = rustPlatform.fetchCargoVendor {
-    src = shrimplySrc;
-    cargoRoot = "external/cuda-oxide/crates/rustc-codegen-cuda";
-    hash = "sha256-Kz3t0sNPzc2RNUpXuO5V2TXxztdVvpE2TBnGjW//l70=";
+    hash = "sha256-dZJRF41H2aK9wt5HQWymN7ant42a5V/PU/cTt7tzpFI=";
   };
   skiaBinaries = fetchurl {
     url = "https://github.com/rust-skia/skia-binaries/releases/download/0.99.0/skia-binaries-a25a0fdb7d90429aa2d1-x86_64-unknown-linux-gnu-egl-gl-jpegd-jpege-pdf-skottie-svg-textlayout-vulkan-wayland-webpd-webpe-x11.tar.gz";
@@ -89,7 +90,7 @@ let
 in
 rustPlatform.buildRustPackage rec {
   pname = "shrimply";
-  version = "0-unstable-2026-08-31";
+  version = "0-unstable-2026-09-08";
 
   src = shrimplySrc;
 
@@ -102,6 +103,7 @@ rustPlatform.buildRustPackage rec {
     ninja
     python3
     gn
+    gcc15
     clang_22
     llvmPackages_22.libclang
   ];
@@ -131,8 +133,13 @@ rustPlatform.buildRustPackage rec {
   ];
 
   CUDA_HOME = cudaToolkit;
+  CUDA_PATH = cudaToolkit;
   CUDA_TOOLKIT_PATH = cudaToolkit;
-  CUDA_OXIDE_TARGET = "sm_86";
+  CUDA_TARGET = "sm_86";
+  CUDA_HOST_CXX = "${gcc15}/bin/g++";
+  # The CUDA toolkit ships libcuda only as a link-time stub.  The real
+  # library is provided by the installed NVIDIA driver at runtime.
+  NIX_LDFLAGS = "-L${cudaToolkit}/lib/stubs";
   CUDA_OXIDE_DEBUG = "off";
   LIBCLANG_PATH = "${llvmPackages_22.libclang.lib}/lib";
   SLANG_SOURCE_DIR = "external/slang";
@@ -144,11 +151,19 @@ rustPlatform.buildRustPackage rec {
     substituteInPlace Makefile \
       --replace-fail '$(RUSTUP) run $(RUST_TOOLCHAIN) cargo' 'cargo'
 
+    # Nix's split CUDA packages make nvcc resolve its own installation
+    # directory, rather than CUDA_TOOLKIT_PATH, when it invokes the host
+    # compiler. Give generated CUDA kernels the assembled toolkit headers
+    # explicitly.
+    substituteInPlace crates/render-cuda/build.rs \
+      --replace-fail '.args([nvcc_output, "-O2", "-w"])' \
+        '.args([nvcc_output, "-O2", "-w"]).arg("-I").arg(toolkit.join("include"))'
+
     # register_bundled() hardcodes a CARGO_MANIFEST_DIR-relative search path
     # for the ~90 custom symbolic icons, which only exists inside the build
     # sandbox. Make it overridable at runtime so we can point it at the
     # icons we install into $out, otherwise every toolbar/UI icon is blank.
-    cat > crates/ui/ui-foundation/src/icons.rs <<'EOF'
+    cat > crates/ui/gtk-components/src/icons.rs <<'EOF'
 use std::path::{Path, PathBuf};
 
 pub fn register_bundled() {
@@ -169,36 +184,24 @@ EOF
     export SLANG_SOURCE_DIR=$PWD/external/slang
     export SLANG_BUILD_DIR=$PWD/external/slang/build
     export OPTIX_ROOT=$PWD/external/optix-dev
-    mkdir -p $TMPDIR/merged-cargo-vendor/source-registry-0
-    for crate in \
-      ${hostCargoDeps}/source-registry-0/* \
-      ${oxideCargoDeps}/source-registry-0/* \
-      ${backendCargoDeps}/source-registry-0/*; do
-      ln -s "$crate" $TMPDIR/merged-cargo-vendor/source-registry-0/$(basename "$crate") 2>/dev/null || true
+    mkdir -p $TMPDIR/pocketsphinx-cache
+    for resource in \
+      rhubarb/lib/cmusphinx-en-us-5.2/mdef \
+      rhubarb/lib/cmusphinx-en-us-5.2/means \
+      rhubarb/lib/cmusphinx-en-us-5.2/variances \
+      rhubarb/lib/cmusphinx-en-us-5.2/mixture_weights \
+      rhubarb/lib/cmusphinx-en-us-5.2/transition_matrices \
+      rhubarb/lib/cmusphinx-en-us-5.2/feature_transform; do
+      ln -s ${pocketSphinxResources}/$resource $TMPDIR/pocketsphinx-cache/$(basename "$resource")
     done
-    for source in ${oxideCargoDeps}/source-git-*; do
-      ln -s "$source" $TMPDIR/merged-cargo-vendor/$(basename "$source")
-    done
-    mkdir -p $TMPDIR/merged-cargo-home
-    sed 's|@vendor@|'$TMPDIR/merged-cargo-vendor'|g' \
-      ${oxideCargoDeps}/.cargo/config.toml \
-      > $TMPDIR/merged-cargo-home/config.toml
-    cp $TMPDIR/merged-cargo-home/config.toml .cargo/config.toml
-    chmod +w .cargo/config.toml
-    printf '\n[target.x86_64-unknown-linux-gnu]\nrustflags = ["-C", "link-arg=-fuse-ld=lld"]\n' \
-      >> .cargo/config.toml
-    export CARGO_HOME=$TMPDIR/merged-cargo-home
-    CARGO_TARGET_DIR=target/oxide-cli cargo build --release \
-      --manifest-path external/cuda-oxide/Cargo.toml \
-      --package cargo-oxide
-    export PATH=$PWD/target/oxide-cli/release:$PATH
-    (cd external/cuda-oxide && cargo oxide setup)
+    ln -s ${pocketSphinxPhoneLm} $TMPDIR/pocketsphinx-cache/phone_lm
+    export SHRIMPLY_POCKETSPHINX_CACHE=$TMPDIR/pocketsphinx-cache
     make release \
       CARGO=cargo \
       PKG_CONFIG=${pkg-config}/bin/pkg-config \
       CUDA_HOME=${cudaToolkit} \
       CUDA_TOOLKIT_PATH=${cudaToolkit} \
-      CUDA_OXIDE_TARGET=sm_86
+      CUDA_TARGET=sm_86
     runHook postBuild
   '';
 
@@ -211,7 +214,7 @@ EOF
       PKG_CONFIG=${pkg-config}/bin/pkg-config \
       CUDA_HOME=${cudaToolkit} \
       CUDA_TOOLKIT_PATH=${cudaToolkit} \
-      CUDA_OXIDE_TARGET=sm_86
+      CUDA_TARGET=sm_86
     mkdir -p $out/share/shrimply/icons
     cp assets/icons/*.svg $out/share/shrimply/icons/
     # Shrimply's preview GLArea never pins gdk::GLAPI::GL, so GTK4's default
