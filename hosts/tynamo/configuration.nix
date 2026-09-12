@@ -72,7 +72,6 @@
         environment.systemPackages = with pkgs; [
           android-tools
           xrizer
-          inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.shrimply
         ];
 
         services.wivrn = {
