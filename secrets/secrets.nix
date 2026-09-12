@@ -28,14 +28,4 @@ in
   # Forgejo Actions runner registration token for the x86_64 runner on shinx
   "forgejo-runner-token-shinx.age".publicKeys = [ vitalya shinx ];
 
-  "hermes-env.age".publicKeys = [ vitalya shinx ];
-
-  # A stable HERMES_DASHBOARD_SESSION_TOKEN — pasted once into the Hermes
-  # Desktop app's Settings -> Gateway -> Remote gateway -> Session token
-  # field on applin/tynamo, so they connect to shinx's backend instead of
-  # each starting its own separate agent. Only shinx needs to decrypt this;
-  # the other hosts just need the value typed into the app once.
-  "hermes-dashboard-token.age".publicKeys = [ vitalya shinx ];
-
-  "hermes-ssh-key.age".publicKeys = [ vitalya shinx ];
 }
