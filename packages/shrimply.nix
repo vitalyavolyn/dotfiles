@@ -148,34 +148,34 @@ rustPlatform.buildRustPackage rec {
   SKIA_BINARIES_URL = "file://${skiaBinaries}";
 
   postPatch = ''
-    substituteInPlace Makefile \
-      --replace-fail '$(RUSTUP) run $(RUST_TOOLCHAIN) cargo' 'cargo'
+        substituteInPlace Makefile \
+          --replace-fail '$(RUSTUP) run $(RUST_TOOLCHAIN) cargo' 'cargo'
 
-    # Nix's split CUDA packages make nvcc resolve its own installation
-    # directory, rather than CUDA_TOOLKIT_PATH, when it invokes the host
-    # compiler. Give generated CUDA kernels the assembled toolkit headers
-    # explicitly.
-    substituteInPlace crates/render-cuda/build.rs \
-      --replace-fail '.args([nvcc_output, "-O2", "-w"])' \
-        '.args([nvcc_output, "-O2", "-w"]).arg("-I").arg(toolkit.join("include"))'
+        # Nix's split CUDA packages make nvcc resolve its own installation
+        # directory, rather than CUDA_TOOLKIT_PATH, when it invokes the host
+        # compiler. Give generated CUDA kernels the assembled toolkit headers
+        # explicitly.
+        substituteInPlace crates/render-cuda/build.rs \
+          --replace-fail '.args([nvcc_output, "-O2", "-w"])' \
+            '.args([nvcc_output, "-O2", "-w"]).arg("-I").arg(toolkit.join("include"))'
 
-    # register_bundled() hardcodes a CARGO_MANIFEST_DIR-relative search path
-    # for the ~90 custom symbolic icons, which only exists inside the build
-    # sandbox. Make it overridable at runtime so we can point it at the
-    # icons we install into $out, otherwise every toolbar/UI icon is blank.
-    cat > crates/ui/gtk-components/src/icons.rs <<'EOF'
-use std::path::{Path, PathBuf};
+        # register_bundled() hardcodes a CARGO_MANIFEST_DIR-relative search path
+        # for the ~90 custom symbolic icons, which only exists inside the build
+        # sandbox. Make it overridable at runtime so we can point it at the
+        # icons we install into $out, otherwise every toolbar/UI icon is blank.
+        cat > crates/ui/gtk-components/src/icons.rs <<'EOF'
+    use std::path::{Path, PathBuf};
 
-pub fn register_bundled() {
-    let Some(display) = gtk::gdk::Display::default() else {
-        return;
-    };
-    let path = std::env::var_os("SHRIMPLY_ICON_DIR")
-        .map(PathBuf::from)
-        .unwrap_or_else(|| Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../assets/icons"));
-    gtk::IconTheme::for_display(&display).add_search_path(path);
-}
-EOF
+    pub fn register_bundled() {
+        let Some(display) = gtk::gdk::Display::default() else {
+            return;
+        };
+        let path = std::env::var_os("SHRIMPLY_ICON_DIR")
+            .map(PathBuf::from)
+            .unwrap_or_else(|| Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../assets/icons"));
+        gtk::IconTheme::for_display(&display).add_search_path(path);
+    }
+    EOF
   '';
 
   buildPhase = ''

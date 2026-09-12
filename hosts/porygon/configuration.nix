@@ -56,41 +56,42 @@
         services.tailscale.router.exitNode = true;
 
         services.nginx.clientMaxBodySize = "100m";
-        services.nginx.virtualHosts = lib.recursiveUpdate ({
-          "porygon.vitalya.me" = {
-            addSSL = true;
-            enableACME = true;
-            locations."/" = {
-              return = "200 'hiiii :3'";
-              extraConfig = "add_header Content-Type text/plain;";
+        services.nginx.virtualHosts = lib.recursiveUpdate
+          ({
+            "porygon.vitalya.me" = {
+              addSSL = true;
+              enableACME = true;
+              locations."/" = {
+                return = "200 'hiiii :3'";
+                extraConfig = "add_header Content-Type text/plain;";
+              };
+              locations."/cal/radarr" = {
+                proxyPass = "${homelab.backendForService "porygon" "radarr"}/feed/v3/calendar/Radarr.ics";
+              };
+              locations."/cal/sonarr" = {
+                proxyPass = "${homelab.backendForService "porygon" "sonarr"}/feed/v3/calendar/Sonarr.ics";
+              };
             };
-            locations."/cal/radarr" = {
-              proxyPass = "${homelab.backendForService "porygon" "radarr"}/feed/v3/calendar/Radarr.ics";
+            "foundry.porygon.vitalya.me" = {
+              addSSL = true;
+              enableACME = true;
+              locations."/" = { proxyPass = homelab.backendForService "porygon" "foundry"; proxyWebsockets = true; };
             };
-            locations."/cal/sonarr" = {
-              proxyPass = "${homelab.backendForService "porygon" "sonarr"}/feed/v3/calendar/Sonarr.ics";
-            };
-          };
-          "foundry.porygon.vitalya.me" = {
-            addSSL = true;
-            enableACME = true;
-            locations."/" = { proxyPass = homelab.backendForService "porygon" "foundry"; proxyWebsockets = true; };
-          };
 
-          "${homelab.domain}" = {
-            useACMEHost = homelab.domain;
-            forceSSL = true;
-            locations."/".return = "404";
+            "${homelab.domain}" = {
+              useACMEHost = homelab.domain;
+              forceSSL = true;
+              locations."/".return = "404";
+            };
+          }
+          // (homelab.privateVirtualHostsFor "porygon")
+          // (homelab.publicVirtualHostsFor "porygon"))
+          {
+            # Forgejo's container registry pushes image layers as chunked PATCH
+            # requests that can exceed the global 100m cap, so nginx was
+            # rejecting large layers with 413 before they reached Forgejo.
+            "${homelab.domainFor "git"}".extraConfig = "client_max_body_size 0;";
           };
-        }
-        // (homelab.privateVirtualHostsFor "porygon")
-        // (homelab.publicVirtualHostsFor "porygon"))
-        {
-          # Forgejo's container registry pushes image layers as chunked PATCH
-          # requests that can exceed the global 100m cap, so nginx was
-          # rejecting large layers with 413 before they reached Forgejo.
-          "${homelab.domainFor "git"}".extraConfig = "client_max_body_size 0;";
-        };
 
         programs.fish.enable = true;
         # alexander manages foundry

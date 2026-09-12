@@ -29,7 +29,6 @@
       sunshine
       logiops
       modrinth
-      genshin
     ];
 
     nixos = { pkgs, ... }:
