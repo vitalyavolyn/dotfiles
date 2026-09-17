@@ -2,6 +2,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    binbin = {
+      url = "github:vitalyavolyn/binbin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     displayconfig-mutter = {
       url = "github:eaglesemanation/displayconfig-mutter";
       inputs.nixpkgs.follows = "nixpkgs";

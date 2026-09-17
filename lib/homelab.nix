@@ -14,6 +14,10 @@ let
   # `exposures` adds optional ingress through Porygon (`public`) or the
   # Cloudflare tunnel on Shinx (`cloudflare`).
   services = {
+    binbin = {
+      node = "shinx";
+      port = 39393;
+    };
     foundry = {
       node = "porygon";
       port = 30000;

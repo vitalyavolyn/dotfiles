@@ -27,6 +27,26 @@
         "type": "github"
       }
     },
+    "binbin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789679370,
+        "narHash": "sha256-60nOzMRPz7jkf21vJvNrMBHHnnmh4RrX/rdhN60H6zk=",
+        "owner": "vitalyavolyn",
+        "repo": "binbin",
+        "rev": "1392bbf6223f75591f7217a5e5000570da46e020",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vitalyavolyn",
+        "repo": "binbin",
+        "type": "github"
+      }
+    },
     "brew-src": {
       "flake": false,
       "locked": {
@@ -492,6 +512,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "binbin": "binbin",
         "darwin": "darwin",
         "den": "den",
         "displayconfig-mutter": "displayconfig-mutter",
