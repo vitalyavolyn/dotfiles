@@ -116,6 +116,6 @@
         ];
       };
 
-    darwin.homebrew.casks = [ "tailscale" ];
+    darwin.homebrew.casks = [ "tailscale-app" ];
   };
 }

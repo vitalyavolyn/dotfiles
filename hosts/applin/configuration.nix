@@ -30,6 +30,7 @@
           "tunnelblick"
           "bitwarden"
           "cyberduck"
+          "wireshark-app"
 
           # TODO: cross platform logitech module
           "logi-options+"
