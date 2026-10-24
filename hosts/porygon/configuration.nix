@@ -16,6 +16,7 @@
       unbound
       acme-eepo
       nginx
+      umami
       claude-code
       codex-cli
     ];

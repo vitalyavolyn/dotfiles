@@ -88,6 +88,11 @@ let
       port = 8401;
       exposures = [ "cloudflare" ];
     };
+    umami = {
+      node = "porygon";
+      port = 3004;
+      exposures = [ "public" ];
+    };
   };
 
   domainFor = name: "${name}.${domain}";
