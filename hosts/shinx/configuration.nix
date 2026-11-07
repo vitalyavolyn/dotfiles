@@ -7,7 +7,6 @@
     includes = with den.aspects; [
       base-linux
       avahi
-      binbin
       immich
       media-server
       home-assistant
