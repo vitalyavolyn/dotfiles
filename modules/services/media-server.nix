@@ -18,7 +18,7 @@
       bazarr = {
         enable = true;
         group = "multimedia";
-        listenPort = inputs.self.lib.homelab.portFor "bazarr";
+        settings.general.port = inputs.self.lib.homelab.portFor "bazarr";
       };
       prowlarr = {
         enable = true;
