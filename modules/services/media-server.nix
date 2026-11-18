@@ -36,5 +36,8 @@
     users.groups.multimedia = {
       members = [ "vitalya" ];
     };
+
+    systemd.services.plex.serviceConfig.CPUWeight = 800;
+    systemd.services.flaresolverr.serviceConfig.CPUWeight = 15;
   };
 }
