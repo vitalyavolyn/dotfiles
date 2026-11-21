@@ -18,6 +18,8 @@
       obsidian
       claude-desktop
       chatgpt-desktop
+      gemini-desktop
+      antigravity-cli
       helium
       todoist
       work-cal-export

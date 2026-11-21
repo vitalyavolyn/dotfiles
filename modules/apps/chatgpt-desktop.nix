@@ -1,10 +1,10 @@
 { ... }:
 
+let mkApp = import ./_mk-app.nix;
+in
 {
-  den.aspects.chatgpt-desktop = {
-    nixos = {
-      warnings = [ "chatgpt-desktop is not packaged for Linux, skipping" ];
-    };
-    darwin.homebrew.casks = [ "chatgpt" ];
+  den.aspects.chatgpt-desktop = mkApp {
+    darwinCasks = [ "chatgpt" ];
+    nixosHomePackages = pkgs: [ pkgs.chatgpt ];
   };
 }
