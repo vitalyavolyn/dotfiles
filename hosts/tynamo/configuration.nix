@@ -37,6 +37,7 @@
           ./hardware-configuration.nix
           ./asus-rog-stuff.nix
           ./cpu-undervolt.nix
+          ./fingerprint.nix
           common-cpu-amd
           common-pc-ssd
           common-pc-laptop
