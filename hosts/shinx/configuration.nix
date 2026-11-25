@@ -6,6 +6,7 @@
   den.aspects.shinx = {
     includes = with den.aspects; [
       base-linux
+      server-tuning
       avahi
       immich
       media-server
@@ -82,6 +83,10 @@
         };
 
         services.tailscale.driveShares.media = "/mnt/media/downloads";
+
+        boot.blacklistedKernelModules = [ "iwlwifi" ];
+
+        services.thermald.enable = true;
 
         system.stateVersion = "23.11";
       };

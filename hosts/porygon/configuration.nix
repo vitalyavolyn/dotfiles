@@ -6,6 +6,7 @@
   den.aspects.porygon = {
     includes = with den.aspects; [
       base-linux
+      server-tuning
       shadowsocks
       tailscale
       foundry
@@ -113,6 +114,10 @@
         };
 
         swapDevices = [{ device = "/mnt/extra/swapfile"; size = 8192; }];
+
+        services.udev.extraRules = ''
+          ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/scheduler}="none"
+        '';
 
         system.stateVersion = "24.05";
       };

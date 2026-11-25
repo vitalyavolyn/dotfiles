@@ -60,6 +60,23 @@
                 extraSetFlags = routeFlags;
                 useRoutingFeatures = "both";
               };
+
+              systemd.services.tailscale-udp-gro = {
+                description = "Enable UDP GRO forwarding on the default route interface";
+                after = [ "network-online.target" ];
+                wants = [ "network-online.target" ];
+                wantedBy = [ "multi-user.target" ];
+                path = [ pkgs.iproute2 pkgs.ethtool pkgs.gawk ];
+                serviceConfig = {
+                  Type = "oneshot";
+                  RemainAfterExit = true;
+                };
+                enableStrictShellChecks = true;
+                script = ''
+                  netdev="$(ip -o route get 1.1.1.1 | awk '{ for (i = 1; i < NF; i++) if ($i == "dev") print $(i + 1) }')"
+                  ethtool -K "$netdev" rx-udp-gro-forwarding on rx-gro-list off
+                '';
+              };
             }
           ))
 
