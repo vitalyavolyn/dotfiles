@@ -1,4 +1,4 @@
-{ den, ... }:
+{ den, inputs, ... }:
 
 {
   den.hosts.aarch64-linux.porygon.users.vitalya.baseHome.extras = false;
@@ -24,7 +24,7 @@
 
     nixos = { lib, pkgs, ... }:
       let
-        inherit (import ../../lib { inherit lib; }) homelab;
+        inherit (inputs.self.lib) homelab;
       in
       {
         imports = [ ./hardware-configuration.nix ];

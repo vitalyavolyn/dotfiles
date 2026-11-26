@@ -26,9 +26,9 @@
       forgejo-runner
     ];
 
-    nixos = { config, lib, pkgs, ... }:
+    nixos = { config, pkgs, ... }:
       let
-        inherit (import ../../lib { inherit lib; }) homelab;
+        inherit (inputs.self.lib) homelab;
       in
       {
         environment.systemPackages = [ pkgs.python3 ];

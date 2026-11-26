@@ -1,43 +1,47 @@
 { inputs, ... }:
 
 {
-  den.aspects.media-server.nixos = { ... }: {
-    services = {
-      plex = { enable = true; group = "multimedia"; };
-      jellyfin = { enable = true; group = "multimedia"; };
-      radarr = {
-        enable = true;
-        group = "multimedia";
-        settings.server.port = inputs.self.lib.homelab.portFor "radarr";
+  den.aspects.media-server.nixos = { ... }:
+    let
+      inherit (inputs.self.lib.homelab) portFor;
+    in
+    {
+      services = {
+        plex = { enable = true; group = "multimedia"; };
+        jellyfin = { enable = true; group = "multimedia"; };
+        radarr = {
+          enable = true;
+          group = "multimedia";
+          settings.server.port = portFor "radarr";
+        };
+        sonarr = {
+          enable = true;
+          group = "multimedia";
+          settings.server.port = portFor "sonarr";
+        };
+        bazarr = {
+          enable = true;
+          group = "multimedia";
+          settings.general.port = portFor "bazarr";
+        };
+        prowlarr = {
+          enable = true;
+          settings.server.port = portFor "prowlarr";
+        };
+        flaresolverr.enable = true;
+        qbittorrent = {
+          enable = true;
+          group = "multimedia";
+          webuiPort = portFor "torrent";
+          torrentingPort = 6881;
+        };
       };
-      sonarr = {
-        enable = true;
-        group = "multimedia";
-        settings.server.port = inputs.self.lib.homelab.portFor "sonarr";
-      };
-      bazarr = {
-        enable = true;
-        group = "multimedia";
-        settings.general.port = inputs.self.lib.homelab.portFor "bazarr";
-      };
-      prowlarr = {
-        enable = true;
-        settings.server.port = inputs.self.lib.homelab.portFor "prowlarr";
-      };
-      flaresolverr.enable = true;
-      qbittorrent = {
-        enable = true;
-        group = "multimedia";
-        webuiPort = inputs.self.lib.homelab.portFor "torrent";
-        torrentingPort = 6881;
-      };
-    };
 
-    users.groups.multimedia = {
-      members = [ "vitalya" ];
-    };
+      users.groups.multimedia = {
+        members = [ "vitalya" ];
+      };
 
-    systemd.services.plex.serviceConfig.CPUWeight = 800;
-    systemd.services.flaresolverr.serviceConfig.CPUWeight = 15;
-  };
+      systemd.services.plex.serviceConfig.CPUWeight = 800;
+      systemd.services.flaresolverr.serviceConfig.CPUWeight = 15;
+    };
 }

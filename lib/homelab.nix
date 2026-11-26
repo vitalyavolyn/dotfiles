@@ -115,17 +115,14 @@ let
     (_: service: builtins.elem exposure (service.exposures or [ ]))
     services;
 
-  privateVirtualHost = backend: {
-    useACMEHost = domain;
-    forceSSL = true;
-    extraConfig = "allow 100.0.0.0/8; deny all;";
-    locations."/" = { proxyPass = backend; proxyWebsockets = true; };
-  };
-
   publicVirtualHost = backend: {
     useACMEHost = domain;
     forceSSL = true;
     locations."/" = { proxyPass = backend; proxyWebsockets = true; };
+  };
+
+  privateVirtualHost = backend: publicVirtualHost backend // {
+    extraConfig = "allow 100.0.0.0/8; deny all;";
   };
 in
 {
