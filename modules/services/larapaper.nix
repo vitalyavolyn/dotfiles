@@ -53,6 +53,8 @@
           DB_DATABASE = "database/storage/database.sqlite";
           PHP_OPCACHE_ENABLE = "1";
           REGISTRATION_ENABLED = "1";
+          # Blade auto-disables once there are 2+ users.
+          INSECURE_BLADE_ALLOW_PHP_EXECUTION = "true";
           # TLS is terminated upstream (Cloudflare tunnel / nginx); the
           # container only ever sees plain HTTP, so without these Laravel
           # generates http:// asset/URL links even on an https:// page.
