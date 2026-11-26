@@ -36,7 +36,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    brew-src = {
+      url = "github:Homebrew/brew";
+      flake = false;
+    };
+
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+      inputs.brew-src.follows = "brew-src";
+    };
 
     mac-app-util = {
       url = "github:hraban/mac-app-util";
