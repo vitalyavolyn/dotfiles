@@ -10,14 +10,8 @@ let
       optimise.automatic = true;
     };
 
-    nixpkgs.config.allowUnfreePredicate = pkg: true;
     nixpkgs.config.allowUnfree = true;
     nixpkgs.config.nvidia.acceptLicense = true;
-
-    # TODO: shadowsocks 🙄
-    nixpkgs.config.permittedInsecurePackages = [
-      "mbedtls-2.28.10"
-    ];
   };
 in
 {

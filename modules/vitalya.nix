@@ -2,7 +2,6 @@
 
 {
   den.aspects.vitalya = { user, ... }: {
-    # The user class is forwarded to users.users.${user.userName} on every host.
     user.openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDJOIQWALhrUwF6a23G9g3i/LjI50Bl/PGO1RauHJBks vitalya@celebi"
     ];

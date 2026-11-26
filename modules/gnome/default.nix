@@ -45,13 +45,5 @@
           gnome-music
         ];
       };
-
-    # Disable the screenshot sound by replacing it with a silent OGG file.
-    homeManager = { pkgs, ... }: {
-      xdg.dataFile."sounds/freedesktop/stereo/screen-capture.oga".source =
-        pkgs.runCommand "silent.oga" { nativeBuildInputs = [ pkgs.sox ]; } ''
-          sox -n -r 44100 -c 2 -t ogg $out trim 0.0 0.1
-        '';
-    };
   };
 }

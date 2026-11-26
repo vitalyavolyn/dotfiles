@@ -8,9 +8,6 @@
     {
       systemd.tmpfiles.rules = [ "d /etc/miniflux 0750 root root -" ];
 
-      # Admin password generated once on first boot rather than committed to
-      # git in plaintext (the old 2024 config did just that). Retrieve with:
-      # sudo cat /etc/miniflux/admin-credentials
       systemd.services.miniflux-init-admin = {
         description = "Generate Miniflux admin credentials if missing";
         before = [ "miniflux.service" ];

@@ -47,7 +47,6 @@
       };
 
       config = {
-        # Allow tailnet devices to query this DNS server
         networking.firewall.interfaces."tailscale0" = {
           allowedTCPPorts = [ 53 ];
           allowedUDPPorts = [ 53 ];

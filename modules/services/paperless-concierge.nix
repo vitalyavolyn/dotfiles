@@ -87,7 +87,6 @@
             Restart = "on-failure";
             RestartSec = 5;
 
-            # Security settings
             NoNewPrivileges = true;
             ProtectSystem = "strict";
             ProtectHome = true;

@@ -2,6 +2,10 @@
 
 {
   den.aspects.shadowsocks.nixos = { config, pkgs, ... }: {
+    nixpkgs.config.permittedInsecurePackages = [
+      "mbedtls-2.28.10"
+    ];
+
     services = {
       shadowsocks = {
         enable = true;

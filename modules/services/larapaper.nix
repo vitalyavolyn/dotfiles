@@ -15,10 +15,6 @@
         "d /etc/larapaper 0750 root root -"
       ];
 
-      # Laravel APP_KEY (session/cookie encryption) — generated once on first
-      # boot rather than committed to git, same spirit as Terminus's app-secret
-      # generation. Not agenix-managed since it's cheap to rotate and lower
-      # stakes than actual infra credentials.
       systemd.services.larapaper-init-env = {
         description = "Generate LaraPaper APP_KEY if missing";
         before = [ "podman-larapaper.service" ];

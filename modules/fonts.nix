@@ -7,7 +7,6 @@ let
       noto-fonts-color-emoji
       fira-code
       font-awesome
-      # siji
     ];
   };
 in
